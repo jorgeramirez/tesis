@@ -5,3 +5,6 @@
 *.blg
 *.bcf
 *.run.xml
+*.lof
+*.lot
+*.toc

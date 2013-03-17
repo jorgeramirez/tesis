@@ -1,0 +1,64 @@
+\documentclass[final,fmstyle]{./util/ucathesis}
+% La opcion 'final' muestra los graficos, para generar una version sin los graficos utiliza la opcion 'draft'
+
+% paquetes recomendados
+%\usepackage[chapter]{theorems}
+%\usepackage{symbols}
+%\usepackage{url}
+\usepackage{amsmath,amsthm}
+
+% datos de la tesis
+\title{Dise\~{n}o de Interfaces de Usuario basado en Reconocimiento del Habla}
+\author{Jorge Daniel Ram\'{i}rez Medina y Rodrigo Manuel Parra Zacar\'{i}as}
+\degree{Inform\'{a}tica}
+
+\advisor{Ing.}{Mart\'{i}n Abente,M.Sc.}
+
+%\newtheorem{definicion}{Definicin}
+%\numberwithin{algorithm}{chapter}
+
+\logosource{./graphics/logo.jpg}
+\institution{Universidad Nacional de Asunci\'{o}n}
+\faculty{Facultad Polit\'{e}cnica}
+\address{San Lorenzo - Paraguay}
+
+\begin{document}
+
+\maketitle     % esto hace las portadas
+
+% Agradecimientos
+%\include{agradecimientos}
+
+% los siguientes comandos producen 'indices.
+
+% Tabla de contenidos
+\tableofcontents
+% Lista de figuras
+\listoffigures
+% Lista de tablas
+\listoftables
+% Lista de algoritmos
+%\listofalgorithms
+%\include{acronimos}
+%\include{simbolos}
+
+\mainmatter  % inician los capitulos de la tesis
+
+% incluye aqui los capitulos (un archivo .tex por capitulo)
+\include{introduccion/Introduccion}
+\include{antecedentes/Antecedentes}
+\include{proceso/BasadoEnHMM}
+\include{proceso/FeatureExtraction}
+\include{proceso/PhoneLikelihoodEstimation}
+\include{proceso/Decoding}
+\include{proceso/OtrosProcesos}
+
+\appendix   % inician los apendices de tu tesis
+	
+% los cap'itulos que incluyas a partir de aqu'i aparecen 
+% como ap'endices
+
+% estos comandos generan la bilbiograf'ia
+\bibliography{referencias}
+
+\end{document}
