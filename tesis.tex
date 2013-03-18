@@ -7,6 +7,13 @@
 %\usepackage{url}
 \usepackage{amsmath,amsthm}
 
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage[style=numeric,sorting=none,backend=biber]{biblatex}
+\addbibresource{referencias.bib}
+
 % datos de la tesis
 \title{Dise\~{n}o de Interfaces de Usuario basado en Reconocimiento del Habla}
 \author{Rodrigo Manuel Parra Zacar\'{i}as y Jorge Daniel Ram\'{i}rez Medina}
@@ -47,6 +54,7 @@
 % incluye aqui los capitulos (un archivo .tex por capitulo)
 \include{introduccion/Introduccion}
 \include{antecedentes/Antecedentes}
+\include{antecedentes/50s}
 \include{proceso/BasadoEnHMM}
 \include{proceso/FeatureExtraction}
 \include{proceso/PhoneLikelihoodEstimation}
@@ -59,6 +67,6 @@
 % como ap'endices
 
 % estos comandos generan la bilbiograf'ia
-\bibliography{referencias}
+\printbibliography
 
 \end{document}

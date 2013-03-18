@@ -8,7 +8,7 @@
 \newif\if@isdraft
 \newif\if@atstyle
 \newcommand{\@logosource}{logocolor.eps}
-\usepackage[ansinew]{inputenc}
+%\usepackage[ansinew]{inputenc}
 \usepackage[pdftex]{graphicx}
 \usepackage{algorithm}
 \usepackage{algorithmic}
