@@ -1,5 +1,73 @@
+%!TEX root = ../tesis.tex
 \section{Modelo de Proceso Basado en HMM}
 \label{sec:ModeloHMM}
+
+Para un lenguaje $L$ y una entrada ac\'ustica $X$, el problema del reconocimiento del habla puede definirse como:
+
+\begin{quote}
+\emph{La b\'usqueda de la oraci\'on m\'as probable pertenenciente al lenguaje L, dada la entrada ac\'ustica X.}
+\end{quote}
+
+La secuencia de observaciones ac\'usticas $O$ puede representarse como:
+
+\begin{equation*}
+O = o_1,o_2,o_3,\ldots,o_N
+\end{equation*}
+
+donde la se\~nal de voz fue dividida en $N$ muestras de igual duraci\'on.
+
+La oraci\'on de salida, a su vez, puede representarse como:
+
+\begin{equation*}
+\hat{W}  = w_1,w_2,w_3,\ldots,w_M
+\end{equation*}
+
+donde la cadena est\'a compuesta por $M$ palabras.
+
+De esta manera, la definici\'on introducida anteriormente puede expresarse matem\'aticamente como:
+
+\begin{equation*}
+\hat{W} = \argmax_{W \in L} P(W|X)
+\end{equation*}
+
+Usando la Regla de Bayes la expresi\'on anterior puede reescribirse como:
+
+\begin{equation*}
+\hat{W} = \argmax_{W \in L} \frac{P(X|W)P(W)}{P(X)}
+\end{equation*}
+
+Como se desea obtener la oraci\'on con mayor probabilidad dada una entrada ac\'ustica, la entrada es
+la misma para todas las oraciones evaluadas y su probabilidad de ocurrencia $P(X)$ se mantiene constante.
+Puesto de otra manera, el t\'ermino $P(X)$ es independiente de $W$, por lo cual puede despreciarse. 
+
+Por tanto:
+
+\begin{equation*}
+\hat{W} = \argmax_{W \in L} P(X|W)P(W)
+\end{equation*}
+
+El primer t\'ermino representa la probabilidad de una entrada ac\'ustica dada una secuencia de palabras, tambi\'en
+conocida como verosimilitud de observaci\'on o modelo ac\'ustico y el segundo es la probabilidad \foreign{a priori}
+de ocurrencia de una secuencia de palabras, tambi\'en conocida como probabilidad previa o modelo de lenguaje. Esto es:
+
+\begin{equation*}
+\hat{W} = \argmax_{W \in L} \overbrace{P(X|W)}^\text{M. ac\'ustico}\overbrace{P(W)}^\text{M. de lenguaje}
+\end{equation*}
+
+Esta ecuaci\'on es el fundamento del enfoque estad{\'\i}stico al problema del reconocimiento del habla, base de los
+sistemas \mbox{modernos \cite{RabinerStatistical2006}}.
+
+El proceso b\'asico del reconocimiento del habla puede descomponerse en tres fases, cada una de las cuales recibe
+datos de entrada y produce una salida determinada.
+
+%Figura Jurafsky
+\begin{itemize}
+\item La primera fase o \emph{extracci\'on de caracter{\'\i}sticas} produce vectores de caracter{\'\i}sticas representativos de la se\~nal de voz.
+\item La segunda fase o \emph{estimaci\'on de verosimilitud de fonemas} permite estimar la probabilidad de un fonema para cada trama o muestra de la entrada ac\'ustica en base a los vectores de caracter{\'\i}sticas.
+\item La tercera fase o \emph{decodificaci\'on}, produce la secuencia de palabras m\'as probable en base a un diccionario de pronunciaciones modelado mediante un modelo oculto de Markov, una gram\'atica basada en n-gramas y la estimaci\'on de probabilidad calculada en la fase anterior.
+\end{itemize}
+
+Las siguientes secciones explican de manera m\'as detallada los conceptos, metodolog{\'\i}as y algoritmos relacionados a cada fase.
 
 \input{proceso/FeatureExtraction}
 \input{proceso/PhoneLikelihoodEstimation}
