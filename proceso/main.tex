@@ -2,8 +2,21 @@
 \chapter{Proceso B\'{a}sico del Reconocimiento del Habla}
 \label{sec:proceso}
 
+A fin de comprender el funcionamiento de las aplicaciones de reconocimiento del habla, puede resultar de utilidad
+representar el mismo como un proceso que recibe una se\~nal de voz y produce una secuencia de palabras como
+resultado. Este proceso est\'a compuesto a sus vez por pasos o fases, cada uno con sus respectivos datos de entrada y 
+de salida.
+
+A lo largo de la historia se han propuesto diferentes modelos de reconocimiento autom\'atico del habla, cada uno
+con un enfoque diferente para la soluci\'on de este \mbox{problema \cite{VimalaReview2012}}. 
+
+Este cap{\'\i}tulo presenta y describe el proceso b\'asico del reconocimiento del habla desde un enfoque estad{\'\i}stico,
+es decir, basado en Modelos Ocultos de Markov (HMMs por sus siglas en ingl\'es). A m\'as de 30 a\~nos de su presentaci\'on,
+esta metodolog{\'\i}a a\'un predomina y representa el estado del arte en el \'area, a tal punto de constituir la base de
+los sistemas modernos de reconocimiento del habla de prop\'osito \mbox{general \cite{BakerResearch2009, VimalaReview2012}}.
+
+Adem\'as, se mencionan y describen brevemente modelos alternativos de reconocimiento del habla de modo a contrastar
+las diferencias con el est\'andar actual.
+
 \input{proceso/BasadoEnHMM}
-\input{proceso/FeatureExtraction}
-\input{proceso/PhoneLikelihoodEstimation}
-\input{proceso/Decoding}
 \input{proceso/OtrosProcesos}
