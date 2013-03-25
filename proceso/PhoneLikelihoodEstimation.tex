@@ -1,2 +1,78 @@
-\subsection{Fase 2: Phone Likelihood Estimation}
+\subsection{Fase 2: Estimaci\'{o}n de Verosimilitud de Fonemas}
 \label{sec:phoneLikelihood}
+
+La fase anterior genera unos vectores de caracter\'{i}sticas que representan la se\~{n}al de voz. En esta secci\'{o}n
+se muestra c\'{o}mo transformar estos vectores en probabilidades utilizando una funci\'on de densidad
+de probabilidad.
+
+\subsubsection{Funci\'on de Densidad de Probabilidad}
+\label{sec:pdfs}
+
+La salida de los m\'etodos descritos en esta secci\'on es una funci\'on de densidad de probabilidad (o PDF por sus siglas en 
+ingl\'es). \'Esta es una funci\'on de destribuci\'on de probabilidades que permite mapear los vectores de 
+caracter\'isticas a una probabilidad. Formalmente, permite estimar (utilizando un enfoque discreto o cont\'inuo)
+la verosimilitud de la observaci\'on representada como $b_j(o_t)$.
+
+\subsubsection{Cuantificaci\'{o}n Vectorial}
+\label{sec:vectorQuantization}
+
+La Cuantificac\'{o}n Vectorial permite modelar una PDF sobre un espacio discreto, agrupando a los vectores de caracter\'{i}sticas en 
+s\'{i}mbolos discretos que pueden contarse. Luego calcula la probabilidad de un grupo contando la cantidad de veces 
+que \'{e}ste ocurre dentro de un conjunto de entrenamiento.
+
+Este m\'{e}todo era bastante utilizado en los primeros sistemas de reconocimiento del habla \cite{Jurafsky}, pero ha sido reemplazado
+por t\'{e}cnicas de computo intensivo sobre un espacio cont\'{i}nuo en vez de uno discreto.
+
+\subsubsection{M\'etodo Gaussiano}
+\label{sec:gaussianPdf}
+El m\'{e}todo Gaussiano es el m\'{a}s utilizado del enfoque cont\'{i}nuo. En su versi\'{o}n m\'{a}s simple, cada estado tiene
+asociada una funci\'{o}n gaussiana que mapea el vector de observaciones $o_t$ a una probabilidad.
+
+La versi\'{o}n simple del m\'etodo Gaussiano asume que los valores del vector de observaciones $o_t$ presentan una distribuci\'on
+normal. Por lo tanto, la funci\'on de probabilidad de las observaciones, $b_j(o_t)$, se representa como una curva gaussiana con
+media $\mu_j$ y matriz de covarianza $\Sigma_j$, calculadas mediante el algoritmo de Avance-Retroceso. Sin entrar en detalles 
+matem\'aticos, se presenta la ecuaci\'on para calcular $b_j(o_t)$:
+
+\begin{equation}
+    b_j(o_t) = \frac{1}{\sqrt{(2\pi)|\Sigma_j|}}e^{[(o_t-\mu_j)'\Sigma_j^{-1}(o_t-\mu_j)]}
+\end{equation}
+
+En la pr\'actica la matriz $\Sigma_j$ es diagonal, lo que quiere decir que solo mantiene una media y varianza por cada vector
+de caracter\'isticas.
+
+Jurafsky en \cite{Jurafsky} menciona que la mayor\'ia sistemas actuales de reconocimiento del habla utilizan m\'ultiples funciones gaussianas 
+para cada estado, de manera que la probabilidad se calcula como una combinaci\'on de estas funciones, t\'ecnica conocida como
+Mezcla Gaussiana. Adem\'as, algunos sistemas comparten funciones gaussianas entre estados, t\'ecnica conocida como atadura de
+par\'ametros. Algunos fonemas ac\'usticamente similares, por ejemplo, podr\'ian compartir funciones gaussianas.
+
+\subsubsection{Redes Neuronales}
+\label{sec:likelihoodNeuralNet}
+
+Otro m\'etodo popularmente utilizado para modelar una PDF sobre un espacio cont\'inuo, es el que utiliza Redes Neuronales. 
+De manera simplificada, una Red Neuronal es un conjunto de unidades computacionales unidas por enlazes ponderados. La red recibe
+como entrada un vector de valores y retorna como salida otro vector de valores.
+
+Este enfoque utiliza elementos del HMM (por ejemplo, el grafo que representa la pronunciaci\'on de una palabra) y un Perceptr\'on
+Multicapa (o MLP por sus siglas en ingl\'es) para calcular la probabilidad de las observaciones, por eso a este m\'etodo se lo
+conoce com\'unmente como enfoque H\'ibrido HMM-MLP. La entrada a esta red es un vector de caracter\'isticas en un tiempo $t$ y
+otros vectores adicionales. Para que la red pueda utilizarse para computar la probabilidad de un estado $j$ dado un vector
+de observaci\'ion $o_t$, formalmente $P(j|o_t)$, debe establecerse como restricci\'on que todas las unidades de salida sumen 1.
+
+El MLP calcula la probabilidad $P(q_j|o_t)$ pero la probabilidad $b_j(o_t)$ que se busca es $P(o_t|q_j)$. Utilizando el teorema de
+Bayes se puede obtener la probabilidad deseada a partir de la computada por el MLP:
+
+\begin{equation}
+    p(q_j|o_t) = \frac{P(o_t|q_j)p(q_j)}{p(o_t)}
+\end{equation}
+
+Acomodando los t\'erminos se obtiene:
+
+\begin{equation}
+    \frac{p(o_t|q_j)}{p(o_t)} = \frac{P(q_j|o_t)}{p(q_j)}
+\label{eq:bayes-rea}
+\end{equation}
+
+Utilizando la ecuaci\'on \eqref{eq:bayes-rea} se puede computar $\frac{p(o_t|q_j)}{p(o_t)}$ denominada verosimilitud escalada. Esta
+verosimilitud escalada es igual de buena que la verosimilitud com\'un \cite{Jurafsky}, ya que la probabilidad $p(o_t)$ es constante
+durante el reconocimiento. De este modo, se obtiene la probabilidad $b_j(o_t)$ deseada.
+
