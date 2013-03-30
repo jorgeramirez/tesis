@@ -1,2 +1,82 @@
 \section{Estado del Arte}
 \label{sec:estado}
+
+El rendimiento de los sistemas de reconocimiento del habla se mide, por lo general, en t\'erminos
+de precisi\'on y velocidad. La precisi\'on se mide usualmente utilizando la Tasa de Error por Palabras
+(o WER por sus siglas en ingl\'es), mientras que la velocidad se mide utilizando el Factor de 
+Tiempo \mbox{Real (RTF) \cite{GaikwadAReview2010}}.
+
+\subsection{Tasa de Error por Palabras}
+\label{sec:wer}
+
+La Tasa de error por palabras (WER) es una m\'etrica de evaluaci\'on est\'andar del desempe\~no de un sistema de
+reconocimiento del habla. Su c\'alculo se basa en qu\'e tanto la cadena retornada por el reconocedor,
+denominada hip\'otesis, difiere con respecto a la transcripci\'on correcta \cite{Jurafsky}. 
+Dada la transcripci\'on de referencia, para computar la tasa se debe calcular la distancia de edici\'on m\'inima
+entre la hip\'otesis y la \mbox{transcripci\'on \cite{GaikwadAReview2010}}. Es decir, la m\'inima cantidad de palabras insertadas, eliminadas y
+sustituidas. Formalmente, la tasa se calcula de acuerdo a la ecuaci\'on \eqref{eq:wer}
+
+\begin{equation}
+\label{eq:wer}
+    WER = \frac{I + E + S}{N} 
+\end{equation}
+
+Donde
+
+\begin{itemize}
+    \item $I$ es el n\'umero de inserciones,
+    \item $E$ es el n\'umero de eliminaciones,
+    \item $S$ es el n\'umero de sustituciones, y
+    \item $N$ es el n\'umero de palabras en la transcripci\'on de referencia.
+\end{itemize}
+
+En \cite{VimalaReview2012} se muestra una comparaci\'on de varias aplicaciones de reconocimiento del habla basada
+en el conjunto de datos, extracci\'on de caracter\'isticas y el enfoque utilizado. Se puede observar que la precisi\'on
+en el caso de reconocimiento de d\'igitos en ingl\'es es de 98\%, para el reconocimiento cont\'inuo del habla
+de grandes vocabularios (en Rumano) es de 90,41\%.
+
+\subsection{Factor de Tiempo Real}
+\label{sec:rtf}
+
+La velocidad de los sistemas de reconocimiento se miden en t\'erminos del Factor de Tiempo Real (RTF). Toma un tiempo $P$
+procesar una entrada de duraci\'on $I$ \cite{VimalaReview2012}. Formalmente, RTF se calcula de acuerdo a la ecuaci\'on \eqref{eq:rtf}
+
+\begin{equation}
+\label{eq:rtf}
+    RTF = \frac{P}{I}
+\end{equation}
+
+Cuando el factor de tiempo real es menor o igual que 1, se dice que el procesamiento se realiza en tiempo real.
+
+La llegada de sistemas de reconocimiento del habla en tiempo real a los dispositivos m\'oviles y sistemas embebidos dio
+oportunidad a uno nuevo rango de investigaciones relacionadas a la interacci\'on humano-computadora. PocketSphinx, es
+un sistema de reconocimiento para sistemas embebidos con RTF igual a 0.87 y WER igual a 13,95\% para un vocabulario
+de 1000 palabras \cite{HugginsDainesPocketSphinx2006}.
+
+\subsection{Perplejidad}
+\label{sec:perplexity}
+
+Las probabilidades de los modelos estad\'isticos, como el modelo N-grama, provienen del \foreign{Corpus} sobre
+sobre el cual fueron entrenados. El \foreign{Corpus} se divide en un conjunto de entrenamiento y otro de prueba.
+Los par\'ametros del modelo estad\'istico se determinan a partir del conjunto de entrenamiento, y se utilizan
+para calcular las probabilidades sobre el conjunto de prueba. Adem\'as, este paradigma de entrenamiento y prueba
+puede utilizarse para evaluar diferentes arquitecturas N-grama \cite{Jurafsky}.
+
+La perplejidad es una m\'etrica que indica que tan bien el Modelo de Lenguaje utilizado representa al \foreign{Corpus} 
+de prueba \cite{RosenfeldStatistical1997}. Formalmente, la perplejidad se define como
+
+\begin{equation*}
+    2^{-l}
+\end{equation*}
+
+donde
+
+\begin{equation*}
+    l = \frac{1}{M}\sum_{i=1}^{M}\log_2p(x^{(i)})
+\end{equation*}
+
+siendo $M$ el n\'umero total de palabras en el \foreign{Corpus} de prueba y $p(x^{(i)})$ la probabilidad de una 
+sentencia del conjunto. Cuanto menor sea el valor de perplejidad, mejor ser\'a el modelo de lenguaje modelando
+nuevas sentencias. En \cite{MikolovEmpirical2011}, los autores presentan un avance en el estado del arte
+utilizando una combinaci\'on de t\'ecnicas avanzadas para el modelado del lenguaje, logrando una perplejidad
+de 79,4 para la porci\'on del \foreign{Wall Street Journal Corpus} conocida como \foreign{Peen Treebank}.
