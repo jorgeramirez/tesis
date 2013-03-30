@@ -1,2 +1,214 @@
-\subsection{Fase 3: Decoding}
+%!TEX root = ../tesis.tex
+\subsection{Fase 3: Decodificaci\'on}
 \label{sec:decoding}
+
+Durante este fase, se utiliza un algoritmo decodificador, que depende de un modelo de lenguaje y un diccionario de
+pronunciaciones, para obtener la secuencia de palabras m\'as probable en base a las probabilidades que se calcularon 
+anteriormente. Esta secci\'on describe los elementos involucrados en esta transformaci\'on, la cual constituye el paso
+final del proceso simplificado del reconocimiento del habla que se pretende presentar.
+
+\subsubsection{Modelos de Lenguaje}
+Sea $V$ el conjunto finito de palabras que componen un lenguaje, tambi\'en conocido como vocabulario, y $V^\dag$ el 
+conjunto infinito de oraciones que pueden formarse con palabras pertenecientes al vocabulario.
+
+Un modelo de lenguaje \cite{CollinsLanguage} consiste en un conjunto finito $V$ y una funci\'on $p(x_1,x_2,\ldots,x_n)$ tal que:
+\begin{enumerate}
+
+\item $\forall (x_1,x_2,\ldots,x_n) \in V^\dag, p(x_1,x_2,\ldots,x_n) \ge 0$
+
+\item $\displaystyle \sum_{(x_1,x_2,\ldots,x_n) \in V^\dag} p(x_1,x_2,\ldots,x_n) = 1$
+\end{enumerate}
+
+En resumen, un modelo de lenguaje busca predecir la probabilidad de una secuencia de palabras. 
+
+La t\'ecnica predominante para construir modelos de lenguaje, debido a su simplicidad y efectividad, es la basada en 
+n-gramas \cite{GaoComparative2010}. Sea $W^L_1$ una cadena de palabras pertenecientes a un vocabulario $V$ dado. Un modelo de 
+lenguaje basado en n-gramas asigna la probabilidad a $W^L_1$ de acuerdo a:
+
+\begin{equation*}
+p(W^L_1) = \displaystyle \prod^L_{i = 1} w_i \mid w^{i - 1}_1 \approx \displaystyle \prod^L_{i = 1} w_i \mid w^{i - 1}_{i - n + 1}
+\end{equation*}
+
+Esta aproximaci\'on se basa en la suposici\'on de Markov de que cada palabra depende solo de las $n - 1$ palabras precedentes.
+
+\subsubsection{Modelos Ocultos de Markov}
+Un modelo oculto de Markov es un aut\'omata finito estoc\'astico entrenable \cite{KouemouHistory2011}, que implica un doble 
+proceso estoc\'astico:
+
+\begin{itemize}
+\item El primer proceso, que produce una secuencia de estados, no es observable. Esto es, la secuencia de estados que produce
+permanece oculta.
+\item El segundo proceso produce una secuencia de observaciones, donde cada observaci\'on es una funci\'on probabil{\'\i}stica de un estado
+correspondiente al primer proceso.
+\end{itemize}
+
+Un modelo oculto de Markov puede ser caracterizado mediante los siguientes elementos \cite{Rabiner89atutorial}:
+
+\begin{enumerate}
+\item $N$, el n\'umero de estados del modelo. Se representan los estados individuales como $S=\{S_1,S_2,\ldots,S_N\}$.
+\item $M$, el n\'umero de s{\'\i}mbolos observables por estado. Se representan los s{\'\i}mbolos individuales como $V=\{v_1,v_2,\ldots,v_M\}$
+\item La distribuci\'on de probabilidad de transici\'on de estados $A = \left\{a_ij\right\}$, donde:
+\begin{align*}
+	a_ij = P[q_{t+1} = S_j \mid q_t = S_i], & & 1 \leq i,j & \leq N
+\end{align*}
+\item La distribuci\'on de probabilidad de los s{\'\i}mbolos observables en el estado $j$, $b_j(k)$, tambi\'en representada como $b_j(v_k)$, 
+donde:
+\begin{align*}
+	b_j(v_k) = P[v_k \text{ en el momento } t \mid q_t = S_j], & & 1 \leq j & \leq N
+	\\& & 1 \leq k & \leq M
+\end{align*}
+\item La distribuci\'on de probabilidad del estado inicial $\pi=\left\{\pi_i\right\}$, donde:
+\begin{align*}
+	\pi_i = P[q_1=S_i], & & 1 \leq i \leq N
+\end{align*}
+\end{enumerate}
+
+De modo a comprender mejor este concepto que puede resultar complejo, se presenta a continuaci\'on un ejemplo cl\'asico de un modelo oculto de
+Markov. El ejemplo se denomina \emph{El modelo de la urna y la pelota} \cite{Rabiner89atutorial}:
+
+\begin{quote}
+	Se asume que hay N urnas (grandes) de vidrio en una habitaci\'on. Dentro de cada urna hay un gran n\'umero de pelotas de colores.
+	Un genio est\'a en la habitaci\'on y, de acuerdo a un proceso aleatorio, elige una urna inicial. De esta urna extrae una pelota de
+	manera aleatoria y su color se anota como la observaci\'on, pues el observador desconoce la urna de donde sali\'o la pelota.
+	La pelota se coloca de nuevo en la urna y se repiten la selecci\'on de la urna y la pelota respectivamente. Este proceso genera
+	una secuencia aleatoria de colores.
+\end{quote}
+
+Este sencillo sistema puede modelarse como un modelo oculto de Markov con los siguientes par\'ametros:
+\begin{enumerate}
+	\item $N$ es el n\'umero de urnas.
+	\item $M$ es la cantidad de colores posibles de las pelotas en las urnas.
+	\item $A$ es la funci\'on que determina la transici\'on entre urnas.
+	\item $b_j(v_k)$ es la funci\'on que determina la elecci\'on de una pelota de determinado color.
+	\item $\pi$ es la funci\'on que determina la elecci\'on de la urna inicial.
+\end{enumerate}
+
+\subsubsection{Algoritmo de Viterbi}
+El algoritmo de Viterbi recibe una secuencia de observaciones y un \'unico aut\'omata y retorna el camino \'optimo a trav\'es
+del aut\'omata, esto es, la mejor secuencia de estados. La descipci\'on y el pseudoc\'odigo que se presentan en esta secci\'on
+est\'an basados principalmente en \cite{Jurafsky, Rabiner89atutorial}.
+
+M\'as formalmente, se busca la mejor secuencia de estados $Q = (q_1,q_2,\ldots,q_T)$ dadas una secuencia de observaciones
+$O = (o_1,o_2,\ldots,o_T)$ y un modelo $\lambda$.
+
+El algoritmo utiliza una matriz de probabilidades $viterbi$, donde cada celda $viterbi[i,t]$ contiene la probabilidad del
+mejor camino teniendo en cuenta las $t$ primeras observaciones y terminando en el estado $i$ del modelo. Esto es:
+
+\begin{equation*}
+	viterbi[i,t] = \displaystyle \max_{q_1,q_2,\ldots,q_{t - 1}} P(q1,q2,\ldots,q_{t - 1},q_t = i,o_1,o_2,\ldots,o_t \mid \lambda) 	
+\end{equation*} 
+
+Para calcular los valores de $viterbi[i,t]$, el algoritmo de Viterbi asume la invariante de la programaci\'on din\'amica.
+Esto es, se asume que si el mejor camino para una secuencia de observaciones pasa por un estado $q_i$, entonces este
+camino incluye el mejor camino hasta $q_i$ inclusive. Este supuesto, aunque no siempre sea correcto, permite descomponer
+el problema y simplificar su soluci\'on, mediante la siguiente relaci\'on de recurrencia:
+
+\begin{equation*}
+	viterbi[i,t] = \displaystyle \max_i (viterbi[i,t-1]a_{i,j})b_j(o_t)
+\end{equation*}
+
+\begin{algorithm}[H]
+\caption{Algoritmo de Viterbi} \label{viterbi}
+\begin{algorithmic}[1]
+\REQUIRE $observaciones$ de longitud $T$, $grafo\mbox{-}estados$.
+\ENSURE $estados$, el mejor camino.
+\STATE $num\mbox{-}estados \leftarrow$ CANTIDAD-DE-ESTADOS($grafo\mbox{-}estados$) 
+\STATE Crear una matriz de probabilidades $viterbi[num\mbox{-}estados, T]$
+\FOR{cada estado $s$ desde $0$ hasta $num\mbox{-}estados$}
+	\STATE $viterbi[s,0] = \pi_s$
+\ENDFOR
+\FOR{cada paso $t$ desde $0$ hasta $T - 1$}
+	\FOR{cada estado $s$ desde $0$ hasta $num\mbox{-}estados$}
+		\FOR{cada transici\'on $s$ desde s especificada por el $grafo\mbox{-}estados$}
+		\STATE $nuevo\mbox{-}puntaje \leftarrow viterbi[s,t] * a[s,s'] * b_{s'}[o_t]$
+		\IF{$viterbi[s',t+1] = 0 \parallel nuevo\mbox{-}puntaje > viterbi[s',t+1]$}
+			\STATE $viterbi[s',t+1] \leftarrow nuevo\mbox{-}puntaje$
+			\STATE $puntero\mbox{-}retroceso[s',t+1] \leftarrow s$
+		\ENDIF  
+		\ENDFOR
+	\ENDFOR
+\ENDFOR
+\STATE $estados \leftarrow$ retroceso desde la celda con mayor valor en la \'ultima columna de $viterbi[]$
+\\ \COMMENT{Usando $puntero-retroceso$}.
+\RETURN $estados$
+\end{algorithmic}
+\end{algorithm}
+
+\emph{Limitaciones del Algoritmo}
+
+El algoritmo de Viterbi presenta dos limitaciones principales:
+\begin{enumerate}
+	\item No retorna la secuencia m\'as probable de palabras, sino la secuencia m\'as probable de estados. Aunque en muchos casos resulta casi
+	equivalente, esto puede ser un problema para lenguajes en los cuales una misma palabra puede tener diferentes pronunciaciones.
+	\item La invariante de la programaci\'on din\'amica, base del algoritmo, no es v\'alida para modelos de lenguaje m\'as complejos que una
+	gram\'atica basada en bi-gramas.
+\end{enumerate}
+
+Existen dos clases de soluciones a estas limitaciones:
+\begin{enumerate}
+	\item Modificar el algoritmo de Viterbi de forma que retorne las $N$ oraciones m\'as probables como una lista, o como 
+	rejillas (\foreign{lattices}) de palabras. Estas oraciones luego se reordenan usando un mejor modelo ac\'ustico o de lenguaje,
+	de modo a seleccionar la oraci\'on m\'as probable.
+	\item Utilizar otro algoritmo para la decodificaci\'on. La alternativa m\'as com\'un es el algoritmo decodificador de pila o A*, el cual
+	se presenta a continuaci\'on.
+\end{enumerate}
+
+\subsubsection{Algoritmo A*}
+El algoritmo de pila o A* es un algoritmo de b\'usqueda mejor-primero sobre un \'arbol, no representado expl{\'\i}citamente, que define las
+secuencias de palabras aceptables en un lenguaje dado. La descipci\'on y el pseudoc\'odigo que se presentan en esta secci\'on
+est\'an basados principalmente en \cite{Jurafsky, PaulEfficient1992}.
+
+El \'arbol mencionado tiene palabras por nodos y cada hoja define una oraci\'on aceptada por el lenguaje, la que se forma concatenando las 
+palabras desde la ra{\'\i}z hasta la hoja.  
+
+El algoritmo mantiene una cola de prioridad, a la cual se denomina pila (de ah{\'\i} el otro nombre del algoritmo), de caminos o soluciones 
+parciales, cada una asociada a un puntaje dado. La operaci\'on \foreign{pop} de la cola retorna el elemento con el puntaje m\'as alto. 
+El puntaje de un elemento $p$ est\'a dado por la \mbox{funci\'on \cite{Jurafsky, Russell2003Solving}}:
+
+\begin{equation*}
+	f*(p) = g(p) + h*(p)
+\end{equation*}
+
+Donde $f*(p)$ es el puntaje estimado del mejor camino (oraci\'on completa) y est\'a dado por:
+
+\begin{itemize}
+ 	\item $g(p)$, el puntaje del camino parcial $p$. Esta funci\'on puede ser estimada por la probabilidad de $p$ dada la entrada ac\'ustica
+ 	hasta ese momento. Esto es, $P(X \mid W)P(W)$ para la secuencia de palabras $W$ que constituye $p$. 
+
+ 	Esta probabilidad se calcula usando el algoritmo de Avance, una alternativa menos eficiente para m\'as precisa al algoritmo de \mbox{Viterbi \cite{Jurafsky}}.
+
+ 	\item $h*(p)$, una estimaci\'on del puntaje de la mejor extensi\'on de $p$ hasta el final del camino. La estimaci\'on de $h*$ es un problema
+ 	no resuelto e interesante. 
+
+ 	Un enfoque posible es elegir como $h*$ una estimaci\'on relacionada al n\'umero de palabras que faltan para
+ 	completar la oraci\'on.
+ \end{itemize}
+
+ Luego de seleccionar un camino parcial, se utiliza un algoritmo de b\'usqueda r\'apida para encontrar palabras candidatas para extender
+ la soluci\'on parcial. Varios algoritmos de b\'usqueda \cite{GuptaFast1988, BahlSpeech1993} r\'apida se basan en la utilizaci\'on de un \'
+ arbol l\'exico \cite{KlovstadCasper1975}, el cual almacena las pronunciaciones de todas las palabras de forma que el c\'omputo de la 
+ probabilidad puede ser compartido entre palabras de similar pronunaciaci\'on.
+
+Las oraciones extendidas vuelven a insertarse en la cola, y el proceso se repite hasta procesar toda la entrada ac\'ustica.
+
+\begin{algorithm}[H]
+	\caption{Algoritmo A*} \label{stack}
+\begin{algorithmic}[1]
+	\STATE Inicializar la cola de prioridad con una teor{\'\i}a nula.
+	\STATE Hacer \foreign{pop}, obteniendo la teor{\'\i}a $s$ con mejor puntaje de la cola.
+	\WHILE{! $bandera\mbox{-}FDO$ de $s$}
+		\STATE Hacer una b\'usqueda r\'apida para obtener palabras candidatas para extender $s$.
+		\FOR{cada palabra $w$ en la lista de candidatos}
+			\STATE Construir una nueva oraci\'on candidata $s + w$.
+			\STATE Usar el algoritmo de Avance para calcular $P(X \mid s + w) \rightarrow L$
+			\STATE Usar el modelo de lenguaje para calcular $P(W) \rightarrow P$
+			\STATE Calcular el puntaje de $s + w$ mediante una funci\'on de $L, P$ y $h^*$
+			\IF{fin-de-oracion}
+				\STATE $bandera\mbox{-}FDO$ de $s \leftarrow verdadero$
+			\ENDIF
+			\STATE Insertar $s + w$ con su puntaje y $bandera\mbox{-}FDO$ a la cola de prioridad.
+			\STATE Hacer \foreign{pop}, obteniendo la teor{\'\i}a $s$ con mejor puntaje de la cola.
+		\ENDFOR
+	\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
