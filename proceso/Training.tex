@@ -1,3 +1,66 @@
 %!TEX root = ../tesis.tex
 \subsection{Fase Previa: Entrenamiento}
 \label{sec:training}
+
+Para que el proceso que se ha presentado en las secciones anteriores funcione, es necesaria una fase
+previa de entrenamiento de los modelos probabil{\'\i}sticos que componen el reconocedor del habla. 
+
+Los cuatro modelos probabil{\'\i}sticos que deben entrenarse son \cite{Jurafsky}:
+\begin{itemize}
+	\item Modelo oculto de Markov L\'exico: la estructura del grafo de estados
+	\item Probabilidades del modelo de lenguaje: $P(W)$
+	\item Verosimilitudes de observaci\'on: $b_j(o_t)$
+	\item Probabilidades de transici\'on: $a_{ij}$
+\end{itemize}
+
+Para ello se cuenta con \cite{Jurafsky}:
+\begin{itemize}
+	\item  Un corpus de voz, compuesto por una colecci\'on de grabaciones de voz junto
+	con sus transcripciones de texto.
+	\item  Un corpus mucho mayor de texto para entrenar el modelo de lenguaje, compuesto por las transcripciones
+	del corpus de voz junto con otros textos similares.
+	\item A menudo, un corpus menor de voz etiquetado fon\'eticamente. Esto es, donde fragmentos
+	de la se\~nal est\'an asociados a su fonema correspondiente.
+\end{itemize}
+
+\emph{Estructura del grafo de estados} 
+
+Se construye en base a diccionarios de pronunciaci\'on como el diccionario \mbox{CMUDdict \cite{CMUdict}}. 
+Los estados se definen de acuerdo a los fonemas, o en muchos casos de acuerdo a subdivisiones de estos, denominadas subfonemas.
+
+\emph{Modelo de lenguaje} 
+
+Un modelo basado en n-gramas se entrena contando las ocurrencias de cada n-grama en el corpus de texto, para luego 
+suavizar y normalizar cada conteo. As{\'\i}, el contador suavizado y normalizado de un n-grama constituye 
+su \mbox{probabilidad \cite{CollinsLanguage}}.
+
+\emph{Par\'ametros del modelo oculto de Markov} 
+
+Las probabilidades de estimaci\'on se estiman inicialmente asumiendo que, para cada estado, cualquier transici\'on posible 
+a otro estado es igualmente probable. Las verosimilitudes de observaci\'on se estiman inicialmente mediante el peque\~no corpus 
+de voz etiquetado fon\'eticamente.
+
+Una vez realizada la estimaci\'on inicial, el siguiente paso para entrenar estos par\'ametros difiere dependiendo de la utilizaci\'on
+de redes neuronales o funciones Gaussianas \cite{Jurafsky}. A continuaci\'on se presenta brevemente el enfoque para cada caso, 
+incluyendo referencias a materiales que desarrollan los conceptos de manera m\'as extendida:
+
+\begin{itemize}
+	\item \emph{Redes Neuronales}: el entrenamiento de la red neuronal se realiza utilizando el algoritmo de Propagaci\'on hacia 
+	Atr\'as \cite{Russell2003Learning}. Este algoritmo requiere conocer el fonema correspondiente a cada observación. 
+
+	Para ello se utiliza el alineamiento Viterbi forzado \cite{JelinekStatistical1998}, el cual recibe los vectores de características y la secuencia de palabras correctas y produce la mejor secuencia de estados, donde cada estado puede alinearse a un vector. 
+
+	Se le denomina \emph{forzado} debido a que puede verse como el algoritmo de Viterbi con una restricción más: debe encontrar el mejor camino 
+	\emph{que pase por una secuencia de palabras dada}.
+
+	\item \emph{Distribuci\'on Gaussiana}: para el caso de las funciones de distribución de probabilidad Gaussianas, se utiliza
+	el algoritmo de \mbox{Avance-Retroceso \cite{Jurafsky}}.
+
+	Este algoritmo estima dos probabilidades, llamadas \emph{de avance} y \emph{de retroceso} dadas las estimaciones iniciales de
+	$a$ y $b$. Luego, en base a estas probabilidades se mejora la estimación. Este proceso se repite hasta que los valores convergen.
+\end{itemize}
+
+
+
+
+

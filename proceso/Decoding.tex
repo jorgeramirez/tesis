@@ -161,9 +161,9 @@ est\'an basados principalmente en \cite{Jurafsky, PaulEfficient1992}.
 El \'arbol mencionado tiene palabras por nodos y cada hoja define una oraci\'on aceptada por el lenguaje, la que se forma concatenando las 
 palabras desde la ra{\'\i}z hasta la hoja.  
 
-El algoritmo mantiene una cola de prioridad, a la cual se denomina pila (de ah{\'\i} el otro nombre del algoritmo), de caminos o soluciones 
-parciales, cada una asociada a un puntaje dado. La operaci\'on \foreign{pop} de la cola retorna el elemento con el puntaje m\'as alto. 
-El puntaje de un elemento $p$ est\'a dado por la \mbox{funci\'on \cite{Jurafsky, Russell2003Solving}}:
+El algoritmo mantiene una cola de prioridad, a la cual se denomina pila (de ah{\'\i} el otro nombre del algoritmo) \cite{PostStack}, 
+de caminos o soluciones parciales, cada una asociada a un puntaje dado. La operaci\'on \foreign{pop} de la cola retorna el elemento 
+con el puntaje m\'as alto. El puntaje de un elemento $p$ est\'a dado por la \mbox{funci\'on \cite{Jurafsky, Russell2003Solving}}:
 
 \begin{equation*}
 	f*(p) = g(p) + h*(p)
@@ -175,7 +175,8 @@ Donde $f*(p)$ es el puntaje estimado del mejor camino (oraci\'on completa) y est
  	\item $g(p)$, el puntaje del camino parcial $p$. Esta funci\'on puede ser estimada por la probabilidad de $p$ dada la entrada ac\'ustica
  	hasta ese momento. Esto es, $P(X \mid W)P(W)$ para la secuencia de palabras $W$ que constituye $p$. 
 
- 	Esta probabilidad se calcula usando el algoritmo de Avance, una alternativa menos eficiente para m\'as precisa al algoritmo de \mbox{Viterbi \cite{Jurafsky}}.
+ 	Esta probabilidad se calcula usando el algoritmo de Avance, una alternativa menos eficiente para m\'as precisa al algoritmo de 
+ 	\mbox{Viterbi \cite{Jurafsky}}.
 
  	\item $h*(p)$, una estimaci\'on del puntaje de la mejor extensi\'on de $p$ hasta el final del camino. La estimaci\'on de $h*$ es un problema
  	no resuelto e interesante. 
@@ -185,8 +186,8 @@ Donde $f*(p)$ es el puntaje estimado del mejor camino (oraci\'on completa) y est
  \end{itemize}
 
  Luego de seleccionar un camino parcial, se utiliza un algoritmo de b\'usqueda r\'apida para encontrar palabras candidatas para extender
- la soluci\'on parcial. Varios algoritmos de b\'usqueda \cite{GuptaFast1988, BahlSpeech1993} r\'apida se basan en la utilizaci\'on de un \'
- arbol l\'exico \cite{KlovstadCasper1975}, el cual almacena las pronunciaciones de todas las palabras de forma que el c\'omputo de la 
+ la soluci\'on parcial. Varios algoritmos de b\'usqueda \cite{GuptaFast1988, BahlSpeech1993} r\'apida se basan en la utilizaci\'on de un 
+ \'arbol l\'exico \cite{KlovstadCasper1975}, el cual almacena las pronunciaciones de todas las palabras de forma que el c\'omputo de la 
  probabilidad puede ser compartido entre palabras de similar pronunaciaci\'on.
 
 Las oraciones extendidas vuelven a insertarse en la cola, y el proceso se repite hasta procesar toda la entrada ac\'ustica.
