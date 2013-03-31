@@ -1,0 +1,37 @@
+\subsection{Tel\'efonos Inteligentes e Interfaces Web}
+\label{sec:smartphones}
+
+Los significativos avances en la computaci\'on y redes inal\'ambricas ha ocasionado
+que los esfuerzos de los investigadores se enfoquen en la aplicaci\'on de tecnolog\'ias de
+reconocimiento del habla en dispositivos m\'oviles como, por ejemplo, los tel\'efonos 
+\mbox{inteligentes \cite{TanAutomatic2008}}.
+
+La arquitectura de los sistemas de reconocimiento del habla de acuerdo al proceso visto en el cap\'itulo \ref{sec:proceso},
+puede descomponerse en dos partes: el \foreign{front-end} ac\'ustico, donde se lleva a cabo
+la extracci\'on de caracter\'isticas  y el \foreign{back-end} donde se lleva a cabo la decodificaci\'on. 
+Zaykovskiy en \cite{ZaykovskiySurvey2006} analiza las tres arquitecturas que se han desarrollado
+para aplicar ASR en dispositivos m\'oviles y las clasifica de acuerdo a la ubicaci\'on de las dos partes
+mencionadas anteriormente:
+
+\begin{itemize}
+    \item Sistemas embebidos de Reconocimiento del habla: este sistema opera completamente en el cliente.
+    \item Red de reconocimiento del habla (NSR): este sistema opera completamente en el servidor. 
+    \item Reconocimiento del habla distribuido (DSR): en este sistema la extracci\'on de caracter\'isticas se realiza
+        en el cliente y el proceso de decodificaci\'on en el servidor.
+\end{itemize}
+
+Independientemente de la arquitectura, el reconocimiento del habla en dispositivos m\'oviles dio lugar a una 
+serie de aplicaciones. Siri \cite{AppleSiri, OneAccordSiri} y Google Now \cite{GoogleNow} 
+son aplicaciones de asistente personal inteligente, permiten responder preguntas,
+hacer recomendaciones, realizar acciones, y otras tareas a trav\'es de servicios web. Verbio ASR \cite{VerbioASR} y 
+Pocketsphinx \cite{HugginsDainesPocketSphinx2006, PocketSphinxHomePage} son motores de ASR para dispositivos
+m\'oviles, que permiten desarrollar distintos tipos de aplicaciones (interfaces multimodales, etc)
+
+En lo que respecta a aplicaciones web, mejorar la accesibilidad es el principal objetivo para los sistemas
+de reconocimiento. Una tecnolog\'ia que se encuentra en desarrollo es la \foreign{Web Speech API} \cite{GoogleWebSpeechAPI}, 
+que permite a los desarrolladores integrar reconocimiento y s\'intesis del habla a sus aplicaciones web utilizando
+una API que forma parte del navegador\footnote{La \foreign{Web Speech API} es una propuesta de Google para integrar
+una API de reconocimiento del habla al navegador. Actualmente solo es implementada por el navegador Google Chrome utilizando
+los servidores de Google para el procesamiento.}. WAMI \cite{GruensteinWami2008, WamiHome} es otra API JavaScript
+para desarrollar interfaces web accesibles mediante la voz. WAMI no proporciona un reconocedor, pero provee
+las herramientas necesarias para dar una interfaz web a un motor de reconocimiento (Sphinx, por ejemplo).
