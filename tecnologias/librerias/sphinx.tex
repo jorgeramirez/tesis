@@ -1,2 +1,34 @@
-\subsection{Sphinx 4}
+%!TEX root = ../../tesis.tex
+\subsubsection{Sphinx 4}
 \label{sec:sphinx}
+
+La librer{\'\i}a Sphinx 4 es un sistema de reconocimiento del habla de c\'odigo abierto desarrollado en
+la Universidad \mbox{\foreign{Carnegie Mellon} \cite{Sphinx4}}. La misma est\'a implementada
+completamente en el lenguaje de programaci\'on Java, y permite la utilizaci\'on de modelos de lenguaje,
+modelos ac\'usticos y diccionarios fon\'eticos construidos por el propio desarrollador.
+
+Esta herramienta est\'a orientada principalmente a la escalabilidad y a la integraci\'on con
+componente externos, facilitando la implementaci\'on, por ejemplo, de sistema de reconocimiento del
+habla en la nube.
+
+\begin{itemize}
+	\item \emph{Empresa o Instituci\'on Responsable:} Universidad \foreign{Carnegie Mellon}.
+	\item \emph{Precio:} esta herramienta puede utilizarse de forma gratuita.
+	\item \emph{Licencia:} Sphinx 4 se distribuye bajo una licencia basada en la BSD, considerada
+	de c\'odigo abierto. Un \'unico componente, la \foreign{Java Speech API} debe descargarse por
+	separado por no ser de c\'odigo abierto, aunque puede obtenerse de manera gratuita.
+	\item \emph{Soporte para m\'ultiples idiomas:} existen modelos ac\'usticos construidos para
+	8 idiomas, entre ellos el espa\~nol, aunque la calidad de los mismos var{\'\i}a.
+	De todas formas, el desarrollador puede construir sus propios modelos con las herramientas
+	que provee la librer{\'\i}a, con lo cual puede brindarse soporte para otros idiomas.
+	\item \emph{Dependencia de Plataforma:} puede utilizarse cualquier plataforma para la cual
+	exista una versi\'on de la m\'aquina virtual de Java disponible.
+	\item \emph{Modelos de Lenguaje Aceptados:} se aceptan modelos de lenguaje basados en una
+	gram\'atica, en formato JGSF, y modelos de lenguaje estad{\'\i}sticos, basados en bigramas y
+	trigramas en formato ARPA.
+	\item \emph{Modelos Ac\'usticos Aceptados:} Sphinx define su propio formato de modelos ac\'usticos,
+	en el cual existen modelos ya construidos para 8 idiomas. Adem\'as, se ofrecen las herramientas
+	necesarias para construir un modelo ac\'ustico propio.
+	\item \emph{Uso de Memoria:} esta herramienta no se recomienda para sistemas con poca memoria,
+	debido a que depende de la m\'aquina virtual de Java para ejecutarse.
+\end{itemize}

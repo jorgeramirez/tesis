@@ -1,10 +1,57 @@
 \section{Librer\'ias y Frameworks}
 \label{sec:librerias}
 
-% introduccion
+Una librer{\'\i}a va m\'as all\'a de una especificaci\'on de interacci\'on y el c\'odigo fuente que permita cumplirla.
+Una librer{\'\i}a incluye un conjunto de funcionalidades o m\'etodos cuyo modo de utilizaci\'on queda a criterio
+del desarrollador. En el caso de un framework, se incluyen tambi\'en ciertos patrones de dise\~no para la aplicaci\'on.
+
+Aunque la distinci\'on entre una librer{\'\i}a y una interfaz de programaci\'on de aplicaciones puede resultar
+complicada, para este trabajo, se consideran el mayor grado de control y el menor nivel de abstracci\'on
+como criterios para identificar una herramienta como una librer{\'\i}a.
+
+As{\'\i}, una interfaz de programaci\'on de aplicaciones es una especificaci\'on de interacci\'on con un componente
+reconocedor del habla completamente implementado, mientras que una librer{\'\i}a puede verse como un conjunto
+de bloques que permiten al desarrollador construir su propio reconocedor del habla a medida.
+
+De acuerdo a los criterios de evaluaci\'on generales, las siguientes caracter{\'\i}sticas pueden mencionarse:
+
+\begin{itemize}
+ 	\item Conocimiento t\'ecnico necesario: la utilizaci\'on de librer{\'\i}as requiere conocimiento t\'ecnico
+ 	espec{\'\i}fico del \'area del reconocimiento del habla por parte del programador, debido a que el nivel de
+ 	abstracci\'on es menor al de las herramientas previamente descriptas.
+ 	\item Productividad: Debido al alto grado de control que ofrecen, el desarrollo de los distintos
+ 	elementos de un sistema de reconocimiento del habla requiere de m\'as trabajo de an\'alisis e implementaci\'on.
+ 	Esto resulta en una productividad baja en comparaci\'on con otras alternativas, que permiten al
+ 	programador abstraerse de los detalles del proceso de reconocimiento del habla.
+ 	A\'un as{\'\i} en ciertos \'ambitos, como el acad\'emico, la posibilidad de conocer y manipular los distintos
+ 	componentes del mencionado proceso representa una importante ventaja que ofrecen estas herramientas.
+ 	\item Flexibilidad: las librer{\'\i}as ofrecen un alto grado de flexibilidad, siendo la alternativa
+ 	m\'as adaptable de entre las categor{\'\i}as analizadas. Componentes importantes de un sistema
+ 	de reconocimiento del habla como el modelo de lenguaje, el modelo ac\'ustico y los algoritmos involucrados
+ 	pueden seleccionarse, modificarse o incluso reimplementarse de acuerdo al criterio del desarrollador.
+ \end{itemize}
+
+\subsection{Criterios Espec\'ificos de Evaluaci\'on}
+
+Los criterios espec{\'\i}ficos seg\'un los cuales se evaluar\'an las opciones disponibles en esta
+categor{\'\i}a son:
+
+\begin{itemize}
+	\item Empresa o Instituci\'on Responsable
+	\item Precio
+	\item Licencia
+	\item Soporte para m\'ultiples idiomas
+	\item Dependencia de Plataforma
+	\item Modelos de Lenguaje Aceptados
+	\item Modelos Ac\'usticos Aceptados
+	\item Uso de Memoria
+\end{itemize}
+
+
+\subsection{Ejemplos de librer{\'\i}as o frameworks}
 
 \input{tecnologias/librerias/sphinx.tex}
 \input{tecnologias/librerias/pocketsphinx.tex}
-\input{tecnologias/librerias/julius.tex}
 \input{tecnologias/librerias/htk.tex}
+\input{tecnologias/librerias/julius.tex}
 \input{tecnologias/librerias/kaldi.tex}

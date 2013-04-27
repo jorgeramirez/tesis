@@ -1,2 +1,30 @@
-\subsection{HTK}
+%!TEX root = ../../tesis.tex
+\subsubsection{HTK}
 \label{sec:htk}
+
+HTK, una abreviatura para \foreign{Hidden Markov Model Toolkit}, es un conjunto de herramientas
+desarrolladas por el Departamento de Ingenier{\'\i}a de la Universidad de Cambridge. Est\'a constituido
+por varias librer{\'\i}as y herramientas ejecutables implementadas en el \mbox{lenguaje C \cite{HTKHomePage}}.
+
+Esta herramienta ofrece un alto grado de personalizaci\'on, por lo que se requiere un nivel considerable
+de conocimiento t\'ecnico para implementar un sistema de reconocimiento del habla con la misma.
+Cabe destacar que la \'ultima versi\'on estable de HTK fue lanzada en el a\~no 2009.
+
+\begin{itemize}
+	\item \emph{Empresa o Instituci\'on Responsable:} Universidad de Cambridge.
+	\item \emph{Precio:} esta herramienta puede utilizarse de forma gratuita.
+	\item \emph{Licencia:} aunque el c\'odigo fuente de HTK puede obtenerse y modificarse,
+	la redistribuci\'on del mismo est\'a prohibida. Los modelos generados con HTK pueden
+	redistribuirse libremente.
+	\item \emph{Soporte para m\'ultiples idiomas:} HTK no provee soporte para ning\'un
+	idioma directamente, pero proporciona herramientas para la definici\'on de los modelos necesarios.
+	\item \emph{Dependencia de Plataforma:} esta herramienta puede utilizarse en sistemas operativos
+	basados en Unix y en Windows.
+	\item \emph{Modelos de Lenguaje Aceptados:} se utilizan los mismos modelos de lenguaje que \mbox{Sphinx 4},
+	basados en gram\'aticas y modelos estad{\'\i}sticos en formato ARPA.
+	\item \emph{Modelos Ac\'usticos Aceptados:} HTK define su propio formato de modelos ac\'usticos.
+	\item \emph{Uso de Memoria:} la documentaci\'on de HTK hace \'enfasis en que el consumo de memoria depende en
+	gran medida de la aplicaci\'on, mencionando 150 MB para la construcci\'on de modelos para un sistema de
+	dictado como un ejemplo de niveles altos de utilizaci\'on de este recurso.
+	Esta cantidad de memoria no resulta muy elevada para el \foreign{hardware} de una m\'aquina promedio actual.
+\end{itemize}
