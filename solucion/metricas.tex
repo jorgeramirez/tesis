@@ -4,35 +4,46 @@
 Para poder juzgar a la interfaz dise\~nada se fijan un conjunto de m\'etricas
 de evaluaci\'on orientadas a la usabilidad del software.
 
-En \cite{AhmedUsability2006} se presenta un modelo unificado de mediciones de usabilidad, el cual
-establece un conjunto de factores de usabilidad cada uno de los cuales corresponde a una
-faceta de la usabilidad. A continuaci\'on se citan los factores que se
-consideran acordes para la interfaz desarrollada:
+Existen muchos factores que determinan si una interfaz es buena o mala. En \cite{AhmedUsability2006} 
+se presenta un modelo unificado de m\'etricas de usabilidad, el cual establece este conjunto de factores.
+A continuaci\'ion se listan algunos:
 
 \begin{itemize}
-    \item Eficiencia, es decir, la cantidad necesaria de recursos que el usuario utiliza
+    \item \emph{Eficiencia}, es decir, la cantidad necesaria de recursos que el usuario utiliza
 	en relaci\'on a la efectividad alcanzada.
-    \item Efectividad, o la capacidad del software de permitir al usuario completar las tareas
+    \item \emph{Efectividad}, o la capacidad del software de permitir al usuario completar las tareas
 	de manera precisa.
-    \item Productividad, relaci\'on entre el nivel de efectividad y los recursos utilizados por los
+    \item \emph{Productividad}, relaci\'on entre el nivel de efectividad y los recursos utilizados por los
 	usuarios (por ejemplo, tiempo para completar la tarea) y el sistema. En contraste con la eficiencia,
 	la productividad se centra en la cantidad de salida \'util que se obtiene de la interacci\'on del
 	usuario y el software.
-    \item Satisfacci\'on, que hace referencia a la respuesta subjetiva del usuario respecto al uso de la
+     \item \emph{Satisfacci\'on}, que hace referencia a la respuesta subjetiva del usuario respecto al uso de la
 	aplicaci\'on.
-    \item Facilidad de Aprendizaje, o la facilidad con que se pueden aprender los pasos necesarios
+    \item \emph{Facilidad de Aprendizaje}, o la facilidad con que se pueden aprender los pasos necesarios
 	para completar una tarea en particular.
 \end{itemize}
 
-A continuaci\'on se listan las m\'etricas de evaluaci\'on a utilizar:
+\subsection{Speech Usability Metric}
 
-% agregar mas
+Las interfaces gr\'aficas de usuario tienen un conjunto bien definido de m\'etodos de evaluaci\'on que permiten mejorar
+la usabilidad de la interfaz. Sin embargo, \'estos m\'etodos no pueden ser aplicados a la evaluaci\'on de interfaces
+basadas en reconocimiento del habla, por este motivo se desarrollaron nuevas t\'ecnicas para evaluar la usabilidad de 
+los sistemas basados en reconocimiento del habla.
 
-\begin{itemize}
-    \item Tasa de finalizaci\'on, es una simple medici\'on de usabilidad. Generalmente se
-	considera una m\'etrica binaria (1 = Tarea Completa y 0 = Tarea Incompleta).
-    \item Tiempo de finalizaci\'on de tarea: mide cu\'anto tiempo es utilizado para
-	completar la tarea.
-    \item Nivel de satisfacci\'on de tarea: luego de que los usuarios realicen una tarea, hacer
-	que respondan un cuestionario sobre la dificultad de realizar dicha tarea.
-\end{itemize}
+El m\'etodo utilizado para evaluar la interfaz dise\~nada e implementada en este trabajo se denomina \foreign{Speech Usability Metric}
+o SUM \cite{GuptaUsability}. SUM fue desarrollado para evaluar sistemas basados en reconocimiento del habla,
+permitiendo al dise\~nador definir m\'etricas que son relevantes para la interfaz y especificar m\'etricas 
+objetivo que determinan si la interfaz es lo suficientemente buena. SUM se
+define de la siguiente manera:
+
+\begin{equation}
+    SUM = X * (\text{Satisfacci\'on del usuario}) + Y * (\text{Precisi\'on}) + Z * (\text{Tiempo de finalizaci\'on de tarea})
+\end{equation}
+
+Donde $X + Y + Z = 1$ y $X, Y, Z > 0$.
+
+Como se puede observar SUM utiliza tres m\'etricas ponderadas: Satisfacci\'on del usuario, Precisi\'on y Tiempo de finalizaci\'on de tarea. Los
+pesos son definidos por el dise\~nador de acuerdo a la importancia de la m\'etrica. Sin embargo, SUM es lo suficientemente flexible para permitir
+la incorporaci\'on de nuevas m\'etricas. La Satisfacci\'on del usuario se mide realizando encuestas y/o entrevistas. La Precisi\'on mide la
+efectividad del motor de reconocimiento del habla. El Tiempo de finalizaci\'on de tarea indica que el tiempo que le toma a un usuario
+completar una tarea determinada.
