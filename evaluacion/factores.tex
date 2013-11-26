@@ -1,0 +1,160 @@
+%!TEX root = ../tesis.tex
+\section{Factores Analizados}
+\label{sec:factores}
+
+Esta sección describe los factores que se tuvieron en cuenta para el ánalisis realizado
+en base a los datos recopilados a partir de las pruebas de usabilidad que se realizaron.
+Además, se definen las métricas utilizadas para la cuantificación de cada factor estudiado.
+
+\subsection{Memoria del Usuario}
+Factor relacionado a la capacidad de retención de información del sujeto del experimento.
+Se consideró interesante su análisis debido a que:
+\begin{itemize}
+	\item TamTam Listens se trataba de una aplicación completamente nueva para el usuario.
+	\item Los comandos de voz deben ser memorizados por el usuario para la interacción con
+	la apliación.
+\end{itemize}
+\subsubsection{Métrica Utilizada}
+La memoria del usuario se midió a través de los resultados del test de memoria que se llevó
+a cabo con cada usuario como parte de la prueba de usabilidad.
+El resultado del test de memoria administrado es la cantidad de palabras, de un total de 15,
+que el usuario consiguió recordar al cabo de 5 repeticiones, siendo 12--13 el resultado promedio
+esperado.
+
+\subsection{Correctitud de la aplicación}
+Factor relacionado al comportamiento esperado por parte de un sistema de reconocimiento del
+habla. Se busca responder a la pregunta: ¿Qué tan correctamente se reconocen los comandos 
+del usuario?
+\subsubsection{Métricas Utilizadas}
+\begin{itemize}
+	\item Tasa de Aciertos de Comandos: se considera que el sistema reconoció correctamente
+	un comando, si el usuario efectivamente pronunció el mismo.
+
+	La tasa de aciertos es la razón entre la cantidad de comandos correctamente reconocidos 
+	y la cantidad de comandos correctamente pronunciados por el usuario.
+	
+	Sean:
+
+	\begin{itemize}
+		\item $r_{ij}$ la cantidad de veces que la aplicación reconoció correctamente el \mbox{comando $i$}
+		al usuario $j$.
+		\item $c_{ij}$ la cantidad de veces que el usuario $j$ pronunció correctamente el \mbox{comando $i$.}
+	\end{itemize}
+	La tasa de aciertos del comando $i$ para el usuario $j$ se define como: 
+
+	\begin{equation*}
+		a_{{comando}_{ij}}=\frac{r_{ij}}{c_{ij}}
+	\end{equation*}
+
+
+	Sea $N_{j}$ la cantidad de comandos diferentes pronunciados por el usuario $j$,
+	la tasa de aciertos para el usuario  se define como:
+	
+	\begin{equation*}
+		a_{{usuario}_j}=\frac{\sum_k^{N_{j}}a_{{comando}_{kj}}}{N_{j}}
+	\end{equation*}
+
+	La tasa de aciertos del sistema se obtuvo hallando el promedio de los valores correspondientes
+	a cada usuario.
+
+
+	\item Tasa de Falsa Alarma: un falso positivo es un comando incorrecto (por causa del error humano)
+	reconocido como válido por la aplicación.
+	La tasa de falsa alarma es la razón entre la cantidad de falsos positivos y la cantidad
+	de comandos incorrectos. 
+
+	Sean:
+
+	\begin{itemize}
+		\item $m_{ij}$ la cantidad de veces que la aplicación reconoció incorrectamente el \mbox{comando $i$}
+		al usuario $j$.
+		\item $p_{ij}$ la cantidad de veces que el usuario $j$ pronunció incorrectamente el \mbox{comando $i$.}
+	\end{itemize}
+	La tasa de falsa alarma del comando $i$ para el usuario $j$ se define como: 
+
+	\begin{equation*}
+		f_{{comando}_{ij}}=\frac{m_{ij}}{p_{ij}}
+	\end{equation*}
+
+	El cálculo de la tasa de falsa alarma de cada usuario y del sistema se llevó a cabo de forma análoga 
+	a la tasa de aciertos.
+\end{itemize}
+
+\subsection{Error Humano}
+Factor relacionado a las equivocaciones por parte del usuario en su interacción con
+TamTam Listens.
+Un comando se consideró erróneo o incorrecto por parte del usuario si:
+\begin{itemize}
+	\item El usuario no respetó el orden de las palabras: esto es, pronunció las palabras de un comando en el orden incorrecto.
+	\item El usuario se confundió entre dos comandos: esto es, utilizó palabras correspondientes a más de un comando.
+	\item El usuario juntó dos o más comandos: esto es, pronunció de una sola vez dos o más comandos.
+	\item El usuario dudó mientras pronunciaba el comando: esto es, titubeó o repitió una palabra del comando.
+	\item El usuario utilizó comandos incompletos: esto es, pronunciando solo algunas palabras del comando.
+	\item El usuario utilizó palabras que no forman parte del lenguaje.
+\end{itemize}
+\subsubsection{Métricas Utilizadas}
+\begin{itemize}
+	\item Cantidad de Errores: sumatoria de errores por comando y por usuario, clasificados en
+	alguno de los tipos previamente mencionados.
+	\item Tasa de Error Humano: se define como la razón entre la cantidad de comandos incorrectos
+	y la cantidad de comandos pronunciados.
+	Sean:
+
+	\begin{itemize}
+		\item $p_{ij}$ la cantidad de veces que el usuario $j$ pronunció incorrectamente el \mbox{comando $i$.}
+		\item $t_{ij}$ la cantidad de veces que el usuario $j$ pronunció (correcta o incorrectamente) el 
+		\mbox{comando $i$.}
+	\end{itemize}
+	La tasa de error humano del comando $i$ para el usuario $j$ se define como: 
+
+	\begin{equation*}
+		e_{{comando}_{ij}}=\frac{p_{ij}}{t_{ij}}
+	\end{equation*}
+
+	El cálculo de la tasa de error humano de cada usuario se llevó a cabo de forma análoga 
+	a la tasa de aciertos.
+\end{itemize}
+
+\subsection{Eficiencia}
+Factor relacionado al grado de productividad que logra el usuario de la aplicación.
+\subsubsection{Métricas Utilizadas}
+\begin{itemize}
+	\item Duración de Tareas Uno y Dos: es la suma del tiempo que le tomó al usuario
+	terminar las primeras dos tareas de la prueba, las cuales se realizaron con asistencia por
+	parte del facilitador.
+	\item Duración de Tareas Tres y Cuatro: es la suma del tiempo que le tomó al usuario
+	terminar las últimas dos tareas de la prueba, las cuales se realizaron sin asistencia por
+	parte del facilitador.
+	\item Correctitud de la Tarea Cuatro: para él cálculo de esta medida, se descompuso la
+	última tarea en lo distintos pasos necesarios para completarla correctamente.
+	De esta manera, la tarea cuatro se consideró compuesta por 72 elementos:
+	\begin{itemize}
+		\item Creación de 54 notas.
+		\item Selección de 4 instrumentos.
+		\item Cambios en la duración de 12 notas.
+		\item Reproducción de la música.
+		\item Exportación de la música.
+	\end{itemize}
+	La correctitud de la tarea 4 para cada usuario se define como la razón entre la cantidad de operaciones
+	correctamente realizadas y el total de operaciones (72).
+\end{itemize}
+
+\subsection{Satisfacción del Usuario}
+Factor relacionado a la opinión del usuario sobre su interacción con la aplicación y las interfaces
+basadas en reconocimiento del habla en general.
+\subsubsection{Métricas Utilizadas}
+La opinión del usuario se midió a través de los resultados de la encuesta realizada como parte de
+la prueba de usabilidad, posterior a la finalización de las tareas. Las respuestas se
+registraron utilizando una escala de Likert \cite{Allen:2007} con valores del 1 al 7.
+
+Se solicitó la opinión del usuario con respecto a:
+\begin{itemize}
+	\item Las palabras utilizadas.
+	\item Los comandos utilizados.
+	\item Duración del entrenamiento.
+	\item Interfaces por Voz del Usuario.
+\end{itemize}
+
+
+
+
