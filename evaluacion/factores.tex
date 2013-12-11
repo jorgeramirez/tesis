@@ -4,7 +4,7 @@
 
 Esta secci\'on describe los factores que se tuvieron en cuenta para el \'analisis realizado
 en base a los datos recopilados a partir de las pruebas de usabilidad que se realizaron.
-Adem\'as, se definen las m\'etricas utilizadas para la cuantificaci\'on de cada factor estudiado.
+Se definen tambi\'en las m\'etricas utilizadas para la cuantificaci\'on de cada factor estudiado.
 
 \subsection{Memoria del Usuario}
 Factor relacionado a la capacidad de retenci\'on de informaci\'on del sujeto del experimento.
@@ -19,19 +19,22 @@ La memoria del usuario se midi\'o a trav\'es de los resultados del test de memor
 a cabo con cada usuario como parte de la prueba de usabilidad.
 El resultado del test de memoria administrado es la cantidad de palabras, de un total de 15,
 que el usuario consigui\'o recordar al cabo de 5 repeticiones, siendo 12--13 el resultado promedio
-esperado.
+esperado. El resultado del test de memoria se representa como $M$.
 
 \subsection{Correctitud de la aplicaci\'on}
 Factor relacionado al comportamiento esperado por parte de un sistema de reconocimiento del
 habla. Se busca responder a la pregunta: {?`}Qu\'e tan correctamente se reconocen los comandos 
 del usuario?
+Los valores de las m\'etricas relacionadas a la correctitud de la aplicaci\'on se calcularon
+en base a las tareas 3 y 4, por haberse realizado estas sin asistencia del facilitador.  
 \subsubsection{M\'etricas Utilizadas}
 \begin{itemize}
 	\item Tasa de Aciertos de Comandos: se considera que el sistema reconoci\'o correctamente
 	un comando, si el usuario efectivamente pronunci\'o el mismo.
 
 	La tasa de aciertos es la raz\'on entre la cantidad de comandos correctamente reconocidos 
-	y la cantidad de comandos correctamente pronunciados por el usuario.
+	y la cantidad de comandos correctamente pronunciados por el usuario. 
+	La misma se representa como $A$.
 	
 	Sean:
 
@@ -51,17 +54,21 @@ del usuario?
 	la tasa de aciertos para el usuario  se define como:
 	
 	\begin{equation*}
-		a_{{usuario}_j}=\frac{\sum_k^{N_{j}}a_{{comando}_{kj}}}{N_{j}}
+		A=a_{{usuario}_j}=\frac{\sum_k^{N_{j}}a_{{comando}_{kj}}}{N_{j}}
 	\end{equation*}
 
 	La tasa de aciertos del sistema se obtuvo hallando el promedio de los valores correspondientes
 	a cada usuario.
 
+	\item Tasa de Error de Comandos: es la raz\'on entre la cantidad de comandos correctos no reconocidos 
+	y la cantidad de comandos correctamente pronunciados por el usuario. 
+	La misma se representa como $E_1$ y es igual a $1-A$.
+
 
 	\item Tasa de Falsa Alarma: un falso positivo es un comando incorrecto (por causa del error humano)
 	reconocido como v\'alido por la aplicaci\'on.
 	La tasa de falsa alarma es la raz\'on entre la cantidad de falsos positivos y la cantidad
-	de comandos incorrectos. 
+	de comandos incorrectos. La misma se representa como $F$.
 
 	Sean:
 
@@ -73,7 +80,7 @@ del usuario?
 	La tasa de falsa alarma del comando $i$ para el usuario $j$ se define como: 
 
 	\begin{equation*}
-		f_{{comando}_{ij}}=\frac{m_{ij}}{p_{ij}}
+		F=f_{{comando}_{ij}}=\frac{m_{ij}}{p_{ij}}
 	\end{equation*}
 
 	El c\'alculo de la tasa de falsa alarma de cada usuario y del sistema se llev\'o a cabo de forma an\'aloga 
@@ -91,13 +98,18 @@ Un comando se consider\'o err\'oneo o incorrecto por parte del usuario si:
 	\item El usuario dud\'o mientras pronunciaba el comando: esto es, titube\'o o repiti\'o una palabra del comando.
 	\item El usuario utiliz\'o comandos incompletos: esto es, pronunciando solo algunas palabras del comando.
 	\item El usuario utiliz\'o palabras que no forman parte del lenguaje.
+	\item El usuario viol\'o alguna otra regla impuesta por el lenguaje de la aplicaci\'on.
 \end{itemize}
+Los valores de las m\'etricas relacionadas al error humano se calcularon
+en base a las tareas 3 y 4, por haberse realizado estas sin asistencia del facilitador. 
+
 \subsubsection{M\'etricas Utilizadas}
 \begin{itemize}
-	\item Cantidad de Errores: sumatoria de errores por comando y por usuario, clasificados en
-	alguno de los tipos previamente mencionados.
+	\item Cantidad de Errores: sumatoria de errores por usuario, clasificados en
+	alguno de los tipos previamente mencionados. Se representa como $E_2$.
 	\item Tasa de Error Humano: se define como la raz\'on entre la cantidad de comandos incorrectos
-	y la cantidad de comandos pronunciados.
+	y la cantidad de comandos pronunciados. Se representa como $E_3$.
+	
 	Sean:
 
 	\begin{itemize}
@@ -120,11 +132,13 @@ Factor relacionado al grado de productividad que logra el usuario de la aplicaci
 \subsubsection{M\'etricas Utilizadas}
 \begin{itemize}
 	\item Duraci\'on de Tareas Uno y Dos: es la suma del tiempo que le tom\'o al usuario
-	terminar las primeras dos tareas de la prueba, las cuales se realizaron con asistencia por
-	parte del facilitador.
+	terminar la tarea 1 ($T_1$) y el que le tom\'o terminar la tarea 2 ($T_2$). 
+	Estas tareas se realizaron con asistencia por parte del facilitador. 
+	La duraci\'on se midi\'o en minutos. Se representa como $T_{1+2}$.
 	\item Duraci\'on de Tareas Tres y Cuatro: es la suma del tiempo que le tom\'o al usuario
-	terminar las \'ultimas dos tareas de la prueba, las cuales se realizaron sin asistencia por
-	parte del facilitador.
+	terminar la tarea 3 ($T_3$) y el que le tom\'o terminar la tarea 4 ($T_4$). 
+	Estas tareas se realizaron sin asistencia por parte del facilitador. 
+	La duraci\'on se midi\'o en minutos. Se representa como $T_{3+4}$.
 	\item Correctitud de la Tarea Cuatro: para \'el c\'alculo de esta medida, se descompuso la
 	\'ultima tarea en lo distintos pasos necesarios para completarla correctamente.
 	De esta manera, la tarea cuatro se consider\'o compuesta por 72 elementos:
@@ -136,7 +150,7 @@ Factor relacionado al grado de productividad que logra el usuario de la aplicaci
 		\item Exportaci\'on de la m\'usica.
 	\end{itemize}
 	La correctitud de la tarea 4 para cada usuario se define como la raz\'on entre la cantidad de operaciones
-	correctamente realizadas y el total de operaciones (72).
+	correctamente realizadas y el total de operaciones (72). Se representa como $C$.
 \end{itemize}
 
 \subsection{Satisfacci\'on del Usuario}
@@ -154,6 +168,22 @@ Se solicit\'o la opini\'on del usuario con respecto a:
 	\item Que tan adecuada result\'o la duraci\'on del entrenamiento.
 	\item Que tan frecuentemente utilizar{\'\i}a las interfaces por voz del usuario.
 \end{itemize}
+
+Posteriormente, de modo a eliminar el potencial efecto de los estilos de respuesta
+de los usuarios \cite{Fischer2010}, se utiliza el m\'etodo de estandarizaci\'on 
+por rango \cite{Pagolu2011} para reescalar losresultados de la encuesta.
+
+Siendo:
+\begin{itemize}
+	\item $min_i$ la respuesta de menor valor del usuario $i$.
+	\item $max_i$ larespuesta de mayor valor del usuario $j$.
+\end{itemize}
+
+Para cada respuesta $s$ del usuario $i$, el valor ajustado $s_a$ se define como:
+
+$s_a={s-min_i}/{max_i-min_i}$ 
+
+De esta manera, todas las respuestas pasan a estar en el rango entre 0 y 1.  
 
 
 
