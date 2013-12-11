@@ -248,8 +248,8 @@ siendo algunas positivas y otras negativas. A continuaci\'on se listan las corre
 En esta secci\'on se presentan las tasas de errores de acuerdo a factores que se consideran importantes debido
 al tipo de aplicaci\'on desarrollada. 
 
-\subsection{Error con respecto a la Longitud del Comando}
-El primer caso considerado es el error con respecto a la longitud del comando
+\subsection{Tasa de Error Humano por Longitud del Comando}
+El primer caso considerado es la tasa error con respecto a la longitud del comando
 utilizado. En la tabla~\ref{sec:error-longitud} se pueden observar los valores obtenidos, las columnas
 representan las distintas longitudes de comandos disponibles en la aplicaci\'on
 
@@ -274,7 +274,7 @@ representan las distintas longitudes de comandos disponibles en la aplicaci\'on
     12 & 20,19 & 1,52 & 6,25 & 0  & 63,64 \\
 \hline
 \end{tabular}
-\caption{Error con respecto a la longitud del comando}
+\caption{Tasa de Error Humano por Longitud del Comando}
 \label{sec:error-longitud}
 \end{table}
 
@@ -291,16 +291,16 @@ el error a nivel general.
     6,96 & 5,68 & 7,46 & 14,81 & 42,11 \\
     \hline
 \end{tabular}
-\caption{Resumen del Error con respecto a la longitud del comando}
+\caption{Resumen de la Tasa de Error Humano por Longitud del Comando}
 \label{sec:error-longitud-resumen}
 \end{table}
 
 
-\subsection{Error con respecto al Contexto del Comando}
+\subsection{Tasa de Error Humano por Nivel Contextual del Comando}
 
-Otro factor considerado en el an\'alisis es el Error con respecto al contexto del comando, es decir
-qu\'e tan dependiente es el comando utilizado con respecto a uno dicho previamente. En la tabla~\ref{sec:error-contexto}
-se pueden observar los valores para este factor.
+Se considera también en el an\'alisis la tasa de error humano con respecto al contexto del comando, es decir
+qu\'e tan dependiente es el comando utilizado con respecto a uno dicho previamente. 
+En la tabla~\ref{sec:error-contexto} se pueden observar los valores para este factor.
 
 \begin{table}[H]
 \centering
@@ -323,11 +323,12 @@ se pueden observar los valores para este factor.
 12 & 18,18 & 0      & 15,15 \\
     \hline
 \end{tabular}
-\caption{Error con respecto al contexto del comando}
+\caption{Tasa de Error Humano por Nivel Contextual del Comando}
 \label{sec:error-contexto}
 \end{table}
 
-Al igual que el factor anterior, se muestra la versi\'on resumida del error en la tabla~\ref{sec:error-contexto-resumen}
+Al igual que el factor anterior, se muestra la versi\'on resumida del error en la 
+tabla~\ref{sec:error-contexto-resumen}
 
 \begin{table}[H]
 \centering
@@ -339,14 +340,15 @@ Al igual que el factor anterior, se muestra la versi\'on resumida del error en l
     13,25 & 3,57 & 5,16 \\
     \hline
 \end{tabular}
-\caption{Resumen del Error con respecto al contexto del comando}
+\caption{Resumen de la Tasa de Error Humano por Nivel Contextual del Comando}
 \label{sec:error-contexto-resumen}
 \end{table}
 
-\subsection{Error con respecto al Tiempo}
+\subsection{Distribuci\'on del Error Humano con respecto al Tiempo transcurrido}
 
-El \'ultimo factor considerado es el Error del sujeto con respecto al tiempo que lleva interactuando con la aplicaci\'on. Con esto
-se busca determinar si el tiempo de interacci\'on y el error est\'an relacionados. En la tabla~\ref{sec:error-tiempo} se puede observar
+El \'ultimo factor considerado es la distribución del error humano con respecto al tiempo 
+que lleva interactuando con la aplicaci\'on. Con esto se busca determinar si el tiempo de interacci\'on 
+y el error est\'an relacionados. En la tabla~\ref{sec:error-tiempo} se puede observar
 el resumen del error en el tiempo, donde el tiempo se encuentra divido en intervalos.
 
 
@@ -369,15 +371,15 @@ el resumen del error en el tiempo, donde el tiempo se encuentra divido en interv
 90-100 & 9,42 \\
     \hline
 \end{tabular}
-\caption{Resumen del Error con respecto al tiempo de interacci\'on}
+\caption{Distribuci\'on del Error Humano con respecto al Tiempo transcurrido}
 \label{sec:error-tiempo}
 \end{table}
 
 \section{Encuesta}
 
 Luego de haber finalizado la tarea cuatro, cada sujeto complet\'o una encuesta de manera tal a
-opinar sobre su experiencia interactuando con el sistema de reconocimiento de voz. En la tabla~\ref{sec:tabla-encuesta}
-se puede observar un resumen de la encuesta realizada.
+opinar sobre su experiencia interactuando con el sistema de reconocimiento de voz. 
+En la tabla~\ref{sec:tabla-encuesta} se puede observar un resumen de la encuesta realizada.
 
 
 \begin{table}[H] 
@@ -405,7 +407,7 @@ se puede observar un resumen de la encuesta realizada.
 \label{sec:tabla-encuesta}
 \end{table}
 
-A continuaci\'on se presenta una versi\'on normalizada de la tabla que resume la encuesta realizada.
+A continuaci\'on se presentan los resultados reescalados por usuario, en una escala del 0 al 1.
 
 
 \begin{table}[H] 
@@ -413,23 +415,23 @@ A continuaci\'on se presenta una versi\'on normalizada de la tabla que resume la
 \footnotesize
 \begin{tabular}{|r|r|r|r|r|}
 \hline
-    Sujeto &  Comandos & Entrenamiento & Interfaz por Voz \\
+    Sujeto &  Palabras & Comandos & Entrenamiento & Interfaz por Voz \\
     \hline
-1 &  0,87 &-0,87 & 0,87 \\
-2 &  0,5  &0,5   & 0,5 \\
-3 &  - & -  &  - \\
-4 &  0,78 &-1,31 & -0,26 \\
-5 &  0,5  &0,5   & -1,5 \\
-6 &  0,87 &-0,87 & -0,87 \\
-7 &  0,5  &0,5   & -1,5 \\
-8 &  0,87 &-0,87 & 0,87  \\
-9 &  0,78 &0,78  & -1,31  \\
-10 & 0,5   &0,5   & 0,5  \\
-11 & -0,5  &-0,5  & 1,5  \\
-12 & 0      &1,22 & -1,22  \\
+1 &  0 & 1 & 0 & 1\\
+2 &  0 & 1 & 1 & 1\\
+3 &  - & - & - & -\\
+4 &  1 & 1 & 0 & 0,5\\
+5 &  1 & 1 & 1 & 0\\
+6 &  1 & 1 & 0 & 0\\
+7 &  1 & 1 & 1 & 0\\
+8 &  0 & 1 & 0 & 1\\
+9 &  0,5 & 1 & 1 & 0\\
+10 & 0 & 1 & 1 & 1\\
+11 & 0 & 0 & 0 & 1\\
+12 & 0,5 & 0,5 & 1 & 0\\
 \hline
 \end{tabular}
-\caption{Encuesta normalizada}
+\caption{Encuesta Reescalada}
 \label{sec:tabla-encuesta-normalizada}
 \end{table}
 
