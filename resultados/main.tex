@@ -10,7 +10,7 @@ distintos valores obtenidos para las variables consideradas ser\'an presentados 
 valores ser\'an analizados para identificar correlaciones.
 
 
-\subsubsection{Test de Memoria}
+\section{Test de Memoria}
 
 Una de las primeras actividades de la prueba de usabilidad fue el Test de Memoria ($M$), en la tabla~\ref{sec:tabla-memoria}
 se puede ver el desempe\~no de cada sujeto en esta actividad.
@@ -41,8 +41,8 @@ se puede ver el desempe\~no de cada sujeto en esta actividad.
 \end{table}
 
 Como se mencion\'o anteriormente, 12 a 13 palabras recordadas es el promedio esperado. 
-
-\subsubsection{Entrenamiento}
+ 
+\section{Entrenamiento}
 
 Luego del Test de Memoria cada sujeto realiz\'o dos tareas simples de manera tal a poder 
 llevar a la pr\'actica los conocimientos te\'oricos aprendidos.
@@ -77,7 +77,7 @@ de los resultados del test de memoria.
 
 Una vez terminadas las dos tareas iniciales cada sujeto realiz\'o dos tareas m\'as sin ayuda del facilitador.
 
-\subsubsection{Tarea Tres}
+\section{Tarea Tres}
 
 La tarea tres es la primera de las dos tareas que el sujeto realiz\'o sin asistencia del facilitador, como
 se explic\'o anteriormente, el sujeto tuvo la posibilidad de consultar el manual durante esta actividad.
@@ -110,7 +110,7 @@ Tasa de Error Humano ($E_2$), Duraci\'on ($T_3$), Cantidad de Errores ($E_3$) y 
 \label{sec:tabla-tarea3}
 \end{table}
 
-\subsubsection{Tarea Cuatro}
+\section{Tarea Cuatro}
 
 La tarea cuatro es la \'ultima tarea realizada por el sujeto. Como se mencion\'o anteriormente, es la tarea
 de mayor dificultad ya que el sujeto la realiza sin ning\'un tipo de asistencia. A continuaci\'on se presenta
@@ -142,10 +142,10 @@ Sujeto& $A$ & $E_1$ & $E_2$  & $T_4$      & $E_3$ & $C$ &  $M$ & $U$ \\
 \label{sec:tabla-tarea4}
 \end{table}
 
+ 
+\section{Resumen}
 
-\subsubsection{Resumen}
-
-Finalmente, se presenta la tabla que resume la prueba de usabilidad realizada. En la tabla~\ref{sec:tabla-resumen-prueba}
+Finalmente, se presenta la tabla que resume (por usuario) la prueba de usabilidad realizada. En la tabla~\ref{sec:tabla-resumen-prueba}
 se pueden observar todas las m\'etricas juntas, la cual sirve como entrada 
 para el analisis de correlaci\'on a realizar.
 
@@ -174,8 +174,24 @@ Sujeto  &   $A$  &   $E_1$ &  $E_2$  &  $T_{1+2}$  & $T_{3+4}$     & $E_3$ & $C$
 \label{sec:tabla-resumen-prueba}
 \end{table}
 
+De manera tal a poder tener un resumen general, se muestra en la tabla~\ref{sec:tabla-resumen-promedio} el promedio
+de los valores expuestos anteriormente
 
-\subsubsection{Correlaci\'on}
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|}
+\hline
+$A$  &   $E_1$ &  $E_2$  &  $T_{1+2}$  & $T_{3+4}$     & $E_3$ & $C$ &  $M$ & $U$ \\
+\hline 
+83,70 & 16,30 & 5,91 & 13,83  & 18,35  & 11,83 & 87,5  & 12,75  & 40.67 \\
+\hline
+\end{tabular}
+\caption{Resumen General de las variables de la prueba de usabilidad}
+\label{sec:tabla-resumen-promedio}
+\end{table}
+
+\section{Correlaci\'on}
 
 A partir de los valores en la tabla~\ref{sec:tabla-resumen-prueba} y utilizando el \emph{Coeficiente de 
 Correlaci\'on de Pearson}\cite{BoslaughStatistics2008} se llev\'o a cabo un an\'alisis  para identificar posibles
@@ -227,6 +243,138 @@ siendo algunas positivas y otras negativas. A continuaci\'on se listan las corre
 \end{itemize}
 
 
+\section{An\'alisis del Error}
+
+En esta secci\'on se presentan las tasas de errores de acuerdo a factores que se consideran importantes debido
+al tipo de aplicaci\'on desarrollada. 
+
+\subsection{Error con respecto a la Longitud del Comando}
+El primer caso considerado es el error con respecto a la longitud del comando
+utilizado. En la tabla~\ref{sec:error-longitud} se pueden observar los valores obtenidos, las columnas
+representan las distintas longitudes de comandos disponibles en la aplicaci\'on
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{|p{1.6cm}|p{1.6cm}|p{1.6cm}|p{1.6cm}|p{1.6cm}|p{1.6cm}|}
+\hline
+    Sujeto & 2 & 3 & 4 & 5 & 6  \\
+    \hline 
+    1 & 5,36   & 0     & 3,33  &0   &0 \\
+    2 & 8,11   & 8,85  & 4,76  &0   &0 \\
+    3 & 8,57   & 10,20 & 0 &  0  &33,33 \\
+    4 & 3,08   & 3,64 & 0  & 0  & 0 \\
+    5 & 2,94   & 18,18 & 8,33 &  0 & 77,77 \\
+    6 & 2,08   & 2,5 & 0 & 0 & 20 \\
+    7 & 5,26   & 6,90 & 0 & 0 & 0 \\
+    8 & 2,78   & 0 & 13,33 & 40 & 16,67 \\
+    9 & 7,55   & 11,63 & 40  &  62,5  & 20 \\
+    10 & 5,13  & 2,5  & 18,75  &  0 & 60 \\
+    11 & 0     & 4,35 & 0 & 20 & 66,67 \\
+    12 & 20,19 & 1,52 & 6,25 & 0  & 63,64 \\
+\hline
+\end{tabular}
+\caption{Error con respecto a la longitud del comando}
+\label{sec:error-longitud}
+\end{table}
+
+En la siguiente tabla se puede observar un resumen de la tabla anterior, de manera tal a poder presentar
+el error a nivel general.
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{|p{1.6cm}|p{1.6cm}|p{1.6cm}|p{1.6cm}|p{1.6cm}|}
+\hline
+    2 & 3 & 4 & 5 & 6  \\
+    \hline 
+    6,96 & 5,68 & 7,46 & 14,81 & 42,11 \\
+    \hline
+\end{tabular}
+\caption{Resumen del Error con respecto a la longitud del comando}
+\label{sec:error-longitud-resumen}
+\end{table}
+
+
+\subsection{Error con respecto al Contexto del Comando}
+
+Otro factor considerado en el an\'alisis es el Error con respecto al contexto del comando, es decir
+qu\'e tan dependiente es el comando utilizado con respecto a uno dicho previamente. En la tabla~\ref{sec:error-contexto}
+se pueden observar los valores para este factor.
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{|p{1.6cm}|p{1.6cm}|p{1.6cm}|p{1.6cm}|}
+\hline
+    Sujeto & General & Pista & Comp\'as \\
+    \hline
+1 & 1,32  & 50     & 0,94 \\
+2 & 16,88 & 0      & 3,39 \\
+3 & 13,95 & 0      & 7,55 \\
+4 & 2,60 & 0      & 3,15 \\
+5 & 31,25 & 0      & 5,41 \\
+6 & 7,02 & 25     & 0 \\
+7 & 10     & 0      & 2,67 \\
+8 & 9,76 & 0      & 3,28 \\
+9 & 21,74 & 0      & 16,42 \\
+10 & 15     & 12,5 & 3,70 \\
+11 & 10,91 & 0      & 0 \\
+12 & 18,18 & 0      & 15,15 \\
+    \hline
+\end{tabular}
+\caption{Error con respecto al contexto del comando}
+\label{sec:error-contexto}
+\end{table}
+
+Al igual que el factor anterior, se muestra la versi\'on resumida del error en la tabla~\ref{sec:error-contexto-resumen}
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{|p{1.6cm}|p{1.6cm}|p{1.6cm}|p{1.6cm}|}
+\hline
+    General & Pista & Comp\'as \\
+    \hline
+    13,25 & 3,57 & 5,16 \\
+    \hline
+\end{tabular}
+\caption{Resumen del Error con respecto al contexto del comando}
+\label{sec:error-contexto-resumen}
+\end{table}
+
+\subsection{Error con respecto al Tiempo}
+
+El \'ultimo factor considerado es el Error del sujeto con respecto al tiempo que lleva interactuando con la aplicaci\'on. Con esto
+se busca determinar si el tiempo de interacci\'on y el error est\'an relacionados. En la tabla~\ref{sec:error-tiempo} se puede observar
+el resumen del error en el tiempo, donde el tiempo se encuentra divido en intervalos.
+
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{|c|c|}
+\hline
+    Tiempo Transcurrido & Error \\
+    \hline
+0-10  &  11,62 \\
+10-20 &  14,40 \\
+20-30 &  12,29 \\
+30-40 &  17,78 \\
+40-50 &  6,85 \\
+50-60 &  3,75 \\
+60-70 &  9,92 \\
+70-80 &  2,76 \\
+80-90 &  12,12 \\
+90-100 & 9,42 \\
+    \hline
+\end{tabular}
+\caption{Resumen del Error con respecto al tiempo de interacci\'on}
+\label{sec:error-tiempo}
+\end{table}
+
+\section{Encuesta}
+
 Luego de haber finalizado la tarea cuatro, cada sujeto complet\'o una encuesta de manera tal a
 opinar sobre su experiencia interactuando con el sistema de reconocimiento de voz. En la tabla~\ref{sec:tabla-encuesta}
 se puede observar un resumen de la encuesta realizada.
@@ -257,5 +405,31 @@ se puede observar un resumen de la encuesta realizada.
 \label{sec:tabla-encuesta}
 \end{table}
 
+A continuaci\'on se presenta una versi\'on normalizada de la tabla que resume la encuesta realizada.
 
+
+\begin{table}[H] 
+\centering
+\footnotesize
+\begin{tabular}{|r|r|r|r|r|}
+\hline
+    Sujeto &  Comandos & Entrenamiento & Interfaz por Voz \\
+    \hline
+1 &  0,87 &-0,87 & 0,87 \\
+2 &  0,5  &0,5   & 0,5 \\
+3 &  - & -  &  - \\
+4 &  0,78 &-1,31 & -0,26 \\
+5 &  0,5  &0,5   & -1,5 \\
+6 &  0,87 &-0,87 & -0,87 \\
+7 &  0,5  &0,5   & -1,5 \\
+8 &  0,87 &-0,87 & 0,87  \\
+9 &  0,78 &0,78  & -1,31  \\
+10 & 0,5   &0,5   & 0,5  \\
+11 & -0,5  &-0,5  & 1,5  \\
+12 & 0      &1,22 & -1,22  \\
+\hline
+\end{tabular}
+\caption{Encuesta normalizada}
+\label{sec:tabla-encuesta-normalizada}
+\end{table}
 
