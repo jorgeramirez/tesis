@@ -175,6 +175,9 @@ Sujeto  &   $A$  &   $E_1$ &  $E_2$  &  $T_{1+2}$  & $T_{3+4}$     & $E_3$ & $C$
 \label{sec:tabla-resumen-prueba}
 \end{table}
 
+
+\subsubsection{Correlaci\'on}
+
 A partir de los valores en la tabla~\ref{sec:tabla-resumen-prueba} y utilizando el \emph{Coeficiente de 
 Correlaci\'on de Pearson}\cite{BoslaughStatistics2008} se llev\'o a cabo un an\'alisis  para identificar posibles
 correlaciones entre las variables consideradas. El coeficiente de Pearson es una medida del grado de 
@@ -183,10 +186,48 @@ correlaci\'on lineal o dependencia entre dos variables $X$ e $Y$. El valor del c
 (cuando $X$ crece, $Y$ decrece y viceversa), 0 indica que no existe correlaci\'on y 1 que existe una correlaci\'on
 positiva (cuando $X$ crece, $Y$ crece).
 
-
-
-
 En la tabla que se muestra a continuaci\'on se pueden visualizar los coeficientes de correlaci\'on entre las m\'etricas estudiadas.
+
+\begin{table}[H] 
+\centering
+\footnotesize
+\begin{tabular}{|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|}
+\hline
+&  $A$  &   $E_1$ &  $E_2$  &  $T_{1+2}$  & $T_{3+4}$     & $E_3$ & $C$ &  $M$ & $U$ \\
+\hline
+$A$  &  1  &  -1  &  0,51  &  0,14  &  -0,09  &  0,69  &  0,5  &  0,22  &  0,53 \\
+$E_1$  &  -1  &  1  &  -0,51  &  -0,14  &  0,09  &  -0,69  &  -0,5  &  -0,22  &  -0,53 \\
+$E_2$  &  0,51  &  -0,51  &  1  &  0,4  &  0,23  &  0,71  &  0,29  &  -0,38  &  0,35  \\
+$T_{1+2}$  &  0,14  &  -0,14  &  0,4  &  1  &  0,87  &  0,57  &  -0,04  &  -0,31  &  0,25 \\
+$T_{3+4}$  &  -0,09  &  0,09  &  0,23  &  0,87  &  1  &  0,37  &  -0,16  &  -0,42  &  0,2 \\
+$E_3$  &  0,69  &  -0,69  &  0,71  &  0,57  &  0,37  &  1  &  0,28  &  -0,29  &  0,52 \\
+$C$  &  0,5  &  -0,5  &  0,29  &  -0,04  &  -0,16  &  0,28  &  1  &  -0,08  &  0,13 \\
+$M$  &  0,22  &  -0,22  &  -0,38  &  -0,31  &  -0,42  &  -0,29  &  -0,08  &  1  &  -0,23 \\
+$U$  &  0,53  &  -0,53  &  0,35  &  0,25  &  0,2  &  0,52  &  0,13  &  -0,23  &  1 \\
+\hline
+\end{tabular}
+\caption{Coeficientes de correlaci\'on para las m\'etricas consideradas.}
+\label{sec:tabla-correlacion}
+\end{table}
+
+Como se puede observar, existen correlaciones entre alguna de las m\'etricas presentadas, 
+siendo algunas positivas y otras negativas. A continuaci\'on se listan las correlaciones identificadas:
+
+\begin{itemize}
+    \item $A$ y $E_2$, 0,51 correlaci\'on positiva fuerte
+    \item $A$ y $E_3$, 0,69 correlaci\'on positiva fuerte
+    \item $A$ y $C$, 0,50 correlaci\'on positiva fuerte 
+    \item $E_2$ y $T_{1+2}$, 0,40 correlaci\'on positiva fuerte
+    \item $E_2$ y $C$, 0,29 correlaci\'on positiva d\'ebil
+    \item $T_{1+2}$ y $T_{3+4}$, 0,87 correlaci\'on positiva muy fuerte
+    \item $T_{1+2}$ y $M$, -0,31 correlaci\'on negativa moderada
+    \item $T_{1+2}$ y $E_3$, 0,57 correlaci\'on positiva fuerte
+    \item $T_{3+4}$ y $E_3$, 0,37 correlaci\'on positiva moderada
+    \item $T_{3+4}$ y $M$, -0,42 correlaci\'on negativa fuerte
+    \item $E_3$ y $M$, -0,29 correlaci\'on negativa d\'ebil
+\end{itemize}
+
+
 Luego de haber finalizado la tarea cuatro, cada sujeto complet\'o una encuesta de manera tal a
 opinar sobre su experiencia interactuando con el sistema de reconocimiento de voz. En la tabla~\ref{sec:tabla-encuesta}
 se puede observar un resumen de la encuesta realizada.
@@ -218,39 +259,4 @@ se puede observar un resumen de la encuesta realizada.
 \end{table}
 
 
-\begin{table}[H]
-\centering
-\footnotesize
-\begin{tabular}{|p{1.6cm}|p{1.6cm}|p{1.6cm}|p{1.6cm}|p{1.6cm}|p{1.6cm}|p{1.6cm}|p{1.6cm}|}
-\hline
-          &    TA & EH    & T1     & T2    & CE    & C      & Memoria \\
-\hline
-TA        & 1     & 0.51  & 0.14   & -0.09 & 0.69  & 0.50   & 0.22  \\
-EH        & 0.51  & 1     & 0.40   & 0.23  & 0.71  & 0.29   & -0.38 \\
-T1        & 0.14  & 0.40  & 1      & 0.87  & 0.57  & -0.04  & -0.31 \\
-T2        & -0.09 & 0.23  & 0.87   & 1     & 0.37  & -0.16  & -0.42 \\
-CE        & 0.69  & 0.71  & 0.57   & 0.37  & 1     & 0.28   & -0.29 \\
-C         & 0.50  & 0.29  & -0.036 & -0.16 & 0.28  & 1      & -0.08 \\
-Memoria   & 0.22  & -0.38 & -0.31  & -0.42 & -0.29 & -0.08  & 1     \\
-\hline
-\end{tabular}
-\caption{Coeficientes de correlaci\'on para las m\'etricas consideradas.}
-\label{sec:tabla-correlacion}
-\end{table}
 
-Como se puede observar, existen correlaciones entre alguna de las m\'etricas presentadas, 
-siendo algunas positivas y otras negativas. A continuaci\'on se listan las correlaciones identificadas:
-
-\begin{itemize}
-    \item TA y EH, 0.51 correlaci\'on positiva fuerte
-    \item TA y CE, 0.69 correlaci\'on positiva fuerte
-    \item TA y C, 0.50 correlaci\'on positiva fuerte 
-    \item EH y T1, 0.40 correlaci\'on positiva fuerte
-    \item EH y C, 0.29 correlaci\'on positiva d\'ebil
-    \item T1 y T2, 0.87 correlaci\'on positiva muy fuerte
-    \item T1 y Memoria, -0.31 correlaci\'on negativa moderada
-    \item T1 y CE, 0.57 correlaci\'on positiva fuerte
-    \item T2 y CE, 0.37 correlaci\'on positiva moderada
-    \item T2 y Memoria, -0.42 correlaci\'on negativa fuerte
-    \item CE y Memoria, -0.29 correlaci\'on negativa d\'ebil
-\end{itemize}
