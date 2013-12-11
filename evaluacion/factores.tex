@@ -7,7 +7,7 @@ en base a los datos recopilados a partir de las pruebas de usabilidad que se rea
 Se definen tambi\'en las m\'etricas utilizadas para la cuantificaci\'on de cada factor estudiado.
 
 \subsection{Memoria del Usuario}
-Factor relacionado a la capacidad de retenci\'on de informaci\'on del sujeto del experimento.
+Factor relacionado a la capacidad de retenci\'on de informaci\'on del usuario.
 Se consider\'o interesante su an\'alisis debido a que:
 \begin{itemize}
 	\item TamTam Listens se trataba de una aplicaci\'on completamente nueva para el usuario.
@@ -139,6 +139,8 @@ Factor relacionado al grado de productividad que logra el usuario de la aplicaci
 	terminar la tarea 3 ($T_3$) y el que le tom\'o terminar la tarea 4 ($T_4$). 
 	Estas tareas se realizaron sin asistencia por parte del facilitador. 
 	La duraci\'on se midi\'o en minutos. Se representa como $T_{3+4}$.
+	\item Cantidad de Comandos Utilizados: es la cantidad total de comandos diferentes utilizados
+	al menos una vez por el usuario durante las tareas 3 y 4. Se representa como $U$.
 	\item Correctitud de la Tarea Cuatro: para \'el c\'alculo de esta medida, se descompuso la
 	\'ultima tarea en lo distintos pasos necesarios para completarla correctamente.
 	De esta manera, la tarea cuatro se consider\'o compuesta por 72 elementos:
@@ -171,7 +173,7 @@ Se solicit\'o la opini\'on del usuario con respecto a:
 
 Posteriormente, de modo a eliminar el potencial efecto de los estilos de respuesta
 de los usuarios \cite{Fischer2010}, se utiliza el m\'etodo de estandarizaci\'on 
-por rango \cite{Pagolu2011} para reescalar losresultados de la encuesta.
+por rango \cite{Pagolu2011} para reescalar los resultados de la encuesta.
 
 Siendo:
 \begin{itemize}
@@ -181,7 +183,10 @@ Siendo:
 
 Para cada respuesta $s$ del usuario $i$, el valor ajustado $s_a$ se define como:
 
-$s_a={s-min_i}/{max_i-min_i}$ 
+\begin{equation*}
+s_a=\frac{s-min_i}{max_i-min_i}
+\end{equation*}
+
 
 De esta manera, todas las respuestas pasan a estar en el rango entre 0 y 1.  
 
