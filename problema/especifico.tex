@@ -2,32 +2,73 @@
 \section{Alcance}
 \label{sec:problema-especifico}
 
-Este trabajo de investigaci\'on incluye el dise\~no e implementaci\'on de
-una interfaz mediante voz del usuario para una aplicaci\'on de composici\'on musical,
-como una forma de contrastar la pr\'actica con el conocimiento te\'orico adquirido en
-el transcurso del mismo.
+De modo a contrastar la pr\'actica con el conocimiento te\'orico adquirido en
+el transcurso de este trabajo de investigaci\'on, se incluye el dise\~no e implementaci\'on de
+una interfaz mediante voz del usuario para una aplicaci\'on como parte del mismo.
 
-Para interactuar con la aplicaci\'on desarrollada se decidi\'o utilizar una interfaz
-multimodal, haciendo uso de soporte visual para minimizar el efecto de las limitaciones
+Para obtener conclusiones del proceso de dise\~no e implementaci\'on y de la posterior evaluaci\'on
+de la interfaz, se consider\'o que la misma deb{\'\i}a ser de cierta complejidad. Esto es, la
+aplicaci\'on implementada deb{\'\i}a cumplir con los siguientes requisitos:
+
+\begin{itemize}
+     \item Nivel de interacci\'on medio o alto entre el usuario y la aplicaci\'on.
+     \item Lenguaje de tama\~no considerable.
+     \item Comandos reconocidos de varias longitudes.
+     \item Interacci\'on normalmente prolongada entre el usuario y la aplicaci\'on.
+ \end{itemize} 
+
+Cumpliendo con las condiciones anteriormente mencionadas, se decidi\'o dise\~nar e implementar 
+una interfaz para un programa simple de composici\'on musical.
+Se opt\'o por utilizar una interfaz multimodal, 
+haciendo uso de soporte visual para minimizar el efecto de las limitaciones
 relacionadas a la voz que se mencionaron previamente.
 
-Las funcionalidades m{\'\i}nimas requeridas para el sistema se citan a continuación:
+Las funcionalidades m{\'\i}nimas requeridas para el sistema se citan a continuaci\'on:
 %Explicar mejor
 \begin{itemize}
-	\item El usuario puede crear música con la aplicación: esta es la funcionalidad de
+    \item El usuario puede crear m\'usica con la aplicaci\'on: esta es la funcionalidad de
     mayor importancia y el objetivo del sistema.
-	\item El usuario puede seleccionar distintos instrumentos musicales: esto
-    permite la combinación de los distintos instrumentos para la composición de la música.
-	\item El usuario puede configurar el volumen de cada instrumento musical: de
+    \item El usuario puede seleccionar distintos instrumentos musicales: esto
+    permite la combinaci\'on de los distintos instrumentos para la composici\'on de la m\'usica.
+    \item El usuario puede configurar el volumen de cada instrumento musical: de
     modo a poder combinar los distintos instrumentos con distinta intensidad en el
     sonido.
-	\item El usuario puede crear sonidos: un sonido es la unidad básica para la
-    creación de una música. Básicamente, se compone música mediante la combinación
+    \item El usuario puede crear sonidos: un sonido es la unidad b\'asica para la
+    creaci\'on de una m\'usica. B\'asicamente, se compone m\'usica mediante la combinaci\'on
     de sonidos.
-	\item El usuario puede configurar el tono y la duración de los sonidos: de modo
-    a permitir un gran número de combinaciones posibles para la composición musical.
-	\item El usuario puede reproducir, pausar y detener la música: de modo a poder
+    \item El usuario puede configurar el tono y la duraci\'on de los sonidos: de modo
+    a permitir un gran n\'umero de combinaciones posibles para la composici\'on musical.
+    \item El usuario puede reproducir, pausar y detener la m\'usica: de modo a poder
     escuchar y apreciar su obra.
-	\item El usuario puede guardar la música que crea: de modo a poder escuchar
+    \item El usuario puede guardar la m\'usica que crea: de modo a poder escuchar
     su obra en reproductores de audio y compartirla.
 \end{itemize}
+
+Una vez definida la tem\'atica de la aplicaci\'on a implementar, llevar a la pr\'actica
+los conocimientos adquiridos requiere definir ciertas cuestiones:
+
+\begin{itemize}
+    \item Definici\'on de Comandos: se refiere al proceso de definir el comando, o la secuencia de
+    comandos, que se utilizar\'a para exponer cada funcionalidad prove{\'\i}da por el sistema.
+
+    El lenguaje aceptado define la interacci\'on entre el usuario y la aplicaci\'on, y es de esperarse
+    que resulte importante para la naturalidad de la misma y para la usabilidad del sistema en
+    general.
+
+    \item Herramientas a utilizar: existe un gran n\'umero de opciones disponibles
+    para la implementaci\'on de una interfaz basada en voz del usuario.
+    La selecci\'on de la herramienta tiene un gran impacto sobre el proceso de implementaci\'on
+    y debe realizarse de acuerdo a las prioridades del caso.
+
+    La clasificaci\'on y evaluaci\'on inclu{\'\i}da en el cap{\'\i}tulo anterior puede resultar de
+    utilidad para tomar esta decisi\'on de manera informada y en base a criterios bien establecidos.
+
+    \item Evaluaci\'on de la Aplicaci\'on: una evaluaci\'on de la aplicaci\'on implementada puede ayudar
+    a identificar problemas y sugerir mejoras o nuevas funcionalidades. Adem\'as, en el caso particular
+    de este trabajo, se espera obtener conclusiones acerca de las interfaces basadas en el reconocimiento
+    del habla.
+
+    Para realizar la evaluaci\'on deben establecerse varios puntos como: los objetivos, la metodolog{\'\i}a,
+    los factores a tener en cuenta, las m\'etricas que se utilizar\'an, etc.
+
+ \end{itemize} 
