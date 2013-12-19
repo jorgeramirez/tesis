@@ -1,0 +1,34 @@
+%!TEX root = ../tesis.tex
+\section{Dise\~no de la Interfaz}
+\label{sec:disenho-interfaz}
+
+El principal objetivo de la fase de dise\~no de la interfaz por voz del usuario consisti\'o
+en definir el lenguaje que se utilizar{\'\i}a para la misma y el protocolo de interacci\'on entre
+el usuario y la aplicaci\'on.
+
+Es decir, se definieron los comandos que tendr{\'\i}an significado para el sistema y la manera
+en que el usuario utilizar{\'\i}a los mismos para acceder a las funcionalidades implementadas.
+
+En primer punto que se consider\'o importante fue la naturalidad de los comandos
+de acuerdo al dominio de la aplicaci\'on. Esto teniendo en cuenta que el usuario deb{\'\i}a
+recordarlos y utilizarlos para interactuar con el sistema.
+
+En el caso particular de \emph{TamTam Listens} esto signific\'o buscar t\'erminos musicales
+que pudiesen asociarse con los elementos que formaban parte de la aplicaci\'on: partitura,
+pista, comp\'as, nota, etc.
+
+Un error que puede cometerse al intentar dise\~nar una interfaz por voz del usuario,
+el cual estaba presente en el primer prototipo de \emph{TamTam Listens}, es el intento
+de asociar comandos de voz a acciones que se realizar{\'\i}an normalmente con la interfaz
+gr\'afica.
+
+El reemplazar directamente clicks y pulsaciones de teclas por comandos de voz da
+como resultado una interfaz poco natural y dif{\'\i}cil de utilizar. Por tanto, fue
+necesario replantear por completo el modo de acceso a las funcionalidades de manera
+independiente a la interfaz gr\'afica.
+
+En base a la experiencia, resulta recomendable asociar un comando a una funcionalidad
+y no a una \'unica acci\'on en la interfaz tradicional. A modo de ejemplo, cambiar el
+volumen en \emph{TamTam Edit} requer{\'\i}a presionar un bot\'on para desplegar un submen\'u 
+y utilizar un {slider}, mientras que en \emph{TamTam Listens} era necesario un
+\'unico comando ``Aumentar/Disminuir Volumen''.  

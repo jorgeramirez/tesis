@@ -1,0 +1,36 @@
+%!TEX root = ../tesis.tex
+\section{Implementaci\'on de la Interfaz}
+\label{sec:implementacion-interfaz}
+
+Una vez que se tuvo en claro lo que se buscaba implementar, el siguiente paso
+fue la selecci\'on de las herramientas que se utilizar{\'\i}an para hacerlo. 
+
+La herramienta elegida tiene gran influencia sobre el posterior proceso de
+desarrollo, por lo cual esta decisi\'on debe tomarse analizando las caracter{\'\i}sticas
+propias del proyecto en cuesti\'on.
+
+A modo de ejemplo, algunas cuestiones que pueden tomarse en consideraci\'on son:
+
+\begin{itemize}
+	\item El tiempo del que se dispone.
+	\item El dinero del que se dispone.
+	\item El conocimiento t\'ecnico del equipo de desarrolladores.
+	\item La plataforma sobre la cual debe ejecutarse el sistema.
+	\item La necesidad de que el sistema funcione sin conexi\'on a internet.
+	\item El soporte existente para el idioma que se busca reconocer.
+\end{itemize}
+
+La evaluaci\'on de varias opciones disponibles para la implementaci\'on de un sistema
+basado en reconocimiento del habla, cuyos resultados se incluyen como parte de este
+trabajo, permiti\'o realizar la selecci\'on de manera debidamente informada y justificada.
+
+Habiendo seleccionado Pocketsphinx y el modelo ac\'ustico Voxforge para
+la implementaci\'on, el mayor problema durante la fase de desarrollo estuvo relacionado
+al plugin para \emph{Gstreamer} que se planeaba utilizar para integrar \emph{TamTam Edit}
+con el motor de reconocimiento.
+
+Luego de numerosos intentos fallidos, finalmente se opt\'o por desechar el mencionado plugin
+e implementar una soluci\'on utilizando \emph{DBus} para la integraci\'on. Al exponerse los
+resultados del reconocimiento del habla mediante un demonio, este enfoque permite integrar
+Pocketsphinx con cualquier aplicaci\'on que utilice \emph{DBus} como m\'etodo de comunicaci\'on
+entre procesos.
