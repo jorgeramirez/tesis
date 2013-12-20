@@ -29,3 +29,38 @@ considerablemente sensible al ruido ambiente, es por eso que la prueba de usabil
 y libre de ruido. Por lo tanto, se podr\'ian investigar los algoritmos de reducci\'on de ruido disponibles y ver su aplicabilidad
 al software desarrollado. Adem\'as, cabe resaltar la importancia de la reducc\'on de ruido para que las interfaces de reconocimiento
 de voz puedan utilizarse en distintos tipos de ambientes (el interior de un autom\'ovil, por ejemplo).
+
+\section{Optimizar generaci\'on de Modelo Ac\'ustico}
+
+Como ya se mencion\'o anteriormente, el modelo ac\'ustico es uno de los componentes necesarios para implementar un sistema de 
+reconocimiento del habla. Para poder generar un modelo se necesita realizar una cantidad considerable de procesamiento sobre
+un conjunto de datos, cuanto mayor sea el tama\~no de datos para entrenamiento, se lograr\'a obtener un mejor modelo ac\'ustico. Es por
+esto que la generaci\'on del modelo ac\'ustico puede llegar a ser un proceso lento si se quiere generar uno en base a un conjunto de datos
+muy grande.
+
+\emph{Grid Computing} es una colecci\'on de computadoras dispersas geogr\'aficamente que colaboran entre si para alcanzar objetivos comunes y resolver
+tareas espec\'ificas. Este sistema distribuido opera distribuyendo el trabajo que se debe realizar entre las distintas m\'aquinas disponibles en la red
+y as\'i poder procesar grandes cantidades de datos y de este modo, poder resolver tareas complejas.
+
+En base a lo expuesto, se podr\'ia plantear la utilizaci\'on de \emph{Grid Computing} para realizar el proceso de entrenamiento y as\'i
+poder optimizar el proceso de generaci\'on del modelo ac\'ustico para grandes cantidades de datos.
+
+\section{Integraci\'on con Buti\'a}
+
+Buti\'a es un proyecto uruguayo que plantea como objetivo crear una plataforma simple y econ\'omica que permita a los alumnos de colegios p\'ublicos,
+en coordinaci\'on con profesores, interiorizarse con la programaci\'on del comportamiento de robots\cite{Butia}. La plataforma
+utilizada por los ni\~nos para poder controlar las acciones b\'asicas del robot es el programa \emph{Tortugarte}. Este es un
+programa, que al igual que \emph{Tamtam Edit} corre en la computadora computadora \emph{XO} del proyecto \emph{OLPC}.
+
+Un interesante trabajo ser\'ia la integraci\'on de comandos de voz a la lista de acciones disponibles en \emph{Tortugarte} y
+as\'i brindar la posibilidad de operar el robot utilizando comandos de voz.
+
+\section{Integraci\'on con Aguar\'a}
+
+El proyecto Aguar\'a busca aprovechar el gran potencial que tiene el Paraguay con respecto a la producci\'on de
+energ\'ia el\'ectrica. Consiste en el primer auto el\'ectrico fabricado en Paraguay con el apoyo del Parque
+Tecnol\'ogico Itaip\'u (PTI). 
+
+Anteriormente se mencion\'o que los avances en el \'area de reconocimiento
+permitieron incorporar \'esta tecnolog\'ia dentro de los autom\'oviles, para operar componentes b\'asicos del panel. Por lo tanto,
+ser\'ia interesante poder agregar soporte para comandos de voz al veh\'iculo el\'ectrico denominado Aguar\'a.
