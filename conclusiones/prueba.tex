@@ -2,10 +2,128 @@
 \section{Prueba con Usuarios}
 \label{sec:prueba}
 
-En esta sección se presentan las conclusiones que pudieron obtenerse a partir de los
+En esta secci\'on se presentan las conclusiones que pudieron obtenerse a partir de los
 resultados de las pruebas de \emph{TamTam Listens} realizadas con usuarios.
 
-\subsection{Correlación}
+\subsection{Correlaci\'on}
+A\'un teniendo en cuenta que un estudio de correlaci\'on no permite determinar causalidad
+entre variables, los resultados obtenidos permiten identificar relaciones cuando menos
+interesantes entre las mismas que podr{\'\i}an merecer su estudio en investigaciones futuras.
+
+A primera vista, La correlaci\'on positiva de la tasa de acierto del sistema con la
+tasa de error humano y con la cantidad de errores por usuario podr{\'\i}a parecer
+poco intuitiva.
+
+En la pr\'actica, este valor podr{\'\i}a explicarse bas\'andose en las observaciones registradas 
+de las pruebas. En las mismas, se pudo observar que varios usuarios para quienes la tasa de
+aciertos del sistema era elevada prefer{\'\i}an descubrir y aprender los comandos a trav\'es
+de la prueba y el error a leer m\'as detalladamente el manual de la aplicaci\'on o tratar de
+recordar detenidamente el comando correcto.
+
+As{\'\i} tambi\'en, la cantidad total de comandos que utiliz\'o el usuario result\'o relacionada
+positivamente con ambas medidas del error humano y el acierto del sistema. Mediante las 
+observaciones, pudo notarse que los usuarios para para quienes la tasa de
+aciertos del sistema era elevada se ve{\'\i}an inclinados a intentar descubrir y utilizar nuevos
+comandos, incluso si estos no eran estrictamente necesarios para la resoluci\'on de las tareas.
+
+Estas tendencias en la conducta de los participantes sirven como argumento a favor de la importancia 
+de la naturalidad del lenguaje, de modo a facilitar el aprendizaje de los comandos por parte del usuario.
+
+Las relaciones anteriormente mencionadas parecen sugerir que el error humano no es necesariamente
+un indicador negativo, afirmaci\'on que parece reforzarse con la correlaci\'on positiva, aunque moderada
+a d\'ebil, entre las medidas del error humano y la correctitud de la \'ultima tarea. Este valor
+indica que, en general, los usuarios que se equivocaron m\'as completaron mejor la tarea cuatro.
+
+La memoria del usuario result\'o relacionada negativamente con las medidas de error humano
+y la duraci\'on de las tareas, lo cual puede considerarse como un indicador de la importancia
+de este factor teniendo en cuenta la invisibilidad y transitoriedad de las interfaces mediante
+voz del usuario. Esto es, en general, los usuarios con mayor puntaje en el test de memoria
+tardaron menos en realizar las tareas y cometieron menos errores.
+
+Era de esperarse que los usuarios para quienes la tasa de aciertos del sistema fuese superior
+obtuviesen mejores resultados en las tareas, lo cual pudo verificarse mediante la correlaci\'on 
+entre la tasa de acierto del sistema y la correctitud de la \'ultima tarea.
+
+Otra relaci\'on previsible que pudo comprobarse a trav\'es del estudio de correlaci\'on fue la que
+se dio entre el error humano y el tiempo que tom\'o terminar las tareas. As{\'\i}, los usuarios que
+m\'as se equivocaron tardaron m\'as en finalizar las tareas.
+
+Algunas correlaciones d\'ebiles pueden considerarse como indicadores positivos. Teniendo en cuenta
+el alto grado de correctitud promedio de la \'ultima tarea (87,5\%), la aparente ausencia de relaci\'on 
+de este factor con la memoria del usuario y la duraci\'on de las tareas resulta alentador para
+\emph{TamTam Listens}. Esto es, m\'as all\'a de su memoria y cuanto tardaron en finalizar las tareas,
+los usuarios lograron resultados, en general, satisfactorios.
+
 \section{An\'alisis del Error}
+Mediante an\'alisis del error humano fue posible estudiar el efecto de la longitud de los comandos
+sobre la precisi\'on de los usuarios. Los resultados obtenidos muestran que la tasa de error
+var{\'\i}a poco para los comandos de 2, 3, 4 palabras y aumenta considerablemente para los comandos
+de 5 y 6 palabras.
+
+En base a estos resultados, puede sugerirse que los comandos de una interfaz por voz del usuario 
+no superen la longitud de 4 palabras, de ser posible.
+
+Sin embargo, cabe destacar que esto representa un desaf{\'\i}o adicional a tener en cuenta.
+Durante la etapa de implementaci\'on, pudo constatarse que los comandos de poca longitud presentaban
+a menudo tasas de errores superiores a la media del sistema.
+Mantener el equilibrio entre error humano y error de la aplicaci\'on, de acuerdo a la longitud
+de los comandos, podr{\'\i}a suponer un problema no trivial. 
+
+El an\'alisid del error humano con respecto al tiempo transcurrido arroj\'o tambi\'en
+resultados interesantes. La tasa de error humano se presenta m\'as elevada desde el inicio hasta
+el 40\% del tiempo transcurrido, lo cual podr{\'\i}a atribuirse a un periodo de aprendizaje
+de la interfaz.
+
+Adem\'as, pudo apreciarse un leve aumento en la tasa de error hacia el final del tiempo
+transcurrido, lo que podr{\'\i}a un efecto del agotamiento sobre el usuario utilizando la
+interfaz mediante voz.
+
+Por \'ultimo, el error humano por comando puede servir para identificar comandos 
+problem\'aticos que pueden modificarse en una versi\'on siguiente de la aplicaci\'on.
+As{\'\i}, los comandos con mayor tasa de error humano y candidatos a ser modificados fueron:
+
+\begin{itemize}
+	\item Duplicar Pista Uno en Pista Dos.
+	\item Duplicar Pista Uno en Pista Tres.
+	\item Crear Nota La Grave.
+	\item Pausar M\'usica.
+	\item Comp\'as Cuatro.
+	\item Guitarra El\'ectrica en Pista Uno.
+	\item Crear Nueva Partitura.
+\end{itemize}
+
 \section{Encuesta}
+Los resultados de la encuesta realizada a los usuarios permitieron obtener informaci\'on
+interesante con respecto a su grado de satisfacci\'on y su opini\'on posterior a la utilizaci\'on
+de la aplicaci\'on.
+
+En primer lugar, los valores obtenidos en las preguntas de estilo Likert que se formularon
+llevan a concluir un elevado grado satisfacci\'on con respecto a las palabras y los comandos
+utilizados y el tiempo de entrenamiento previo a las pruebas.
+Adem\'as, se midi\'o un grado de predisposici\'on considerable por parte de los usuarios de utilizar
+las interfaces mediante voz con frecuencia en la vida diaria.
+
+De todas formas, habiendo reescalado los resultados de cada usuario, el grado de satisfacci\'on
+con las palabras utilizadas recibi\'o el puntaje m\'as bajo en comparaci\'on con los dem\'as puntos.
+Debe destacarse que esto no significa que el grado de satisfacci\'on sea bajo (la califaci\'on promedio
+fue de 6,17 de 7), sino que es el punto que m\'as puede mejorarse.
+
+Las sugerencias que brindaron los usuarios permitieron identificar palabras y comandos que 
+resultaban poco naturales e inadecuados a su criterio. En ese sentido, representan una herramienta
+importante al momento de definir las mejoras que pueden incluirse en versiones posteriores de la
+aplicaci\'on. Las recomendaciones m\'as comunes fueron:
+
+\begin{itemize}
+	\item Reemplazar la palabra ``Duplicar'' por ``Copiar'': con esto, el comando 
+	``Duplicar Pista Uno en Pista Dos'' quedar{\'\i}a como ``Copiar Pista Uno en Pista Dos''. 
+	\item Reemplazar la palabra ``Exportar'' por ``Guardar'': con esto, el comando 
+	``Exportar M\'usica'' quedar{\'\i}a como ``Guardar M\'usica''.
+	\item Eliminar la palabra ``Nueva'' de los comandos de creaci\'on. con esto, el comando 
+	``Crear Nueva M\'usica'' quedar{\'\i}a como ``Crear M\'usica''.
+\end{itemize}
+
+Finalmente, la mayor{\'\i}a de los usuarios expres\'o que utilizar{\'\i}a una interfaz mediante voz
+preferentemente en casos con un bajo grado de interactividad y un lenguaje sencillo.
+Por ejemplo, los usuarios expresaron que les gustar{\'\i}a manejar el televisor, la radio,
+dispositivos GPS, el horno microondas, entre otros, mediante la voz.
 
