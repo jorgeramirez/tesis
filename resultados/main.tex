@@ -302,7 +302,7 @@ el error a nivel general.
 
 \subsection{Tasa de Error Humano por Nivel Contextual del Comando}
 
-Se considera también en el an\'alisis la tasa de error humano con respecto al contexto del comando, es decir
+Se considera tambi\'en en el an\'alisis la tasa de error humano con respecto al contexto del comando, es decir
 qu\'e tan dependiente es el comando utilizado con respecto a uno dicho previamente. 
 En la tabla~\ref{sec:error-contexto} se pueden observar los valores para este factor.
 
@@ -350,10 +350,11 @@ tabla~\ref{sec:error-contexto-resumen}
 
 \subsection{Distribuci\'on del Error Humano con respecto al Tiempo transcurrido}
 
-El \'ultimo factor considerado es la distribución del error humano con respecto al tiempo 
+El \'ultimo factor considerado es la distribuci\'on del error humano con respecto al tiempo 
 que lleva interactuando con la aplicaci\'on. Con esto se busca determinar si el tiempo de interacci\'on 
 y el error est\'an relacionados. En las tablas~\ref{sec:error-tiempo-1} y~\ref{error-tiempo-2} se puede observar
-el error con respecto al tiempo (dividido en intervalos) para cada uno de los sujetos que participaron de la prueba de usabilidad.
+como se distribuye porcentualmente la cantidad de errores cometidos por el usuario con respecto al tiempo 
+(dividido en intervalos porcentuales) para cada uno de los participantes de la prueba de usabilidad.
 
 \begin{table}[H]
 \centering
@@ -398,11 +399,12 @@ el error con respecto al tiempo (dividido en intervalos) para cada uno de los su
 \hline
 \end{tabular}
 \caption{Distribuci\'on del Error Humano con respecto al Tiempo. Sujetos 7-12.}
-\label{sec:error-tiempo-1}
+\label{sec:error-tiempo-2}
 \end{table}
 
 La tabla~\ref{sec:error-tiempo} presenta el resumen de dicho error, para tener una visi\'on del desempe\~no a nivel
-general y no por usuario.
+general y no por usuario. La figura~\ref{figure:gerror-tiempo} presenta estos datos mediante un gr\'afico de barras.
+
 
 \begin{table}[H]
 \centering
@@ -426,6 +428,14 @@ general y no por usuario.
 \caption{Distribuci\'on del Error Humano con respecto al Tiempo transcurrido}
 \label{sec:error-tiempo}
 \end{table}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.6\linewidth]{./graphics/error_tiempo.png}
+\caption{Distribuci\'on del Error Humano con respecto al Tiempo transcurrido}
+\label{figure:gerror-tiempo}
+\end{figure}
+
 
 \section{Encuesta}
 
@@ -459,6 +469,16 @@ En la tabla~\ref{sec:tabla-encuesta} se puede observar un resumen de la encuesta
 \label{sec:tabla-encuesta}
 \end{table}
 
+La figura ~\ref{figure:kiviat-encuesta1} presenta los valores promediados para cada columna
+de la tabla anterior mediante un gr\'afico radial.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.6\linewidth]{./graphics/kiviat0.png}
+\caption{Distribuci\'on del Error Humano con respecto al Tiempo transcurrido}
+\label{figure:kiviat-encuesta1}
+\end{figure}
+
 A continuaci\'on se presentan los resultados reescalados por usuario, en una escala del 0 al 1.
 
 
@@ -487,3 +507,14 @@ A continuaci\'on se presentan los resultados reescalados por usuario, en una esc
 \label{sec:tabla-encuesta-normalizada}
 \end{table}
 
+
+La figura ~\ref{figure:kiviat-encuesta2} presenta los valores promediados para cada columna
+de la tabla anterior mediante un gr\'afico radial. La misma permite observar el efecto del
+cambio de escala, el cual facilita la identificaci\'on de fortalezas y debilidades. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.6\linewidth]{./graphics/kiviat.png}
+\caption{Distribuci\'on del Error Humano con respecto al Tiempo transcurrido}
+\label{figure:kiviat-encuesta2}
+\end{figure}
