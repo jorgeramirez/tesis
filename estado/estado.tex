@@ -5,8 +5,9 @@ La Tasa de error por palabras (WER) es una m\'etrica de evaluaci\'on est\'andar 
 reconocimiento del habla. Su c\'alculo se basa en qu\'e tanto la cadena retornada por el reconocedor,
 denominada hip\'otesis, difiere con respecto a la transcripci\'on correcta \cite{Jurafsky}. 
 Dada la transcripci\'on de referencia, para computar la tasa se debe calcular la distancia de edici\'on m\'inima
-entre la hip\'otesis y la \mbox{transcripci\'on \cite{GaikwadAReview2010}}. Es decir, la m\'inima cantidad de palabras insertadas, eliminadas y
-sustituidas. Formalmente, la tasa se calcula de acuerdo a la ecuaci\'on \eqref{eq:wer}
+entre la hip\'otesis y la \mbox{transcripci\'on \cite{GaikwadAReview2010}}. Es decir, la m\'inima cantidad 
+de palabras insertadas, eliminadas y sustituidas necesarias para transformar la hipótesis en la 
+transcripción de referencia. Formalmente, la tasa se calcula de acuerdo a la ecuaci\'on \eqref{eq:wer}
 
 \begin{equation}
 \label{eq:wer}
@@ -30,20 +31,23 @@ de grandes vocabularios (en Rumano) es de 90,41\%.
 \section{Factor de Tiempo Real}
 \label{sec:rtf}
 
-La velocidad de los sistemas de reconocimiento se miden en t\'erminos del Factor de Tiempo Real (RTF). Toma un tiempo $P$
-procesar una entrada de duraci\'on $I$ \cite{VimalaReview2012}. Formalmente, RTF se calcula de acuerdo a la ecuaci\'on \eqref{eq:rtf}
+La velocidad de los sistemas de reconocimiento se miden en t\'erminos del Factor de Tiempo Real (RTF). 
+Toma un tiempo $T$ procesar una entrada de duraci\'on $D$ \cite{VimalaReview2012}. 
+Formalmente, el RTF se calcula de acuerdo a la ecuaci\'on \eqref{eq:rtf}
 
 \begin{equation}
 \label{eq:rtf}
-    RTF = \frac{P}{I}
+    RTF = \frac{T}{D}
 \end{equation}
 
-Cuando el factor de tiempo real es menor o igual que 1, se dice que el procesamiento se realiza en tiempo real.
+En otras palabras, el RTF es la razón entre el tiempo que le toma al sistema proveer un resultado y la
+duración del sonido que se recibió como entrada. Cuando el factor de tiempo real es menor o igual que 1, 
+se dice que el procesamiento se realiza en tiempo real.
 
 La llegada de sistemas de reconocimiento del habla en tiempo real a los dispositivos m\'oviles y sistemas embebidos dio
 oportunidad a uno nuevo rango de investigaciones relacionadas a la interacci\'on humano-computadora. PocketSphinx, es
-un sistema de reconocimiento para sistemas embebidos con RTF igual a 0.87 y WER igual a 13,95\% para un vocabulario
-de 1000 palabras \cite{HugginsDainesPocketSphinx2006}.
+un sistema de reconocimiento para sistemas embebidos con el cual se han obtenido resultados de RTF igual a 0.87 
+y WER igual a 13,95\% para un vocabulario de 1000 palabras \cite{HugginsDainesPocketSphinx2006}.
 
 \section{Perplejidad}
 \label{sec:perplexity}
