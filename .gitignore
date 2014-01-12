@@ -13,3 +13,12 @@
 *.fdb_latexmk
 *.orig
 *.loa
+*.acn
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.idx
+*.ist

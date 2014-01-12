@@ -44,6 +44,11 @@
 \faculty{Facultad Polit\'{e}cnica}
 \address{San Lorenzo - Paraguay}
 
+\usepackage[acronym]{glossaries}
+\usepackage[xindy]{imakeidx}
+\makeglossaries
+\makeindex
+
 \begin{document}
 
 \maketitle     % esto hace las portadas
@@ -61,8 +66,11 @@
 \listoftables
 % Lista de algoritmos
 \listofalgorithms
-%\include{acronimos}
+\printglossary[type=\acronymtype,title=Lista de Siglas]
+\addcontentsline{toc}{chapter}{Lista de Siglas}
 %\include{simbolos}
+
+\include{acronimos}
 
 \mainmatter  % inician los capitulos de la tesis
 
