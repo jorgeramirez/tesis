@@ -1,5 +1,5 @@
 %!TEX root = ../tesis.tex
-\chapter{Tecnolog\'ias y Herramientas}
+ \chapter{Tecnolog\'ias y Herramientas}
 \label{sec:tecnologias}
 
 En la actualidad existe un gran n\'umero de herramientas de software que pueden utilizarse para la implementaci\'on de un
@@ -16,7 +16,7 @@ Inicialmente, se clasifican las herramientas en las siguientes categor{\'\i}as:
 \begin{itemize}
 	\item Aplicaciones: herramientas software que permiten al usuario realizar una o
 	varias tareas \mbox{espec{\'\i}fic as \cite{GoodwillComputer}}.
-	\item Interfaz de Programaci\'on de  Aplicaciones (API): interfaces entre una base de c\'odigo y
+    \item \gls{api}: interfaces entre una base de c\'odigo y
 	el programador \cite{DoucetteOnApi}. Esta abstracci\'on puede verse como una caja negra
 	(los detalles de la implementaci\'on se mantienen ocultos) que provee una determinada funcionalidad.
 	\item Librer{\'\i}as/Frameworks: con junto de m\'etodos o funciones a los que se puede invocar.
@@ -37,10 +37,154 @@ los siguientes criterios generales de evaluaci\'on:
 \end{itemize}
 
 La siguiente figura presenta de forma esquematizada el contenido del cap{\'\i}tulo, y puede tomarse como
-gu{\'\i}a para la lectura de las secciones del mismo.
+gu\'ia para la lectura de las secciones del mismo.
 
-%ADD FIGURA
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{./graphics/esquema-herramientas.png}
+\caption{Esquema que presenta el contenido del cap\'itulo}
+\label{figure:esquema-herramientas}
+\end{figure}
 
 \input{tecnologias/aplicaciones/main.tex}
 \input{tecnologias/apis/main.tex}
 \input{tecnologias/librerias/main.tex}
+
+\section{Resumen de las herramientas}
+
+Para resumir lo expuesto en este cap\'itulo, \'esta secci\'on presentar\'a tablas que resuman los criterios generales y espec\'ificos
+para cada categor\'ia. A continuaci\'on en la tabla~\ref{sec:resumen-herramientas} se pueden observar las distintas
+herramientas presentadas.
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{|p{3.5cm}|>{\centering}p{3.5cm}|>{\centering}p{3.5cm}|>{\centering}p{3.5cm}|}
+\hline
+                               & Aplicaciones             &  APIs                            & Librer\'ias/Frameworks \tabularnewline
+\hline
+Conocimiento T\'ecnico         &     Bajo                    & Medio                            & Alto    \tabularnewline
+Productividad                  &     Alto                    & Medio                            & Bajo    \tabularnewline
+Flexibilidad                   &     Bajo                    & Medio                            & Alto    \tabularnewline
+Alternativas Propietarias      & \begin{itemize} \item Dragon Natural Speaking \end{itemize}  & \begin{itemize} \item Web Speech API \item AT\&T Speech API \item Microsoft Speech API \item iSpeech API \item Dragon Mobile \end{itemize}  &  \tabularnewline
+Alternativas de Código abierto & \begin{itemize} \item Simon \item Palaver \end{itemize}          &                                  & \begin{itemize} \item Sphinx 4 \item PocketSphinx \item HTK \item Julius \item Kaldi \end{itemize} \tabularnewline
+\hline
+\end{tabular}
+\caption{Resumen general de las herramientas}
+\label{sec:resumen-herramientas}
+\end{table}
+
+\subsection{Aplicaciones}
+
+A continuaci\'on se puede observar una comparaci\'on entre las aplicaciones presentadas respecto a los criterios espec\'ificos
+para \'esta categor\'ia
+
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+                                      &  Simon                                                       &  Palaver                                       & Dragon Natural Speaking \\
+\hline
+Precio                                & Gratuito, C\'odigo Abierto                                   & Gratuito, C\'odigo Abierto                     & Desde 99\$  \\
+Soporte para m\'ultiples idiomas      & Si soporta                                                   & Si soporta                                     & Ingl\'es, Alem\'an, Franc\'es, Espa\~nol, Italiano y Holand\'es \\
+Facilidad de configuraci\'on          & F\'acilmente configurable, posee interfaz de configuraci\'on & Reducida, no posee interfaz de configuraci\'on & F\'acilmente configurable, posee interfaz de configuraci\'on \\
+Soporte para dispositivos m\'oviles   & Si soporta                                                   & No soporta                                     & Existen otros productos derivados para m\'oviles \\
+\hline
+\end{tabular}
+\caption{Resumen de los criterios espec\'ificos de las aplicaciones}
+\label{sec:resumen-aplicaciones}
+\end{table}
+
+\subsection{Interfaz de Programaci\'on de Aplicaciones}
+
+En las tablas~\ref{sec:resumen-apis} y~\ref{sec:resumen-apis-2} se puede observar una comparaci\'on entre las APIs presentadas, respecto a los criterios espec\'ificos
+para \'esta categor\'ia
+
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+                                      &  Web Speech API & AT\&T Speech API & Microsoft Speech API \\
+\hline
+Empresa o Instituci\'on responsable & Especificaci\'on publicada por \foreign{Speech API Community Group}. Implementado actualmente por Google  &  AT\&T Inc.  & Microsoft\\
+Precio                              & Gratuita, a trav\'es de Google Chrome  & Un mill\'on de llamadas a la API por 99\$ anuales. Un centavo por llamada extra  & Gratis\\
+Soporte para m\'ultiples idiomas    & Soporta m\'as  30 idiomas & Ingl'es (principal) y Espa\~nol (reducido) & Soporta 26 idiomas\\
+Soporte Offline                     & No por el momento  & No  & Si \\
+Dependencia de Plataforma           & No es dependiente  & No es dependiente & Si es dependiente, solo para \emph{Microsoft Windows} \\
+\hline
+\end{tabular}
+\caption{Resumen de los criterios espec\'ificos de las APIs}
+\label{sec:resumen-apis}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+                                      &  WAMI & iSpeech API & Dragon Mobile \\
+\hline
+Empresa o Instituci\'on responsable & Instituto Tecnológico de Massachusetts & \foreign{iSpeech}  & \foreign{Nuance Communications} \\
+Precio &  Gratuita, C\'odigo Abierto  & Gratis para aplicaciones no comerciales. De 0.02\$ a 0.0001\$ para otros usos & Gratis para aplicaciones no comerciales. De 0.08\$ a 0.006\$ para otros usos. Inversi\'on m\'inima de 3000\$ para comercializar una aplicaci\'on \\
+Soporte para m\'ultiples idiomas  & Ingl\'es, Chino y Japon\'es. Depende del reconocedor utilizado & Reconocimiento Cont\'inuo para 6 idiomas. Reconocmiento de vocabulario reducido para 10 idiomas & Soporta m\'as de 20 idiomas \\
+Soporte Offline & No & No & No\\
+Dependencia de Plataforma & No es dependiente & No es dependiente & No es dependiente\\
+\hline
+\end{tabular}
+\caption{Resumen de los criterios espec\'ificos de las APIs}
+\label{sec:resumen-apis-2}
+\end{table}
+
+
+\subsection{Librer\'ias/Frameworks}
+
+A continuaci\'on, las tablas~\ref{sec:resumen-libs} y~\ref{sec:resumen-libs-2} muestran una comparaci\'on entre las librer\'ias presentadas, respecto a los criterios espec\'ificos
+para \'esta categor\'ia
+
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+                                  &  Sphinx 4 & PocketSphinx & HTK \\
+\hline
+Empresa o Instituci\'on Responsable & Universidad \foreign{Carnegie Mellon} & Universidad \foreign{Carnegie Mellon} & Universidad de Cambridge \\
+Precio & Gratuito & Gratuito & Gratuito \\
+Licencia & BSD, aunque el componente \foreign{Java Speech API} no es de C\'odigo Abierto & BSD simplificada & C\'odigo fuente modificable, se prohibe su redistribuci\'on. Los generados pueden redistribuirse\\
+Soporte para m\'ultiples idiomas & 8 idiomas. Se pueden incorporar m\'as modelos para otros idiomas & Mismos modelos que Sphinx 4 & No brinda soporte, pero provee las herramientas necesarias\\
+Dependencia de Plataforma & No es dependiente, solo depende de la M\'aquina Virtual de Java & Sistemas basados en Unix, Android, Windows, iOS y Kindle &  Basados en Unix y Windows \\
+Modelos de Lenguaje Aceptados & Basados en gram\'aticas JGSF, en bigramas y trigamas en formato ARPA &  Mismos modelos que Sphinx 4 &  Mismos modelos que Sphinx 4 \\
+Modelos Ac\'usticos Aceptados & Modelo propio & Igual que Sphinx 4 &  Modelo propio \\
+Uso de Memoria & No se recomienda para sistemas de poca memoria & Muy reducido en comparaci\'on a Sphinx 4 & Dependiente de la aplicaci\'on. Por ejemplo: 150 MB para generar modelos para un sistema de dictado \\
+\hline
+\end{tabular}
+\caption{Resumen de los criterios espec\'ificos de las Librer\'ias/Frameworks}
+\label{sec:resumen-libs}
+\end{table}
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
+\hline
+                                  &  Julius & Kaldi \\
+\hline
+Empresa o Instituci\'on Responsable &  \foreign{Interactive Speech Technology Consortium} & Agencia Tecnológica de República Checa \\
+Precio & Gratuito & Gratuito \\
+Licencia & BSD & Apache 2.0 \\
+Soporte para m\'ultiples idiomas &  Japon\'es e Ingl\'es. Puede extenderse para otros idiomas &  No brinda soporte, pero provee las herramientas necesarias \\
+Dependencia de Plataforma & Basados en Unix y Windows & Basados en Unix y Windows \\
+Modelos de Lenguaje Aceptados & Basados en gram\'aticas y modelos en formato ARPA & Modelos en formato FST \\
+Modelos Acústicos Aceptados & Igual que HTK & Modelo propio \\
+Uso de Memoria & Bajo, 64 MB para un vocabulario de 20 mil palabras & \\
+\hline
+\end{tabular}
+\caption{Resumen de los criterios espec\'ificos de las Librer\'ias/Frameworks}
+\label{sec:resumen-libs-2}
+\end{table}
