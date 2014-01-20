@@ -2,7 +2,12 @@
 \section{Modelo de Proceso Basado en HMM}
 \label{sec:ModeloHMM}
 
-Para un lenguaje $L$ y una entrada ac\'ustica $X$, el problema del reconocimiento del habla puede definirse como:
+\input{proceso/hmm}
+
+\subsection{El Reconocimiento del Habla como Problema Estad{\'\i}stico}
+
+Para un lenguaje $L$ y una entrada ac\'ustica $X$, el problema del reconocimiento del habla puede definirse 
+como \cite{Jurafsky}:
 
 \begin{quote}
 \emph{La b\'usqueda de la oraci\'on m\'as probable perteneciente al lenguaje L, dada la entrada ac\'ustica X.}
@@ -10,66 +15,81 @@ Para un lenguaje $L$ y una entrada ac\'ustica $X$, el problema del reconocimient
 
 La secuencia de observaciones ac\'usticas $O$ puede representarse como:
 
-\begin{equation*}
-O = o_1,o_2,o_3,\ldots,o_N
-\end{equation*}
+\begin{align}
+O = o_1,o_2,o_3,\ldots,o_T\label{eq:asrO}
+\end{align}
 
-donde la se\~nal de voz fue dividida en $N$ muestras de igual duraci\'on.
+donde la se\~nal de voz fue dividida en $T$ muestras de igual duraci\'on.
 
 La oraci\'on de salida, a su vez, puede representarse como:
 
-\begin{equation*}
-\hat{W}  = w_1,w_2,w_3,\ldots,w_M
-\end{equation*}
+\begin{align}
+\hat{W}  = w_1,w_2,w_3,\ldots,w_M\label{eq:asrW}
+\end{align}
 
 donde la cadena est\'a compuesta por $M$ palabras.
 
 De esta manera, la definici\'on introducida anteriormente puede expresarse matem\'aticamente como:
 
-\begin{equation*}
-\hat{W} = \argmax_{W \in L} P(W|X)
-\end{equation*}
+\begin{align}
+\hat{W} = \argmax_{W \in L} P(W|O)
+\end{align}
 
 Usando la Regla de Bayes la expresi\'on anterior puede reescribirse como:
 
-\begin{equation*}
-\hat{W} = \argmax_{W \in L} \frac{P(X|W)P(W)}{P(X)}
-\end{equation*}
+\begin{align}
+\hat{W} = \argmax_{W \in L} \frac{P(O|W)P(W)}{P(O)}
+\end{align}
 
 Como se desea obtener la oraci\'on con mayor probabilidad dada una entrada ac\'ustica, la entrada es
-la misma para todas las oraciones evaluadas y su probabilidad de ocurrencia $P(X)$ se mantiene constante.
-Puesto de otra manera, el t\'ermino $P(X)$ es independiente de $W$, por lo cual puede despreciarse. 
+la misma para todas las oraciones evaluadas y su probabilidad de ocurrencia $P(O)$ se mantiene constante.
+Puesto de otra manera, el t\'ermino $P(O)$ es independiente de $W$, por lo cual puede despreciarse. 
 
 Por tanto:
 
-\begin{equation*}
-\hat{W} = \argmax_{W \in L} P(X|W)P(W)
-\end{equation*}
+\begin{align}
+\hat{W} = \argmax_{W \in L} P(O|W)P(W)
+\end{align}
 
 El primer t\'ermino representa la probabilidad de una entrada ac\'ustica dada una secuencia de palabras, tambi\'en
-conocida como verosimilitud de observaci\'on o modelo ac\'ustico y el segundo es la probabilidad \foreign{a priori}
-de ocurrencia de una secuencia de palabras, tambi\'en conocida como probabilidad previa o modelo de lenguaje. Esto es:
+conocida como verosimilitud de observaci\'on o modelo ac\'ustico. El segundo t\'ermino es la probabilidad 
+\foreign{a priori} de ocurrencia de una secuencia de palabras, tambi\'en conocida como probabilidad previa o 
+modelo de lenguaje. Esto es:
 
-\begin{equation*}
-\hat{W} = \argmax_{W \in L} \overbrace{P(X|W)}^\text{M. ac\'ustico}\overbrace{P(W)}^\text{M. de lenguaje}
-\end{equation*}
+\begin{align}
+\hat{W} = \argmax_{W \in L} \overbrace{P(O|W)}^\text{M. ac\'ustico}\overbrace{P(W)}^\text{M. de lenguaje}
+\label{eq:asrFundamental}
+\end{align}
 
 Esta ecuaci\'on es el fundamento del enfoque estad{\'\i}stico al problema del reconocimiento del habla, base de los
 sistemas \mbox{modernos \cite{RabinerStatistical2006}}.
 
-El proceso b\'asico del reconocimiento del habla puede descomponerse en tres fases, cada una de las cuales recibe
-datos de entrada y produce una salida determinada.
+\begin{figure}[H] 
+\centering
+\includegraphics[width=0.8\textwidth]{./graphics/proceso.png}
+\caption{Proceso b\'asico del reconocimiento del habla. }
+\label{figure:proceso}
+\end{figure}
+
+La figura \ref{figure:proceso} ilustra de modo general la arquitectura de un sistema de reconocimiento del habla.
+El proceso b\'asico del reconocimiento del habla, puede descomponerse en dos etapas o fases, cada una de las cuales
+recibe una entrada (o varias) y produce una salida determinada.
 
 %Figura Jurafsky
 \begin{itemize}
-\item La primera fase o \emph{extracci\'on de caracter{\'\i}sticas} produce vectores de caracter{\'\i}sticas representativos de la se\~nal de voz.
-\item La segunda fase o \emph{estimaci\'on de verosimilitud de fonemas} permite estimar la probabilidad de un fonema para cada trama o muestra de la entrada ac\'ustica en base a los vectores de caracter{\'\i}sticas.
-\item La tercera fase o \emph{decodificaci\'on}, produce la secuencia de palabras m\'as probable en base a un diccionario de pronunciaciones modelado mediante un modelo oculto de Markov, una gram\'atica basada en n-gramas y la estimaci\'on de probabilidad calculada en la fase anterior.
+\item La primera fase o \emph{extracci\'on de caracter{\'\i}sticas} tiene como objetivo caracterizar la se\~nal
+de voz para obtener una representaci\'on adecuada para el decodificador. Para tal efecto, produce vectores de
+caracter{\'\i}sticas espectrales a partir del sonido que recibe como entrada.
+\item La segunda fase o \emph{decodificaci\'on} tiene como objectivo producir la secuencia de palabras m\'as probable
+dados los vectores de caracter{\'\i}sticas resultantes de la fase anterior. Para ello se sirve un modelo ac\'ustico, un
+modelo de lenguaje y un algoritmo de decodificaci\'on.
 \end{itemize}
 
-Las siguientes secciones explican de manera m\'as detallada los conceptos, metodolog{\'\i}as y algoritmos relacionados a cada fase.
+Las siguientes secciones explican de manera m\'as detallada los conceptos y algoritmos relacionados a cada fase.
+Tanto el modelo ac\'ustico como el modelo de lenguaje pueden requerir una fase de entrenamiento, 
+previa a la utilizaci\'on del sistema de reconocimiento del habla.
+Por motivos de claridad, los detalles de esta fase se presentan en \'ultimo lugar.
 
 \input{proceso/FeatureExtraction}
-\input{proceso/PhoneLikelihoodEstimation}
 \input{proceso/Decoding}
 \input{proceso/Training}

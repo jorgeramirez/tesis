@@ -2,65 +2,82 @@
 \subsection{Fase Previa: Entrenamiento}
 \label{sec:training}
 
-Para que el proceso que se ha presentado en las secciones anteriores funcione, es necesaria una fase
-previa de entrenamiento de los modelos probabil{\'\i}sticos que componen el reconocedor del habla. 
+El proceso b\'asico que se describi\'o en las secciones anteriores requiere de modelos probabil{\'\i}sticos para
+solucionar el problema del reconocimiento del habla. Para definir estos modelos es necesaria una
+fase previa de entrenamiento, durante la cual se utilizan corpus de sonido y texto, denominados tambi\'en
+como datos de entrenamiento.
 
-Los cuatro modelos probabil{\'\i}sticos que deben entrenarse son \cite{Jurafsky}:
-\begin{itemize}
-	\item Modelo oculto de Markov L\'exico: la estructura del grafo de estados
-	\item Probabilidades del modelo de lenguaje: $P(W)$
-	\item Verosimilitudes de observaci\'on: $b_j(o_t)$
-	\item Probabilidades de transici\'on: $a_{ij}$
-\end{itemize}
+\subsubsection{Modelo de Lenguaje}
 
-Para ello se cuenta con \cite{Jurafsky}:
-\begin{itemize}
-	\item  Un corpus de voz, compuesto por una colecci\'on de grabaciones de voz junto
-	con sus transcripciones de texto.
-	\item  Un corpus mucho mayor de texto para entrenar el modelo de lenguaje, compuesto por las transcripciones
-	del corpus de voz junto con otros textos similares.
-	\item A menudo, un corpus menor de voz etiquetado fon\'eticamente. Esto es, donde fragmentos
-	de la se\~nal est\'an asociados a su fonema correspondiente.
-\end{itemize}
+Para entrenar un modelo de lenguaje basado en n-gramas es necesario un corpus de texto que 
+sirva de ejemplo del lenguaje que busca reconocerse.
 
-\emph{Estructura del grafo de estados} 
+El modelo se entrena contando las ocurrencias de cada n-grama en el corpus de texto, para luego
+normalizar el conteo dividiendo sobre la cantidad total de n-gramas en el corpus.
+A continuaci\'on se utizan normalmente m\'etodos de reesstimaci\'on, de modo a mejorar las estimaciones 
+de n-gramas con un conteo muy bajo, o incluso igual a cero. Este proceso se conoce como suavizamiento
+del modelo.
 
-Se construye en base a diccionarios de pronunciaci\'on como el diccionario \mbox{CMUDdict \cite{CMUdict}}. 
-Los estados se definen de acuerdo a los fonemas, o en muchos casos de acuerdo a subdivisiones de estos, denominadas subfonemas.
+Finalmente, el conteo normalizado y suavizado de cada n-grama en el corpus del texto constituye su
+probabilidad \cite{CollinsLanguage}.
 
-\emph{Modelo de lenguaje} 
+Un modelo de lenguaje basado en gram\'aticas no requiere de entrenamiento previo, por lo cual puede
+utilizarse en casos en los cuales no se disponga de un corpus de texto de tama\~no suficiente.
+A\'un as{\'\i}, si se dispone de datos de entrenamiento, es posible incluir las probabilidades estimadas
+a partir del corpus en la gram\'atica \cite{huang-handbook10}.
 
-Un modelo basado en n-gramas se entrena contando las ocurrencias de cada n-grama en el corpus de texto, para luego 
-suavizar y normalizar cada conteo. As{\'\i}, el contador suavizado y normalizado de un n-grama constituye 
-su \mbox{probabilidad \cite{CollinsLanguage}}.
+\subsubsection{HMM: Estructura del grafo de estados}
+El conjunto de estados de cada HMM, $S$, y las transiciones entre estos estados se definen en base
+al diccionario fon\'etico. A modo de ejemplo, \mbox{CMUDdict \cite{CMUdict}} es un diccionario fon\'etico
+que contiene correspondencias entre palabras y las secuencias de fonemas que las componen para m\'as de
+125.000 palabras del idioma ingl\'es.
 
-\emph{Par\'ametros del modelo oculto de Markov} 
+\begin{figure}[H]
+\begin{lstlisting}
+HOUSE  HH AW1 S
+HOUSE'S  HH AW1 S IH0 Z
+HOUSEAL  HH AW1 S AH0 L
+HOUSEBOAT  HH AW1 S B OW2 T
+HOUSEBOATS  HH AW1 S B OW2 T S
+HOUSEBROKEN  HH AW1 S B R OW2 K AH0 N
+HOUSECLEANING  HH AW1 S K L IY2 N IH0 NG
+HOUSED  HH AW1 Z D
+HOUSEFUL  HH AW1 S F AH0 L
+HOUSEGUEST  HH AW1 S G EH0 S T
+\end{lstlisting}
+\caption{Extracto del diccionario fon\'etico CMUdict.}
+\end{figure}
 
-Las probabilidades de estimaci\'on se estiman inicialmente asumiendo que, para cada estado, cualquier transici\'on posible 
-a otro estado es igualmente probable. Las verosimilitudes de observaci\'on se estiman inicialmente mediante el peque\~no corpus 
+\subsubsection{HMM: Distribuciones de Probabilidad}
+Para cada HMM es necesario estimar los siguientes par\'ametros, definidos en la secci\'on \ref{sec:hmm}:
+	\begin{itemize}
+		\item Las probabilidades de estado inicial: $\pi_i$
+		\item Las probabilidades de transici\'on: $a_{ij}$
+		\item Las probabilidades de observaci\'on: $b_j(o_t)$ 
+	\end{itemize}
+
+Para esto se cuenta con \cite{Jurafsky}:
+	\begin{itemize}
+		\item  Un corpus de voz, compuesto por una colecci\'on de grabaciones de voz junto
+		con sus transcripciones de texto.
+		\item Un corpus de voz de menor tama\~no etiquetado fon\'eticamente. 
+		Esto es, donde fragmentos de la se\~nal est\'an asociados a su fonema correspondiente.
+	\end{itemize}
+
+La primera etapa del entrenamiento consiste en una estimaci\'on inicial de los par\'ametros en base a los
+datos de entrenamiento.
+
+Para las probabilidades de estado inicial, se asume que cualquier estado es igualmente probable 
+como estado inicial.De manera similar, para las probabilidades de transici\'on se asume que, para cada estado, cualquier transici\'on a otro estado es igualmente probable.
+
+Las probabilidades de observaci\'on se estiman inicialmente mediante el peque\~no corpus 
 de voz etiquetado fon\'eticamente.
 
-Una vez realizada la estimaci\'on inicial, el siguiente paso para entrenar estos par\'ametros difiere dependiendo de la utilizaci\'on
-de redes neuronales o funciones Gaussianas \cite{Jurafsky}. A continuaci\'on se presenta brevemente el enfoque para cada caso, 
-incluyendo referencias a materiales que desarrollan los conceptos de manera m\'as extendida:
+La siguiente etapa var{\'\i}a de acuerdo al m\'etodo escogido para la definici\'on de las probabilidades
+de observaci\'on, $b_j$. Si se utilizan funciones Gaussianas, el cual constituye el caso m\'as
+frecuente, las estimaciones iniciales se mejoran mediante el algoritmo de Baum--Welch.
 
-\begin{itemize}
-	\item \emph{Redes Neuronales}: el entrenamiento de la red neuronal se realiza utilizando el algoritmo de Propagaci\'on hacia 
-	Atr\'as \cite{Russell2003Learning}. Este algoritmo requiere conocer el fonema correspondiente a cada observación. 
-
-	Para ello se utiliza el alineamiento Viterbi forzado \cite{JelinekStatistical1998}, el cual recibe los vectores de características y la secuencia de palabras correctas y produce la mejor secuencia de estados, donde cada estado puede alinearse a un vector. 
-
-	Se le denomina \emph{forzado} debido a que puede verse como el algoritmo de Viterbi con una restricción más: debe encontrar el mejor camino 
-	\emph{que pase por una secuencia de palabras dada}.
-
-	\item \emph{Distribuci\'on Gaussiana}: para el caso de las funciones de distribución de probabilidad Gaussianas, se utiliza
-	el algoritmo de \mbox{Avance-Retroceso \cite{Jurafsky}}.
-
-	Este algoritmo estima dos probabilidades, llamadas \emph{de avance} y \emph{de retroceso} dadas las estimaciones iniciales de
-	$a$ y $b$. Luego, en base a estas probabilidades se mejora la estimación. Este proceso se repite hasta que los valores convergen.
-\end{itemize}
-
-
-
-
-
+El algoritmo de Baum--Welch calcula dos probabilidades adicionales en base a las estimaciones
+iniciales de $a_{ij}$ y $b_j(o_t)$, denominadas probabilidad de avance y probabilidad de retroceso. 
+Utilizando estas probabilidades, se mejoran las estimaciones $a_{ij}$ y $b_j(o_t)$ mediante
+un proceso iterativo que se repite hasta que los valores converjan \cite{Rabiner89atutorial}.
