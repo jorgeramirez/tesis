@@ -1,7 +1,7 @@
 \section{Tasa de Error por Palabras}
 \label{sec:wer}
 
-La Tasa de error por palabra (WER) es una m\'etrica de evaluaci\'on est\'andar del desempe\~no de un sistema de
+La tasa de error por palabra (\gls{wer}) es una m\'etrica de evaluaci\'on est\'andar del desempe\~no de un sistema de
 reconocimiento del habla. Su c\'alculo se basa en qu\'e tanto la cadena retornada por el reconocedor,
 denominada hip\'otesis, difiere con respecto a la transcripci\'on correcta \cite{Jurafsky}. 
 Dada la transcripci\'on de referencia, para computar la tasa se debe calcular la distancia de edici\'on m\'inima
@@ -11,7 +11,7 @@ transcripción de referencia. Formalmente, la tasa se calcula de acuerdo a la ec
 
 \begin{equation}
 \label{eq:wer}
-    WER = \frac{I + E + S}{N} 
+    \gls{wer} = \frac{I + E + S}{N} 
 \end{equation}
 
 Donde
@@ -31,23 +31,23 @@ de grandes vocabularios (en Rumano) es de 90,41\%.
 \section{Factor de Tiempo Real}
 \label{sec:rtf}
 
-La velocidad de los sistemas de reconocimiento se miden en t\'erminos del Factor de Tiempo Real (RTF). 
+La velocidad de los sistemas de reconocimiento se miden en t\'erminos del factor de tiempo real (\gls{rtf}). 
 Toma un tiempo $T$ procesar una entrada de duraci\'on $D$ \cite{VimalaReview2012}. 
-Formalmente, el RTF se calcula de acuerdo a la ecuaci\'on \eqref{eq:rtf}
+Formalmente, el \gls{rtf} se calcula de acuerdo a la ecuaci\'on \eqref{eq:rtf}
 
 \begin{equation}
 \label{eq:rtf}
     RTF = \frac{T}{D}
 \end{equation}
 
-En otras palabras, el RTF es la razón entre el tiempo que le toma al sistema proveer un resultado y la
+En otras palabras, el \gls{rtf} es la razón entre el tiempo que le toma al sistema proveer un resultado y la
 duración del sonido que se recibió como entrada. Cuando el factor de tiempo real es menor o igual que 1, 
 se dice que el procesamiento se realiza en tiempo real.
 
 La llegada de sistemas de reconocimiento del habla en tiempo real a los dispositivos m\'oviles y sistemas embebidos dio
 oportunidad a uno nuevo rango de investigaciones relacionadas a la interacci\'on humano-computadora. PocketSphinx, es
-un sistema de reconocimiento para sistemas embebidos con el cual se han obtenido resultados de RTF igual a 0.87 
-y WER igual a 13,95\% para un vocabulario de 1000 palabras \cite{HugginsDainesPocketSphinx2006}.
+un sistema de reconocimiento para sistemas embebidos con el cual se han obtenido resultados de \gls{rtf} igual a 0.87 
+y \gls{wer} igual a 13,95\% para un vocabulario de 1000 palabras \cite{HugginsDainesPocketSphinx2006}.
 
 \section{Perplejidad}
 \label{sec:perplexity}

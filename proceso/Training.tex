@@ -26,8 +26,8 @@ utilizarse en casos en los cuales no se disponga de un corpus de texto de tama\~
 A\'un as{\'\i}, si se dispone de datos de entrenamiento, es posible incluir las probabilidades estimadas
 a partir del corpus en la gram\'atica \cite{huang-handbook10}.
 
-\subsubsection{HMM: Estructura del grafo de estados}
-El conjunto de estados de cada HMM, $S$, y las transiciones entre estos estados se definen en base
+\subsubsection{\gls{hmm}: Estructura del grafo de estados}
+El conjunto de estados de cada \gls{hmm}, $S$, y las transiciones entre estos estados se definen en base
 al diccionario fon\'etico. A modo de ejemplo, \mbox{CMUDdict \cite{CMUdict}} es un diccionario fon\'etico
 que contiene correspondencias entre palabras y las secuencias de fonemas que las componen para m\'as de
 125.000 palabras del idioma ingl\'es.
@@ -45,11 +45,11 @@ HOUSED  HH AW1 Z D
 HOUSEFUL  HH AW1 S F AH0 L
 HOUSEGUEST  HH AW1 S G EH0 S T
 \end{lstlisting}
-\caption{Extracto del diccionario fon\'etico CMUdict.}
+\caption{Extracto del diccionario fon\'etico CMUdict \cite{CMUdict}.}
 \end{figure}
 
-\subsubsection{HMM: Distribuciones de Probabilidad}
-Para cada HMM es necesario estimar los siguientes par\'ametros, definidos en la secci\'on \ref{sec:hmm}:
+\subsubsection{\gls{hmm}: Distribuciones de Probabilidad}
+Para cada \gls{hmm} es necesario estimar los siguientes par\'ametros, definidos en la secci\'on \ref{sec:hmm}:
 	\begin{itemize}
 		\item Las probabilidades de estado inicial: $\pi_i$
 		\item Las probabilidades de transici\'on: $a_{ij}$

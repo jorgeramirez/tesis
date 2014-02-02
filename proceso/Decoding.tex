@@ -142,10 +142,11 @@ los siguientes par\'ametros:
 	Como un vector de caracter{\'\i}sticas puede tomar un gran n\'umero de valores, los m\'etodos utilizados con
 	mayor frecuencia en la actualidad coinciden en tratarlo como una variable continua.
 
-	Una funci\'on de densidad de probabilidad (FDP por sus siglas en ingl\'es) de una variable aleatoria continua describe la probabilidad relativa seg\'un la cual dicha variable aleatoria tomar\'a determinado valor \cite{Evans2011}.
+	Una \gls{fdp} de una variable aleatoria continua describe la probabilidad relativa seg\'un la cual 
+	dicha variable aleatoria tomar\'a determinado valor \cite{Evans2011}.
 
 	El m\'etodo m\'as extendido para calcular $b_j(o_t)$ se basa en funciones Gaussianas para definir 
-	una FDP \cite{Jurafsky}.
+	una \gls{fdp} \cite{Jurafsky}.
 	La versi\'{o}n simple del m\'etodo Gaussiano asume que los valores del vector de observaciones $o_t$ presentan una distribuci\'on normal. Sin entrar en detalles matem\'aticos, se presenta la definici\'on formal 
 	de $b_j(o_t)$ para este m\'etodo.
 
@@ -166,7 +167,7 @@ los siguientes par\'ametros:
 	Existen adem\'as otros m\'etodos para definir la probabilidad de observaci\'on, como la cuantizaci\'on
 	vectorial \cite{Burton1983} y las redes neuronales \cite{KristineApplying1995}.
 
-	En general, los par\'ametros probabil{\'\i}sticos del HMM se calculan durante la fase de entrenamiento,
+	En general, los par\'ametros probabil{\'\i}sticos del \gls{hmm} se calculan durante la fase de entrenamiento,
 	antes de la utilizaci\'on del sistema de reconocimiento del habla. Estos valores incluyen:
 
 	\begin{itemize}
@@ -183,7 +184,7 @@ los siguientes par\'ametros:
 \begin{figure}[H] 
 \centering
 \includegraphics[width=0.5\textwidth]{./graphics/hmm_palabra.png}
-\caption{Posible representaci\'on ac\'ustica de la palabra ``mes''. }
+\caption{Posible representaci\'on ac\'ustica de la palabra ``mes''. Basado en \cite{Jurafsky}.}
 \label{figure:hmm-palabra}
 \end{figure}
 
@@ -191,21 +192,21 @@ La cantidad de modelos ocultos de Markov depende del enfoque del modelo ac\'usti
 que \cite{Livescu2012}:
 
 \begin{itemize}
- 	\item El modelo define un HMM por palabra:
+ 	\item El modelo define un \gls{hmm} por palabra:
 
 
  		Este tipo de modelo requiere de ejemplos de pronunciaci\'on de cada palabra del lenguaje para 
  		su entrenamiento, por lo cual es raramente utilizado en la pr\'actica.
- 	\item El modelo define un HMM por fonema:
+ 	\item El modelo define un \gls{hmm} por fonema:
 
 
  		Este tipo de modelo permite el reconocimiento
  		de palabras para las cuales no se cuenta con ejemplos de pronunciaci\'on.
- 	\item El modelo define un HMM por fonema, dependiendo del contexto:
+ 	\item El modelo define un \gls{hmm} por fonema, dependiendo del contexto:
 
 
  		El sonido particular de un fonema puede variar de acuerdo al fonema anterior y al siguiente.
- 		Este tipo de modelo define un HMM para cada una de esas variaciones, y es utilizado
+ 		Este tipo de modelo define un \gls{hmm} para cada una de esas variaciones, y es utilizado
  		en la mayor{\'\i}a de los sistemas de reconocimiento del habla \cite{Odell95theuse}.
  \end{itemize}  
 
@@ -213,16 +214,16 @@ que \cite{Livescu2012}:
 El objetivo de la fase de decodificaci\'on puede ser considerado esencialmente como un problema de 
 b\'usqueda \cite{huang-handbook10}.
 El algoritmo decodificador intenta encontrar la secuencia de estados m\'as probable dada la secuencia de
-vectores de caracter{\'\i}sticas que recibe como entrada, en un \'unico HMM que constituye su espacio de b\'usqueda.
+vectores de caracter{\'\i}sticas que recibe como entrada, en un \'unico \gls{hmm} que constituye su espacio de b\'usqueda.
 
 Teniendo en cuenta que el modelo ac\'ustico est\'a constituido por varios modelos ocultos de Markov, se plantea
-la necesidad de definir un \'unico HMM para el algoritmo decodificador. Suponiendo que el modelo ac\'ustico define
-un HMM por fonema, esto puede hacerse de la siguiente manera:
+la necesidad de definir un \'unico \gls{hmm} para el algoritmo decodificador. Suponiendo que el modelo ac\'ustico define
+un \gls{hmm} por fonema, esto puede hacerse de la siguiente manera:
 
 \begin{enumerate}
-	\item Se concatenan los modelos ocultos de Markov de los fonemas de manera a obtener un HMM por cada palabra. 
+	\item Se concatenan los modelos ocultos de Markov de los fonemas de manera a obtener un \gls{hmm} por cada palabra. 
 	La probabilidad de transici\'on entre fonemas est\'a dada por el diccionario fon\'etico.
-	\item Se concatenan los modelos ocultos de Markov de las palabras de manera a obtener un \'unico HMM que
+	\item Se concatenan los modelos ocultos de Markov de las palabras de manera a obtener un \'unico \gls{hmm} que
 	constituye el espacio de b\'usqueda. La probabilidad de transici\'on entre palabras est\'a dada por el modelo
 	de lenguaje.
 \end{enumerate}
@@ -230,7 +231,7 @@ un HMM por fonema, esto puede hacerse de la siguiente manera:
 \begin{figure}[H] 
 \centering
 \includegraphics[width=0.5\textwidth]{./graphics/espacio.png}
-\caption{Espacio de b\'usqueda para un lenguaje simple de cuatro palabras. }
+\caption{Espacio de b\'usqueda para un lenguaje simple de cuatro palabras. Traducido a partir de \cite{RenalsSearch}.}
 \label{figure:espacio-busqueda}
 \end{figure}
 

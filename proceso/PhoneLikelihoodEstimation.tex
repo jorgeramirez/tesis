@@ -52,14 +52,13 @@ Otro m\'etodo popularmente utilizado para modelar una PDF sobre un espacio cont\
 De manera simplificada, una Red Neuronal es un conjunto de unidades computacionales unidas por enlazes ponderados. La red recibe
 como entrada un vector de valores y retorna como salida otro vector de valores.
 
-Este enfoque utiliza elementos del HMM (por ejemplo, el grafo que representa la pronunciaci\'on de una palabra) y un Perceptr\'on
-Multicapa (o MLP por sus siglas en ingl\'es) para calcular la probabilidad de las observaciones, por eso a este m\'etodo se lo
-conoce com\'unmente como enfoque H\'ibrido HMM-MLP. La entrada a esta red es un vector de caracter\'isticas en un tiempo $t$ y
+Este enfoque utiliza elementos del \gls{hmm} (por ejemplo, el grafo que representa la pronunciaci\'on de una palabra) y un \gls{MLP} para calcular la probabilidad de las observaciones, por eso a este m\'etodo se lo
+conoce com\'unmente como enfoque H\'ibrido \gls{hmm}-\gls{MLP}. La entrada a esta red es un vector de caracter\'isticas en un tiempo $t$ y
 otros vectores adicionales. Para que la red pueda utilizarse para computar la probabilidad de un estado $j$ dado un vector
 de observaci\'ion $o_t$, formalmente $P(j|o_t)$, debe establecerse como restricci\'on que todas las unidades de salida sumen 1.
 
-El MLP calcula la probabilidad $P(q_j|o_t)$ pero la probabilidad $b_j(o_t)$ que se busca es $P(o_t|q_j)$. Utilizando el teorema de
-Bayes se puede obtener la probabilidad deseada a partir de la computada por el MLP:
+El \gls{MLP} calcula la probabilidad $P(q_j|o_t)$ pero la probabilidad $b_j(o_t)$ que se busca es $P(o_t|q_j)$. Utilizando el teorema de
+Bayes se puede obtener la probabilidad deseada a partir de la computada por el \gls{MLP}:
 
 \begin{equation}
     p(q_j|o_t) = \frac{P(o_t|q_j)p(q_j)}{p(o_t)}

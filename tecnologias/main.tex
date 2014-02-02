@@ -61,13 +61,13 @@ herramientas presentadas.
 \footnotesize
 \begin{tabular}{|p{3.5cm}|>{\centering}p{3.5cm}|>{\centering}p{3.5cm}|>{\centering}p{3.5cm}|}
 \hline
-                               & Aplicaciones             &  APIs                            & Librer\'ias/Frameworks \tabularnewline
+                               & Aplicaciones             &  \gls{api}s                            & Librer\'ias/Frameworks \tabularnewline
 \hline
 Conocimiento T\'ecnico         &     Bajo                    & Medio                            & Alto    \tabularnewline
 Productividad                  &     Alto                    & Medio                            & Bajo    \tabularnewline
 Flexibilidad                   &     Bajo                    & Medio                            & Alto    \tabularnewline
-Alternativas Propietarias      & \begin{itemize} \item Dragon Natural Speaking \end{itemize}  & \begin{itemize} \item Web Speech API \item AT\&T Speech API \item Microsoft Speech API \item iSpeech API \item Dragon Mobile \end{itemize}  &  \tabularnewline
-Alternativas de Código abierto & \begin{itemize} \item Simon \item Palaver \end{itemize}          &                                  & \begin{itemize} \item Sphinx 4 \item PocketSphinx \item HTK \item Julius \item Kaldi \end{itemize} \tabularnewline
+Alternativas Propietarias      & \begin{itemize} \item Dragon Natural Speaking \end{itemize}  & \begin{itemize} \item Web Speech \gls{api} \item \gls{att} Speech \gls{api} \item Microsoft Speech \gls{api} \item iSpeech \gls{api} \item Dragon Mobile \end{itemize}  &  \tabularnewline
+Alternativas de Código abierto & \begin{itemize} \item Simon \item Palaver \end{itemize}          &                                  & \begin{itemize} \item Sphinx 4 \item PocketSphinx \item \gls{htk} \item Julius \item Kaldi \end{itemize} \tabularnewline
 \hline
 \end{tabular}
 \caption{Resumen general de las herramientas}
@@ -99,7 +99,7 @@ Soporte para dispositivos m\'oviles   & Si soporta                              
 
 \subsection{Interfaz de Programaci\'on de Aplicaciones}
 
-En las tablas~\ref{sec:resumen-apis} y~\ref{sec:resumen-apis-2} se puede observar una comparaci\'on entre las APIs presentadas, respecto a los criterios espec\'ificos
+En las tablas~\ref{sec:resumen-apis} y~\ref{sec:resumen-apis-2} se puede observar una comparaci\'on entre las \gls{api}s presentadas, respecto a los criterios espec\'ificos
 para \'esta categor\'ia
 
 
@@ -108,10 +108,10 @@ para \'esta categor\'ia
 \footnotesize
 \begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
 \hline
-                                      &  Web Speech API & AT\&T Speech API & Microsoft Speech API \\
+                                      &  Web Speech \gls{api} & \gls{att} Speech \gls{api} & Microsoft Speech \gls{api} \\
 \hline
-Empresa o Instituci\'on responsable & Especificaci\'on publicada por \foreign{Speech API Community Group}. Implementado actualmente por Google  &  AT\&T Inc.  & Microsoft\\
-Precio                              & Gratuita, a trav\'es de Google Chrome  & Un mill\'on de llamadas a la API por 99\$ anuales. Un centavo por llamada extra  & Gratis\\
+Empresa o Instituci\'on responsable & Especificaci\'on publicada por \foreign{Speech \gls{api} Community Group}. Implementado actualmente por Google  &  \gls{att} Inc.  & Microsoft\\
+Precio                              & Gratuita, a trav\'es de Google Chrome  & Un mill\'on de llamadas a la \gls{api} por 99\$ anuales. Un centavo por llamada extra  & Gratis\\
 Soporte para m\'ultiples idiomas    & Soporta m\'as  30 idiomas & Ingl'es (principal) y Espa\~nol (reducido) & Soporta 26 idiomas\\
 Soporte Offline                     & No por el momento  & No  & Si \\
 Dependencia de Plataforma           & No es dependiente  & No es dependiente & Si es dependiente, solo para \emph{Microsoft Windows} \\
@@ -127,7 +127,7 @@ Dependencia de Plataforma           & No es dependiente  & No es dependiente & S
 \footnotesize
 \begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
 \hline
-                                      &  WAMI & iSpeech API & Dragon Mobile \\
+                                      &  \gls{wami} & iSpeech \gls{api} & Dragon Mobile \\
 \hline
 Empresa o Instituci\'on responsable & Instituto Tecnológico de Massachusetts & \foreign{iSpeech}  & \foreign{Nuance Communications} \\
 Precio &  Gratuita, C\'odigo Abierto  & Gratis para aplicaciones no comerciales. De 0.02\$ a 0.0001\$ para otros usos & Gratis para aplicaciones no comerciales. De 0.08\$ a 0.006\$ para otros usos. Inversi\'on m\'inima de 3000\$ para comercializar una aplicaci\'on \\
@@ -152,14 +152,14 @@ para \'esta categor\'ia
 \footnotesize
 \begin{tabular}{|p{3.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
 \hline
-                                  &  Sphinx 4 & PocketSphinx & HTK \\
+                                  &  Sphinx 4 & PocketSphinx & \gls{htk} \\
 \hline
 Empresa o Instituci\'on Responsable & Universidad \foreign{Carnegie Mellon} & Universidad \foreign{Carnegie Mellon} & Universidad de Cambridge \\
 Precio & Gratuito & Gratuito & Gratuito \\
-Licencia & BSD, aunque el componente \foreign{Java Speech API} no es de C\'odigo Abierto & BSD simplificada & C\'odigo fuente modificable, se prohibe su redistribuci\'on. Los generados pueden redistribuirse\\
+Licencia & \gls{bsd}, aunque el componente \foreign{Java Speech \gls{api}} no es de C\'odigo Abierto & \gls{bsd} simplificada & C\'odigo fuente modificable, se prohibe su redistribuci\'on. Los generados pueden redistribuirse\\
 Soporte para m\'ultiples idiomas & 8 idiomas. Se pueden incorporar m\'as modelos para otros idiomas & Mismos modelos que Sphinx 4 & No brinda soporte, pero provee las herramientas necesarias\\
 Dependencia de Plataforma & No es dependiente, solo depende de la M\'aquina Virtual de Java & Sistemas basados en Unix, Android, Windows, iOS y Kindle &  Basados en Unix y Windows \\
-Modelos de Lenguaje Aceptados & Basados en gram\'aticas JGSF, en bigramas y trigamas en formato ARPA &  Mismos modelos que Sphinx 4 &  Mismos modelos que Sphinx 4 \\
+Modelos de Lenguaje Aceptados & Basados en gram\'aticas JGSF, en bigramas y trigamas en formato \gls{arpa} &  Mismos modelos que Sphinx 4 &  Mismos modelos que Sphinx 4 \\
 Modelos Ac\'usticos Aceptados & Modelo propio & Igual que Sphinx 4 &  Modelo propio \\
 Uso de Memoria & No se recomienda para sistemas de poca memoria & Muy reducido en comparaci\'on a Sphinx 4 & Dependiente de la aplicaci\'on. Por ejemplo: 150 MB para generar modelos para un sistema de dictado \\
 \hline
@@ -177,11 +177,11 @@ Uso de Memoria & No se recomienda para sistemas de poca memoria & Muy reducido e
 \hline
 Empresa o Instituci\'on Responsable &  \foreign{Interactive Speech Technology Consortium} & Agencia Tecnológica de República Checa \\
 Precio & Gratuito & Gratuito \\
-Licencia & BSD & Apache 2.0 \\
+Licencia & \gls{bsd} & Apache 2.0 \\
 Soporte para m\'ultiples idiomas &  Japon\'es e Ingl\'es. Puede extenderse para otros idiomas &  No brinda soporte, pero provee las herramientas necesarias \\
 Dependencia de Plataforma & Basados en Unix y Windows & Basados en Unix y Windows \\
-Modelos de Lenguaje Aceptados & Basados en gram\'aticas y modelos en formato ARPA & Modelos en formato FST \\
-Modelos Acústicos Aceptados & Igual que HTK & Modelo propio \\
+Modelos de Lenguaje Aceptados & Basados en gram\'aticas y modelos en formato \gls{arpa} & Modelos en formato \gls{fst} \\
+Modelos Acústicos Aceptados & Igual que \gls{htk} & Modelo propio \\
 Uso de Memoria & Bajo, 64 MB para un vocabulario de 20 mil palabras & \\
 \hline
 \end{tabular}

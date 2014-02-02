@@ -7,8 +7,8 @@ se presentan algunos de estos modelos.
 \subsection{Distorsi\'on Din\'amica Temporal}
 \label{sec:dtw}
 
-La Distorsi\'on Din\'amica Temporal (o DTW por sus siglas en ingl\'es) es una t\'ecnica t\'ipica del enfoque
-basado en comparaci\'on de patrones \cite{GaikwadAReview2010}. Este m\'etodo permite encontrar una alineaci\'on \'optima 
+La \gls{dtw} es una t\'ecnica t\'ipica del enfoque basado en comparaci\'on de patrones \cite{GaikwadAReview2010}. 
+Este m\'etodo permite encontrar una alineaci\'on \'optima 
 entre dos secuencias que pueden variar en tiempo y velocidad, bajo ciertas restricciones \cite{MullerInformation2007}.
 Las secuencias se distorsionan de manera no lineal con respecto a la dimensi\'on tiempo para determinar una medida
 de similitud independiente a ciertas variaciones no lineales que ocurran sobre la dimensi\'on tiempo \cite{AnusuyaSpeech2009}.
@@ -29,17 +29,17 @@ se construye la matriz $C$ y se busca la trayectoria de deformaci\'on.}
 \label{figure:dtw}
 \end{figure}
 
-DTW ha probado ser un m\'etodo eficiente para el reconocimiento de palabras pronunciadas pausadamente \cite{MyersALevel1981} y ha sido
-adaptado para el reconocimiento de palabras enlazadas, con cierto nivel de 
-\mbox{\'exito \cite{MyersALevel1981, SakoeTwoLevel1979, RabinerApplication1980}}.
+\gls{dtw} ha probado ser un m\'etodo eficiente para el reconocimiento de palabras pronunciadas 
+pausadamente \cite{MyersALevel1981} y ha sido adaptado para el reconocimiento de palabras enlazadas,
+con cierto nivel de \mbox{\'exito \cite{MyersALevel1981, SakoeTwoLevel1979, RabinerApplication1980}}.
 
 \subsection{Redes Neuronales}
 \label{sec:otrosModelosANN}
 
-Como se mencion\'o anteriormente el concepto de Redes Neuronales Artificiales (RNA) aplicado a el reconocimiento
+Como se mencion\'o anteriormente el concepto de \gls{rna} aplicado a el reconocimiento
 del habla se volvi\'o a introcudir en los a\~nos 80, 
-y viene desarroll\'andose como m\'etodo alternativo desde entonces. Las RNA son capaces de resolver tareas de reconocimiento
-m\'as complicadas, pero no escalan tan bien como los HMM cuando se trata de grandes vocabularios \cite{VimalaReview2012}.
+y viene desarroll\'andose como m\'etodo alternativo desde entonces. Las \gls{rna} son capaces de resolver tareas de reconocimiento
+m\'as complicadas, pero no escalan tan bien como los \gls{hmm} cuando se trata de grandes vocabularios \cite{VimalaReview2012}.
 
 Existen dos enfoques b\'asicos para la clasificaci\'on del habla utilizando redes neuronales: est\'atico y din\'amico. En la
 clasificaci\'on est\'atica la red ve toda la entrada de voz a la vez, y toma una sola decisi\'on. Por otro lado, en el enfoque
@@ -50,5 +50,5 @@ La clasificaci\'on de fonemas, el reconocimiento de palabras pueden llevarse a c
 grado de precisi\'on utilizando m\'etodos est\'aticos o din\'amicos. Aunque el enfoque din\'amico, aplicado al reconocimiento de
 palabras, se adapta mejor a la variabilidad de duraci\'on de una palabra \cite{TebelskisSpeech1995}.
 
-Existen tambi\'en sistemas h\'ibridos RNA-HMM que utilizan las Redes Neuronales para el reconocimiento de fonemas y los Modelos
+Existen tambi\'en sistemas h\'ibridos \gls{rna}-\gls{hmm} que utilizan las Redes Neuronales para el reconocimiento de fonemas y los Modelos
 Ocultos de Markov para el modelo de lenguaje \cite{VimalaReview2012}.
