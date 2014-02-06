@@ -3,12 +3,12 @@
 \label{sec:tecnologias}
 
 En la actualidad existe un gran n\'umero de herramientas de software que pueden utilizarse para la implementaci\'on de un
-sistema de reconocimiento del habla. Si bien esta diversidad representa una ventaja, esto requiere
-la selecci\'on de la tecnolog{\'\i}a adecuada. Es selecci\'on conforma la primera tarea a llevar a
-cabo por las personas que deseen trabajar en esta \'area.
+sistema de reconocimiento del habla. Si bien esta diversidad representa una ventaja, se requiere
+la selecci\'on de la tecnolog{\'\i}a adecuada. Esta selecci\'on conforma la primera tarea a llevar a
+cabo por las personas que deseen desarrollar sistemas que incluyen reconocimiento.
 
-Este cap{\'\i}tulo presenta, categoriza y eval\'ua varias alternativas tecnolog{\'\i}cas disponibles, relacionadas
-al reconocimiento del habla, con el fin de facilitar la elecci\'on de la herramienta adecuada
+Este cap{\'\i}tulo presenta, categoriza y eval\'ua varias alternativas tecnol\'ogicas, relacionadas al reconocimiento del habla, 
+disponibles con el fin de facilitar la elecci\'on de la herramienta adecuada
 de acuerdo a las necesidades de cada caso. La siguiente clasificaci\'on y criterios que ser\'an presentados son
 una propuesta que forma parte de este trabajo de grado.
 
@@ -41,7 +41,7 @@ gu\'ia para la lectura de las secciones del mismo.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\linewidth]{./graphics/esquema-herramientas.png}
+\includegraphics[width=0.9\linewidth]{./graphics/esquema-herramientas.png}
 \caption{Esquema que presenta el contenido del cap\'itulo}
 \label{figure:esquema-herramientas}
 \end{figure}
@@ -65,8 +65,8 @@ herramientas presentadas.
 \hline
 Conocimiento T\'ecnico         &     Bajo                    & Medio                            & Alto    \tabularnewline
 Productividad                  &     Alto                    & Medio                            & Bajo    \tabularnewline
-Flexibilidad                   &     Bajo                    & Medio                            & Alto    \tabularnewline
-Alternativas Propietarias      & \begin{itemize} \item Dragon Natural Speaking \end{itemize}  & \begin{itemize} \item Web Speech \gls{api} \item \gls{att} Speech \gls{api} \item Microsoft Speech \gls{api} \item iSpeech \gls{api} \item Dragon Mobile \end{itemize}  &  \tabularnewline
+Flexibilidad                   &     Bajo                    & Medio                            & Alto    \tabularnewline \hline
+Alternativas Propietarias      & \begin{itemize} \item Dragon Natural Speaking \end{itemize}  & \begin{itemize} \item Web Speech \gls{api} \item \gls{att} Speech \gls{api} \item Microsoft Speech \gls{api} \item iSpeech \gls{api} \item Dragon Mobile \end{itemize}  &  \tabularnewline \hline
 Alternativas de Código abierto & \begin{itemize} \item Simon \item Palaver \end{itemize}          &                                  & \begin{itemize} \item Sphinx 4 \item PocketSphinx \item \gls{htk} \item Julius \item Kaldi \end{itemize} \tabularnewline
 \hline
 \end{tabular}
@@ -87,10 +87,10 @@ para \'esta categor\'ia
 \hline
                                       &  Simon                                                       &  Palaver                                       & Dragon Natural Speaking \\
 \hline
-Precio                                & Gratuito, C\'odigo Abierto                                   & Gratuito, C\'odigo Abierto                     & Desde 99\$  \\
-Soporte para m\'ultiples idiomas      & Si soporta                                                   & Si soporta                                     & Ingl\'es, Alem\'an, Franc\'es, Espa\~nol, Italiano y Holand\'es \\
-Facilidad de configuraci\'on          & F\'acilmente configurable, posee interfaz de configuraci\'on & Reducida, no posee interfaz de configuraci\'on & F\'acilmente configurable, posee interfaz de configuraci\'on \\
-Soporte para dispositivos m\'oviles   & Si soporta                                                   & No soporta                                     & Existen otros productos derivados para m\'oviles \\
+Precio                                & Gratuito                                                     & Gratuito                                       & Desde 99\$  \\
+Soporte para m\'ultiples idiomas      & Si                                                           & Si                                             & Ingl\'es, Alem\'an, Franc\'es, Espa\~nol, Italiano y Holand\'es \\
+Facilidad de configuraci\'on          & F\'acilmente configurable                                    & Reducida                                       & F\'acilmente configurable \\
+Soporte para dispositivos m\'oviles   & Si                                                           & No                                             & Si, mediante otros productos \\
 \hline
 \end{tabular}
 \caption{Resumen de los criterios espec\'ificos de las aplicaciones}
@@ -110,11 +110,11 @@ para \'esta categor\'ia
 \hline
                                       &  Web Speech \gls{api} & \gls{att} Speech \gls{api} & Microsoft Speech \gls{api} \\
 \hline
-Empresa o Instituci\'on responsable & Especificaci\'on publicada por \foreign{Speech \gls{api} Community Group}. Implementado actualmente por Google  &  \gls{att} Inc.  & Microsoft\\
-Precio                              & Gratuita, a trav\'es de Google Chrome  & Un mill\'on de llamadas a la \gls{api} por 99\$ anuales. Un centavo por llamada extra  & Gratis\\
-Soporte para m\'ultiples idiomas    & Soporta m\'as  30 idiomas & Ingl'es (principal) y Espa\~nol (reducido) & Soporta 26 idiomas\\
-Soporte Offline                     & No por el momento  & No  & Si \\
-Dependencia de Plataforma           & No es dependiente  & No es dependiente & Si es dependiente, solo para \emph{Microsoft Windows} \\
+Empresa o Instituci\'on responsable & \foreign{Speech API Community Group}. Implementado actualmente por \foreign{Google}  &  \gls{att} Inc.  & Microsoft\\
+Precio                              & Gratuito, a trav\'es de Google Chrome  & Un mill\'on de llamadas a la \gls{api} por 99\$ anuales. 0.01\$ por llamada extra  & Gratuito\\
+Soporte para m\'ultiples idiomas    & Si  & No, 2 idiomas & Si\\
+Soporte Offline                     & No  & No  & Si \\
+Dependencia de Plataforma           & No  & No & Si, solo para \emph{Microsoft Windows} \\
 \hline
 \end{tabular}
 \caption{Resumen de los criterios espec\'ificos de las APIs}
@@ -130,10 +130,10 @@ Dependencia de Plataforma           & No es dependiente  & No es dependiente & S
                                       &  \gls{wami} & iSpeech \gls{api} & Dragon Mobile \\
 \hline
 Empresa o Instituci\'on responsable & Instituto Tecnológico de Massachusetts & \foreign{iSpeech}  & \foreign{Nuance Communications} \\
-Precio &  Gratuita, C\'odigo Abierto  & Gratis para aplicaciones no comerciales. De 0.02\$ a 0.0001\$ para otros usos & Gratis para aplicaciones no comerciales. De 0.08\$ a 0.006\$ para otros usos. Inversi\'on m\'inima de 3000\$ para comercializar una aplicaci\'on \\
-Soporte para m\'ultiples idiomas  & Ingl\'es, Chino y Japon\'es. Depende del reconocedor utilizado & Reconocimiento Cont\'inuo para 6 idiomas. Reconocmiento de vocabulario reducido para 10 idiomas & Soporta m\'as de 20 idiomas \\
+Precio &  Gratuito  & Gratuito para aplicaciones no comerciales. De 0.02\$ a 0.0001\$ para otros usos & Gratuito para aplicaciones no comerciales. De 0.08\$ a 0.006\$ para otros usos. \\
+Soporte para m\'ultiples idiomas  & No, aunque depende del reconocedor utilizado & Si & Si \\
 Soporte Offline & No & No & No\\
-Dependencia de Plataforma & No es dependiente & No es dependiente & No es dependiente\\
+Dependencia de Plataforma & No & No & No\\
 \hline
 \end{tabular}
 \caption{Resumen de los criterios espec\'ificos de las APIs}
@@ -156,12 +156,12 @@ para \'esta categor\'ia
 \hline
 Empresa o Instituci\'on Responsable & Universidad \foreign{Carnegie Mellon} & Universidad \foreign{Carnegie Mellon} & Universidad de Cambridge \\
 Precio & Gratuito & Gratuito & Gratuito \\
-Licencia & \gls{bsd}, aunque el componente \foreign{Java Speech \gls{api}} no es de C\'odigo Abierto & \gls{bsd} simplificada & C\'odigo fuente modificable, se prohibe su redistribuci\'on. Los generados pueden redistribuirse\\
-Soporte para m\'ultiples idiomas & 8 idiomas. Se pueden incorporar m\'as modelos para otros idiomas & Mismos modelos que Sphinx 4 & No brinda soporte, pero provee las herramientas necesarias\\
-Dependencia de Plataforma & No es dependiente, solo depende de la M\'aquina Virtual de Java & Sistemas basados en Unix, Android, Windows, iOS y Kindle &  Basados en Unix y Windows \\
-Modelos de Lenguaje Aceptados & Basados en gram\'aticas JGSF, en bigramas y trigamas en formato \gls{arpa} &  Mismos modelos que Sphinx 4 &  Mismos modelos que Sphinx 4 \\
+Licencia & \gls{bsd}, con un componente privativo & \gls{bsd} simplificada & C\'odigo fuente modificable, se prohibe su redistribuci\'on.\\
+Soporte para m\'ultiples idiomas & Si & Si & No\\
+Dependencia de Plataforma & No & No & No \\
+Modelos de Lenguaje Aceptados & JGSF, bigramas y trigamas &  Igual que Sphinx 4 &  Igual que Sphinx 4 \\
 Modelos Ac\'usticos Aceptados & Modelo propio & Igual que Sphinx 4 &  Modelo propio \\
-Uso de Memoria & No se recomienda para sistemas de poca memoria & Muy reducido en comparaci\'on a Sphinx 4 & Dependiente de la aplicaci\'on. Por ejemplo: 150 MB para generar modelos para un sistema de dictado \\
+Uso de Memoria & No se recomienda para sistemas de poca memoria & Reducido en comparaci\'on a Sphinx 4 & Dependiente de la aplicaci\'on \\
 \hline
 \end{tabular}
 \caption{Resumen de los criterios espec\'ificos de las Librer\'ias/Frameworks}
@@ -178,11 +178,11 @@ Uso de Memoria & No se recomienda para sistemas de poca memoria & Muy reducido e
 Empresa o Instituci\'on Responsable &  \foreign{Interactive Speech Technology Consortium} & Agencia Tecnológica de República Checa \\
 Precio & Gratuito & Gratuito \\
 Licencia & \gls{bsd} & Apache 2.0 \\
-Soporte para m\'ultiples idiomas &  Japon\'es e Ingl\'es. Puede extenderse para otros idiomas &  No brinda soporte, pero provee las herramientas necesarias \\
-Dependencia de Plataforma & Basados en Unix y Windows & Basados en Unix y Windows \\
+Soporte para m\'ultiples idiomas & No &  No \\
+Dependencia de Plataforma & No & No \\
 Modelos de Lenguaje Aceptados & Basados en gram\'aticas y modelos en formato \gls{arpa} & Modelos en formato \gls{fst} \\
 Modelos Acústicos Aceptados & Igual que \gls{htk} & Modelo propio \\
-Uso de Memoria & Bajo, 64 MB para un vocabulario de 20 mil palabras & \\
+Uso de Memoria & Bajo & \\
 \hline
 \end{tabular}
 \caption{Resumen de los criterios espec\'ificos de las Librer\'ias/Frameworks}
