@@ -5,21 +5,44 @@ La aplicación desarrollada, denominada \emph{Tamtam Listens}, es el resultado d
 de las tecnolog\'ias mencionadas anteriormente. Por lo tanto, \emph{Tamtam Listens} representa una
 interfaz de interacci\'on alternativa para la aplicaci\'on \emph{Tamtam Edit}.
 
-El reconocimiento de los comandos de voz se implement\'o como un servicio de \emph{dbus}\cite{Dbus2013}, que es
-un mecanismo para comunicaci\'on entre procesos de linux. Por lo tanto, el servicio puede ser utilizado
-no solo por \emph{Tamtam Listens} si no por cualquier aplicaci\'on de linux. 
+Al ofrecer al usuario final un medio de interacci\'on humano-computadora diferente, \emph{TamTam Listens} debe
+ser intuitivo y f\'acil de usar. Por otro lado, no debe ofrecer al usuario controlar el \foreign{mouse} o
+componentes de la interfaz gr\'afica de \emph{TamTam Edit} utilizando la voz, 
+m\'as bien debe brindar un nuevo flujo de interacci\'on. Por ejemplo, si el usuario desea crear una nota do,
+resulta intuitivo que lo haga diciendo ``crear nota do''.
 
-\emph{Pocketsphinx} requiere de un modelo ac\'ustico y un modelo de lenguaje para realizar
+La figura~\ref{figure:tamtam-listens-arq} muestra la arquitectura b\'asica de \emph{TamTam Listens}. Se pueden
+observar los componentes que forman parte de la soluci\'on desarrollada.
+
+\begin{figure}[H] 
+\centering
+\includegraphics[width=0.7\textwidth]{./graphics/tamtam-listens-arq.png}
+\caption{Arquitectura b\'asica de \emph{TamTam Listens}}
+\label{figure:tamtam-listens-arq}
+\end{figure}
+
+Como sugiere la figura~\ref{figure:tamtam-listens-arq}, \emph{TamTam Listens} a\~nade soporte de reconocimiento
+del habla a \emph{TamTam Edit} utilizando la librer\'ia \emph{PocketSphinx}. Pero, a favor de una soluci\'on modular,
+el reconocimiento de comandos de voz de \emph{PocketSphinx} es expuesto como 
+como un  servicio de \emph{dbus}\cite{Dbus2013}, que es
+un mecanismo para comunicaci\'on entre procesos de linux. Por lo tanto, \emph{TamTam Listens} act\'ua como cliente
+del demonio de \emph{dbus} que realiza el reconocimiento del habla. Al estar implementado de \'esta manera, el servicio 
+de reconicimiento puede ser utilizado no solo por \emph{Tamtam Listens} si no por cualquier aplicaci\'on de linux, utilizando
+un protocolo de paso de mensajes. 
+
+Para el reconocimiento deben definirse: las palabras que forman parte del domimnio de la aplicaci\'on
+y el conjunto de oraciones (en este caso, comandos v\'alidos) soportados por la aplicaci\'on. Para esto, \emph{Pocketsphinx}  
+requiere de un modelo ac\'ustico y un modelo de lenguaje para realizar
 el reconocimiento de comandos. Para el modelo ac\'ustico se utiliz\'o el prove\'ido por el proyecto \emph{Voxforge}
 \cite{Voxforge}, que es un proyecto que busca proveer modelos ac\'usticos para motores de reconocimientos
 de c\'odigo abierto. Para el modelo de lenguaje se defini\'o una gram\'atica en formato \gls{jsgf} 
 \cite{JSGF2000}, que permiti\'o definir los comandos soportados por la aplicaci\'on de una manera sencilla. 
 
-\subsection{Gram\'atica}
+\subsection{Diccionario}
 
-A continuaci\'on se puede observar un fragmento de la gram\'atica \gls{jsgf} utilizada para definir 
-los comandos soportados por \emph{Tamtam Listens}, m\'as adelante se presentar\'an los comandos
-en forma de grafo para una mejor comprensi\'on.
+Para poder mapear los fonemas reconocidos por el modelo ac\'ustico a palabras v\'alidas del dominio de la aplicaci\'on, \emph{Pocketsphinx}
+utiliza un diccionario que define la secuencia de fonemas de cada palabra del lenguaje. En la figura~\ref{figure:fragmento-dic} se
+puede observar un fragmento del diccionario utilizado por \emph{TamTam Listens}.
 
 \lstset{
   basicstyle=\scriptsize,        % the size of the fonts that are used for the code
@@ -31,6 +54,29 @@ en forma de grafo para una mejor comprensi\'on.
   stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
   tabsize=2                       % sets default tabsize to 2 spaces
 }
+
+\begin{figure}[H]
+\begin{lstlisting}
+REPRODUCIR RR E P R O D U S I R
+PAUSAR P A U S A R
+PARAR  P A R A R
+GENERAR  J E N E R A R
+PARTITURA P A R T I T U R A
+SIGUIENTE S I G I E N T E
+ANTERIOR A N T E R I O R
+\end{lstlisting}
+\caption{Fragmento del diccionario utilizad en \emph{Tamtam Listens}}
+\label{figure:fragmento-dic}
+\end{figure}
+
+Una vez definidas las palabras de la aplicaci\'on, lo siguiente es determinar si una secuencia de palabras es o no un comando
+v\'alido.
+
+\subsection{Gram\'atica}
+
+La secuencia de comandos v\'alidos que soporta la aplicaci\'on se define en el modelo de lenguaje. Para \'esto
+\emph{TamTam Listens} define una gram\'atica \gls{jsgf}. En la figura~\ref{figure:fragmento-gram} se puede observar
+un fragmento de la gram\'atica utilizada por la aplicaci\'on.
 
 \begin{figure}[H]
 \begin{lstlisting}
@@ -49,14 +95,19 @@ public <tamtam-listens> = <comando> | <pagina> | <pista-a>     | <pista-b>  |
 <loop>     = (BASURA)+;
 \end{lstlisting}
 \caption{Fragmento de la gram\'atica utilizada en \emph{Tamtam Listens}}
-\end{figure}
+\label{figure:fragmento-gram}
+\end{figure} 
 
-Los comandos pueden clasificarse en Generales (G), de Pista (P) y de Comp\'as (C). A continuaci\'on
-se presentan los distintos comandos soportados, utilizando grafos para representarlos y as\'i facilitar
+Los comandos de \emph{TamTam Listens} pueden clasificarse en: Generales (G), de Pista (P) y de Comp\'as (C). La clasificaci\'on
+se basa en la dependencia que existe entre comandos de la aplicaci\'on. Los comandos generales no dependen de ning\'un otro comando.
+Los comandos de Pista dependen de los comandos Generales y, a su vez, los comandos de comp\'as dependen de los comandos de Pista.
+A continuaci\'on se presentan los distintos comandos soportados, utilizando grafos para representarlos y as\'i facilitar
 su comprensi\'on. El nodo coloreado hace referencia a la \'ultima palabra de un comando v\'alido para la aplicaci\'on
 
 \subsubsection{Comandos Generales}
 
+Los comandos generales son independientes con respecto a otros comandos de la aplicaci\'on, a continuaci\'on se presentan los distintos
+comandos disponibles en esta categor\'ia. 
 \begin{figure}[H] 
 \centering
 \includegraphics[width=0.5\textwidth]{./graphics/cmd-musica.png}
@@ -64,7 +115,22 @@ su comprensi\'on. El nodo coloreado hace referencia a la \'ultima palabra de un 
 \label{figure:cmd-crear-musica}
 \end{figure}
 
-\begin{figure}[ht]
+En la figura~\ref{figure:cmd-crear-musica} se pueden observar los comandos m\'as b\'asicos
+de la aplicaci\'on, explicados a continuaci\'on:
+
+\begin{itemize}
+\item \emph{reproducir m\'usica}: permite reproducir la música creada.
+\item \emph{pausar música}: permite pausar la reproducción actual dejando la línea de reproducción en el
+punto de pausa.
+\item \emph{parar música}: permite parar la reproducción actual y ubica la línea de reproducción al inicio de
+la música.
+\item \emph{crear nueva música}:  permite crear una nueva composición, dejando como resultado una
+partitura en blanco.
+\item \emph{exportar música}: permite guardar la música creada en un archivo para que reproducirse en un
+reproductor multimedia.
+\end{itemize}
+
+\begin{figure}[H]
 \begin{minipage}[b]{0.5\linewidth}
 \centering
 \includegraphics[width=0.6\linewidth]{./graphics/salir.png}
@@ -80,8 +146,10 @@ su comprensi\'on. El nodo coloreado hace referencia a la \'ultima palabra de un 
 \end{minipage}
 \end{figure}
 
+El comando de la figura~\ref{figure:cmd-salir} permite salir de \emph{TamTam Listens}. Por otro lado, los comandos de la figura~\ref{figure:cmd-vol}
+y~\ref{figure:cmd-tempo} permiten controlar, respectivamente, el volumen y tempo general de la aplicaci\'on.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \begin{minipage}[b]{0.5\linewidth}
 \centering
 \includegraphics[width=0.6\linewidth]{./graphics/cmd-tempo.png}
@@ -97,6 +165,14 @@ su comprensi\'on. El nodo coloreado hace referencia a la \'ultima palabra de un 
 \end{minipage}
 \end{figure}
 
+Los comandos de las figuras~\ref{figure:cmd-partitura-1} y~\ref{figure:cmd-partitura-2} afectan a
+la partitura actual, como se explican a continuaci\'on:
+
+\begin{itemize}
+    \item \emph{crear nueva  partitura}:  permite crear una nueva partitura en blanco.
+    \item \emph{limpiar  partitura}: permite limpiar el contenido de la partitura actual, es decir, borrar todas las notas.
+    \item \emph{duplicar partitura}: crea una nueva partitura con el mismo contenido que la partitura actual.
+\end{itemize}
 
 \begin{figure}[H]
 \begin{minipage}[b]{0.5\linewidth}
@@ -110,12 +186,15 @@ su comprensi\'on. El nodo coloreado hace referencia a la \'ultima palabra de un 
 \centering
 \includegraphics[width=0.6\linewidth]{./graphics/cmd-pista-1.png}
 \caption{Comando para ubicarse en una pista}
-\label{figure:cmd-partitura-1}
+\label{figure:cmd-pista-1}
 \end{minipage}
-\end{figure}
+\end{figure} 
 
+En la figura~\ref{figure:cmd-pista-1} puede apreciarse el comando que permite al usuario ubicarse en una pista en particular. Por  
+ejemplo, para ubicarse en la pista tres debe decir “pista tres”. Adem\'as de controlar el volumen general de la aplicaci\'on, en 
+la figura~\ref{figure:cmd-vol-pista} se pueden ver los comandos para controlar el volumen de una pista en particular.
 
-\begin{figure}[H]
+\begin{figure}[H] 
 \begin{minipage}[b]{0.5\linewidth}
 \centering
 \includegraphics[width=0.8\linewidth]{./graphics/vol-pista.png}
@@ -131,6 +210,12 @@ su comprensi\'on. El nodo coloreado hace referencia a la \'ultima palabra de un 
 \end{minipage}
 \end{figure}
 
+Los comandos de la figura~\ref{figure:cmd-rep-pista} permiten: reproducir, silenciar, habilitar y limpiar el contenido de una
+pista en particular. Para poder generar distintos tipos de sonidos con \emph{TamTam Listens}, los usuarios de pueden asignar
+instrumentos a cada una de las pistas de
+la aplicaci\'on, \'esto se puede realizar con los comandos de la figura~\ref{figure:cmd-inst-p1-4} y~\ref{figure:cmd-inst-p5}.
+
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{./graphics/inst-p1-4.png}
@@ -138,7 +223,7 @@ su comprensi\'on. El nodo coloreado hace referencia a la \'ultima palabra de un 
 \label{figure:cmd-inst-p1-4}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[H] 
 \begin{minipage}[b]{0.5\linewidth}
 \centering
 \includegraphics[width=1\linewidth]{./graphics/inst-p5.png}
@@ -154,12 +239,15 @@ su comprensi\'on. El nodo coloreado hace referencia a la \'ultima palabra de un 
 \end{minipage}
 \end{figure}
 
-\subsubsection{Comandos de Pista}
+Generalmente las composiciones tienen cierta secuencia de notas que se repiten para varios instrumentos. El comando de la 
+figure~\ref{figure:cmd-dup-pista} permite duplicar el contenido, es decir las notas, de una pista en otra. 
 
-Este comando nos ubica dentro de una pista en particular. Por lo tanto, se debe
+\subsubsection{Comandos de Pista} 
+
+Este comando ubica al usuario dentro de una pista en particular. Por lo tanto, se debe
 seleccionar una pista para poder utilizar este comando.
 
-\begin{figure}[H]
+\begin{figure}[H] 
 \centering
 \includegraphics[width=0.4\linewidth]{./graphics/cmd-compas.png}
 \caption{Comando para ubicarse en un comp\'as}
@@ -169,8 +257,11 @@ seleccionar una pista para poder utilizar este comando.
 
 \subsubsection{Comandos de Comp\'as}
 
-Estos comandos son muy importantes para la aplicación ya que nos permiten crear, modificar, 
-eliminar las notas musicales.
+Estos comandos son muy importantes para la aplicación ya que permiten crear, modificar, 
+eliminar las notas musicales. El comando de la figura~\ref{figure:cmd-crear-nota} permite crear notas en el  
+compás actual. Por otro lado, en la figura~\ref{figure:cmd-tiempo-compas} se presenta el comando que permite al usuario ubicarse en un  
+tiempo en particular dentro del compás actual. Esto es útil para crear una nota a partir de ese punto o 
+para seleccionar una nota que se encuentre en ese tiempo
 
 \begin{figure}[H]
 \begin{minipage}[b]{0.5\linewidth}
@@ -188,6 +279,10 @@ eliminar las notas musicales.
 \end{minipage}
 \end{figure}
 
+As\'i como puede duplicarse notas de una pista a otra, tambi\'en puede duplicarse una nota de un comp\'as a otro utilizando el comando
+de la figura~\ref{figure:cmd-dup-nota}. Para poder eliminar una nota, previamente seleccionada, el usuario debe utilizar el comando
+de la figura~\ref{figure:cmd-del-nota}.
+
 \begin{figure}[H]
 \begin{minipage}[b]{0.5\linewidth}
 \centering
@@ -204,6 +299,10 @@ eliminar las notas musicales.
 \end{minipage}
 \end{figure}
 
+En la figura~\ref{figure:cmd-dur} se pude observar el comando que permite modificar la duración de 
+una nota inmediatamente despus de haberla creado o una nota previamente seleccionada. Finalmente, el comando
+presentado en la figura~\ref{figure:cmd-note-tiempo} permite modificar el tiempo en el que inicia la 
+nota inmediatamente despu\'es de haberla creado o una nota previamente seleccionada.
 
 \begin{figure}[H]
 \begin{minipage}[b]{0.5\linewidth}
@@ -221,25 +320,9 @@ eliminar las notas musicales.
 \end{minipage}
 \end{figure}
 
+La uni\'on de los componentes presentados en este cap\'itulo es lo que permiti\'o implementar el motor de reconocimiento
+del habla como servicio de \emph{dbus} y as\'i ofrecer \emph{TamTam Listens} como una interfaz 
+alternativa a la propuesta por \emph{TamTam Edit}.
 
-\subsection{Diccionario}
-
-Otro elemento requerido por \emph{Pocketsphinx} es el diccionario, que permite mapear
-palabras a secuencia de fonemas. En la siguiente figura se muestra un fragmento del diccionario
-utilizado por la aplicaci\'on.
-
-\begin{figure}[H]
-\begin{lstlisting}
-REPRODUCIR RR E P R O D U S I R
-PAUSAR P A U S A R
-PARAR  P A R A R
-GENERAR  J E N E R A R
-PARTITURA P A R T I T U R A
-SIGUIENTE S I G I E N T E
-ANTERIOR A N T E R I O R
-\end{lstlisting}
-\caption{Fragmento del diccionario utilizad en \emph{Tamtam Listens}}
-\end{figure}
-
-La combinaci\'on de estos componentes es lo que permite a \emph{Pocketsphinx} realizar el
-reconocimiento de los comandos de voz.
+En el siguiente cap\'itulo se presenta la evaluaci\'on de la interfaz implementada, teniendo en cuenta aspectos t\'ecnicos
+y funcionales.
