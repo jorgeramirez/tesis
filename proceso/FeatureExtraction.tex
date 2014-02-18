@@ -1,13 +1,13 @@
 %!TEX root = ../tesis.tex
-\subsection{Fase 1: Extracci\'on de caracter{\'\i}sticas}
+\section{Fase 1: Extracci\'on de caracter{\'\i}sticas}
 \label{sec:featureExtraction}
 
-En la primera fase, la entrada es la se\~nal de voz correspondiente al emisor la cual se divide en muestras de corta
-duraci\'on llamadas tramas. A trav\'es de un proceso de procesamiento de la onda sonora o \emph{An\'alisis de Se\~nal} \cite{Jurafsky}, se obtienen vectores de 
-caracter{\'\i}sticas representativas para cada trama. Esta secci\'on describe los conceptos relacionados a esta 
-transformaci\'on.
+En la primera fase, la entrada es la se\~nal de voz correspondiente al emisor la cual se divide en muestras
+de corta duraci\'on llamadas tramas. A trav\'es de un proceso de procesamiento de la onda sonora o 
+\emph{An\'alisis de Se\~nal} \cite{Jurafsky}, se obtienen vectores de caracter{\'\i}sticas representativas 
+para cada trama. Esta secci\'on describe los conceptos relacionados a esta transformaci\'on.
 
-\subsubsection{Ondas Sonoras}
+\subsection{Ondas Sonoras}
 
 La entrada para un reconocedor del habla, y en particular para la fase 1, es la misma que la del o{\'\i}do humano: una 
 serie de cambios en la presi\'on del aire \cite{YoungUniversity2007}. Estos cambios se originan en el emisor, y son 
@@ -25,7 +25,7 @@ Aunque no existe una correspondencia directa entre las car\'acter{\'\i}sticas f{
 percibe un tono m\'as agudo, aunque esta relaci\'on no es lineal. Igualmente, a mayor amplitud de una onda sonora esta se 
 percibe con mayor \mbox{volumen \cite{YoungUniversity2007}}.
 
-\subsubsection{Espectro}
+\subsection{Espectro}
 El an\'alisis espectral est\'a basado en la conclusi\'on de Fourier que establece que una onda compleja puede ser 
 representada como la sumatoria de varias ondas simples a diferentes frecuencias. El espectro es la representaci\'on de las 
 distintas frecuencias que componen una onda, que puede visualizarse mediante una gr\'afica de amplitud en funci\'on de la 
@@ -36,7 +36,8 @@ el eje $X$ corresponde a la frecuencia y el eje $Y$ a la amplitud.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\linewidth]{./graphics/formants.png}
-\caption{Representaci\'on del espectro en el cual pueden identificarse los picos espectrales o formantes. \cite{Jurafsky}}
+\caption{Representaci\'on del espectro en el cual pueden identificarse los picos espectrales o formantes 
+\cite{Jurafsky}.}
 \label{figure:formants}
 \end{figure}
 
@@ -44,21 +45,23 @@ Los picos espectrales del espectro del sonido se conocen como formantes \cite{Fa
 formantes a frecuencias determinadas, raz\'on por la cual el an\'alisis espectral tiene un rol determinante en la 
 determinaci\'on de la identidad de vocales y otros \mbox{fonemas \cite{LadefogedCourse2006}}.
 
-Un espectrograma como el de la figura~\ref{figure:spectrogram}, por su parte, es una matriz de celdas indexadas por frecuencia en el eje vertical y por tiempo en el eje 
+Un espectrograma como el de la figura~\ref{figure:spectrogram}, por su parte, es una matriz de celdas indexadas por
+frecuencia en el eje vertical y por tiempo en el eje 
 horizontal, donde el nivel de sombreado de una celda indica la amplitud de la componente a una frecuencia y un tiempo 
-dado. Aunque rara vez se usen espectrogramas para caracterizar directamente la se\~nal, por resultar poco conveniente en t\'erminos del 
-tama\~no de la representaci\'on, la gran mayor{\'\i}a de las caracter{\'\i}sticas espectrales utilizadas para el reconocimiento del 
+dado. Aunque rara vez sean utilizados los espectrogramas para caracterizar directamente la se\~nal,
+por resultar poco conveniente en t\'erminos del tama\~no de la representaci\'on,
+la gran mayor{\'\i}a de las caracter{\'\i}sticas espectrales utilizadas para el reconocimiento del 
 habla est\'an basadas en el \mbox{espectrograma \cite{Ellis08anintroduction}}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\linewidth]{./graphics/spectrogram.png}
 \caption{Representaci\'on gr\'afica de un espectrograma, puede verse como una colecci\'on de espectros como la 
-    figura~\ref{figure:formants} ubicados uno despu\'es otro. \cite{Jurafsky}}
+    figura~\ref{figure:formants} ubicados uno despu\'es otro \cite{Jurafsky}.}
 \label{figure:spectrogram}
 \end{figure}
 
-\subsubsection{Proceso de Extracci\'on de Caracter{\'\i}sticas}
+\subsection{Proceso de Extracci\'on de Caracter{\'\i}sticas}
 El proceso puede resumirse en los siguientes pasos \cite{Jurafsky}:
 
 \begin{enumerate}
@@ -78,12 +81,13 @@ paso dependen en gran medida del conjunto de caracter{\'\i}sticas que se selecci
 
 \end{enumerate}
 
-\subsubsection{Caracter{\'\i}sticas}
+\subsection{Caracter{\'\i}sticas}
 Un buen conjunto de caracter{\'\i}sticas espectrales re\'une las siguientes cualidades \cite{KesarkarFeature2003}:
 \begin{itemize}
-\item Las caracter{\'\i}sticas son perceptualmente significativas, es decir, an\'alogas a las utilizadas por el sistema 
-auditivo humano.
-\item Las caracter{\'\i}sticas son invariantes, es decir, robustas con respecto a las variaciones en el canal y el emisor.
+\item Las caracter{\'\i}sticas son perceptualmente significativas, es decir, an\'alogas a las utilizadas 
+por el sistema auditivo humano.
+\item Las caracter{\'\i}sticas son invariantes, es decir, robustas con respecto a las variaciones en el canal 
+y el emisor.
 \item Las caracter{\'\i}sticas capturan la din\'amica espectral, es decir, los cambios del espectro en el tiempo.
 \end{itemize}
 
@@ -101,6 +105,27 @@ percibir ondas de alta frecuencia y la relaci\'on entre volumen e intensidad com
 \mbox{caracter{\'\i}sticas \cite{Jurafsky}}. 
 \end{itemize}
 
-La evaluaci\'on y comparaci\'on de estos conjuntos de caracter{\'\i}sticas espectrales, de manera a determinar el m\'as 
-indicado para el reconocimiento del habla, es tema de numerosos trabajos de 
+La evaluaci\'on y comparaci\'on de estos conjuntos de caracter{\'\i}sticas espectrales, de manera a determinar 
+el m\'as indicado para el reconocimiento del habla, es tema de numerosos trabajos de 
 \mbox{investigaci\'on \cite{DorraComparative2006, SarosiComparison2011, ElminirEvaluation2012}}.
+
+
+\subsection{Resumen}
+
+\begin{figure}[H] 
+\centering
+\includegraphics[width=0.8\textwidth]{./graphics/extraccion.png}
+\caption{Fase de extracci\'on de caracter{\'\i}sticas. Gr\'afico basado en \cite{VerenichASR}.}
+\label{figure:hmm}
+\end{figure}
+
+La entrada de la fase de extracci\'on de caracter{\'\i}sticas es una onda sonora, correspondiente a la voz.
+La misma puede caracterizarse mediante los formantes que se observan en un espectrograma.
+
+Durante esta fase se sigue un proceso de an\'alisis de se\~nal: muestreo, cuantificaci\'on y conversi\'on.
+Los detalles de este proceso dependen del conjunto de caracter{\'\i}sticas espectrales seleccionado 
+para representar la se\~nal.
+
+La salida de la fase de extracci\'on de caracter{\'\i}sticas es un conjunto de vectores de caracter{\'\i}sticas
+espectrales, cada uno de los cuales describe cuantitativamente una trama de la onda original. Estos vectores
+representan la entrada de la fase siguiente del proceso del reconocimiento del habla.

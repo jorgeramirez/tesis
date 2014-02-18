@@ -9,14 +9,27 @@ el usuario y la aplicaci\'on.
 Es decir, se definieron los comandos que tendr{\'\i}an significado para el sistema y la manera
 en que el usuario utilizar{\'\i}a los mismos para acceder a las funcionalidades implementadas.
 
-En primer punto que se consider\'o importante fue la naturalidad de los comandos
-de acuerdo al dominio de la aplicaci\'on. Esto teniendo en cuenta que el usuario deb{\'\i}a
-recordarlos y utilizarlos para interactuar con el sistema.
+Las conclusiones relacionadas a esta etapa se mencionan y describen a continuaci\'on.
+
+\subsection{La naturalidad del lenguaje es de gran importancia para la interfaz}
+Al utilizar una interfaz basada en reconocimiento del habla el usuario debe recordar los
+comandos disponibles, de modo a utilizarlos para interactuar con el sistema.
+
+La utilizaci\'on de comandos poco apropiados puede llevar a una interacci\'on innecesariamente
+complicada entre la persona y la aplicaci\'on, dificultando el aprendizaje
+de los comandos por parte del usuario.
+
+Por el contrario, la utilizaci\'on de comandos naturales para el usuario puede colaborar
+con la fluidez de la interacci\'on, facilitando el aprendizaje de los comandos por parte del usuario. 
+
+Por este motivo, el primer punto que se consider\'o importante fue la naturalidad de los comandos
+de acuerdo al dominio de la aplicaci\'on.
 
 En el caso particular de \emph{TamTam Listens} esto signific\'o buscar t\'erminos musicales
 que pudiesen asociarse con los elementos que formaban parte de la aplicaci\'on: partitura,
 pista, comp\'as, nota, etc.
 
+\subsection{Interactuar con la aplicaci\'on, no con la interfaz gr\'afica}
 Un error que puede cometerse al intentar dise\~nar una interfaz por voz del usuario,
 el cual estaba presente en el primer prototipo de \emph{TamTam Listens}, es el intento
 de asociar comandos de voz a acciones que se realizar{\'\i}an normalmente con la interfaz
@@ -31,4 +44,23 @@ En base a la experiencia, resulta recomendable asociar un comando a una funciona
 y no a una \'unica acci\'on en la interfaz tradicional. A modo de ejemplo, cambiar el
 volumen en \emph{TamTam Edit} requer{\'\i}a presionar un bot\'on para desplegar un submen\'u 
 y utilizar un {slider}, mientras que en \emph{TamTam Listens} era necesario un
-\'unico comando ``Aumentar/Disminuir Volumen''.  
+\'unico comando ``Aumentar/Disminuir Volumen''.
+
+\subsection{Utilizar el sonido como medio de retroalimentaci\'on}
+El protocolo de interacci\'on entre el usuario y la aplicaci\'on puede pensarse de forma similar a una 
+conversaci\'on entre personas. El usuario accede a las funcionalidades a trav\'es de comandos de voz.
+A su vez, la aplicaci\'on puede utilizar la voz, o el sonido en general, para comunicar un mensaje al usuario.
+
+Esta \'ultima posibilidad puede ser \'util como medio de retroalimentaci\'on entre la aplicaci\'on y el usuario.
+Por ejemplo, se pueden utilizar notificaciones de audio para confirmar la realizaci\'on de una determinada
+operaci\'on. Esto resulta especialmente importante teniendo en cuenta el error propio de todo sistema
+de reconocimiento del habla.
+
+Adem\'as, utilizando s{\'\i}ntesis del habla, se puede implementar un recordatorio de los comandos
+disponibles. Esta es una herramienta v\'alida para facilitar el aprendizaje del lenguaje por parte del
+usuario.
+
+En el caso particular de \emph{TamTam Listens}, se utilizaron notificaciones de audio para confirmar
+ciertas operaciones. Por ejemplo, al crear o editar una nota, se reproduc{\'\i}a la misma a modo de
+confirmaci\'on.
+

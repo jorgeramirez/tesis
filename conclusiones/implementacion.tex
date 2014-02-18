@@ -5,6 +5,7 @@
 Una vez que se tuvo en claro lo que se buscaba implementar, el siguiente paso
 fue la selecci\'on de las herramientas que se utilizar{\'\i}an para hacerlo. 
 
+\subsection{Seleccionar las herramientas de acuerdo a las \mbox{caracter{\'\i}sticas} del proyecto}
 La herramienta elegida tiene gran influencia sobre el posterior proceso de
 desarrollo, por lo cual esta decisi\'on debe tomarse analizando las caracter{\'\i}sticas
 propias del proyecto en cuesti\'on.
@@ -24,10 +25,15 @@ La evaluaci\'on de varias opciones disponibles para la implementaci\'on de un si
 basado en reconocimiento del habla, cuyos resultados se incluyen como parte de este
 trabajo, permiti\'o realizar la selecci\'on de manera debidamente informada y justificada.
 
+\subsection{Considerar la posibilidad de errores en el \emph{software}}
 Habiendo seleccionado Pocketsphinx y el modelo ac\'ustico Voxforge para
 la implementaci\'on, el mayor problema durante la fase de desarrollo estuvo relacionado
-al plugin para \emph{Gstreamer} que se planeaba utilizar para integrar \emph{TamTam Edit}
+al plugin para \foreign{Gstreamer} que se planeaba utilizar para integrar \foreign{TamTam Edit}
 con el motor de reconocimiento.
+
+Las primeras pruebas de \foreign{TamTam Listens} arrojaron tasas de error y tiempos de
+respuesta muy elevados. Identificar al plugin para \foreign{Gstreamer} como la causa del problema
+y buscar una soluci\'on conllev\'o un retraso significativo en la etapa de desarrollo.
 
 Luego de numerosos intentos fallidos, finalmente se opt\'o por desechar el mencionado plugin
 e implementar una soluci\'on utilizando \emph{DBus} para la integraci\'on. Al exponerse los
@@ -35,7 +41,15 @@ resultados del reconocimiento del habla mediante un demonio, este enfoque permit
 Pocketsphinx con cualquier aplicaci\'on que utilice \emph{DBus} como m\'etodo de comunicaci\'on
 entre procesos.
 
-Otro inconveniente que puede mencionarse es la elevada tasa de error que se obtuvo en las
-pruebas preliminares para ciertos comandos. Este problema se presentaba especialmente para
-los comandos de una o dos palabras y oblig\'o a realizar modificaciones sobre el lenguaje
-inicialmente planteado.
+\subsection{Realizar pruebas y modificaciones tempranas}
+Una vez que se cuenta con un prototipo m{\'\i}nimo de la aplicaci\'on, la realizaci\'on de pruebas preliminares
+por parte del equipo de desarrollo puede ofrecer resultados interesantes para el mejoramiento de la 
+interfaz por voz del usuario.
+
+En las caso de \foreign{TamTam Listens}, las pruebas preliminares hicieron notoria la elevada tasa
+de error que se obten{\'\i}a para determinados comandos. Este problema se presentaba especialmente para
+los comandos de una o dos palabras.
+
+Estos resultados obligaron a realizar modificaciones sobre el lenguaje inicialmente planteado,
+permitiendo disminuir la tasa de error del sistema previamente a las pruebas con usuarios
+finales.

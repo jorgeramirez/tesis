@@ -1,5 +1,5 @@
 %!TEX root = ../tesis.tex
-\subsection{Fase 2: Decodificaci\'on}
+\section{Fase 2: Decodificaci\'on}
 \label{sec:decoding}
 
 En la fase de decodificaci\'on se utiliza un algoritmo decodificador, que depende de un modelo de lenguaje 
@@ -8,7 +8,7 @@ de caracter{\'\i}sticas que se calcularon en la etapa anterior.
 Esta secci\'on describe los elementos involucrados en esta transformaci\'on, la cual constituye el paso
 final del proceso simplificado del reconocimiento del habla que se pretende presentar.
 
-\subsubsection{Modelo de Lenguaje}
+\subsection{Modelo de Lenguaje}
 Un modelo de lenguaje busca predecir la probabilidad de una secuencia de palabras pertenecientes a un lenguaje.
 
 Formalmente, sea $V$ el conjunto finito de palabras que componen un lenguaje, tambi\'en conocido como 
@@ -80,8 +80,9 @@ de reconocimiento del habla para el acceso a informaci\'on:
 {\bnfts{Par{\'\i}s} \bnfor \bnfts{Nueva York} \bnfor \bnfts{Roma}}
 \end{bnf*}
 
-\subsubsection{Modelo Ac\'ustico}
-El modelo ac\'ustico permite estimar el t\'ermino $P(O|W)$ de la ecuaci\'on \ref{eq:asrFundamental}.
+\subsection{Modelo Ac\'ustico}
+El modelo ac\'ustico permite estimar el t\'ermino $P(O|W)$ de la ecuaci\'on \ref{eq:asrFundamental}, es decir,
+la probabilidad de una entrada ac\'ustica dada una secuencia de palabras.
 El mismo representa un factor cr{\'\i}tico para la precisi\'on de los resultados obtenidos, y puede decirse que
 se trata del componente central de cualquier sistema de reconocimiento del habla \cite{huang-handbook10}.
 
@@ -113,7 +114,7 @@ los siguientes par\'ametros:
 	Donde:
 	\begin{itemize}
 		\item $T$ es el n\'umero de observaciones.
-		\item $q_1,q_2,q_3,\ldots,q_T \in S$
+		\item $q_1,q_2,q_3,\ldots,q_T \in S$ es la secuencia de estados.
 	\end{itemize}
 
 	La salida del decodificador supone un problema, teniendo en cuenta que el resultado deseado es la secuencia 
@@ -147,7 +148,7 @@ los siguientes par\'ametros:
 
 	El m\'etodo m\'as extendido para calcular $b_j(o_t)$ se basa en funciones Gaussianas para definir 
 	una \gls{fdp} \cite{Jurafsky}.
-	La versi\'{o}n simple del m\'etodo Gaussiano asume que los valores del vector de observaciones $o_t$ presentan una distribuci\'on normal. Sin entrar en detalles matem\'aticos, se presenta la definici\'on formal 
+	La versi\'{o}n simple del m\'etodo Gaussiano asume que los valores del vector de observaciones $o_t$ presentan una distribuci\'on normal. A continuaci\'on, se presenta la definici\'on formal 
 	de $b_j(o_t)$ para este m\'etodo.
 
 	Sean:
@@ -210,18 +211,23 @@ que \cite{Livescu2012}:
  		en la mayor{\'\i}a de los sistemas de reconocimiento del habla \cite{Odell95theuse}.
  \end{itemize}  
 
-\subsubsection{Espacio de B\'usqueda}
+\subsection{Espacio de B\'usqueda}
 El objetivo de la fase de decodificaci\'on puede ser considerado esencialmente como un problema de 
 b\'usqueda \cite{huang-handbook10}.
 El algoritmo decodificador intenta encontrar la secuencia de estados m\'as probable dada la secuencia de
-vectores de caracter{\'\i}sticas que recibe como entrada, en un \'unico \gls{hmm} que constituye su espacio de b\'usqueda.
+vectores de caracter{\'\i}sticas que recibe como entrada, en un \'unico \gls{hmm} que constituye su 
+espacio de b\'usqueda.
+
+Tomando como ejemplo el modelo de la urna y la pelota de la secci\'on \ref{sec:hmm}, el algoritmo decodificador
+busca la secuencia de urnas m\'as probable dada la secuencia de colores que se observ\'o.
 
 Teniendo en cuenta que el modelo ac\'ustico est\'a constituido por varios modelos ocultos de Markov, se plantea
-la necesidad de definir un \'unico \gls{hmm} para el algoritmo decodificador. Suponiendo que el modelo ac\'ustico define
-un \gls{hmm} por fonema, esto puede hacerse de la siguiente manera:
+la necesidad de definir un \'unico \gls{hmm} para el algoritmo decodificador. Suponiendo que el modelo ac\'ustico
+define un \gls{hmm} por fonema, esto puede hacerse de la siguiente manera:
 
 \begin{enumerate}
-	\item Se concatenan los modelos ocultos de Markov de los fonemas de manera a obtener un \gls{hmm} por cada palabra. 
+	\item Se concatenan los modelos ocultos de Markov de los fonemas de manera a obtener un \gls{hmm} 
+	por cada palabra. 
 	La probabilidad de transici\'on entre fonemas est\'a dada por el diccionario fon\'etico.
 	\item Se concatenan los modelos ocultos de Markov de las palabras de manera a obtener un \'unico \gls{hmm} que
 	constituye el espacio de b\'usqueda. La probabilidad de transici\'on entre palabras est\'a dada por el modelo
@@ -237,10 +243,10 @@ un \gls{hmm} por fonema, esto puede hacerse de la siguiente manera:
 
 
 
-\subsubsection{Algoritmo de Viterbi}
-Una vez calculados los vectores de caracter{\'\i}sticas, y habiendo construido el espacio de b\'usqueda, se cuenta con
-todos los elementos necesarios para el algoritmo decodificador. Un algoritmo frecuentemente utilizado para
-la decodificaci\'on se denomina algoritmo de Viterbi.
+\subsection{Algoritmo de Viterbi}
+Una vez calculados los vectores de caracter{\'\i}sticas, y habiendo construido el espacio de b\'usqueda, 
+se cuenta con todos los elementos necesarios para el algoritmo decodificador. Un algoritmo frecuentemente 
+utilizado para la decodificaci\'on se denomina algoritmo de Viterbi.
 
 El algoritmo de Viterbi, tomando como entrada una secuencia de observaciones y un \'unico aut\'omata, 
 encuentra el camino \'optimo a trav\'es del aut\'omata, esto es, la mejor secuencia de estados. 
@@ -248,7 +254,7 @@ La descripci\'on y el pseudoc\'odigo que se presentan en esta secci\'on
 est\'an basados principalmente en \cite{Jurafsky, Rabiner89atutorial}.
 
 M\'as formalmente, se busca la mejor secuencia de estados $Q = (q_1,q_2,\ldots,q_T)$ 
-dadas una secuencia de observaciones $O = (o_1,o_2,\ldots,o_T)$ y un modelo $\lambda$.
+dados una secuencia de observaciones $O = (o_1,o_2,\ldots,o_T)$ y un modelo oculto de Markov, $\lambda$.
 
 El algoritmo utiliza una matriz de probabilidades $viterbi$, donde cada celda $viterbi[i,t]$ 
 contiene la probabilidad del mejor camino teniendo en cuenta las $t$ primeras observaciones y 
@@ -303,6 +309,8 @@ En la pr\'actica, para vocabularios extensos, el espacio de b\'usqueda resulta d
 Como soluci\'on a este problema suelen podarse los caminos poco probables en cada tiempo $t$,
 utilizando una t\'ecnica conocida como b\'usqueda en haz \cite{Jurafsky}.
 
+\subsection{Algoritmo A*}
+
 Otro algoritmo que puede utilizarse para la decodificaci\'on es el algoritmo A*. Este algoritmo
 utiliza una funci\'on heur{\'\i}stica, que debe definirse, para elegir los caminos a expandir
 durante el proceso de b\'usqueda \cite{Russell2003Solving}. 
@@ -315,8 +323,36 @@ Con una heur{\'\i}stica adecuada, el algoritmo A* puede utilizarse para espacios
 muy grandes \cite{huang-handbook10}.
 A\'un as{\'\i}, el algoritmo de Viterbi con b\'usqueda en haz es el m\'etodo utilizado con mayor frecuencia
 en los sistemas de reconocimiento del habla \cite{huang-handbook10}. 
-Esto se debe principalmente a la ventaja en cuanto a eficiencia relacionada a la b\'usqueda s{\'\i}ncrona 
-en el tiempo \cite{huang-handbook10}.
+Esto se debe principalmente a la ventaja en cuanto a eficiencia en t\'erminos de tiempo, 
+relacionada a la b\'usqueda s{\'\i}ncrona en el tiempo \cite{huang-handbook10}.
+
+
+\subsection{Resumen}
+
+\begin{figure}[H] 
+\centering
+\includegraphics[width=0.8\textwidth]{./graphics/decodificacion.png}
+\caption{Fase de decodificaci\'on. Gr\'afico basado en \cite{VerenichASR}.}
+\label{figure:hmm}
+\end{figure}
+
+La entrada de la fase de decodificaci\'on es el conjunto de vectores de caracter{\'\i}sticas espectrales,
+los cuales se calcularon en base a la entrada ac\'ustica durante la fase de extracci\'on de caracter{\'\i}sticas.
+
+El modelo de lenguaje busca predecir la probabilidad de una secuencia de palabras pertenecientes a un lenguaje.
+Dos tipos de modelo de lenguaje com\'unmente utilizados en el reconocimiento del habla son los basados en
+n-gramas y los basados en gram\'aticas.
+
+El modelo ac\'ustico permite estimar la probabilidad de una entrada ac\'ustica dada una secuencia de palabras.
+El modelo ac\'ustico est\'a formado por varios modelos ocultos de Markov y el diccionario fon\'etico.
+
+El algoritmo decodificador busca la secuencia de fonemas o subfonemas m\'as probable dados una 
+secuencia de observaciones y un modelo oculto de Markov. Este \'unico modelo oculto de Markov se construye
+mediante los componentes del modelo ac\'ustico y el modelo de lenguaje. El algoritmo de Viterbi y el 
+algoritmo A* son dos algoritmos decodificadores utilizados frecuentemente en el reconocimiento del habla.
+
+La secuencia de fonemas o subfonemas puede convertirse a una secuencia de palabras utilizando el diccionario
+fon\'etico que forma parte del modelo ac\'ustico.
 
 La salida de la fase de decodificaci\'on es la secuencia de palabras m\'as probable dados los vectores
 de caracter{\'\i}sticas espectrales, los cuales se calcularon en base a la entrada ac\'ustica durante

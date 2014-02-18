@@ -1,5 +1,5 @@
 %!TEX root = ../tesis.tex
-\subsection{Fase Previa: Entrenamiento}
+\section{Fase Previa: Entrenamiento}
 \label{sec:training}
 
 El proceso b\'asico que se describi\'o en las secciones anteriores requiere de modelos probabil{\'\i}sticos para
@@ -7,7 +7,7 @@ solucionar el problema del reconocimiento del habla. Para definir estos modelos 
 fase previa de entrenamiento, durante la cual se utilizan corpus de sonido y texto, denominados tambi\'en
 como datos de entrenamiento.
 
-\subsubsection{Modelo de Lenguaje}
+\subsection{Modelo de Lenguaje}
 
 Para entrenar un modelo de lenguaje basado en n-gramas es necesario un corpus de texto que 
 sirva de ejemplo del lenguaje que busca reconocerse.
@@ -26,7 +26,7 @@ utilizarse en casos en los cuales no se disponga de un corpus de texto de tama\~
 A\'un as{\'\i}, si se dispone de datos de entrenamiento, es posible incluir las probabilidades estimadas
 a partir del corpus en la gram\'atica \cite{huang-handbook10}.
 
-\subsubsection{\gls{hmm}: Estructura del grafo de estados}
+\subsection{HMM: Estructura del grafo de estados}
 El conjunto de estados de cada \gls{hmm}, $S$, y las transiciones entre estos estados se definen en base
 al diccionario fon\'etico. A modo de ejemplo, \mbox{CMUDdict \cite{CMUdict}} es un diccionario fon\'etico
 que contiene correspondencias entre palabras y las secuencias de fonemas que las componen para m\'as de
@@ -48,7 +48,7 @@ HOUSEGUEST  HH AW1 S G EH0 S T
 \caption{Extracto del diccionario fon\'etico CMUdict \cite{CMUdict}.}
 \end{figure}
 
-\subsubsection{\gls{hmm}: Distribuciones de Probabilidad}
+\subsection{HMM: Distribuciones de Probabilidad}
 Para cada \gls{hmm} es necesario estimar los siguientes par\'ametros, definidos en la secci\'on \ref{sec:hmm}:
 	\begin{itemize}
 		\item Las probabilidades de estado inicial: $\pi_i$
