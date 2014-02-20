@@ -2,35 +2,35 @@
 \section{Factores Analizados}
 \label{sec:factores}
 
-Esta secci\'on describe los factores que se tuvieron en cuenta para el \'analisis realizado
-en base a los datos recopilados a partir de las pruebas de usabilidad que se realizaron.
+Esta secci\'on describe los factores que se tienen en cuenta para el \'analisis a realizarse
+en base a los datos recopilados a partir de las pruebas de usabilidad.
 Se definen tambi\'en las m\'etricas utilizadas para la cuantificaci\'on de cada factor estudiado.
 
 \subsection{Memoria del Usuario}
 Factor relacionado a la capacidad de retenci\'on de informaci\'on del usuario.
-Se consider\'o interesante su an\'alisis debido a que:
+Se considera interesante su an\'alisis debido a que:
 \begin{itemize}
-	\item TamTam Listens se trataba de una aplicaci\'on completamente nueva para el usuario.
+	\item TamTam Listens se trata de una aplicaci\'on completamente nueva para el usuario.
 	\item Los comandos de voz deben ser memorizados por el usuario para la interacci\'on con
 	la apliaci\'on.
 \end{itemize}
 \subsubsection{M\'etrica Utilizada}
-La memoria del usuario se midi\'o a trav\'es de los resultados del test de memoria que se llev\'o
+La memoria del usuario se midie a trav\'es de los resultados del test de memoria que se lleva
 a cabo con cada usuario como parte de la prueba de usabilidad.
 El resultado del test de memoria administrado es la cantidad de palabras, de un total de 15,
-que el usuario consigui\'o recordar al cabo de 5 repeticiones, siendo 12--13 el resultado promedio
+que el usuario consigue recordar al cabo de 5 repeticiones, siendo 12--13 el resultado promedio
 esperado. El resultado del test de memoria se representa como $M$.
 
 \subsection{Correctitud de la aplicaci\'on}
 Factor relacionado al comportamiento esperado por parte de un sistema de reconocimiento del
 habla. Se busca responder a la pregunta: {?`}Qu\'e tan correctamente se reconocen los comandos 
 del usuario?
-Los valores de las m\'etricas relacionadas a la correctitud de la aplicaci\'on se calcularon
-en base a las tareas 3 y 4, por haberse realizado estas sin asistencia del facilitador.  
+Los valores de las m\'etricas relacionadas a la correctitud de la aplicaci\'on se calculan
+en base a las tareas 3 y 4, por realizarse estas sin asistencia del facilitador.  
 \subsubsection{M\'etricas Utilizadas}
 \begin{itemize}
-	\item Tasa de Aciertos de Comandos: se considera que el sistema reconoci\'o correctamente
-	un comando, si el usuario efectivamente pronunci\'o el mismo.
+	\item Tasa de Aciertos de Comandos: se considera que el sistema reconoce correctamente
+	un comando, si el usuario efectivamente ha pronunciado el mismo.
 
 	La tasa de aciertos es la raz\'on entre la cantidad de comandos correctamente reconocidos 
 	y la cantidad de comandos correctamente pronunciados por el usuario. 
@@ -39,9 +39,9 @@ en base a las tareas 3 y 4, por haberse realizado estas sin asistencia del facil
 	Sean:
 
 	\begin{itemize}
-		\item $r_{ij}$ la cantidad de veces que la aplicaci\'on reconoci\'o correctamente el \mbox{comando $i$}
-		al usuario $j$.
-		\item $c_{ij}$ la cantidad de veces que el usuario $j$ pronunci\'o correctamente el \mbox{comando $i$.}
+		\item $r_{ij}$ n\'umero de reconocimientos correctos del \mbox{comando $i$} pronunciado por el usuario $j$,
+		por parte de la aplicaci\'on.
+		\item $c_{ij}$ n\'umero de pronunciaciones correctas del \mbox{comando $i$} por parte del usuario $j$.
 	\end{itemize}
 	La tasa de aciertos del comando $i$ para el usuario $j$ se define como: 
 
@@ -50,58 +50,38 @@ en base a las tareas 3 y 4, por haberse realizado estas sin asistencia del facil
 	\end{equation*}
 
 
-	Sea $N_{j}$ la cantidad de comandos diferentes pronunciados por el usuario $j$,
+	Sea $N_{j}$ la cantidad total de comandos diferentes pronunciados (correcta o incorrectamente) por el usuario $j$,
 	la tasa de aciertos para el usuario  se define como:
 	
 	\begin{equation*}
 		A=a_{{usuario}_j}=\frac{\sum_k^{N_{j}}a_{{comando}_{kj}}}{N_{j}}
 	\end{equation*}
 
-	La tasa de aciertos del sistema se obtuvo hallando el promedio de los valores correspondientes
+	La tasa de aciertos del sistema se obtiene hallando el promedio de los valores correspondientes
 	a cada usuario.
 
 	\item Tasa de Error de Comandos: es la raz\'on entre la cantidad de comandos correctos no reconocidos 
 	y la cantidad de comandos correctamente pronunciados por el usuario. 
 	La misma se representa como $E_1$ y es igual a $1-A$.
 
-
-	\item Tasa de Falsa Alarma: un falso positivo es un comando incorrecto (por causa del error humano)
-	reconocido como v\'alido por la aplicaci\'on.
-	La tasa de falsa alarma es la raz\'on entre la cantidad de falsos positivos y la cantidad
-	de comandos incorrectos. La misma se representa como $F$.
-
-	Sean:
-
-	\begin{itemize}
-		\item $m_{ij}$ la cantidad de veces que la aplicaci\'on reconoci\'o incorrectamente el \mbox{comando $i$}
-		al usuario $j$.
-		\item $p_{ij}$ la cantidad de veces que el usuario $j$ pronunci\'o incorrectamente el \mbox{comando $i$.}
-	\end{itemize}
-	La tasa de falsa alarma del comando $i$ para el usuario $j$ se define como: 
-
-	\begin{equation*}
-		F=f_{{comando}_{ij}}=\frac{m_{ij}}{p_{ij}}
-	\end{equation*}
-
-	El c\'alculo de la tasa de falsa alarma de cada usuario y del sistema se llev\'o a cabo de forma an\'aloga 
-	a la tasa de aciertos.
 \end{itemize}
 
 \subsection{Error Humano}
 Factor relacionado a las equivocaciones por parte del usuario en su interacci\'on con
 TamTam Listens.
-Un comando se consider\'o err\'oneo o incorrecto por parte del usuario si:
+Un comando se considera err\'oneo o incorrecto por parte del usuario si:
 \begin{itemize}
-	\item El usuario no respet\'o el orden de las palabras: esto es, pronunci\'o las palabras de un comando en el orden incorrecto.
-	\item El usuario se confundi\'o entre dos comandos: esto es, utiliz\'o palabras correspondientes a m\'as de un comando.
-	\item El usuario junt\'o dos o m\'as comandos: esto es, pronunci\'o de una sola vez dos o m\'as comandos.
-	\item El usuario dud\'o mientras pronunciaba el comando: esto es, titube\'o o repiti\'o una palabra del comando.
-	\item El usuario utiliz\'o comandos incompletos: esto es, pronunciando solo algunas palabras del comando.
-	\item El usuario utiliz\'o palabras que no forman parte del lenguaje.
-	\item El usuario viol\'o alguna otra regla impuesta por el lenguaje de la aplicaci\'on.
+	\item El usuario no respeta el orden de las palabras: esto es, pronuncia las palabras de un comando en el orden incorrecto.
+	\item El usuario se confundie entre dos comandos: esto es, utiliza palabras correspondientes a m\'as
+	de un comando.
+	\item El usuario junta dos o m\'as comandos: esto es, pronuncia de una sola vez dos o m\'as comandos.
+	\item El usuario duda mientras pronuncia el comando: esto es, titubea o repite una palabra del comando.
+	\item El usuario utiliza comandos incompletos: esto es, pronunciando solo algunas palabras del comando.
+	\item El usuario utiliza palabras que no forman parte del lenguaje.
+	\item El usuario viola alguna otra regla impuesta por el lenguaje de la aplicaci\'on.
 \end{itemize}
-Los valores de las m\'etricas relacionadas al error humano se calcularon
-en base a las tareas 3 y 4, por haberse realizado estas sin asistencia del facilitador. 
+Los valores de las m\'etricas relacionadas al error humano se calculan
+en base a las tareas 3 y 4, por realizarse estas sin asistencia del facilitador. 
 
 \subsubsection{M\'etricas Utilizadas}
 \begin{itemize}
@@ -113,9 +93,8 @@ en base a las tareas 3 y 4, por haberse realizado estas sin asistencia del facil
 	Sean:
 
 	\begin{itemize}
-		\item $p_{ij}$ la cantidad de veces que el usuario $j$ pronunci\'o incorrectamente el \mbox{comando $i$.}
-		\item $t_{ij}$ la cantidad de veces que el usuario $j$ pronunci\'o (correcta o incorrectamente) el 
-		\mbox{comando $i$.}
+		\item $p_{ij}$ n\'umero de pronunciaciones incorrectas del \mbox{comando $i$} por parte del usuario $j$.
+		\item $t_{ij}$ n\'umero de pronunciaciones (correctas e incorrectas) del \mbox{comando $i$} por parte del usuario $j$.
 	\end{itemize}
 	La tasa de error humano del comando $i$ para el usuario $j$ se define como: 
 
@@ -123,7 +102,7 @@ en base a las tareas 3 y 4, por haberse realizado estas sin asistencia del facil
 		e_{{comando}_{ij}}=\frac{p_{ij}}{t_{ij}}
 	\end{equation*}
 
-	El c\'alculo de la tasa de error humano de cada usuario se llev\'o a cabo de forma an\'aloga 
+	El c\'alculo de la tasa de error humano de cada usuario se lleva a cabo de forma an\'aloga 
 	a la tasa de aciertos.
 \end{itemize}
 
@@ -131,19 +110,19 @@ en base a las tareas 3 y 4, por haberse realizado estas sin asistencia del facil
 Factor relacionado al grado de productividad que logra el usuario de la aplicaci\'on.
 \subsubsection{M\'etricas Utilizadas}
 \begin{itemize}
-	\item Duraci\'on de Tareas Uno y Dos: es la suma del tiempo que le tom\'o al usuario
-	terminar la tarea 1 ($T_1$) y el que le tom\'o terminar la tarea 2 ($T_2$). 
-	Estas tareas se realizaron con asistencia por parte del facilitador. 
+	\item Duraci\'on de Tareas Uno y Dos: es la suma del tiempo que le toma al usuario
+	terminar la tarea 1 ($T_1$) y el que le toma terminar la tarea 2 ($T_2$). 
+	Estas tareas se realizan con asistencia por parte del facilitador. 
 	La duraci\'on se midi\'o en minutos. Se representa como $T_{1+2}$.
-	\item Duraci\'on de Tareas Tres y Cuatro: es la suma del tiempo que le tom\'o al usuario
-	terminar la tarea 3 ($T_3$) y el que le tom\'o terminar la tarea 4 ($T_4$). 
-	Estas tareas se realizaron sin asistencia por parte del facilitador. 
-	La duraci\'on se midi\'o en minutos. Se representa como $T_{3+4}$.
+	\item Duraci\'on de Tareas Tres y Cuatro: es la suma del tiempo que le toma al usuario
+	terminar la tarea 3 ($T_3$) y el que le toma terminar la tarea 4 ($T_4$). 
+	Estas tareas se realizan sin asistencia por parte del facilitador. 
+	La duraci\'on se mide en minutos. Se representa como $T_{3+4}$.
 	\item Cantidad de Comandos Utilizados: es la cantidad total de comandos diferentes utilizados
 	al menos una vez por el usuario durante las tareas 3 y 4. Se representa como $U$.
-	\item Correctitud de la Tarea Cuatro: para \'el c\'alculo de esta medida, se descompuso la
+	\item Correctitud de la Tarea Cuatro: para \'el c\'alculo de esta medida, se descompone la
 	\'ultima tarea en lo distintos pasos necesarios para completarla correctamente.
-	De esta manera, la tarea cuatro se consider\'o compuesta por 72 elementos:
+	De esta manera, la tarea cuatro se considera compuesta por 72 elementos:
 	\begin{itemize}
 		\item Creaci\'on de 54 notas.
 		\item Selecci\'on de 4 instrumentos.
@@ -156,18 +135,18 @@ Factor relacionado al grado de productividad que logra el usuario de la aplicaci
 \end{itemize}
 
 \subsection{Satisfacci\'on del Usuario}
-Factor relacionado a la opini\'on del usuario sobre su interacci\'on con la aplicaci\'on y las interfaces
-basadas en reconocimiento del habla en general.
+Factor relacionado a la apreciaci\'on subjetiva del usuario sobre su interacci\'on con la aplicaci\'on y
+las interfaces basadas en reconocimiento del habla en general.
 \subsubsection{M\'etricas Utilizadas}
-La opini\'on del usuario se midi\'o a trav\'es de los resultados de la encuesta realizada como parte de
+La opini\'on del usuario se mide a trav\'es de los resultados de la encuesta que se realiza como parte de
 la prueba de usabilidad, posterior a la finalizaci\'on de las tareas. Las respuestas se
-registraron utilizando una escala de Likert \cite{Allen:2007} con valores del 1 al 7.
+registran utilizando una escala de Likert \cite{Allen:2007} con valores del 1 al 7.
 
-Se solicit\'o la opini\'on del usuario con respecto a:
+Se solicita la opini\'on del usuario con respecto a:
 \begin{itemize}
-	\item Que tan adecuadas fueron palabras utilizadas.
-	\item Que tan adecuados fueron los comandos utilizados.
-	\item Que tan adecuada result\'o la duraci\'on del entrenamiento.
+	\item Que tan adecuadas son palabras utilizadas.
+	\item Que tan adecuados son los comandos utilizados.
+	\item Que tan adecuada resulta la duraci\'on del entrenamiento.
 	\item Que tan frecuentemente utilizar{\'\i}a las interfaces por voz del usuario.
 \end{itemize}
 

@@ -1,15 +1,24 @@
 \section{Tamtam Listens}
 \label{sec:tamtam-listens}
+La interfaz de interacci\'on alternativa para la aplicaci\'on \emph{Tamtam Edit} se denomina  
+\emph{Tamtam Listens}. \emph{Tamtam Listens} es el resultado de la combinaci\'on
+de las tecnolog\'ias mencionadas anteriormente.
 
-La aplicación desarrollada, denominada \emph{Tamtam Listens}, es el resultado de la combinación
-de las tecnolog\'ias mencionadas anteriormente. Por lo tanto, \emph{Tamtam Listens} representa una
-interfaz de interacci\'on alternativa para la aplicaci\'on \emph{Tamtam Edit}.
 
 Al ofrecer al usuario final un medio de interacci\'on humano-computadora diferente, \emph{TamTam Listens} debe
-ser intuitivo y f\'acil de usar. Por otro lado, no debe ofrecer al usuario controlar el \foreign{mouse} o
-componentes de la interfaz gr\'afica de \emph{TamTam Edit} utilizando la voz, 
-m\'as bien debe brindar un nuevo flujo de interacci\'on. Por ejemplo, si el usuario desea crear una nota do,
-resulta intuitivo que lo haga diciendo ``crear nota do''.
+ser intuitivo y f\'acil de usar. De modo a lograr esto, la soluci\'on no est\'a en permitir al usuario controlar 
+el \foreign{mouse} o los componentes de la interfaz gr\'afica de \emph{TamTam Edit} utilizando la voz, sino
+m\'as bien en ofrecer un nuevo flujo de interacci\'on. Esta importante lecci\'on se hizo clara durante la fase
+de dise\~no.
+
+Por ejemplo, crear una nota exige una secuencia de operaciones con el \foreign{mouse} al utilizarse la
+interfaz tradicional: hacer clic en el bot\'on de la herramienta correspondiente, hacer clic en la pista
+donde se desea crear la nota, arrastrar el mouse con el clic izquierdo presionado para definir la duraci\'on
+de la nota, etc.
+
+Al utilizarse una interfaz mediante voz del usuario, la misma operaci\'on puede realizarse pronunciando un
+comando como ``crear nota do''.
+
 
 La figura~\ref{figure:tamtam-listens-arq} muestra la arquitectura b\'asica de \emph{TamTam Listens}. Se pueden
 observar los componentes que forman parte de la soluci\'on desarrollada.
@@ -24,25 +33,30 @@ observar los componentes que forman parte de la soluci\'on desarrollada.
 Como sugiere la figura~\ref{figure:tamtam-listens-arq}, \emph{TamTam Listens} a\~nade soporte de reconocimiento
 del habla a \emph{TamTam Edit} utilizando la librer\'ia \emph{PocketSphinx}. Pero, a favor de una soluci\'on modular,
 el reconocimiento de comandos de voz de \emph{PocketSphinx} es expuesto como 
-como un  servicio de \emph{dbus}\cite{Dbus2013}, que es
-un mecanismo para comunicaci\'on entre procesos de linux. Por lo tanto, \emph{TamTam Listens} act\'ua como cliente
-del demonio de \emph{dbus} que realiza el reconocimiento del habla. Al estar implementado de \'esta manera, el servicio 
-de reconicimiento puede ser utilizado no solo por \emph{Tamtam Listens} si no por cualquier aplicaci\'on de linux, utilizando
-un protocolo de paso de mensajes. 
+como un  servicio de \emph{dbus}\cite{Dbus2013}, el cual es
+un mecanismo para comunicaci\'on entre procesos de Linux.
 
-Para el reconocimiento deben definirse: las palabras que forman parte del domimnio de la aplicaci\'on
-y el conjunto de oraciones (en este caso, comandos v\'alidos) soportados por la aplicaci\'on. Para esto, \emph{Pocketsphinx}  
-requiere de un modelo ac\'ustico y un modelo de lenguaje para realizar
-el reconocimiento de comandos. Para el modelo ac\'ustico se utiliz\'o el prove\'ido por el proyecto \emph{Voxforge}
-\cite{Voxforge}, que es un proyecto que busca proveer modelos ac\'usticos para motores de reconocimientos
-de c\'odigo abierto. Para el modelo de lenguaje se defini\'o una gram\'atica en formato \gls{jsgf} 
-\cite{JSGF2000}, que permiti\'o definir los comandos soportados por la aplicaci\'on de una manera sencilla. 
+\emph{TamTam Listens} act\'ua como cliente
+del demonio de \emph{dbus} que realiza el reconocimiento del habla. Al estar implementado de esta manera, el
+servicio de reconocimiento puede ser utilizado no solo por \emph{Tamtam Listens} sino por cualquier aplicaci\'on 
+de Linux, utilizando un protocolo de paso de mensajes. 
 
-\subsection{Diccionario}
+Para hacer posible el reconocimiento del habla deben definirse las palabras que forman parte del dominio de 
+la aplicaci\'on, su pronunciaci\'on y el conjunto de oraciones (en este caso, comandos v\'alidos) soportados por la aplicaci\'on. En otras palabras, \emph{Pocketsphinx} requiere un modelo ac\'ustico y un modelo de lenguaje para funcionar.
+ 
+Para el modelo ac\'ustico se utiliz\'o el prove\'ido por el proyecto \emph{Voxforge}
+\cite{Voxforge}, que es un proyecto que busca proveer modelos ac\'usticos para motores de reconocimiento
+de c\'odigo abierto. El diccionario fon\'etico se defini\'o espec{\'\i}ficamente para \foreign{TamTam Listens}.
 
-Para poder mapear los fonemas reconocidos por el modelo ac\'ustico a palabras v\'alidas del dominio de la aplicaci\'on, \emph{Pocketsphinx}
-utiliza un diccionario que define la secuencia de fonemas de cada palabra del lenguaje. En la figura~\ref{figure:fragmento-dic} se
-puede observar un fragmento del diccionario utilizado por \emph{TamTam Listens}.
+Para el modelo de lenguaje se utiliz\'o una gram\'atica en formato \gls{jsgf} 
+\cite{JSGF2000}, la cual permiti\'o definir los comandos soportados por la aplicaci\'on de una manera sencilla. 
+
+\subsection{Diccionario Fon\'etico}
+
+Para poder mapear los fonemas reconocidos por el modelo ac\'ustico a palabras v\'alidas del dominio de la 
+aplicaci\'on, \emph{Pocketsphinx} utiliza un diccionario que define la secuencia de fonemas de cada palabra 
+del lenguaje. En la figura~\ref{figure:fragmento-dic} se puede observar un fragmento del diccionario fon\'etico
+utilizado por \emph{TamTam Listens}.
 
 \lstset{
   basicstyle=\scriptsize,        % the size of the fonts that are used for the code
@@ -65,12 +79,12 @@ PARTITURA P A R T I T U R A
 SIGUIENTE S I G I E N T E
 ANTERIOR A N T E R I O R
 \end{lstlisting}
-\caption{Fragmento del diccionario utilizad en \emph{Tamtam Listens}}
+\caption{Fragmento del diccionario fon\'etico utilizado en \emph{Tamtam Listens}}
 \label{figure:fragmento-dic}
 \end{figure}
 
-Una vez definidas las palabras de la aplicaci\'on, lo siguiente es determinar si una secuencia de palabras es o no un comando
-v\'alido.
+Una vez definidas las palabras de la aplicaci\'on, lo siguiente es determinar si una secuencia de palabras es o no un 
+comando v\'alido.
 
 \subsection{Gram\'atica}
 
@@ -119,14 +133,14 @@ En la figura~\ref{figure:cmd-crear-musica} se pueden observar los comandos m\'as
 de la aplicaci\'on, explicados a continuaci\'on:
 
 \begin{itemize}
-\item \emph{reproducir m\'usica}: permite reproducir la música creada.
-\item \emph{pausar música}: permite pausar la reproducción actual dejando la línea de reproducción en el
+\item \emph{reproducir m\'usica}: permite reproducir la m\'usica creada.
+\item \emph{pausar m\'usica}: permite pausar la reproducci\'on actual dejando la l{\'\i}nea de reproducci\'on en el
 punto de pausa.
-\item \emph{parar música}: permite parar la reproducción actual y ubica la línea de reproducción al inicio de
-la música.
-\item \emph{crear nueva música}:  permite crear una nueva composición, dejando como resultado una
+\item \emph{parar m\'usica}: permite parar la reproducci\'on actual y ubica la l{\'\i}nea de reproducci\'on al inicio de
+la m\'usica.
+\item \emph{crear nueva m\'usica}:  permite crear una nueva composici\'on, dejando como resultado una
 partitura en blanco.
-\item \emph{exportar música}: permite guardar la música creada en un archivo para que reproducirse en un
+\item \emph{exportar m\'usica}: permite guardar la m\'usica creada en un archivo para que reproducirse en un
 reproductor multimedia.
 \end{itemize}
 
@@ -257,10 +271,10 @@ seleccionar una pista para poder utilizar este comando.
 
 \subsubsection{Comandos de Comp\'as}
 
-Estos comandos son muy importantes para la aplicación ya que permiten crear, modificar, 
+Estos comandos son muy importantes para la aplicaci\'on ya que permiten crear, modificar, 
 eliminar las notas musicales. El comando de la figura~\ref{figure:cmd-crear-nota} permite crear notas en el  
-compás actual. Por otro lado, en la figura~\ref{figure:cmd-tiempo-compas} se presenta el comando que permite al usuario ubicarse en un  
-tiempo en particular dentro del compás actual. Esto es útil para crear una nota a partir de ese punto o 
+comp\'as actual. Por otro lado, en la figura~\ref{figure:cmd-tiempo-compas} se presenta el comando que permite al usuario ubicarse en un  
+tiempo en particular dentro del comp\'as actual. Esto es \'util para crear una nota a partir de ese punto o 
 para seleccionar una nota que se encuentre en ese tiempo
 
 \begin{figure}[H]
@@ -299,7 +313,7 @@ de la figura~\ref{figure:cmd-del-nota}.
 \end{minipage}
 \end{figure}
 
-En la figura~\ref{figure:cmd-dur} se pude observar el comando que permite modificar la duración de 
+En la figura~\ref{figure:cmd-dur} se pude observar el comando que permite modificar la duraci\'on de 
 una nota inmediatamente despus de haberla creado o una nota previamente seleccionada. Finalmente, el comando
 presentado en la figura~\ref{figure:cmd-note-tiempo} permite modificar el tiempo en el que inicia la 
 nota inmediatamente despu\'es de haberla creado o una nota previamente seleccionada.
@@ -320,9 +334,66 @@ nota inmediatamente despu\'es de haberla creado o una nota previamente seleccion
 \end{minipage}
 \end{figure}
 
-La uni\'on de los componentes presentados en este cap\'itulo es lo que permiti\'o implementar el motor de reconocimiento
-del habla como servicio de \emph{dbus} y as\'i ofrecer \emph{TamTam Listens} como una interfaz 
+\subsection{Ejemplo: Componiendo una escala simple}
+Para finalizar este cap{\'\i}tulo, se transcribe a continuaci\'on un tutorial de uso incluido en el manual
+de uso de \foreign{TamTam Listens}. Esto, de modo a ejemplificar una breve interacci\'on entre el usuario
+y la aplicaci\'on.
+
+El tutorial sirve de gu{\'\i}a al usuario para realizar una sencilla composici\'on musical.
+Para componer una escala simple con \foreign{TamTam Listens}, pueden seguirse los siguientes pasos:
+
+\begin{enumerate}
+  \item Para empezar, debemos obtener una partitura en blanco. Lo conseguimos pronunciando el comando: 
+  ``Crear Nueva M\'usica''.
+
+  \item Seleccionamos los instrumentos que queremos utilizar, diciendo:
+    \begin{itemize}
+      \item ``Piano en Pista Uno''
+      \item ``Guitarra El\'ectrica en Pista Dos''
+      \item ``Teclado en Pista Tres''
+      \item ``Flauta en Pista Cuatro''
+    \end{itemize}
+
+  \item Antes de crear las notas, debemos ubicarnos en el punto donde queremos empezar.
+  Para ubicarnos en el tiempo uno, del comp\'as uno de la pista uno:
+  \begin{itemize}
+    \item ``Pista Uno''
+  \end{itemize}
+        Si quisi\'esemos empezar en el tiempo uno del comp\'as dos, bastar{\'\i}a con decir:
+  \begin{itemize}
+    \item ``Comp\'as Dos''
+  \end{itemize}
+        En caso de querer empezar en el tiempo siete, decimos:
+  \begin{itemize}
+    \item ``Tiempo Siete''
+  \end{itemize}
+
+  \item Ya seleccionado el punto inicial, estamos listos para crear las notas :
+  \begin{itemize}
+    \item ``Crear Nota Do''
+    \item ``Crear Nota Re''
+    \item ``Crear Nota Mi''
+    \item ``Crear Nota Fa''
+    \item ``Crear Nota Sol''
+    \item ``Crear Nota La''
+    \item ``Crear Nota Si''
+  \end{itemize}
+
+
+  \item Como no queremos trabajar de m\'as, duplicamos las pistas para escuchar los dem\'as instrumentos:
+  \begin{itemize}
+    \item ``Duplicar Pista Uno en Pista Dos''
+    \item ``Duplicar Pista Dos en Pista Tres''
+    \item ``Duplicar Pista Tres en Pista Cuatro''
+  \end{itemize}
+
+  \item As{\'\i} de f\'acil. Para escuchar nuestra m\'usica: ``Reproducir M\'usica''.
+
+\end{enumerate}
+
+La uni\'on de los componentes presentados en este cap\'itulo hizo posible implementar el motor 
+de reconocimiento del habla como servicio de \emph{dbus} y as\'i ofrecer \emph{TamTam Listens} como una interfaz 
 alternativa a la propuesta por \emph{TamTam Edit}.
 
-En el siguiente cap\'itulo se presenta la evaluaci\'on de la interfaz implementada, teniendo en cuenta aspectos t\'ecnicos
-y funcionales.
+En el siguiente cap\'itulo se presenta la evaluaci\'on de la interfaz implementada, teniendo en cuenta 
+aspectos t\'ecnicos y funcionales.

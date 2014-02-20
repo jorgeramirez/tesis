@@ -1,16 +1,16 @@
 \section{Tecnolog\'ia a Utilizar}
 \label{sec:tecnologia-utilizada}
 
-Como expone la secci\'on~\ref{sec:problema-especifico}, se decidi\'o dise\~nar
-una interfaz para componer m\'usica utilizando la voz. Adem\'as, desde un principio
-este trabajo de grado opt\'o por la metodolog\'ia de trabajo
-de C\'odigo Abierto, lo cual implica: 
+Como se expone en la secci\'on~\ref{sec:problema-especifico}, se decidi\'o dise\~nar
+una interfaz para componer m\'usica utilizando la voz. Adem\'as, desde un principio de
+este trabajo de grado, se opt\'o por la metodolog\'ia de trabajo
+de c\'odigo abierto, lo cual implica: 
 
 \begin{itemize}
-    \item Utilizar tecnolog\'ias de C\'odigo abierto para el desarrollo de la interfaz.
+    \item Utilizar tecnolog\'ias de c\'odigo abierto para el desarrollo de la interfaz.
     \item Establecer un proceso de desarrollo transparente y abierto.
-    \item Ofrecer la interfaz desarrollada, junto con su código fuente, de manera libre 
-        y gratuita para la comunidad de Código Abierto.
+    \item Ofrecer la interfaz desarrollada, junto con su c\'odigo fuente, de manera libre 
+        y gratuita para la comunidad de c\'odigo abierto.
 \end{itemize}
 
 La metodolog\'ia adoptada para implementar la interfaz permiti\'o utilizar un proyecto
@@ -18,7 +18,7 @@ existente como punto de partida, y as\'i a\~nadir soporte para comandos de voz. 
 el hecho de incorporar una nueva interfaz, permite analizar
 una de las motivaciones de la secci\'on~\ref{sec:motivacion}: un programa de composici\'on
 musical, que recibe comandos sonoros y emite tambi\'en un resultado sonoro, podr\'ia ser
-m\'as natural para el usuario. A continuaci\'on se presenta el proyecto de C\'odigo Abierto
+m\'as natural para el usuario. A continuaci\'on se presenta el proyecto de c\'odigo abierto
 utilizado como punto de partida para la soluci\'on implementada.
 
 \subsection{TamTam Edit}
@@ -32,19 +32,19 @@ port\'atil de bajo costo y consumo desarrollada por el proyecto \emph{One Laptop
 con los siguientes objetivos:
 
 \begin{itemize}
-    \item Proveer a los niños un ambiente de información cultural construyendo música y sonidos.
+    \item Proveer a los ni\~nos un ambiente de informaci\'on cultural construyendo m\'usica y sonidos.
     \item Brindar una experiencia sonora/musical divertida para usuarios sin conocimientos musicales.
-    \item Promover un camino hacia experiencias musicales más sofisticadas.
+    \item Promover un camino hacia experiencias musicales m\'as sofisticadas.
     \item Promover un instrumento musical con su propio ``sonido''.
-    \item Desarrollar un ambiente dinámico y mutable que propone la simpleza y permite la complejidad.
-    \item Favorecer la creación de música grupalmente.
-    \item Introducir los conceptos musicales y otros como: programación y audio.
+    \item Desarrollar un ambiente din\'amico y mutable que propone la simpleza y permite la complejidad.
+    \item Favorecer la creaci\'on de m\'usica grupalmente.
+    \item Introducir los conceptos musicales y otros como: programaci\'on y audio.
 \end{itemize}
 
-\emph{TamTam Edit} es una aplicaci\'on, que forma parte del conjunto de actividades musicales \emph{TamTam}, que proporciona
-una interfaz intuitiva para crear, modificar y organizar notas ubicadas en pistas virtuales. Adem\'as incluye una paleta de
-casi cien tipos de sonidos y modelos de construcci\'on musical que permite crear distintos tipos de variaciones en estilos
-musicales \cite{TamTamWiki}.
+\emph{TamTam Edit} es una aplicaci\'on, que forma parte del conjunto de actividades musicales \emph{TamTam},
+que proporciona una interfaz intuitiva para crear, modificar y organizar notas ubicadas en pistas virtuales.
+Adem\'as incluye una paleta de casi cien tipos de sonidos y modelos de construcci\'on musical que permite crear
+distintos tipos de variaciones en estilos musicales \cite{TamTamWiki}.
 
 
 Las secciones principales del programa se pueden observar en la figura~\ref{figure:ui-tamtam} 
@@ -57,34 +57,38 @@ Las secciones principales del programa se pueden observar en la figura~\ref{figu
 \end{figure}
 
 Como se puede apreciar en la figura~\ref{figure:ui-tamtam}, la interfaz se encuentra organizada en cinco pistas y cada pista tiene asociada un 
-instrumento (la quinta pista esta reservada para instrumento de tipo batería). Cada pista se divide en 4 
-compases (del compás uno al cuatro) y cada compás se divide en 12 tiempos (del uno al doce). 
-Las notas se dibujan en los compases, como se puede ver, la longitud de la nota indica su duración y su 
-altura el tipo de nota. Además la aplicación esta organizada en partituras, que son como hojas de 
-cuaderno, y son útiles para componer músicas largas.
+instrumento (la quinta pista esta reservada para instrumento de tipo bater{\'\i}a). Cada pista se divide en 4 
+compases (del comp\'as uno al cuatro) y cada comp\'as se divide en 12 tiempos (del uno al doce). 
+Las notas se dibujan en los compases, como se puede ver, la longitud de la nota indica su duraci\'on y su 
+altura el tipo de nota. Adem\'as la aplicaci\'on esta organizada en partituras, que son como hojas de 
+cuaderno, y son \'utiles para componer m\'usicas largas.
 
-La interfaz de la figura~\ref{figure:ui-tamtam} ofrece una experiencia de interacci\'on humano-computadora tradicional. 
+La interfaz de la figura~\ref{figure:ui-tamtam} ofrece una experiencia de interacci\'on humano-computadora 
+tradicional. 
 Este trabajo de grado busca incorporar un medio de interacci\'on alternativo al propuesto por \emph{TamTam Edit}. 
 A continuaci\'on se presentan los motivos que determinaron la elecci\'on de esta aplicaci\'on como punto de partida:
 
 \begin{itemize}
-    \item \emph{Impacto social:} \emph{TamTam Edit} es una aplicaci\'on que forma parte de una plataforma establecida
+    \item Impacto social: \emph{TamTam Edit} es una aplicaci\'on que forma parte de una plataforma establecida
     por el proyecto \gls{olpc}. Este proyecto busca proveer
-	a cada ni\~no de pa\'ises en desarrollo de una computadora de bajo costo con el
-	fin de potenciar el proceso educativo \cite{OLPC}. Ni\~nos con alg\'un tipo de discapacidad podr\'ian tener
-	problemas para utilizar la computadora. Por ejemplo, un ni\~no con problemas motrices podr\'ia tener dificultades para operar el mouse
-	o el teclado. Para estos casos, operar esta actividad utilizando la voz beneficiar\'ia a los ni\~nos con discapacidades
-	y por lo tanto la aplicaci\'on tendr\'ia un impacto social positivo, debido a la mejora en la accesibilidad.
-    \item \emph{Naturalidad de interacci\'on:} utilizar la voz para interactuar con una aplicaci\'on presenta una mayor
-	naturalidad con respecto al enfoque tradicional de interacci\'on, debido a que es el medio de
-	interacci\'on entre las personas.
-    \item \emph{No reinventar la rueda:} como el objetivo es incorporar una interfaz basada en reconocimiento del habla a una aplicaci\'on,
-	se elige \emph{TamTam Edit} para no construir la aplicaci\'on desde cero, sino extender las capacidades de una ya existente.
-    \item \emph{C\'odigo abierto:} el motivo anterior es posible gracias a que \emph{TamTam Edit} es un proyecto de c\'odigo abierto, lo cual
-	brinda a los desarrolladores la libertad de extender las funcionalidades de la aplicaci\'on.
-    \item \emph{Lenguaje de programaci\'on:} la actividad se encuentra implementada en el lenguaje de programaci\'on Python. Este es el
-	lenguaje elegido para realizar la interfaz, adem\'as la librer'ia de reconocimiento del habla a ser utilizada proporciona
-        \emph{bindings} para este lenguaje.
+    a cada ni\~no de pa\'ises en desarrollo de una computadora de bajo costo con el
+    fin de potenciar el proceso educativo \cite{OLPC}. Ni\~nos con alg\'un tipo de discapacidad podr\'ian tener
+    problemas para utilizar la computadora. Por ejemplo, un ni\~no con problemas motrices podr\'ia tener 
+    dificultades para operar el mouse o el teclado. Para estos casos, operar esta actividad utilizando la voz
+    beneficiar\'ia a los ni\~nos con discapacidades
+    y por lo tanto la aplicaci\'on tendr\'ia un impacto social positivo, debido a la mejora en la accesibilidad.
+    \item Naturalidad de interacci\'on: utilizar la voz para interactuar con una aplicaci\'on podr{\'\i}a ofrecer 
+    una mayor naturalidad con respecto al enfoque tradicional de interacci\'on, debido a que es el medio de
+    interacci\'on entre las personas.
+    \item No reinventar la rueda: como el objetivo es incorporar una interfaz basada en reconocimiento del
+    habla a una aplicaci\'on, se elige \emph{TamTam Edit} para no construir la aplicaci\'on desde cero, sino 
+    extender las capacidades de una ya existente.
+    \item C\'odigo abierto: el motivo anterior es posible gracias a que \emph{TamTam Edit} es un proyecto de 
+    c\'odigo abierto, lo cual brinda a los desarrolladores la libertad de extender las funcionalidades de la 
+    aplicaci\'on.
+    \item Lenguaje de programaci\'on: la actividad se encuentra implementada en el lenguaje de programaci\'on
+    Python. La librer{\'\i}a a ser utilizada proporociona \emph{bindings} para este lenguaje, lo cual supone una
+    ventaja importante para la implementaci\'on de la interfaz.
 \end{itemize}
 
 
@@ -92,13 +96,13 @@ A continuaci\'on se presentan los motivos que determinaron la elecci\'on de esta
 \subsection{PocketSphinx}
 
 El cap\'itulo~\ref{sec:tecnologias} clasifica a las herramientas que permiten implementar soluciones
-basadas en reconocimiento del habla en tres categor\'ias: Aplicaciones, \gls{api}s y Librer\'ias. Dada la naturaleza de \'este trabajo, se
-ha optado por elegir una librer\'ia para implementar la interfaz alternativa a la ofrecida por
+basadas en reconocimiento del habla en tres categor\'ias: Aplicaciones, \gls{api}s y Librer\'ias. Dada la naturaleza
+de este trabajo, se ha optado por elegir una librer\'ia para implementar la interfaz alternativa a la ofrecida por
 \emph{TamTam Edit}.
 
-Para la implementaci\'on de la interfaz operable a trav\'es de la voz se ha elegido la librer\'ia \emph{PocketSphinx} que,
-como se menciona en la secci\'on~\ref{sec:pocketsphinx}, es un motor de reconocimiento del habla orientado a la optimaci\'on
-del rendimiento y la portabilidad.
+Para la implementaci\'on de la interfaz operable a trav\'es de la voz se ha elegido la librer\'ia \emph{PocketSphinx}
+que, como se menciona en la secci\'on~\ref{sec:pocketsphinx}, es un motor de reconocimiento del habla orientado a la
+optimizaci\'on del rendimiento y la portabilidad.
 
 Uno de los objetivos espec\'ificos de este trabajo de grado es aplicar y contrastar en la pr\'actica
 los conocimientos te\'oricos adquiridos. Como indica la secci\'on~\ref{sec:librerias}, una librer\'ia es
@@ -110,9 +114,10 @@ para cumplir el objetivo mencionado anteriormente.
 A continuaci\'on se presentan los motivos t\'ecnicos que determinaron la elecci\'on de esta librer\'ia:
 
 \begin{itemize}
-    \item Existen \foreign{bindings} para el lenguaje de programaci\'on Python, lo cual hace muy sencilla la tarea de utilizar
-	la librer\'ia desde el c\'odigo Python.
-    \item \emph{PocketSphinx} esta orientada a la optimizaci\'on del rendimiento, resultando adecuada para sistemas con
-	recursos limitados, como es el caso de la computadora \emph{XO}.
-    \item La librer\'ia es un proyecto de c\'odigo abierto, por lo tanto se cumple la metodolog\'ia de trabajo adoptada.
+    \item Existen \foreign{bindings} para el lenguaje de programaci\'on Python, lo cual hace muy sencilla la 
+    tarea de utilizar la librer\'ia desde el c\'odigo Python.
+    \item \emph{PocketSphinx} est\'a orientada a la optimizaci\'on del rendimiento, resultando adecuada 
+    para sistemas con recursos limitados, como es el caso de la computadora \emph{XO}.
+    \item La librer\'ia es un proyecto de c\'odigo abierto, por lo tanto se cumple la metodolog\'ia 
+    de trabajo adoptada.
 \end{itemize}
