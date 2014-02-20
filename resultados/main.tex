@@ -2,10 +2,8 @@
 \chapter{Resultados Obtenidos}
 \label{sec:resultados}
 
-
-% introduccion
-Las pruebas con usuarios, descritas en el cap\'itulo anterior, arrojaron una serie de
-resultados interesantes que ser\'an presentados en este cap\'itulo para su posterior an\'alisis. Los
+En este cap\'itulo se exponen los resultados de las pruebas de usuarios descritas en el cap\'itulo
+anterior. Los
 distintos valores obtenidos para las variables consideradas ser\'an presentados de manera tabular, dichos
 valores ser\'an analizados para identificar correlaciones.
 
@@ -35,12 +33,15 @@ se puede ver el desempe\~no de cada sujeto en esta actividad.
     11 & 15 \\
     12 & 14 \\
 \hline
+Promedio &  12,75 \\
+\hline
 \end{tabular}
 \caption{Resumen del Test de Memoria}
 \label{sec:tabla-memoria}
 \end{table}
 
-Como se mencion\'o anteriormente, 12 a 13 palabras recordadas es el promedio esperado. 
+Como se mencion\'o en la secci\'on~\ref{sec:memoria-del-usuario}, 12 a 13 palabras recordadas es el promedio esperado. Esto
+se puede comprobar observando el valor de la \'ultima fila de la tabla~\ref{sec:tabla-memoria}.
  
 \section{Entrenamiento}
 
@@ -48,7 +49,8 @@ Luego del Test de Memoria cada sujeto realiz\'o dos tareas simples de manera tal
 llevar a la pr\'actica los conocimientos te\'oricos aprendidos.
 A continuaci\'on la tabla~\ref{sec:tabla-t1-memoria} presenta el tiempo $T_{1+2}$ de
 cada sujeto, siendo $T_{1+2}$ la suma del tiempo de la tarea uno y dos (en minutos) acampa\~nado
-de los resultados del test de memoria.
+de los resultados del test de memoria; la \'ultima fila de la tabla corresponde al promedio de los valores
+presentados.
 
 \begin{table}[H]
 \centering
@@ -69,6 +71,8 @@ de los resultados del test de memoria.
     10 & 14 & 7,15 \\
     11 & 15 & 12,92 \\
     12 & 14 & 21,42 \\
+\hline
+    Promedio &  12,75 & 13,84  \\
 \hline
 \end{tabular}
 \caption{Resumen del Test de memoria y tiempo $T1$ de cada sujeto}
@@ -105,6 +109,8 @@ Tasa de Error Humano ($E_2$), Duraci\'on ($T_3$), Cantidad de Errores ($E_3$) y 
     11     & 84,70  & 15,30  & 1,79 & 0:10:58 & 5  & 15      &  28 \\
     12     & 95,53  & 4,47   & 9,55 & 0:12:05 & 18 & 14      &  37 \\
 \hline
+  Promedio & 83,29   & 19,59 & 4,88 & 0:09:51 & 6,17 & 12,75 & 29,5   \\
+\hline
 \end{tabular}
 \caption{Resumen de las variables relacionadas con la tarea tres}
 \label{sec:tabla-tarea3}
@@ -136,7 +142,9 @@ Sujeto& $A$ & $E_1$ & $E_2$  & $T_4$      & $E_3$ & $C$ &  $M$ & $U$ \\
 10 &  88,57 & 11,43 &  2,78  &  0:03:40   &  2  &  70,83  & 14 &  18  \\
 11 &  94,17 & 5,83  &  0     &  0:07:02   &  1  &  100      & 15 &  22  \\
 12 &  93,43 & 6,57  &  9,92  &  0:10:11   &  7  &  73,61  & 14 &  29  \\
-    \hline
+\hline
+  Promedio & 84,19   & 15,80 & 6,01 & 0:08:30 & 5,67 & 87,5  &  12,75 & 21,5   \\
+\hline
 \end{tabular}
 \caption{Resumen de las variables relacionadas con la tarea cuatro}
 \label{sec:tabla-tarea4}
@@ -349,6 +357,85 @@ tabla~\ref{sec:error-contexto-resumen}
 \caption{Resumen de la Tasa de Error Humano por Nivel Contextual del Comando}
 \label{sec:error-contexto-resumen}
 \end{table}
+
+
+\subsubsection{Lista de comandos con mayor tasa de error}
+
+En la tabla~\ref{sec:tabla-lista-comandos-error} se puede observar la lista de los diez comandos 
+con mayor tasa de error promedio.
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{|l|p{3cm}|}
+\hline
+Comando & Tasa de Error \\
+\hline
+crear nueva partitura & 18,38 \\
+duplicar pista uno en pista dos & 17,5 \\
+duplicar pista uno en pista tres & 16,67 \\
+duplicar pista tres en pista cuatro & 13,25 \\
+comp\'as cuatro & 13,19 \\
+eliminar nota & 12,78 \\
+crear nota la grave & 12,5 \\
+pausar m\'usica & 12,5 \\
+crear nueva m\'usica & 12,36 \\
+guitarra el\'ectrica en pista uno & 10,41 \\
+\hline
+\end{tabular}
+\caption{Lista de comandos con su correspondiente tasa de error promedio}
+\label{sec:tabla-lista-comandos-error}
+\end{table}
+
+% la tabla comentada es la lista completa, se podria agregar como anexo al libro
+%\begin{table}[H]
+%\centering
+%\footnotesize
+%\begin{tabular}{|r|p{1.6cm}|}
+%\hline
+%Comando & Tasa de Error \\
+%\hline
+%crear nueva partitura & 18,3796296296296 \\
+%duplicar pista uno en pista dos & 17,5 \\
+%duplicar pista uno en pista tres & 16,6666666666667 \\
+%duplicar pista tres en pista cuatro & 13,2478632478632 \\
+%compás cuatro & 13,1944444444444 \\
+%eliminar nota & 12,7777777777778 \\
+%crear nota la grave & 12,5 \\
+%pausar música & 12,5 \\
+%crear nueva música & 12,3611111111111 \\
+%guitarra eléctrica en pista uno & 10,4166666666667 \\
+%crear nota re & 9,72222222222222 \\
+%duración dos & 9,52380952380952 \\
+%duplicar pista tres en pista dos & 8,33333333333333 \\
+%flauta en pista dos & 8,33333333333333 \\
+%tiempo diez & 8,33333333333333 \\
+%crear nota do agudo & 7,35479797979798 \\
+%tiempo siete & 7,22222222222222 \\
+%duplicar pista cuatro en pista tres & 6,94444444444444 \\
+%duplicar pista dos en pista tres & 6,94444444444444 \\
+%exportar música & 6,94444444444444 \\
+%flauta en pista uno & 6,94444444444444 \\
+%salir de tamtam & 6,66666666666667 \\
+%guitarra eléctrica en pista cuatro & 6,25 \\
+%crear nota do & 6,11111111111111 \\
+%pista dos & 4,92424242424242 \\
+%partitura anterior & 4,16666666666667 \\
+%tiempo seis & 4,16666666666667 \\
+%tiempo uno & 3,93518518518518 \\
+%crear nota fa & 2,77777777777778 \\
+%duración tres & 2,77777777777778 \\
+%partitura siguiente & 2,5 \\
+%crear nota la & 2,02380952380952 \\
+%crear nota mi & 1,38888888888889 \\
+%crear nota sol & 1,08774428949867 \\
+%pista uno & 1,04166666666667 \\
+%batería en pista cinco & 1,00416666666667  \\
+%\hline
+%\end{tabular}
+%\caption{Resumen de la Tasa de Error Humano por Nivel Contextual del Comando}
+%\label{sec:tabla-lista-comandos-error}
+%\end{table}
 
 \subsection{Distribuci\'on del Error Humano con respecto al Tiempo Transcurrido}
 
