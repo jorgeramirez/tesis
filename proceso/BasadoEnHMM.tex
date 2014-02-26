@@ -22,7 +22,7 @@ donde la se\~nal de voz fue dividida en $T$ muestras de igual duraci\'on.
 La oraci\'on de salida, a su vez, puede representarse como:
 
 \begin{align}
-\hat{W}  = w_1,w_2,w_3,\ldots,w_M\label{eq:asrW}
+W  = w_1,w_2,w_3,\ldots,w_M\label{eq:asrW}
 \end{align}
 
 donde la cadena est\'a compuesta por $M$ palabras.
@@ -33,6 +33,7 @@ De esta manera, la definici\'on introducida anteriormente puede expresarse matem
 \hat{W} = \argmax_{W \in L} P(W|O)
 \end{align}
 
+Se escribe $\hat{W}$ por tratarse de una aproximaci\'on probabil{\'\i}stica.
 Usando la Regla de Bayes la expresi\'on anterior puede reescribirse como:
 
 \begin{align}
@@ -73,7 +74,6 @@ La figura \ref{figure:proceso} ilustra de modo general la arquitectura de un sis
 El proceso b\'asico del reconocimiento del habla, puede descomponerse en dos etapas o fases, cada una de las cuales
 recibe una entrada (o varias) y produce una salida determinada.
 
-%Figura Jurafsky
 \begin{itemize}
 \item La primera fase o \emph{extracci\'on de caracter{\'\i}sticas} tiene como objetivo caracterizar la se\~nal
 de voz para obtener una representaci\'on adecuada para el decodificador. Para tal efecto, produce vectores de
