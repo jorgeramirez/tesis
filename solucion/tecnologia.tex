@@ -1,3 +1,5 @@
+%!TEX root = ../tesis.tex
+
 \section{Tecnolog\'ia a Utilizar}
 \label{sec:tecnologia-utilizada}
 
@@ -122,3 +124,27 @@ A continuaci\'on se presentan los motivos t\'ecnicos que determinaron la elecci\
     \item La librer\'ia es un proyecto de c\'odigo abierto, por lo tanto se cumple la metodolog\'ia 
     de trabajo adoptada.
 \end{itemize}
+
+\foreign{Pocketsphinx} implementa el proceso del reconocimiento del habla basado en el enfoque estad{\'\i}stico,
+el cual se present\'o en el cap{\'\i}tulo \ref{sec:proceso}. La librer{\'\i}a incluye los diferentes algoritmos necesarios
+para las fases del proceso.
+
+\begin{figure}[H] 
+\centering
+\includegraphics[width=0.8\textwidth]{./graphics/pocketsphinx.png}
+\caption{Reconocimiento del habla mediante Pocketsphinx. Gr\'afico basado en \cite{VerenichASR}.}
+\label{figure:hmm}
+\end{figure}
+
+Como conjunto de caracter{\'\i}sticas espectrales, \foreign{Pocketsphinx} utiliza los coeficientes espectrales
+en las frecuencias de mel (MFCC por sus siglas en ingl\'es).
+
+En los \gls{hmm} del modelo ac\'ustico, utiliza mezclas Gaussianas para definir las probabilidades de transici\'on
+entre estados. El diccionario fon\'etico debe ser definido por el desarrollador.
+
+Aunque \foreign{Pocketsphinx} soporta modelos de lenguaje basados en n-gramas, para este trabajo se utiliza
+un modelo de lenguaje basado en gram\'atica. Esto se debe a la simpleza del lenguaje y a la falta de datos
+de entrenamiento para un modelo estad{\'\i}stico del mismo.
+
+Como decodificador se utiliza el algoritmo de Viterbi, haciendo uso de la t\'ecnica de b\'usqueda en haz
+para reducir el espacio de b\'usqueda.

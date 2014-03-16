@@ -1,8 +1,10 @@
 %!TEX root = ../tesis.tex
-\input{proceso/hmm}
 
 \section[El Reconocimiento del Habla como Problema Estad{\'\i}stico]
 {El Reconocimiento del Habla como Problema \\ Estad{\'\i}stico}
+En t\'erminos simples, el reconocimiento del habla pretende determinar las palabras pronunciadas por una persona
+a partir de su voz. De modo a comprender los detalles del proceso mediante el cual se obtiene este
+resultado es importante, en primer lugar, definir formalmente el problema que se busca resolver.
 
 Para un lenguaje $L$ y una entrada ac\'ustica $X$, el problema del reconocimiento del habla puede definirse 
 como \cite{Jurafsky}:
@@ -27,7 +29,7 @@ W  = w_1,w_2,w_3,\ldots,w_M\label{eq:asrW}
 
 donde la cadena est\'a compuesta por $M$ palabras.
 
-De esta manera, la definici\'on introducida anteriormente puede expresarse matem\'aticamente como:
+De esta manera, la definici\'on del reconocimiento del habla puede expresarse matem\'aticamente como:
 
 \begin{align}
 \hat{W} = \argmax_{W \in L} P(W|O)
@@ -40,9 +42,9 @@ Usando la Regla de Bayes la expresi\'on anterior puede reescribirse como:
 \hat{W} = \argmax_{W \in L} \frac{P(O|W)P(W)}{P(O)}
 \end{align}
 
-Como se desea obtener la oraci\'on con mayor probabilidad dada una entrada ac\'ustica, la entrada es
-la misma para todas las oraciones evaluadas y su probabilidad de ocurrencia $P(O)$ se mantiene constante.
-Puesto de otra manera, el t\'ermino $P(O)$ es independiente de $W$, por lo cual puede despreciarse. 
+Se busca la oraci\'on con mayor probabilidad dada una entrada ac\'ustica. Esta entrada es
+la misma para todas las oraciones evaluadas, por lo que su probabilidad de ocurrencia $P(O)$ se mantiene constante.
+En otras palabras, el t\'ermino $P(O)$ es independiente de $W$, por lo cual puede despreciarse. 
 
 Por tanto:
 
@@ -50,8 +52,8 @@ Por tanto:
 \hat{W} = \argmax_{W \in L} P(O|W)P(W)
 \end{align}
 
-El primer t\'ermino representa la probabilidad de una entrada ac\'ustica dada una secuencia de palabras, tambi\'en
-conocida como verosimilitud de observaci\'on o modelo ac\'ustico. El segundo t\'ermino es la probabilidad 
+El t\'ermino $P(O|W)$ representa la probabilidad de una entrada ac\'ustica dada una secuencia de palabras, tambi\'en
+conocida como verosimilitud de observaci\'on o modelo ac\'ustico. El t\'ermino $P(W)$ es la probabilidad 
 \foreign{a priori} de ocurrencia de una secuencia de palabras, tambi\'en conocida como probabilidad previa o 
 modelo de lenguaje. Esto es:
 
@@ -62,6 +64,15 @@ modelo de lenguaje. Esto es:
 
 Esta ecuaci\'on es el fundamento del enfoque estad{\'\i}stico al problema del reconocimiento del habla, base de los
 sistemas \mbox{modernos \cite{RabinerStatistical2006}}.
+
+La representaci\'on, y posterior soluci\'on, del problema que se plantea en la ecuaci\'on \ref{eq:asrFundamental} se
+lleva a cabo mediante la aplicaci\'on de la teor{\'\i}a de los modelos ocultos de Markov. Este concepto, fundamental
+para el enfoque estad{\'\i}stico del reconocimiento del habla, se presenta a continuaci\'on.
+
+\input{proceso/hmm}
+\section[Proceso Estad{\'\i}stico del Reconocimiento del Habla]
+{Proceso Estad{\'\i}stico del Reconocimiento del \\Habla}
+
 
 \begin{figure}[H] 
 \centering

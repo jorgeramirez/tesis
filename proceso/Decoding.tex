@@ -11,9 +11,13 @@ final del proceso simplificado del reconocimiento del habla que se pretende pres
 \subsection{Modelo de Lenguaje}
 Un modelo de lenguaje busca predecir la probabilidad de una secuencia de palabras pertenecientes a un lenguaje.
 
-Formalmente, sea $V$ el conjunto finito de palabras que componen un lenguaje, tambi\'en conocido como 
-vocabulario, y $V^\dag$ el conjunto infinito de oraciones que pueden formarse con palabras pertenecientes 
-al vocabulario.
+Formalmente, sean:
+\begin{itemize}
+	\item $V$, el conjunto finito de palabras que componen un lenguaje, tambi\'en conocido como vocabulario.
+	\item $V^\dag$, el conjunto infinito de oraciones que pueden formarse con palabras pertenecientes 
+		al vocabulario.
+	\item $x_1,x_2,\ldots,x_n$, una secuencia de palabras de longitud $n$.
+\end{itemize}
 
 Un modelo de lenguaje \cite{CollinsLanguage} consiste en un conjunto finito $V$ y una funci\'on 
 de probabilidad $P(x_1,x_2,\ldots,x_n)$ tal que:
@@ -28,17 +32,22 @@ de probabilidad $P(x_1,x_2,\ldots,x_n)$ tal que:
 En resumen, un modelo de lenguaje define la probabilidad de ocurrencia de una secuencia de palabras
 $x_1,x_2,\ldots,x_n$ para un lenguaje dado.
 
-La t\'ecnica basada en n-gramas es la predominante para construir modelos de lenguaje, 
-debido a su simplicidad y efectividad \cite{GaoComparative2010}.
+Un n-grama es una secuencia de $n$ elementos de un texto\cite{Tandon210}. Para su aplicación a los modelos de
+lenguaje, cada elemento corresponde a una palabra perteneciente al vocabulario. La t\'ecnica basada
+en n-gramas es la predominante para construir modelos de lenguaje, debido a su simplicidad y 
+efectividad \cite{GaoComparative2010}.
+
+La utilización de n-gramas para construir modelos de lenguaje se basa en la suposici\'on de Markov de que cada
+palabra depende solo de las $n - 1$ palabras precedentes. Esta aproximación disminuye significativamente la
+complejidad del c\'alculo de la probabilidad que se busca para secuencias de gran longitud.
+
+
 Sea $W^L_1$ una cadena de $L $ palabras pertenecientes a un vocabulario $V$ dado. 
 Un modelo de lenguaje basado en n-gramas asigna la probabilidad a $W^L_1$ de acuerdo a:
 
 \begin{align}
 p(W^L_1) = \displaystyle \prod^L_{i = 1} w_i \mid w^{i - 1}_1 \approx \displaystyle \prod^L_{i = 1} w_i \mid w^{i - 1}_{i - n + 1}
 \end{align}
-
-Esta aproximaci\'on se basa en la suposici\'on de Markov de que cada palabra depende solo de las $n - 1$ palabras precedentes, lo cual disminuye significativamente la complejidad del c\'alculo de la probabilidad que se busca para
-secuencias de gran longitud.
 
 A modo de ejemplo, se propone la tarea de calcular la probabilidad de la frase \mbox{``El hombre corre''}
 utilizando un modelo basado en bigramas ($n=2$).
@@ -59,8 +68,8 @@ p(\text{\textless} /s\text{\textgreater} \mid corre)
 \end{equation*}
 
 
-Otro tipo de modelo de lenguaje es el basado en una gram\'atica. Las gram\'aticas tienen como ventaja que pueden
-utilizarse sin entrenamiento previo. Su principal desventaja est\'a en la dificultad de definir gram\'aticas formales
+Otro tipo de modelo de lenguaje es el basado en una gram\'atica. Una ventaja de las gram\'aticas es la posibilidad de
+utilizarlas sin entrenamiento previo. Su principal desventaja est\'a en la dificultad de definir gram\'aticas formales
 para lenguajes complejos \cite{Wang2000}.
 
 Un modelo de lenguaje basado en una gram\'atica tradicional asigna una probabilidad de 0 o 1 a cualquier secuencia,
@@ -86,8 +95,7 @@ la probabilidad de una entrada ac\'ustica dada una secuencia de palabras.
 El mismo representa un factor cr{\'\i}tico para la precisi\'on de los resultados obtenidos, y puede decirse que
 se trata del componente central de cualquier sistema de reconocimiento del habla \cite{huang-handbook10}.
 
-Es en este elemento del reconocedor en el cual se aplica el concepto de modelos ocultos de Markov que se present\'o
-anteriormente. Un modelo ac\'ustico est\'a compuesto por varios modelos ocultos de Markov, cada uno con
+Un modelo ac\'ustico est\'a compuesto por varios modelos ocultos de Markov, cada uno con
 los siguientes par\'ametros:
 
 
@@ -120,19 +128,30 @@ los siguientes par\'ametros:
 	La salida del decodificador supone un problema, teniendo en cuenta que el resultado deseado es la secuencia 
 	de palabras $W$ de la ecuaci\'on \ref{eq:asrW}, no la de fonemas $Q$.
 
-	El inconveniente anterior se soluciona mediante el diccionario fon\'etico, el cual contiene correspondencias entre palabras y secuencias de fonemas. El mismo forma parte del modelo ac\'ustico \cite{huang-handbook10}.
+	El inconveniente anterior es resuelto mediante el diccionario fon\'etico, el cual contiene correspondencias 
+	entre palabras y secuencias de fonemas. El mismo forma parte del modelo ac\'ustico \cite{huang-handbook10}.
 
 	\item \textbf{Observaciones}
 
 
 	Las caracter{\'\i}sticas espectrales de la onda sonora representan los s{\'\i}mbolos observables del habla.
-	Los vectores de caracter{\'\i}sticas que se calcularon en la etapa anterior corresponden a las observaciones
-	del modelo oculto de Markov.
+	Los vectores de caracter{\'\i}sticas que se calcularon en la etapa de extracción de características
+	corresponden a las observaciones del modelo oculto de Markov.
 
 	Esto es, siendo $O$ la secuencia de observaciones de la ecuaci\'on \ref{eq:asrO} 
 	y $V$ el conjunto de s{\'\i}mbolos observables de la ecuaci\'on \ref{eq:hmmV}, $o_1,o_2,o_3,\ldots,o_T \in V$.
 
 	\item \textbf{Distribuciones de Probabilidad}
+
+
+	En general, las distribuciones probabil{\'\i}sticas del \gls{hmm} se estiman durante la fase de entrenamiento,
+	antes de la utilizaci\'on del sistema de reconocimiento del habla. Las mismas incluyen:
+
+	\begin{itemize}
+		\item La probabilidad de observar un determinado fonema al inicio de la oraci\'on: $\pi_i$.
+		\item La probabilidad de transici\'on entre fonemas: $a_{ij}$.
+		\item La probabilidad de observción $b_j(v_k)$. 
+	\end{itemize}
 
 	Sea $o_t$ el vector de caracter{\'\i}sticas que se observa en el tiempo $t$, es decir, uno de los elementos
 	de la ecuaci\'on \ref{eq:asrO}.
@@ -167,18 +186,6 @@ los siguientes par\'ametros:
 
 	Existen adem\'as otros m\'etodos para definir la probabilidad de observaci\'on, como la cuantizaci\'on
 	vectorial \cite{Burton1983} y las redes neuronales \cite{KristineApplying1995}.
-
-	En general, los par\'ametros probabil{\'\i}sticos del \gls{hmm} se calculan durante la fase de entrenamiento,
-	antes de la utilizaci\'on del sistema de reconocimiento del habla. Estos valores incluyen:
-
-	\begin{itemize}
-		\item La probabilidad de observar un determinado fonema al inicio de la oraci\'on: $\pi_i$.
-		\item La probabilidad de transici\'on entre fonemas: $a_{ij}$.
-		\item Los par\'ametros relacionados a $b_j(v_k)$. 
-
-		En el caso del m\'etodo Gaussiano simple: los par\'ametros $\mu_j$ y $\Sigma_j$ de la 
-		ecuaci\'on \ref{eq:hmmGaussian}.
-	\end{itemize}
 
 \end{enumerate}
 
@@ -223,7 +230,7 @@ busca la secuencia de urnas m\'as probable dada la secuencia de colores que se o
 
 Teniendo en cuenta que el modelo ac\'ustico est\'a constituido por varios modelos ocultos de Markov, se plantea
 la necesidad de definir un \'unico \gls{hmm} para el algoritmo decodificador. Suponiendo que el modelo ac\'ustico
-define un \gls{hmm} por fonema, esto puede hacerse de la siguiente manera:
+define un \gls{hmm} por fonema, esto puede lograrse mediante los siguientes pasos:
 
 \begin{enumerate}
 	\item Se concatenan los modelos ocultos de Markov de los fonemas de manera a obtener un \gls{hmm} 
@@ -246,15 +253,14 @@ define un \gls{hmm} por fonema, esto puede hacerse de la siguiente manera:
 \subsection{Algoritmo de Viterbi}
 Una vez calculados los vectores de caracter{\'\i}sticas, y habiendo construido el espacio de b\'usqueda, 
 se cuenta con todos los elementos necesarios para el algoritmo decodificador. Un algoritmo frecuentemente 
-utilizado para la decodificaci\'on se denomina algoritmo de Viterbi.
+utilizado para la decodificaci\'on es el algoritmo de Viterbi.
 
-El algoritmo de Viterbi, tomando como entrada una secuencia de observaciones y un \'unico aut\'omata, 
-encuentra el camino \'optimo a trav\'es del aut\'omata, esto es, la mejor secuencia de estados. 
-La descripci\'on y el pseudoc\'odigo que se presentan en esta secci\'on
-est\'an basados principalmente en \cite{Jurafsky, Rabiner89atutorial}.
+El algoritmo de Viterbi toma como entrada una secuencia de observaciones y un \'unico aut\'omata, 
+y encuentra el camino \'optimo a trav\'es del aut\'omata, esto es, la mejor secuencia de estados. 
 
 M\'as formalmente, se busca la mejor secuencia de estados $Q = (q_1,q_2,\ldots,q_T)$ 
-dados una secuencia de observaciones $O = (o_1,o_2,\ldots,o_T)$ y un modelo oculto de Markov, $\lambda$.
+dados una secuencia de observaciones $O = (o_1,o_2,\ldots,o_T)$ y un modelo oculto de 
+Markov, $\lambda$ \cite{Jurafsky}.
 
 El algoritmo utiliza una matriz de probabilidades $viterbi$, donde cada celda $viterbi[i,t]$ 
 contiene la probabilidad del mejor camino teniendo en cuenta las $t$ primeras observaciones y 
@@ -274,6 +280,9 @@ mediante la siguiente relaci\'on de recurrencia:
 \begin{align}
 	viterbi[i,t] = \displaystyle \max_i (viterbi[i,t-1]a_{i,j})b_j(o_t)
 \end{align}
+
+El pseudocódigo del algoritmo de Viterbi que se presenta a continuación fue traducido a partir de
+\cite{Rabiner89atutorial}.
 
 \begin{algorithm}[H]
 \caption{Algoritmo de Viterbi} \label{viterbi}
@@ -336,7 +345,7 @@ relacionada a la b\'usqueda s{\'\i}ncrona en el tiempo \cite{huang-handbook10}.
 \label{figure:hmm}
 \end{figure}
 
-La entrada de la fase de decodificaci\'on es el conjunto de vectores de caracter{\'\i}sticas espectrales,
+La fase de decodificaci\'on inicia con el conjunto de vectores de caracter{\'\i}sticas espectrales,
 los cuales se calcularon en base a la entrada ac\'ustica durante la fase de extracci\'on de caracter{\'\i}sticas.
 
 El modelo de lenguaje busca predecir la probabilidad de una secuencia de palabras pertenecientes a un lenguaje.
@@ -354,7 +363,7 @@ algoritmo A* son dos algoritmos decodificadores utilizados frecuentemente en el 
 La secuencia de fonemas o subfonemas puede convertirse a una secuencia de palabras utilizando el diccionario
 fon\'etico que forma parte del modelo ac\'ustico.
 
-La salida de la fase de decodificaci\'on es la secuencia de palabras m\'as probable dados los vectores
+Al finalizar la fase de decodificaci\'on se obtiene la secuencia de palabras m\'as probable dados los vectores
 de caracter{\'\i}sticas espectrales, los cuales se calcularon en base a la entrada ac\'ustica durante
 la fase de extracci\'on de caracter{\'\i}sticas. Con esto llega a su culminaci\'on el proceso b\'asico
 del reconocimiento del habla.

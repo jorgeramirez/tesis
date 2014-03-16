@@ -3,15 +3,24 @@
 \label{sec:featureExtraction}
 
 En la primera fase, la entrada es la se\~nal de voz correspondiente al emisor la cual se divide en muestras
-de corta duraci\'on llamadas tramas. A trav\'es de un proceso de procesamiento de la onda sonora o 
-\emph{An\'alisis de Se\~nal} \cite{Jurafsky}, se obtienen vectores de caracter{\'\i}sticas representativas 
-para cada trama. Esta secci\'on describe los conceptos relacionados a esta transformaci\'on.
+de corta duraci\'on llamadas tramas. A trav\'es del procesamiento de la onda sonora, se obtienen vectores 
+de caracter{\'\i}sticas representativas para cada trama \cite{Jurafsky}.
+
+El objetivo de esta fase es transformar las ondas sonoras a una representaci\'on adecuada para su utilizaci\'on
+en la siguiente fase. Se busca una representaci\'on que caracterice la voz con la mayor precisi\'on posible, de modo a
+facilitar su posterior identificaci\'on. Adem\'as, el costo de procesamiento para la transformaci\'on y el costo
+de almacenamiento de la representaci\'on resultante son factores a considerar.
+
+En general, la mayor{\'\i}a de estas representaciones se basan en el an\'alisis del espectro
+de la onda, por lo cual reciben el nombre de caracter{\'\i}sticas espectrales. 
+Estos conceptos se describen con m\'as detalle en esta secci\'on.
 
 \subsection{Ondas Sonoras}
 
-La entrada para un reconocedor del habla, y en particular para la fase 1, es la misma que la del o{\'\i}do humano: una 
-serie de cambios en la presi\'on del aire \cite{YoungUniversity2007}. Estos cambios se originan en el emisor, y son 
-causados por el aire que es expulsado de los pulmones, pasa por el tracto vocal y salen por la boca. As{\'\i}, para el 
+La entrada para un reconocedor del habla, y en particular para la fase 1, es la misma que 
+la del o{\'\i}do humano: una serie de cambios en la presi\'on del aire \cite{YoungUniversity2007}. 
+Estos cambios se originan en el emisor, y son causados por el aire que es expulsado de los pulmones,
+pasa por el tracto vocal y salen por la boca. As{\'\i}, para el 
 proceso de s{\'\i}ntesis del habla en el ser humano, los pulmones son la fuente
 del sonido y el trato vocal es el filtro que genera los distintos tipos de \mbox{sonido \cite{BradburyLineal2000}}.
 
@@ -30,8 +39,8 @@ El an\'alisis espectral est\'a basado en la conclusi\'on de Fourier que establec
 representada como la sumatoria de varias ondas simples a diferentes frecuencias. El espectro es la representaci\'on de las 
 distintas frecuencias que componen una onda, que puede visualizarse mediante una gr\'afica de amplitud en funci\'on de la 
 \mbox{frecuencia \cite{Jurafsky}}. A continuaci\'on en la figura~\ref{figure:formants} se puede observar un ejemplo
-de espectro codificado en \gls{lpc} \cite{KesarkarFeature2003} el cual hace que sea m\'as f\'acil identificar los picos espectrales,
-el eje $X$ corresponde a la frecuencia y el eje $Y$ a la amplitud.
+de espectro codificado en \gls{lpc} \cite{KesarkarFeature2003} el cual facilita la identificaci\'on de los picos
+espectrales, el eje $X$ corresponde a la frecuencia y el eje $Y$ a la amplitud.
 
 \begin{figure}[H]
 \centering
@@ -91,7 +100,7 @@ y el emisor.
 \item Las caracter{\'\i}sticas capturan la din\'amica espectral, es decir, los cambios del espectro en el tiempo.
 \end{itemize}
 
-Algunos de los conjuntos de caracter{\'\i}sticas que se utilizan son:
+Algunos conjuntos de caracter{\'\i}sticas com\'unmente utilizados son:
 \begin{itemize}
 \item \gls{lpc}: representaci\'on del espectro basada en la idea de que una muestra 
 sonora puede ser aproximada mediante la combinaci\'on lineal de muestras \mbox{anteriores \cite{KesarkarFeature2003}}.
@@ -100,13 +109,13 @@ Basado en el concepto de ceptro, una representaci\'on que convierte los efectos 
 operaci\'on de adici\'on. Los coeficientes cesptrales se representan en la escala de Mel, una escala de frecuencia no
 lineal de frecuencia basada en la percepci\'on de \mbox{tonos \cite{Ellis08anintroduction}}.
 \item An\'alisis Predictivo Lineal Perceptual: se basa en las caracter{\'\i}sticas \gls{lpc} y las modifica de manera 
-consistente a la percepci\'on por parte del ser humano. Por ejemplo, toma en cuenta los problemas de las personas 
+consistente a la percepci\'on por parte del ser humano. Por ejemplo, se tiene en cuenta los problemas de las personas 
 para percibir ondas de alta frecuencia y la relaci\'on entre volumen e intensidad como factores para la 
 transformaci\'on de las \mbox{caracter{\'\i}sticas \cite{Jurafsky}}. 
 \end{itemize}
 
-La evaluaci\'on y comparaci\'on de estos conjuntos de caracter{\'\i}sticas espectrales, de manera a determinar 
-el m\'as indicado para el reconocimiento del habla, es tema de numerosos trabajos de 
+La evaluaci\'on y comparaci\'on de estos conjuntos de caracter{\'\i}sticas espectrales para el problema
+del reconocimiento del habla es objeto de estudio de numerosos trabajos de
 \mbox{investigaci\'on \cite{DorraComparative2006, SarosiComparison2011, ElminirEvaluation2012}}.
 
 
@@ -119,13 +128,13 @@ el m\'as indicado para el reconocimiento del habla, es tema de numerosos trabajo
 \label{figure:hmm}
 \end{figure}
 
-La entrada de la fase de extracci\'on de caracter{\'\i}sticas es una onda sonora, correspondiente a la voz.
+La fase de extracci\'on de caracter{\'\i}sticas inicia con la recepci\'on de una onda sonora, correspondiente a la voz.
 La misma puede caracterizarse mediante los formantes que se observan en un espectrograma.
 
 Durante esta fase se sigue un proceso de an\'alisis de se\~nal: muestreo, cuantificaci\'on y conversi\'on.
 Los detalles de este proceso dependen del conjunto de caracter{\'\i}sticas espectrales seleccionado 
 para representar la se\~nal.
 
-La salida de la fase de extracci\'on de caracter{\'\i}sticas es un conjunto de vectores de caracter{\'\i}sticas
-espectrales, cada uno de los cuales describe cuantitativamente una trama de la onda original. Estos vectores
-representan la entrada de la fase siguiente del proceso del reconocimiento del habla.
+Al t\'ermino de la fase de extracci\'on de caracter{\'\i}sticas se obtiene un conjunto de vectores 
+de caracter{\'\i}sticas espectrales, cada uno de los cuales describe cuantitativamente una trama de
+la onda original. Estos vectores representan la entrada de la fase siguiente del proceso del reconocimiento del habla.

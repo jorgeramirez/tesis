@@ -1,3 +1,4 @@
+%!TEX root = ../tesis.tex
 \section{Tamtam Listens}
 \label{sec:tamtam-listens}
 La interfaz de interacci\'on alternativa para la aplicaci\'on \emph{Tamtam Edit} se denomina  
@@ -33,11 +34,11 @@ observar los componentes que forman parte de la soluci\'on desarrollada.
 Como sugiere la figura~\ref{figure:tamtam-listens-arq}, \emph{TamTam Listens} a\~nade soporte de reconocimiento
 del habla a \emph{TamTam Edit} utilizando la librer\'ia \emph{PocketSphinx}. Pero, a favor de una soluci\'on modular,
 el reconocimiento de comandos de voz de \emph{PocketSphinx} es expuesto como 
-como un  servicio de \emph{dbus}\cite{Dbus2013}, el cual es
+como un  servicio de \emph{D-bus}\cite{Dbus2013}, el cual es
 un mecanismo para comunicaci\'on entre procesos de Linux.
 
 \emph{TamTam Listens} act\'ua como cliente
-del demonio de \emph{dbus} que realiza el reconocimiento del habla. Al estar implementado de esta manera, el
+del demonio de \emph{D-Bus} que realiza el reconocimiento del habla. Al estar implementado de esta manera, el
 servicio de reconocimiento puede ser utilizado no solo por \emph{Tamtam Listens} sino por cualquier aplicaci\'on 
 de Linux, utilizando un protocolo de paso de mensajes. 
 
@@ -392,7 +393,7 @@ Para componer una escala simple con \foreign{TamTam Listens}, pueden seguirse lo
 \end{enumerate}
 
 La uni\'on de los componentes presentados en este cap\'itulo hizo posible implementar el motor 
-de reconocimiento del habla como servicio de \emph{dbus} y as\'i ofrecer \emph{TamTam Listens} como una interfaz 
+de reconocimiento del habla como servicio de \emph{D-Bus} y as\'i ofrecer \emph{TamTam Listens} como una interfaz 
 alternativa a la propuesta por \emph{TamTam Edit}.
 
 En el siguiente cap\'itulo se presenta la evaluaci\'on de la interfaz implementada, teniendo en cuenta 
