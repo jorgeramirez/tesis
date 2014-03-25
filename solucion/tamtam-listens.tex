@@ -7,12 +7,16 @@ de las tecnolog\'ias mencionadas anteriormente.
 
 
 Al ofrecer al usuario final un medio de interacci\'on humano-computadora diferente, \emph{TamTam Listens} debe
-ser intuitivo y f\'acil de usar. De modo a lograr esto, la soluci\'on no est\'a en permitir al usuario controlar 
-el \foreign{mouse} o los componentes de la interfaz gr\'afica de \emph{TamTam Edit} utilizando la voz, sino
-m\'as bien en ofrecer un nuevo flujo de interacci\'on. Esta importante lecci\'on se hizo clara durante la fase
-de dise\~no.
+ser intuitivo y f\'acil de usar. De modo a lograr esto, la soluci\'on a implementar no debe ofrecer al usuario
+la posibilidad de controlar el \foreign{mouse} o los componentes de la interfaz gr\'afica de \emph{TamTam Edit}
+utilizando la voz. Esto se debe a que controlar el \foreign{mouse} con la voz o, mejor dicho, hacer una
+correspondencia directa entre los comandos de voz y la interfaz gr\'afica puede resultar en un flujo de interacci\'on
+poco conveniente, ya que estar\'ia usando un flujo de interacci\'on bastante parecido al utilizado por la interfaces
+de escritorio tradicionales. Por lo tanto, \emph{TamTam Listens} debe ofrecer un nuevo flujo de interacci\'on basado
+en el habla. Esta importante lecci\'on se hizo clara durante la fase de dise\~no.
 
-Por ejemplo, crear una nota exige una secuencia de operaciones con el \foreign{mouse} al utilizarse la
+Para comprender la diferencia, se explica el siguiente ejemplo. 
+Crear una nota exige una secuencia de operaciones con el \foreign{mouse} al utilizarse la
 interfaz tradicional: hacer clic en el bot\'on de la herramienta correspondiente, hacer clic en la pista
 donde se desea crear la nota, arrastrar el mouse con el clic izquierdo presionado para definir la duraci\'on
 de la nota, etc.
@@ -34,20 +38,22 @@ observar los componentes que forman parte de la soluci\'on desarrollada.
 Como sugiere la figura~\ref{figure:tamtam-listens-arq}, \emph{TamTam Listens} a\~nade soporte de reconocimiento
 del habla a \emph{TamTam Edit} utilizando la librer\'ia \emph{PocketSphinx}. Pero, a favor de una soluci\'on modular,
 el reconocimiento de comandos de voz de \emph{PocketSphinx} es expuesto como 
-como un  servicio de \emph{D-bus}\cite{Dbus2013}, el cual es
+como un  servicio del sistema, a trav\'es de llamadas a \emph{D-bus}\cite{Dbus2013}, el cual es
 un mecanismo para comunicaci\'on entre procesos de Linux.
 
-\emph{TamTam Listens} act\'ua como cliente
-del demonio de \emph{D-Bus} que realiza el reconocimiento del habla. Al estar implementado de esta manera, el
+\emph{TamTam Listens} consume como un servicio el reconocimiento del habla expuesto a trav\'es de \emph{D-Bus}. Al estar implementado de esta manera, el
 servicio de reconocimiento puede ser utilizado no solo por \emph{Tamtam Listens} sino por cualquier aplicaci\'on 
 de Linux, utilizando un protocolo de paso de mensajes. 
 
-Para hacer posible el reconocimiento del habla deben definirse las palabras que forman parte del dominio de 
-la aplicaci\'on, su pronunciaci\'on y el conjunto de oraciones (en este caso, comandos v\'alidos) soportados por la aplicaci\'on. En otras palabras, \emph{Pocketsphinx} requiere un modelo ac\'ustico y un modelo de lenguaje para funcionar.
- 
+Para hacer posible el reconocimiento del habla debe definirse el vocabulario que forma parte del dominio de 
+la aplicaci\'on, su pronunciaci\'on y el conjunto de oraciones (en este caso, comandos v\'alidos) soportados por la aplicaci\'on.
+En otras palabras, \emph{Pocketsphinx} requiere un modelo ac\'ustico y un modelo de lenguaje para funcionar.
+
+\subsection{Modelo Ac\'ustico y Modelo de Lenguaje}
+
 Para el modelo ac\'ustico se utiliz\'o el prove\'ido por el proyecto \emph{Voxforge}
 \cite{Voxforge}, que es un proyecto que busca proveer modelos ac\'usticos para motores de reconocimiento
-de c\'odigo abierto. El diccionario fon\'etico se defini\'o espec{\'\i}ficamente para \foreign{TamTam Listens}.
+de c\'odigo abierto.
 
 Para el modelo de lenguaje se utiliz\'o una gram\'atica en formato \gls{jsgf} 
 \cite{JSGF2000}, la cual permiti\'o definir los comandos soportados por la aplicaci\'on de una manera sencilla. 
@@ -84,6 +90,8 @@ ANTERIOR A N T E R I O R
 \label{figure:fragmento-dic}
 \end{figure}
 
+Como se puede observar, el formato del diccionario es bastante simple. Primero se define la palabra y 
+a continuaci\'on los fonemas que la componen separados por espacios.
 Una vez definidas las palabras de la aplicaci\'on, lo siguiente es determinar si una secuencia de palabras es o no un 
 comando v\'alido.
 
@@ -161,8 +169,8 @@ reproductor multimedia.
 \end{minipage}
 \end{figure}
 
-El comando de la figura~\ref{figure:cmd-salir} permite salir de \emph{TamTam Listens}. Por otro lado, los comandos de la figura~\ref{figure:cmd-vol}
-y~\ref{figure:cmd-tempo} permiten controlar, respectivamente, el volumen y tempo general de la aplicaci\'on.
+El comando de la figura~\ref{figure:cmd-salir} permite salir de \emph{TamTam Listens}, simplemente hay que decir ``salir de tamtam''. Por otro lado, los comandos de la figura~\ref{figure:cmd-vol}
+y~\ref{figure:cmd-tempo} permiten controlar, respectivamente, el volumen y tempo general de la aplicaci\'on. Por ejemplo: ``aumentar volumen'', ``disminuir tempo''.
 
 \begin{figure}[H]
 \begin{minipage}[b]{0.5\linewidth}
@@ -184,9 +192,9 @@ Los comandos de las figuras~\ref{figure:cmd-partitura-1} y~\ref{figure:cmd-parti
 la partitura actual, como se explican a continuaci\'on:
 
 \begin{itemize}
-    \item \emph{crear nueva  partitura}:  permite crear una nueva partitura en blanco.
-    \item \emph{limpiar  partitura}: permite limpiar el contenido de la partitura actual, es decir, borrar todas las notas.
-    \item \emph{duplicar partitura}: crea una nueva partitura con el mismo contenido que la partitura actual.
+    \item \emph{crear nueva  partitura}:  permite crear una nueva partitura en blanco. Utilizaci\'on, ``crear nueva partitura''
+    \item \emph{limpiar  partitura}: permite limpiar el contenido de la partitura actual, es decir, borrar todas las notas. Utilizaci\'on, ``limpiar partitura''
+    \item \emph{duplicar partitura}: crea una nueva partitura con el mismo contenido que la partitura actual. Utilizaci\'on, ``duplicar partitura''.
 \end{itemize}
 
 \begin{figure}[H]
@@ -207,7 +215,8 @@ la partitura actual, como se explican a continuaci\'on:
 
 En la figura~\ref{figure:cmd-pista-1} puede apreciarse el comando que permite al usuario ubicarse en una pista en particular. Por  
 ejemplo, para ubicarse en la pista tres debe decir “pista tres”. Adem\'as de controlar el volumen general de la aplicaci\'on, en 
-la figura~\ref{figure:cmd-vol-pista} se pueden ver los comandos para controlar el volumen de una pista en particular.
+la figura~\ref{figure:cmd-vol-pista} se pueden ver los comandos para controlar el volumen de una pista en particular. Para aumentar
+el volumen de la pista tres, el usuario debe decir ``aumentar volumen de pista tres''.
 
 \begin{figure}[H] 
 \begin{minipage}[b]{0.5\linewidth}
@@ -226,9 +235,11 @@ la figura~\ref{figure:cmd-vol-pista} se pueden ver los comandos para controlar e
 \end{figure}
 
 Los comandos de la figura~\ref{figure:cmd-rep-pista} permiten: reproducir, silenciar, habilitar y limpiar el contenido de una
-pista en particular. Para poder generar distintos tipos de sonidos con \emph{TamTam Listens}, los usuarios de pueden asignar
+pista en particular. Por ejemplo, para reproducir las notas de la pista uno, el usuario debe decir ``reproducir pista uno''. 
+Para poder generar distintos tipos de sonidos con \emph{TamTam Listens}, los usuarios de pueden asignar
 instrumentos a cada una de las pistas de
-la aplicaci\'on, \'esto se puede realizar con los comandos de la figura~\ref{figure:cmd-inst-p1-4} y~\ref{figure:cmd-inst-p5}.
+la aplicaci\'on, \'esto se puede realizar con los comandos de la figura~\ref{figure:cmd-inst-p1-4} y~\ref{figure:cmd-inst-p5}. Para
+asignar el piano a la pista dos, basta con decir ``piano en pista dos''.
 
 
 \begin{figure}[H]
@@ -255,7 +266,8 @@ la aplicaci\'on, \'esto se puede realizar con los comandos de la figura~\ref{fig
 \end{figure}
 
 Generalmente las composiciones tienen cierta secuencia de notas que se repiten para varios instrumentos. El comando de la 
-figure~\ref{figure:cmd-dup-pista} permite duplicar el contenido, es decir las notas, de una pista en otra. 
+figure~\ref{figure:cmd-dup-pista} permite duplicar el contenido, es decir las notas, de una pista en otra. Por ejemplo, 
+``duplicar pista uno en pista dos'' permite duplicar las notas de la pista uno en la pista dos.
 
 \subsubsection{Comandos de Pista} 
 
@@ -274,9 +286,9 @@ seleccionar una pista para poder utilizar este comando.
 
 Estos comandos son muy importantes para la aplicaci\'on ya que permiten crear, modificar, 
 eliminar las notas musicales. El comando de la figura~\ref{figure:cmd-crear-nota} permite crear notas en el  
-comp\'as actual. Por otro lado, en la figura~\ref{figure:cmd-tiempo-compas} se presenta el comando que permite al usuario ubicarse en un  
+comp\'as actual, por ejemplo ``crear nota do'' crea la nota do en el comp\'as previamente seleccionado. Por otro lado, en la figura~\ref{figure:cmd-tiempo-compas} se presenta el comando que permite al usuario ubicarse en un  
 tiempo en particular dentro del comp\'as actual. Esto es \'util para crear una nota a partir de ese punto o 
-para seleccionar una nota que se encuentre en ese tiempo
+para seleccionar una nota que se encuentre en ese tiempo.
 
 \begin{figure}[H]
 \begin{minipage}[b]{0.5\linewidth}
@@ -295,7 +307,8 @@ para seleccionar una nota que se encuentre en ese tiempo
 \end{figure}
 
 As\'i como puede duplicarse notas de una pista a otra, tambi\'en puede duplicarse una nota de un comp\'as a otro utilizando el comando
-de la figura~\ref{figure:cmd-dup-nota}. Para poder eliminar una nota, previamente seleccionada, el usuario debe utilizar el comando
+de la figura~\ref{figure:cmd-dup-nota}, por ejemplo ``duplicar en pista uno compas dos'' permite duplicar una nota en el segundo comp\'as de la pista 
+uno. Para poder eliminar una nota, previamente seleccionada, el usuario debe utilizar el comando
 de la figura~\ref{figure:cmd-del-nota}.
 
 \begin{figure}[H]
@@ -315,7 +328,7 @@ de la figura~\ref{figure:cmd-del-nota}.
 \end{figure}
 
 En la figura~\ref{figure:cmd-dur} se pude observar el comando que permite modificar la duraci\'on de 
-una nota inmediatamente despus de haberla creado o una nota previamente seleccionada. Finalmente, el comando
+una nota inmediatamente despu\'es de haberla creado o una nota previamente seleccionada. Finalmente, el comando
 presentado en la figura~\ref{figure:cmd-note-tiempo} permite modificar el tiempo en el que inicia la 
 nota inmediatamente despu\'es de haberla creado o una nota previamente seleccionada.
 

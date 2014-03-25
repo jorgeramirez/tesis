@@ -56,10 +56,45 @@
 \faculty{Facultad Polit\'{e}cnica}
 \address{San Lorenzo - Paraguay}
 
-\usepackage[acronym]{glossaries}
+\usepackage{glossaries}
+\usepackage{etoolbox}
 \usepackage[xindy]{imakeidx}
+
+\newtoks\customtok
+
+\renewcommand*{\newacronymhook}{%
+ \edef\dosetkeys{\noexpand\setkeys{glossentry}{user1={},\the\glskeylisttok}}%
+ \dosetkeys
+ \ifcsempty{@glo@useri}%
+ {%
+   \expandafter\customtok\expandafter{\the\glsshorttok}%
+ }%
+ {%
+   \edef\custom{\the\glsshorttok, \csexpandonce{@glo@useri}}%
+   \expandafter\customtok\expandafter{\custom}%
+ }%
+}
+
+\newcommand*{\custompostdesc}[1]{%
+  \ifcsempty{glo@#1@useri}{}{ (\glsentryuseri{#1})}%
+}
+
+\renewcommand*{\CustomAcronymFields}{%
+  user1={},%
+  name={\the\glsshorttok},%
+  description={\the\glslongtok\noexpand\custompostdesc{\the\glslabeltok}},%
+  first={\the\glslongtok\space(\the\customtok)},%
+  firstplural={\the\glslongtok\noexpand\acrpluralsuffix
+    \space (\the\customtok)}%
+  text={\the\glsshorttok},%
+  plural={\the\glsshorttok\noexpand\acrpluralsuffix}%
+}
+
+\SetCustomStyle
+
 \makeglossaries
 \makeindex
+
 
 \begin{document}
 

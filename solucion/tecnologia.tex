@@ -3,9 +3,9 @@
 \section{Tecnolog\'ia a Utilizar}
 \label{sec:tecnologia-utilizada}
 
-Como se expone en la secci\'on~\ref{sec:problema-especifico}, se decidi\'o dise\~nar
-una interfaz para componer m\'usica utilizando la voz. Adem\'as, desde un principio de
-este trabajo de grado, se opt\'o por la metodolog\'ia de trabajo
+Como se expone en la secci\'on~\ref{sec:problema-especifico}, se propone el dise\~no
+de una interfaz para componer m\'usica utilizando la voz. Adem\'as, desde un principio
+este trabajo de grado opta por la metodolog\'ia de trabajo
 de c\'odigo abierto, lo cual implica: 
 
 \begin{itemize}
@@ -15,12 +15,18 @@ de c\'odigo abierto, lo cual implica:
         y gratuita para la comunidad de c\'odigo abierto.
 \end{itemize}
 
-La metodolog\'ia adoptada para implementar la interfaz permiti\'o utilizar un proyecto
-existente como punto de partida, y as\'i a\~nadir soporte para comandos de voz. Adem\'as,
+La metodolog\'ia adoptada para implementar la interfaz permite utilizar un proyecto
+existente como punto de partida, y as\'i dise\~nar e implementar una interfaz alternativa que permite
+controlar la aplicaci\'on por comandos de voz. Adem\'as,
 el hecho de incorporar una nueva interfaz, permite analizar
 una de las motivaciones de la secci\'on~\ref{sec:motivacion}: un programa de composici\'on
 musical, que recibe comandos sonoros y emite tambi\'en un resultado sonoro, podr\'ia ser
-m\'as natural para el usuario. A continuaci\'on se presenta el proyecto de c\'odigo abierto
+m\'as natural para el usuario. 
+
+La interfaz desarrollada se denomina \emph{TamTam Listens} y se basa en tecnolog\'ias de c\'odigo abierto.
+Toma como punto de partida la aplicaci\'on \emph{TamTam Edit}
+y para realizar el reconocimiento de comandos de voz utiliza los proyectos \emph{PocketSphinx} \cite{PocketSphinxHomePage} 
+y \emph{Voxforge} \cite{Voxforge}.  A continuaci\'on se presenta el proyecto de c\'odigo abierto
 utilizado como punto de partida para la soluci\'on implementada.
 
 \subsection{TamTam Edit}
@@ -31,7 +37,7 @@ m\'usica han utilizado las matem\'aticas para resolver problemas musicales \cite
 de inspiraci\'on para la creaci\'on del compendio de actividades\footnote{Una Actividad, es una aplicaci\'on en el entorno 
 de escritorio \emph{Sugar}}
 conocido como \emph{TamTam} desarrollado para la computadora XO\footnote{La XO, es una computadora 
-port\'atil de bajo costo y consumo desarrollada por el proyecto \emph{One Laptop Per Child}},
+port\'atil de bajo costo y consumo desarrollada por el proyecto \gls{olpc}},
 con los siguientes objetivos:
 
 \begin{itemize}
@@ -54,16 +60,17 @@ Las secciones principales del programa se pueden observar en la figura~\ref{figu
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{./graphics/ui-tamtam-edit.png}
+\includegraphics[width=0.8\textwidth]{./graphics/ui-tamtam-edit.png}
 \caption{Interfaz de \emph{Tamtam Edit} y sus secciones principales}
 \label{figure:ui-tamtam}
 \end{figure}
 
-Como se puede apreciar en la figura~\ref{figure:ui-tamtam}, la interfaz se encuentra organizada en cinco pistas y cada pista tiene asociada un 
+Como se puede apreciar en la figura~\ref{figure:ui-tamtam}, la interfaz se encuentra organizada en cinco pistas 
+y cada pista (1) tiene asociada un 
 instrumento (la quinta pista esta reservada para instrumento de tipo bater{\'\i}a). Cada pista se divide en 4 
-compases (del comp\'as uno al cuatro) y cada comp\'as se divide en 12 tiempos (del uno al doce). 
-Las notas se dibujan en los compases, como se puede ver, la longitud de la nota indica su duraci\'on y su 
-altura el tipo de nota. Adem\'as la aplicaci\'on esta organizada en partituras, que son como hojas de 
+compases (del comp\'as uno al cuatro) y cada comp\'as (2) se divide en 12 tiempos (del uno al doce). 
+Las notas (3) se dibujan en los compases, como se puede ver, la longitud de la nota indica su duraci\'on y su 
+altura el tipo de nota. Adem\'as la aplicaci\'on esta organizada en partituras (4), que son como hojas de 
 cuaderno, y son \'utiles para componer m\'usicas largas.
 
 La interfaz de la figura~\ref{figure:ui-tamtam} ofrece una experiencia de interacci\'on humano-computadora 
@@ -72,10 +79,8 @@ Este trabajo de grado busca incorporar un medio de interacci\'on alternativo al 
 A continuaci\'on se presentan los motivos que determinaron la elecci\'on de esta aplicaci\'on como punto de partida:
 
 \begin{itemize}
-    \item Impacto social: \emph{TamTam Edit} es una aplicaci\'on que forma parte de una plataforma establecida
-    por el proyecto \gls{olpc}. Este proyecto busca proveer
-    a cada ni\~no de pa\'ises en desarrollo de una computadora de bajo costo con el
-    fin de potenciar el proceso educativo \cite{OLPC}. Ni\~nos con alg\'un tipo de discapacidad podr\'ian tener
+    \item Impacto social: Como se mencion\'o anteriormente \emph{TamTam Edit} es una aplicaci\'on que forma parte de una plataforma establecida
+    por el proyecto \gls{olpc}. Este proyecto busca potenciar el proceso educativo \cite{OLPC}. Ni\~nos con alg\'un tipo de discapacidad podr\'ian tener
     problemas para utilizar la computadora. Por ejemplo, un ni\~no con problemas motrices podr\'ia tener 
     dificultades para operar el mouse o el teclado. Para estos casos, operar esta actividad utilizando la voz
     beneficiar\'ia a los ni\~nos con discapacidades
@@ -100,14 +105,14 @@ A continuaci\'on se presentan los motivos que determinaron la elecci\'on de esta
 
 El cap\'itulo~\ref{sec:tecnologias} clasifica a las herramientas que permiten implementar soluciones
 basadas en reconocimiento del habla en tres categor\'ias: Aplicaciones, \gls{api}s y Librer\'ias. Dada la naturaleza
-de este trabajo, se ha optado por elegir una librer\'ia para implementar la interfaz alternativa a la ofrecida por
+de este trabajo, se opta por elegir una librer\'ia para implementar la interfaz alternativa a la ofrecida por
 \emph{TamTam Edit}.
 
-Para la implementaci\'on de la interfaz operable a trav\'es de la voz se ha elegido la librer\'ia \emph{PocketSphinx}
+Para la implementaci\'on de la interfaz operable a trav\'es de la voz se elige la librer\'ia \emph{PocketSphinx}
 que, como se menciona en la secci\'on~\ref{sec:pocketsphinx}, es un motor de reconocimiento del habla orientado a la
 optimizaci\'on del rendimiento y la portabilidad.
 
-Uno de los objetivos espec\'ificos de este trabajo de grado es aplicar y contrastar en la pr\'actica
+Uno de los objetivos espec\'ificos de este trabajo es aplicar y contrastar en la pr\'actica
 los conocimientos te\'oricos adquiridos. Como indica la secci\'on~\ref{sec:librerias}, una librer\'ia es
 el tipo de herramienta que requiere un conocimiento t\'ecnico espec\'ifico del \'area, adem\'as de
 brindar una alta flexibilidad permitiendo al programador manipular los distintos componentes del
@@ -126,7 +131,7 @@ A continuaci\'on se presentan los motivos t\'ecnicos que determinaron la elecci\
 \end{itemize}
 
 \foreign{Pocketsphinx} implementa el proceso del reconocimiento del habla basado en el enfoque estad{\'\i}stico,
-el cual se present\'o en el cap{\'\i}tulo \ref{sec:proceso}. La librer{\'\i}a incluye los diferentes algoritmos necesarios
+el cual se present\'o en el cap{\'\i}tulo~\ref{sec:proceso}. La librer{\'\i}a incluye los diferentes algoritmos necesarios
 para las fases del proceso.
 
 \begin{figure}[H] 
