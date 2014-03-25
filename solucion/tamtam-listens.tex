@@ -80,7 +80,7 @@ PARTITURA P A R T I T U R A
 SIGUIENTE S I G I E N T E
 ANTERIOR A N T E R I O R
 \end{lstlisting}
-\caption{Fragmento del diccionario fon\'etico utilizado en \emph{Tamtam Listens}}
+\caption{Fragmento del diccionario fon\'etico utilizado en \emph{Tamtam Listens}.}
 \label{figure:fragmento-dic}
 \end{figure}
 
@@ -109,7 +109,7 @@ public <tamtam-listens> = <comando> | <pagina> | <pista-a>     | <pista-b>  |
 <orden>    = ( ANTERIOR | SIGUIENTE );
 <loop>     = (BASURA)+;
 \end{lstlisting}
-\caption{Fragmento de la gram\'atica utilizada en \emph{Tamtam Listens}}
+\caption{Fragmento de la gram\'atica utilizada en \emph{Tamtam Listens}.}
 \label{figure:fragmento-gram}
 \end{figure} 
 
@@ -334,6 +334,36 @@ nota inmediatamente despu\'es de haberla creado o una nota previamente seleccion
 \label{figure:cmd-note-tiempo}
 \end{minipage}
 \end{figure}
+
+\subsection{Palabras fuera del Vocabulario}
+\label{sec:oov}
+La pronunciaci\'on de palabras fuera del vocabulario ocurre frecuentemente en numerosas aplicaciones
+del reconocimiento del habla, y es una fuente conocida de errores en el reconocimiento \cite{Bazzi00Modeling}.
+
+De modo a minimizar la cantidad de errores como consecuencia de las palabras fuera del vocabulario,
+\foreign{TamTam Listens} integra a su gram\'atica un modelo de palabra gen\'erica. Este componente se
+define mediante el no terminal $<loop>$ de la figura \ref{figure:fragmento-gram}.
+
+Un modelo de palabra gen\'erica admite cualquier palabra que pueda pronunciarse, es decir, permite
+cualquier secuencia arbitraria de fonemas \cite{Bazzi00Modeling}. 
+En el caso de \foreign{TamTam Listens}, el no terminal $<loop>$ corresponde a una o m\'as repeticiones del
+terminal $BASURA$.
+
+A su vez, el terminal $BASURA$ est\'a asociado a cada uno de los fonemas en el diccionario fon\'etico de
+\foreign{TamTam Listens}, como se observa en la figura \ref{figure:fragmento-basura}.
+
+\begin{figure}[H]
+\begin{lstlisting}
+BASURA   A
+BASURA(2)  B
+BASURA(3)  C
+BASURA(4)  CH
+BASURA(5)  D
+\end{lstlisting}
+\caption{Definici\'on parcial de BASURA en el diccionario de \emph{Tamtam Listens}.}
+\label{figure:fragmento-basura}
+\end{figure}
+
 
 \subsection{Ejemplo: Componiendo una escala simple}
 Para finalizar este cap{\'\i}tulo, se transcribe a continuaci\'on un tutorial de uso incluido en el manual
