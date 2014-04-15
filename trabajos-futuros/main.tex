@@ -25,9 +25,10 @@ Por lo tanto, utilizar comandoz de voz para interactuar con la computadora, podr
 en estos casos.
 
 Habiendo obtenido resultados satisfactorios en la prueba con usuarios llevada a cabo como parte de este trabajo, 
-se podr\'ia plantear a continuación la realización de pruebas de usabilidad de la interfaz \emph{TamTam Listens} 
+se podr\'ia plantear a continuaci\'on la realizaci\'on de pruebas de usabilidad de la interfaz \emph{TamTam Listens} 
 con personas que tienen alg\'un tipo de discapacidad de modo a poder evaluar el desempe\~no de la aplicaci\'on. 
-Esto permitir\'a identificar puntos a modificar en la aplicaci\'on y as\'i poder aumentar la experiencia de usuario.
+Esto permitir\'a identificar puntos a modificar en la aplicaci\'on y as\'i poder mejorar la experiencia del
+usuario.
 
 \section{Modelo Ac\'ustico Paraguayo}  
 
@@ -37,35 +38,39 @@ acento caracter\'istico de nuestra regi\'on y as\'i, se espera, tener mejores re
 
 \section{Reducci\'on de ruido}
 
-El ruido ambiente es un problema que afecta al reconocimiento del habla. La precisi\'on de la soluci\'on desarrollada en este trabajo es 
-considerablemente sensible al ruido ambiente, es por eso que la prueba de usabilidad fue realizada en un ambiente aislado
-y libre de ruido. Por lo tanto, se podr\'ian investigar los algoritmos de reducci\'on de ruido disponibles y ver su aplicabilidad
-al software desarrollado. Adem\'as, cabe resaltar la importancia de la reducc\'on de ruido para que las interfaces de reconocimiento
-de voz puedan utilizarse en distintos tipos de ambientes (el interior de un autom\'ovil, por ejemplo).
+El ruido ambiente es un problema que afecta al reconocimiento del habla. La precisi\'on de la
+soluci\'on desarrollada en este trabajo es considerablemente sensible al ruido ambiente, por lo que 
+la prueba de usabilidad fue realizada en un ambiente aisladoy libre de ruido. 
+Por lo tanto, se podr\'ian investigar los algoritmos de reducci\'on de ruido disponibles y ver su aplicabilidad
+al software desarrollado. 
+
+Adem\'as, cabe resaltar la importancia de la reducc\'on de ruido para la utilizaci\'on de
+las interfaces de reconocimiento de voz en distintos tipos de ambientes (el interior de un autom\'ovil, por ejemplo).
 
 \section{Optimizar generaci\'on de Modelo Ac\'ustico}
 
 Como ya se mencion\'o anteriormente, el modelo ac\'ustico es uno de los componentes necesarios para implementar un sistema de 
-reconocimiento del habla. Para poder generar un modelo se necesita realizar una cantidad considerable de procesamiento sobre
+reconocimiento del habla. La generación de un modelo requiere realizar una cantidad considerable de procesamiento sobre
 un conjunto de datos, cuanto mayor sea el tama\~no de datos para entrenamiento, se lograr\'a obtener un mejor modelo ac\'ustico. Es por
 esto que la generaci\'on del modelo ac\'ustico puede llegar a ser un proceso lento si se quiere generar uno en base a un conjunto de datos
 muy grande.
 
 \emph{Grid Computing} es una colecci\'on de computadoras dispersas geogr\'aficamente que colaboran entre si para alcanzar objetivos comunes y resolver
 tareas espec\'ificas. Este sistema distribuido opera distribuyendo el trabajo que se debe realizar entre las distintas m\'aquinas disponibles en la red
-y as\'i poder procesar grandes cantidades de datos y de este modo, poder resolver tareas complejas.
+de manera a poder procesar grandes cantidades de datos y de este modo, resolver tareas complejas.
 
 En base a lo expuesto, se podr\'ia plantear la utilizaci\'on de \emph{Grid Computing} para realizar el proceso de entrenamiento y as\'i
 poder optimizar el proceso de generaci\'on del modelo ac\'ustico para grandes cantidades de datos.
 
-\section{Exploración de otros dominios de aplicación}
-La exploración de otros posibles dominios de aplicación, mediante la integraci\'on del reconocimiento del habla a proyectos existentes, puede dar lugar a interesentes trabajos.
+\section{Exploraci\'on de otros dominios de aplicaci\'on}
+La exploraci\'on de otros posibles dominios de aplicaci\'on, mediante la integraci\'on del reconocimiento del habla a proyectos existentes, puede dar lugar a interesentes trabajos.
 
 Buti\'a es un proyecto uruguayo de rob\'otica educativa \cite{RoboticaEducativa} que plantea como objetivo 
 crear una plataforma simple y econ\'omica que permita a los alumnos de colegios p\'ublicos,
 en coordinaci\'on con profesores, interiorizarse con la programaci\'on del comportamiento de robots\cite{Butia}.
+
 La plataforma utilizada por los ni\~nos para poder controlar las acciones b\'asicas del robot es el programa
-\emph{Tortugarte}. Este es un programa, que al igual que \emph{Tamtam Edit} corre en la computadora \emph{XO} del
+\emph{Tortugarte}. Este programa, al igual que \emph{Tamtam Edit}, se ejecuta en la computadora \emph{XO} del
 proyecto \gls{olpc}.
 
 Un interesante trabajo ser\'ia la integraci\'on de comandos de voz a la lista de acciones disponibles 
@@ -74,7 +79,7 @@ en \emph{Tortugarte} y as\'i brindar la posibilidad de operar el robot utilizand
 El proyecto Aguar\'a busca aprovechar el gran potencial que tiene el Paraguay con respecto a la producci\'on de
 energ\'ia el\'ectrica. Consiste en el primer auto el\'ectrico fabricado en Paraguay con el apoyo del \gls{pti}. 
 
-En la sección~\ref{sec:automotriz} se mencion\'o que los avances en el \'area de reconocimiento
+En la secci\'on~\ref{sec:automotriz} se mencion\'o que los avances en el \'area de reconocimiento
 permitieron incorporar \'esta tecnolog\'ia dentro de los autom\'oviles, para operar componentes b\'asicos del panel.
-Agregar soporte para comandos de voz al veh\'iculo el\'ectrico denominado Aguar\'a podría plantearse como objetivo
+Agregar soporte para comandos de voz al veh\'iculo el\'ectrico denominado Aguar\'a podr{\'\i}a plantearse como objetivo
 para otro trabajo futuro.

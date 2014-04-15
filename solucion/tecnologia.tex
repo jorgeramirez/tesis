@@ -4,8 +4,8 @@
 \label{sec:tecnologia-utilizada}
 
 Como se expone en la secci\'on~\ref{sec:problema-especifico}, se propone el dise\~no
-de una interfaz para componer m\'usica utilizando la voz. Adem\'as, desde un principio
-este trabajo de grado opta por la metodolog\'ia de trabajo
+de una interfaz para componer m\'usica utilizando la voz. Adem\'as, desde el principio de
+este trabajo de grado se opta por la metodolog\'ia de trabajo
 de c\'odigo abierto, lo cual implica: 
 
 \begin{itemize}
@@ -24,18 +24,18 @@ musical, que recibe comandos sonoros y emite tambi\'en un resultado sonoro, podr
 m\'as natural para el usuario. 
 
 La interfaz desarrollada se denomina \emph{TamTam Listens} y se basa en tecnolog\'ias de c\'odigo abierto.
-Toma como punto de partida la aplicaci\'on \emph{TamTam Edit}
-y para realizar el reconocimiento de comandos de voz utiliza los proyectos \emph{PocketSphinx} \cite{PocketSphinxHomePage} 
-y \emph{Voxforge} \cite{Voxforge}.  A continuaci\'on se presenta el proyecto de c\'odigo abierto
-utilizado como punto de partida para la soluci\'on implementada.
+Toma como punto de partida la aplicaci\'on \emph{TamTam Edit} y para realizar el reconocimiento de comandos
+de voz utiliza los proyectos \emph{PocketSphinx} \cite{PocketSphinxHomePage} 
+y \emph{Voxforge} \cite{Voxforge}.  A continuaci\'on se presentan los proyectos de c\'odigo abierto
+utilizados como punto de partida para la soluci\'on implementada.
 
 \subsection{TamTam Edit}
 \label{sec:tamtam-edit}
 
-La m\'usica es a menudo descrita como la forma m\'as pura de representaci\'on matem\'atica, es m\'as, te\'oricos de la
-m\'usica han utilizado las matem\'aticas para resolver problemas musicales \cite{TheSoundOfNumbers}. Esto sirvi\'o
-de inspiraci\'on para la creaci\'on del compendio de actividades\footnote{Una Actividad, es una aplicaci\'on en el entorno 
-de escritorio \emph{Sugar}}
+La m\'usica es a menudo descrita como la forma m\'as pura de representaci\'on matem\'atica, es m\'as,
+te\'oricos de la m\'usica han utilizado las matem\'aticas para resolver problemas musicales
+\cite{TheSoundOfNumbers}. Esto sirvi\'o de inspiraci\'on para la creaci\'on del compendio de 
+actividades\footnote{Una Actividad, es una aplicaci\'on en el entorno de escritorio \emph{Sugar}}
 conocido como \emph{TamTam} desarrollado para la computadora XO\footnote{La XO, es una computadora 
 port\'atil de bajo costo y consumo desarrollada por el proyecto \gls{olpc}},
 con los siguientes objetivos:
@@ -79,15 +79,16 @@ Este trabajo de grado busca incorporar un medio de interacci\'on alternativo al 
 A continuaci\'on se presentan los motivos que determinaron la elecci\'on de esta aplicaci\'on como punto de partida:
 
 \begin{itemize}
-    \item Impacto social: Como se mencion\'o anteriormente \emph{TamTam Edit} es una aplicaci\'on que forma parte de una plataforma establecida
-    por el proyecto \gls{olpc}. Este proyecto busca potenciar el proceso educativo \cite{OLPC}. Ni\~nos con alg\'un tipo de discapacidad podr\'ian tener
-    problemas para utilizar la computadora. Por ejemplo, un ni\~no con problemas motrices podr\'ia tener 
-    dificultades para operar el mouse o el teclado. Para estos casos, operar esta actividad utilizando la voz
-    beneficiar\'ia a los ni\~nos con discapacidades
-    y por lo tanto la aplicaci\'on tendr\'ia un impacto social positivo, debido a la mejora en la accesibilidad.
-    \item Naturalidad de interacci\'on: utilizar la voz para interactuar con una aplicaci\'on podr{\'\i}a ofrecer 
-    una mayor naturalidad con respecto al enfoque tradicional de interacci\'on, debido a que es el medio de
-    interacci\'on entre las personas.
+    \item Impacto social: \emph{TamTam Edit} es una aplicaci\'on que forma parte de la plataforma establecida
+    por el proyecto \gls{olpc}, el cual busca potenciar el proceso educativo \cite{OLPC}. 
+    Los ni\~nos con alg\'un tipo de discapacidad tienen a menudo problemas para utilizar una computadora mediante
+    dispositivos perif\'ericos tradicionales como el mouse o el teclado. 
+    En estos casos, la posibilidad de operar esta actividad mediante la voz ser{\'\i}a de gran beneficio 
+    para los ni\~nos, mejorando la accesibilidad de la plataforma, y generando por tanto un impacto social
+    positivo importante.
+    \item Naturalidad de interacci\'on: utilizar la voz para interactuar con una aplicaci\'on podr{\'\i}a
+    ofrecer una mayor naturalidad con respecto al enfoque tradicional de interacci\'on, teniendo en cuenta
+    que es el medio de interacci\'on entre las personas.
     \item No reinventar la rueda: como el objetivo es incorporar una interfaz basada en reconocimiento del
     habla a una aplicaci\'on, se elige \emph{TamTam Edit} para no construir la aplicaci\'on desde cero, sino 
     extender las capacidades de una ya existente.
@@ -95,10 +96,24 @@ A continuaci\'on se presentan los motivos que determinaron la elecci\'on de esta
     c\'odigo abierto, lo cual brinda a los desarrolladores la libertad de extender las funcionalidades de la 
     aplicaci\'on.
     \item Lenguaje de programaci\'on: la actividad se encuentra implementada en el lenguaje de programaci\'on
-    Python. La librer{\'\i}a a ser utilizada proporociona \emph{bindings} para este lenguaje, lo cual supone una
-    ventaja importante para la implementaci\'on de la interfaz.
+    Python. La librer{\'\i}a de reconocimiento del habla a ser utilizada proporociona \emph{bindings} 
+    \footnote{Un \emph{binding} es un componente \emph{software}
+   que permite hacer uso de las funcionalidades prove{\'\i}das por una librer{\'\i}a, implementada
+    en un determinado lenguaje de programaci\'on, utilizando un lenguaje de programaci\'on diferente. 
+    En este caso particular, \emph{Pocketsphinx} est\'a implementado en C y C++.} para 
+    este lenguaje, lo cual supone una ventaja importante para la implementaci\'on de la interfaz.
 \end{itemize}
 
+
+\subsection{Voxforge}
+\foreign{Voxforge} es un proyecto que busca recopilar grabaciones de voz de modo a crear 
+y ofrecer varios corpus de habla bajo una licencia que permita su libre utilizaci\'on. 
+
+A partir de estos corpus, es posible construir modelos ac\'usticos para su uso con motores de reconocimiento
+del habla de c\'odigo abierto, como \foreign{Pocketsphinx}.
+
+\foreign{Voxforge} cuenta con grabaciones en diferentes idiomas, entre ellos ingĺ\'es, franc\'es, 
+alem\'an y espa\~nol.
 
 
 \subsection{PocketSphinx}
@@ -109,8 +124,8 @@ de este trabajo, se opta por elegir una librer\'ia para implementar la interfaz 
 \emph{TamTam Edit}.
 
 Para la implementaci\'on de la interfaz operable a trav\'es de la voz se elige la librer\'ia \emph{PocketSphinx}
-que, como se menciona en la secci\'on~\ref{sec:pocketsphinx}, es un motor de reconocimiento del habla orientado a la
-optimizaci\'on del rendimiento y la portabilidad.
+que, como se menciona en la secci\'on~\ref{sec:pocketsphinx}, es un motor de reconocimiento del habla 
+orientado a la optimizaci\'on del rendimiento y la portabilidad.
 
 Uno de los objetivos espec\'ificos de este trabajo es aplicar y contrastar en la pr\'actica
 los conocimientos te\'oricos adquiridos. Como indica la secci\'on~\ref{sec:librerias}, una librer\'ia es
@@ -122,32 +137,34 @@ para cumplir el objetivo mencionado anteriormente.
 A continuaci\'on se presentan los motivos t\'ecnicos que determinaron la elecci\'on de esta librer\'ia:
 
 \begin{itemize}
-    \item Existen \foreign{bindings} para el lenguaje de programaci\'on Python, lo cual hace muy sencilla la 
-    tarea de utilizar la librer\'ia desde el c\'odigo Python.
     \item \emph{PocketSphinx} est\'a orientada a la optimizaci\'on del rendimiento, resultando adecuada 
-    para sistemas con recursos limitados, como es el caso de la computadora \emph{XO}.
+    para sistemas con recursos limitados, como la computadora \emph{XO}.
     \item La librer\'ia es un proyecto de c\'odigo abierto, por lo tanto se cumple la metodolog\'ia 
     de trabajo adoptada.
+    \item \emph{PocketSphinx} ofrece soporte \emph{offline}, lo cual permite su utilizaci\'on en ambientes
+    sin conexi\'on a internet, como ocurre frecuentemente con las \emph{XO}.
+    \item Existen \foreign{bindings} para el lenguaje de programaci\'on Python, lo cual hace muy sencilla la 
+    tarea de utilizar la librer\'ia desde el c\'odigo Python.
 \end{itemize}
 
-\foreign{Pocketsphinx} implementa el proceso del reconocimiento del habla basado en el enfoque estad{\'\i}stico,
-el cual se present\'o en el cap{\'\i}tulo~\ref{sec:proceso}. La librer{\'\i}a incluye los diferentes algoritmos necesarios
-para las fases del proceso.
+\foreign{PocketSphinx} implementa el proceso del reconocimiento del habla basado en el enfoque estad{\'\i}stico,
+el cual se present\'o en el cap{\'\i}tulo~\ref{sec:proceso}. La librer{\'\i}a incluye los diferentes algoritmos
+necesarios para las fases del proceso.
 
 \begin{figure}[H] 
 \centering
 \includegraphics[width=0.8\textwidth]{./graphics/pocketsphinx.png}
-\caption{Reconocimiento del habla mediante Pocketsphinx. Gr\'afico basado en \cite{VerenichASR}.}
+\caption{Reconocimiento del habla mediante PocketSphinx. Gr\'afico basado en \cite{VerenichASR}.}
 \label{figure:hmm}
 \end{figure}
 
 Como conjunto de caracter{\'\i}sticas espectrales, \foreign{Pocketsphinx} utiliza los coeficientes espectrales
 en las frecuencias de mel (MFCC por sus siglas en ingl\'es).
 
-En los \gls{hmm} del modelo ac\'ustico, utiliza mezclas Gaussianas para definir las probabilidades de transici\'on
-entre estados. El diccionario fon\'etico debe ser definido por el desarrollador.
+En los \gls{hmm} del modelo ac\'ustico, utiliza mezclas Gaussianas para definir las probabilidades de 
+transici\'on entre estados. El diccionario fon\'etico debe ser definido por el desarrollador.
 
-Aunque \foreign{Pocketsphinx} soporta modelos de lenguaje basados en n-gramas, para este trabajo se utiliza
+Aunque \foreign{PocketSphinx} soporta modelos de lenguaje basados en n-gramas, para este trabajo se utiliza
 un modelo de lenguaje basado en gram\'atica. Esto se debe a la simpleza del lenguaje y a la falta de datos
 de entrenamiento para un modelo estad{\'\i}stico del mismo.
 

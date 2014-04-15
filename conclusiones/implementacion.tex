@@ -10,15 +10,15 @@ La herramienta elegida tiene gran influencia sobre el posterior proceso de
 desarrollo, por lo cual esta decisi\'on debe tomarse analizando las caracter{\'\i}sticas
 propias del proyecto en cuesti\'on.
 
-A modo de ejemplo, algunas cuestiones que pueden tomarse en consideraci\'on son:
+Algunas cuestiones que pueden tomarse en consideraci\'on son:
 
 \begin{itemize}
-	\item El tiempo del que se dispone.
-	\item El dinero del que se dispone.
-	\item El conocimiento t\'ecnico del equipo de desarrolladores.
-	\item La plataforma sobre la cual debe ejecutarse el sistema.
-	\item La necesidad de que el sistema funcione sin conexi\'on a internet.
-	\item El soporte existente para el idioma que se busca reconocer.
+    \item El tiempo del que se dispone.
+    \item El dinero del que se dispone.
+    \item El conocimiento t\'ecnico del equipo de desarrolladores.
+    \item La plataforma sobre la cual debe ejecutarse el sistema.
+    \item La necesidad de que el sistema funcione sin conexi\'on a internet.
+    \item El soporte existente para el idioma que se busca reconocer.
 \end{itemize}
 
 La evaluaci\'on de varias opciones disponibles para la implementaci\'on de un sistema
@@ -28,14 +28,17 @@ trabajo, permiti\'o realizar la selecci\'on de manera debidamente informada y ju
 \subsection{Considerar la posibilidad de errores en el \emph{software}}
 Habiendo seleccionado Pocketsphinx y el modelo ac\'ustico Voxforge para
 la implementaci\'on, el mayor problema durante la fase de desarrollo estuvo relacionado
-al plugin para \foreign{Gstreamer} \cite{GstreamerPocketsphinx} que se planeaba utilizar para integrar \foreign{TamTam Edit}
-con el motor de reconocimiento.
+al componente para \foreign{GStreamer} \footnote{\foreign{GStreamer es una plataforma multimedia
+de c\'odigo abierto que permite integrar componentes de reproducci\'on y procesamiento de audio y v{\'\i}deo
+para el desarrollo de aplicaciones audiovisuales.}}
+\cite{GstreamerPocketsphinx} que se planeaba utilizar 
+para integrar \foreign{TamTam Edit} con el motor de reconocimiento.
 
 Las primeras pruebas de \foreign{TamTam Listens} arrojaron tasas de error y tiempos de
-respuesta muy elevados. Identificar al plugin para \foreign{Gstreamer} como la causa del problema
+respuesta muy elevados. Identificar al componente para \foreign{GStreamer} como la causa del problema
 y buscar una soluci\'on conllev\'o un retraso significativo en la etapa de desarrollo.
 
-Luego de numerosos intentos fallidos, finalmente se opt\'o por desechar el mencionado plugin
+Luego de numerosos intentos fallidos, finalmente se opt\'o por desechar el mencionado componente
 e implementar una soluci\'on utilizando \emph{D-Bus} para la integraci\'on. Al exponerse los
 resultados del reconocimiento del habla mediante un demonio, este enfoque permite integrar
 Pocketsphinx con cualquier aplicaci\'on que utilice \emph{D-Bus} como m\'etodo de comunicaci\'on

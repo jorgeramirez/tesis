@@ -36,7 +36,7 @@ observar los componentes que forman parte de la soluci\'on desarrollada.
 \end{figure}
 
 Como sugiere la figura~\ref{figure:tamtam-listens-arq}, \emph{TamTam Listens} a\~nade soporte de reconocimiento
-del habla a \emph{TamTam Edit} utilizando la librer\'ia \emph{PocketSphinx}. Pero, a favor de una soluci\'on modular,
+del habla a \emph{TamTam Edit} utilizando la librer\'ia \emph{PocketSphinx}.A favor de una soluci\'on modular,
 el reconocimiento de comandos de voz de \emph{PocketSphinx} es expuesto como 
 como un  servicio del sistema, a trav\'es de llamadas a \emph{D-bus}\cite{Dbus2013}, el cual es
 un mecanismo para comunicaci\'on entre procesos de Linux.
@@ -51,18 +51,19 @@ En otras palabras, \emph{Pocketsphinx} requiere un modelo ac\'ustico y un modelo
 
 \subsection{Modelo Ac\'ustico y Modelo de Lenguaje}
 
-Para el modelo ac\'ustico se utiliz\'o el prove\'ido por el proyecto \emph{Voxforge}
-\cite{Voxforge}, que es un proyecto que busca proveer modelos ac\'usticos para motores de reconocimiento
-de c\'odigo abierto.
+El modelo ac\'ustico utilizado tiene como base las grabaciones de \foreign{Voxforge} en idioma espa\~nol,
+y se encuentra disponible entre los recursos del proyecto \foreign{Pocketsphinx} para su utilizaci\'on
+con el motor de reconocimiento del habla.
 
-Para el modelo de lenguaje se utiliz\'o una gram\'atica en formato \gls{jsgf} 
-\cite{JSGF2000}, la cual permiti\'o definir los comandos soportados por la aplicaci\'on de una manera sencilla. 
+Una gram\'atica en formato JSGF \cite{JSGF2000} fue utilizada como modelo de lenguaje, lo cual permiti\'o
+definir los comandos soportados por la aplicaci\'on de una manera sencilla.
 
 \subsection{Diccionario Fon\'etico}
 
-Para poder mapear los fonemas reconocidos por el modelo ac\'ustico a palabras v\'alidas del dominio de la 
-aplicaci\'on, \emph{Pocketsphinx} utiliza un diccionario que define la secuencia de fonemas de cada palabra 
-del lenguaje. En la figura~\ref{figure:fragmento-dic} se puede observar un fragmento del diccionario fon\'etico
+El diccionario fon\'etico define la secuencia de fonemas de cada palabra del lenguaje.
+Este diccionario es utilizado por \emph{PocketSphinx} para asociar los fonemas reconocidos por
+el modelo ac\'ustico a palabras v\'alidas del dominio de la aplicaci\'on.
+En la figura~\ref{figure:fragmento-dic} se puede observar un fragmento del diccionario fon\'etico
 utilizado por \emph{TamTam Listens}.
 
 \lstset{
@@ -98,8 +99,8 @@ comando v\'alido.
 \subsection{Gram\'atica}
 
 La secuencia de comandos v\'alidos que soporta la aplicaci\'on se define en el modelo de lenguaje. Para \'esto
-\emph{TamTam Listens} define una gram\'atica \gls{jsgf}. En la figura~\ref{figure:fragmento-gram} se puede observar
-un fragmento de la gram\'atica utilizada por la aplicaci\'on.
+\emph{TamTam Listens} define una gram\'atica \gls{jsgf}. En la figura~\ref{figure:fragmento-gram} 
+puede observarse un fragmento de la gram\'atica utilizada por la aplicaci\'on.
 
 \begin{figure}[H]
 \begin{lstlisting}
@@ -115,7 +116,7 @@ public <tamtam-listens> = <comando> | <pagina> | <pista-a>     | <pista-b>  |
              CREAR NUEVA MUSICA | EXPORTAR MUSICA | SALIR DE TAMTAM;
 <pagina>   = ( CREAR NUEVA | DUPLICAR | LIMPIAR ) PARTITURA | PARTITURA <orden>;
 <orden>    = ( ANTERIOR | SIGUIENTE );
-<loop>     = (BASURA)+;
+<loop>   COMODINASURA)+;
 \end{lstlisting}
 \caption{Fragmento de la gram\'atica utilizada en \emph{Tamtam Listens}.}
 \label{figure:fragmento-gram}
@@ -360,21 +361,21 @@ define mediante el no terminal $<loop>$ de la figura \ref{figure:fragmento-gram}
 Un modelo de palabra gen\'erica admite cualquier palabra que pueda pronunciarse, es decir, permite
 cualquier secuencia arbitraria de fonemas \cite{Bazzi00Modeling}. 
 En el caso de \foreign{TamTam Listens}, el no terminal $<loop>$ corresponde a una o m\'as repeticiones del
-terminal $BASURA$.
+terminal $COMODIN$.
 
-A su vez, el terminal $BASURA$ est\'a asociado a cada uno de los fonemas en el diccionario fon\'etico de
-\foreign{TamTam Listens}, como se observa en la figura \ref{figure:fragmento-basura}.
+A su vez, el terminal $COMODIN$ est\'a asociado a cada uno de los fonemas en el diccionario fon\'etico de
+\foreign{TamTam Listens}, como se observa en la figura \ref{figure:fragmento-comodin}.
 
 \begin{figure}[H]
 \begin{lstlisting}
-BASURA   A
-BASURA(2)  B
-BASURA(3)  C
-BASURA(4)  CH
-BASURA(5)  D
+COMODIN   A
+COMODIN(2)  B
+COMODIN(3)  C
+COMODIN(4)  CH
+COMODIN(5)  D
 \end{lstlisting}
-\caption{Definici\'on parcial de BASURA en el diccionario de \emph{Tamtam Listens}.}
-\label{figure:fragmento-basura}
+\caption{Definici\'on parcial de COMODIN en el diccionario de \emph{Tamtam Listens}.}
+\label{figure:fragmento-comodin}
 \end{figure}
 
 

@@ -29,13 +29,12 @@ W  = w_1,w_2,w_3,\ldots,w_M\label{eq:asrW}
 
 donde la cadena est\'a compuesta por $M$ palabras.
 
-De esta manera, la definici\'on del reconocimiento del habla puede expresarse matem\'aticamente como:
+De esta manera, siendo $\hat{W}$ una aproximaci\'on probabil{\'\i}stica de $W$, la definici\'on del reconocimiento del habla puede expresarse matem\'aticamente como:
 
 \begin{align}
 \hat{W} = \argmax_{W \in L} P(W|O)
 \end{align}
 
-Se escribe $\hat{W}$ por tratarse de una aproximaci\'on probabil{\'\i}stica.
 Usando la Regla de Bayes la expresi\'on anterior puede reescribirse como:
 
 \begin{align}
@@ -52,10 +51,10 @@ Por tanto:
 \hat{W} = \argmax_{W \in L} P(O|W)P(W)
 \end{align}
 
-El t\'ermino $P(O|W)$ representa la probabilidad de una entrada ac\'ustica dada una secuencia de palabras, tambi\'en
-conocida como verosimilitud de observaci\'on o modelo ac\'ustico. El t\'ermino $P(W)$ es la probabilidad 
-\foreign{a priori} de ocurrencia de una secuencia de palabras, tambi\'en conocida como probabilidad previa o 
-modelo de lenguaje. Esto es:
+El t\'ermino $P(O|W)$ representa la probabilidad de una entrada ac\'ustica dada una secuencia de palabras, 
+tambi\'en conocida como verosimilitud de observaci\'on o modelo ac\'ustico. El t\'ermino $P(W)$ es la
+probabilidad \foreign{a priori} de ocurrencia de una secuencia de palabras, tambi\'en conocida como 
+probabilidad previa o modelo de lenguaje. Esto es:
 
 \begin{align}
 \hat{W} = \argmax_{W \in L} \overbrace{P(O|W)}^\text{M. ac\'ustico}\overbrace{P(W)}^\text{M. de lenguaje}
@@ -65,8 +64,9 @@ modelo de lenguaje. Esto es:
 Esta ecuaci\'on es el fundamento del enfoque estad{\'\i}stico al problema del reconocimiento del habla, base de los
 sistemas \mbox{modernos \cite{RabinerStatistical2006}}.
 
-La representaci\'on, y posterior soluci\'on, del problema que se plantea en la ecuaci\'on \ref{eq:asrFundamental} se
-lleva a cabo mediante la aplicaci\'on de la teor{\'\i}a de los modelos ocultos de Markov. Este concepto, fundamental
+La representaci\'on, y posterior soluci\'on, del problema que se plantea en la 
+ecuaci\'on \ref{eq:asrFundamental} se lleva a cabo mediante la aplicaci\'on de la teor{\'\i}a de
+los modelos ocultos de Markov. Este concepto, fundamental
 para el enfoque estad{\'\i}stico del reconocimiento del habla, se presenta a continuaci\'on.
 
 \input{proceso/hmm}
