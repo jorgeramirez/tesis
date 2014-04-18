@@ -38,10 +38,13 @@ Para el reconocimiento del habla basado en \gls{dtw} se utilizan tambi\'en los v
 caracter{\'\i}sticas espectrales, los cuales pueden obtenerse de manera similar al proceso 
 basado en \gls{hmm} \cite{Hachkar2011}.
 
-Posteriormente, se calcula la menor distancia entre los vectores de caracter{\'\i}sticas 
+Posteriormente, se calcula la distancia entre los vectores de caracter{\'\i}sticas 
 espectrales correspondientes a la entrada ac\'ustica y los vectores de caracter{\'\i}sticas 
 espectrales correspondientes a las grabaciones de entrenamiento, a los que se denomina plantillas. 
-Este paso se realiza mediante el algoritmo \gls{dtw}.
+Este paso se realiza mediante el algoritmo \gls{dtw} \cite{Muda2010}.
+
+La secuencia de plantillas para la cual se obtiene la menor distancia a la entrada ac\'ustica,
+permite determinar la secuencia de palabras pronunciadas.
 
 La definici\'on de un conjunto de plantillas para el lenguaje que se desea reconocer es uno de
 los principales problemas del reconocimiento del habla basado en \gls{dtw}, en particular cuando 
