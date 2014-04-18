@@ -39,7 +39,8 @@ Como sugiere la figura~\ref{figure:tamtam-listens-arq}, \emph{TamTam Listens} a\
 del habla a \emph{TamTam Edit} utilizando la librer\'ia \emph{PocketSphinx}.A favor de una soluci\'on modular,
 el reconocimiento de comandos de voz de \emph{PocketSphinx} es expuesto como 
 como un  servicio del sistema, a trav\'es de llamadas a \emph{D-bus}\cite{Dbus2013}, el cual es
-un mecanismo para comunicaci\'on entre procesos de Linux.
+un mecanismo para comunicaci\'on entre procesos de Linux\footnote{Linux es un sistema operativo cuyo \foreign{kernel} y paquetes
+    de software son desarrollados bajo el modelo de c\'odigo abierto\cite{LinuxGuideCert}}.
 
 \emph{TamTam Listens} consume como un servicio el reconocimiento del habla expuesto a trav\'es de \emph{D-Bus}. Al estar implementado de esta manera, el
 servicio de reconocimiento puede ser utilizado no solo por \emph{Tamtam Listens} sino por cualquier aplicaci\'on 
@@ -287,8 +288,9 @@ seleccionar una pista para poder utilizar este comando.
 
 Estos comandos son muy importantes para la aplicaci\'on ya que permiten crear, modificar, 
 eliminar las notas musicales. El comando de la figura~\ref{figure:cmd-crear-nota} permite crear notas en el  
-comp\'as actual, por ejemplo ``crear nota do'' crea la nota do en el comp\'as previamente seleccionado. Por otro lado, en la figura~\ref{figure:cmd-tiempo-compas} se presenta el comando que permite al usuario ubicarse en un  
-tiempo en particular dentro del comp\'as actual. Esto es \'util para crear una nota a partir de ese punto o 
+comp\'as actual, por ejemplo ``crear nota do'' crea la nota do en el comp\'as previamente seleccionado. Por otro lado, en la figura~\ref{figure:cmd-tiempo-compas} 
+se muestra el comando que permite al usuario ubicarse en un  
+tiempo en espec\'ifico dentro del comp\'as actual. Esto es \'util para crear una nota a partir de ese punto o 
 para seleccionar una nota que se encuentre en ese tiempo.
 
 \begin{figure}[H]
@@ -432,7 +434,7 @@ Para componer una escala simple con \foreign{TamTam Listens}, pueden seguirse lo
     \item ``Duplicar Pista Tres en Pista Cuatro''
   \end{itemize}
 
-  \item As{\'\i} de f\'acil. Para escuchar nuestra m\'usica: ``Reproducir M\'usica''.
+  \item Bastante sencillo. Para escuchar nuestra m\'usica: ``Reproducir M\'usica''.
 
 \end{enumerate}
 
