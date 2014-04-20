@@ -2,9 +2,9 @@
 \section{Fase 2: Decodificaci\'on}
 \label{sec:decoding}
 
-En la fase de decodificaci\'on se utiliza un algoritmo decodificador, que depende de un modelo de lenguaje 
-y el modelo ac\'ustico, para obtener la secuencia de palabras m\'as probable en base a los vectores 
-de caracter{\'\i}sticas que se calcularon en la etapa anterior. 
+En la fase de decodificaci\'on se utiliza un algoritmo decodificador, que depende de 
+un modelo de lenguaje y un modelo ac\'ustico, para obtener la secuencia de palabras m\'as probable
+en base a los vectores de caracter{\'\i}sticas que se calcularon en la etapa anterior. 
 Esta secci\'on describe los elementos involucrados en esta transformaci\'on, la cual constituye el paso
 final del proceso simplificado del reconocimiento del habla que se pretende presentar.
 
@@ -32,13 +32,13 @@ de probabilidad $P(x_1,x_2,\ldots,x_n)$ tal que:
 En resumen, un modelo de lenguaje define la probabilidad de ocurrencia de una secuencia de palabras
 $x_1,x_2,\ldots,x_n$ para un lenguaje dado.
 
-Un n-grama es una secuencia de $n$ elementos de un texto\cite{Tandon210}. Para su aplicación a los modelos de
+Un n-grama es una secuencia de $n$ elementos de un texto\cite{Tandon210}. Para su aplicaci\'on a los modelos de
 lenguaje, cada elemento corresponde a una palabra perteneciente al vocabulario. La t\'ecnica basada
 en n-gramas es la predominante para construir modelos de lenguaje, debido a su simplicidad y 
 efectividad \cite{GaoComparative2010}.
 
-La utilización de n-gramas para construir modelos de lenguaje se basa en la suposici\'on de Markov de que cada
-palabra depende solo de las $n - 1$ palabras precedentes. Esta aproximación disminuye significativamente la
+La utilizaci\'on de n-gramas para construir modelos de lenguaje se basa en la suposici\'on de Markov de que cada
+palabra depende solo de las $n - 1$ palabras precedentes. Esta aproximaci\'on disminuye significativamente la
 complejidad del c\'alculo de la probabilidad que se busca para secuencias de gran longitud.
 
 
@@ -54,8 +54,8 @@ utilizando un modelo basado en bigramas ($n=2$).
 
 Sean:
 \begin{itemize}
- 	\item $\text{\textless} s\text{\textgreater}$ un s{\'\i}mbolo especial utilizado para indicar el inicio 
- 	de la secuencia de palabras.
+ 	\item $\text{\textless} s\text{\textgreater}$ un s{\'\i}mbolo especial utilizado para indicar 
+ 	el inicio de la secuencia de palabras.
   	\item $\text{\textless} /s\text{\textgreater}$ un s{\'\i}mbolo especial utilizado para indicar el fin 
   	de la secuencia de palabras.
 \end{itemize} 
@@ -68,17 +68,18 @@ p(\text{\textless} /s\text{\textgreater} \mid corre)
 \end{equation*}
 
 
-Otro tipo de modelo de lenguaje es el basado en una gram\'atica. Una ventaja de las gram\'aticas es la posibilidad de
-utilizarlas sin entrenamiento previo. Su principal desventaja est\'a en la dificultad de definir gram\'aticas formales
-para lenguajes complejos \cite{Wang2000}.
+Otro tipo de modelo de lenguaje es el basado en una gram\'atica. Una ventaja de las gram\'aticas es la
+posibilidad de utilizarlas sin entrenamiento previo. Su principal desventaja est\'a en la dificultad de
+definir gram\'aticas formales para lenguajes \mbox{complejos \cite{Wang2000}}.
 
-Un modelo de lenguaje basado en una gram\'atica tradicional asigna una probabilidad de 0 o 1 a cualquier secuencia,
-dependiendo de si esta puede o no derivarse a partir de las reglas de la gram\'atica. Sin embargo, si se cuenta con
-datos de entrenamiento, es posible asignar una probabilidad a cada regla de modo a mejorar 
-la estimaci\'on \cite{huang-handbook10}.
+Un modelo de lenguaje basado en una gram\'atica tradicional asigna la misma probabilidad a 
+cualquier secuencia que pueda derivarse a partir de las reglas de la gram\'atica, y 0
+a cualquier otra secuencia de palabras.
+Sin embargo, si se cuenta con datos de entrenamiento, es posible asignar una probabilidad
+diferente a cada regla de modo a mejorar la estimaci\'on \cite{huang-handbook10}.
 
-A modo de ejemplo, la siguiente gram\'atica podr{\'\i}a utilizarse como modelo de lenguaje para un sistema simple
-de reconocimiento del habla para el acceso a informaci\'on:
+A modo de ejemplo, la siguiente gram\'atica podr{\'\i}a utilizarse como modelo de lenguaje para un 
+sistema simple de reconocimiento del habla para el acceso a informaci\'on:
 
 \begin{bnf*}
 \bnfprod{pregunta}
@@ -90,10 +91,11 @@ de reconocimiento del habla para el acceso a informaci\'on:
 \end{bnf*}
 
 \subsection{Modelo Ac\'ustico}
-El modelo ac\'ustico permite estimar el t\'ermino $P(O|W)$ de la ecuaci\'on \ref{eq:asrFundamental}, es decir,
-la probabilidad de una entrada ac\'ustica dada una secuencia de palabras.
-El mismo representa un factor cr{\'\i}tico para la precisi\'on de los resultados obtenidos, y puede decirse que
-se trata del componente central de cualquier sistema de reconocimiento del habla \cite{huang-handbook10}.
+El modelo ac\'ustico permite estimar el t\'ermino $P(O|W)$ de la ecuaci\'on \ref{eq:asrFundamental}, 
+es decir,la probabilidad de una entrada ac\'ustica dada una secuencia de palabras.
+El mismo representa un factor cr{\'\i}tico para la precisi\'on de los resultados obtenidos, y 
+puede decirse que se trata del componente central de cualquier sistema de reconocimiento del 
+\mbox{habla \cite{huang-handbook10}.}
 
 Un modelo ac\'ustico est\'a compuesto por varios modelos ocultos de Markov, cada uno con
 los siguientes par\'ametros:
@@ -103,16 +105,19 @@ los siguientes par\'ametros:
 	\item \textbf{Estados}
 
 
-	Un fonema es la unidad b\'asica de sonido capaz de alterar el significado de una palabra \cite{Armbruster2003}.
-	Los fonemas a su vez pueden dividirse en unidades subfon\'eticas, las cuales resultan m\'as adecuadas para
-	caracterizar las transiciones entre fonemas propias del habla.
+	Un fonema es la unidad b\'asica de sonido capaz de alterar el significado de una 
+	palabra \cite{Armbruster2003}. Los fonemas a su vez pueden dividirse en unidades subfon\'eticas,
+	las cuales resultan m\'as adecuadas para caracterizar las transiciones entre fonemas propias 
+	del habla.
 
 	A menudo se elige dividir los fonemas en tres partes para los sistemas de reconocimiento del habla.
-	De esta manera, la primera parte depende del fonema anterior, la segunda representa al fonema en cuesti\'on
-	y la tercera depende del fonema siguiente \cite{CMUConcepts}.
+	De esta manera, la primera parte depende del fonema anterior, la segunda representa al fonema en
+	cuesti\'on y la tercera depende del fonema \mbox{siguiente \cite{CMUConcepts}.}
 
-	Estas unidades fon\'eticas, fonemas o subfonemas, corresponden a los estados del modelo oculto de Markov.
-	El decodificador permite obtener la secuencia de estados m\'as probable dada una secuencia de observaciones.
+	Estas unidades fon\'eticas, fonemas o subfonemas, corresponden a los estados del modelo 
+	oculto de Markov. El decodificador permite obtener la secuencia de estados m\'as probable
+	dada una secuencia de observaciones.
+	
 	Esta secuencia de estados $Q$ puede representarse como:
 
 	\begin{align}
@@ -134,33 +139,36 @@ los siguientes par\'ametros:
 	\item \textbf{Observaciones}
 
 
-	Las caracter{\'\i}sticas espectrales de la onda sonora representan los s{\'\i}mbolos observables del habla.
-	Los vectores de caracter{\'\i}sticas que se calcularon en la etapa de extracción de características
-	corresponden a las observaciones del modelo oculto de Markov.
+	Las caracter{\'\i}sticas espectrales de la onda sonora representan los s{\'\i}mbolos observables 
+	del habla. Los vectores de caracter{\'\i}sticas que se calcularon en la etapa de extracci\'on 
+	de caracter{\'\i}sticas corresponden a las observaciones del modelo oculto de Markov.
 
 	Esto es, siendo $O$ la secuencia de observaciones de la ecuaci\'on \ref{eq:asrO} 
-	y $V$ el conjunto de s{\'\i}mbolos observables de la ecuaci\'on \ref{eq:hmmV}, $o_1,o_2,o_3,\ldots,o_T \in V$.
+	y $V$ el conjunto de s{\'\i}mbolos observables de la ecuaci\'on \ref{eq:hmmV}, 
+	$o_1,o_2,o_3,\ldots,o_T \in V$.
 
 	\item \textbf{Distribuciones de Probabilidad}
 
 
-	En general, las distribuciones probabil{\'\i}sticas del \gls{hmm} se estiman durante la fase de entrenamiento,
-	antes de la utilizaci\'on del sistema de reconocimiento del habla. Las mismas incluyen:
+	En general, las distribuciones probabil{\'\i}sticas del \gls{hmm} se estiman durante la fase de 
+	entrenamiento, antes de la utilizaci\'on del sistema de reconocimiento del habla. 
+	Las mismas incluyen:
 
 	\begin{itemize}
 		\item La probabilidad de observar un determinado fonema al inicio de la oraci\'on: $\pi_i$.
 		\item La probabilidad de transici\'on entre fonemas: $a_{ij}$.
-		\item La probabilidad de observción $b_j(v_k)$. 
+		\item La probabilidad de observaci\'on $b_j(v_k)$. 
 	\end{itemize}
 
-	Sea $o_t$ el vector de caracter{\'\i}sticas que se observa en el tiempo $t$, es decir, uno de los elementos
-	de la ecuaci\'on \ref{eq:asrO}.
+	Sea $o_t$ el vector de caracter{\'\i}sticas que se observa en el tiempo $t$, es decir, 
+	uno de los elementos de la ecuaci\'on \ref{eq:asrO}.
 	La probabilidad de una observaci\'on como consecuencia de la pronunciaci\'on de un determinado fonema 
-	corresponde a la funci\'on $b_j(v_k)$ del modelo oculto de Markov, definida en la ecuaci\'on \ref{eq:hmmB}.
+	corresponde a la funci\'on $b_j(v_k)$ del modelo oculto de Markov, definida en la 
+	ecuaci\'on \ref{eq:hmmB}.
 	Por tanto, la probabilidad de observaci\'on de $o_t$ est\'a dada por $b_j(o_t)$ 
 
-	Como un vector de caracter{\'\i}sticas puede tomar un gran n\'umero de valores, los m\'etodos utilizados con
-	mayor frecuencia en la actualidad coinciden en tratarlo como una variable continua.
+	Como un vector de caracter{\'\i}sticas puede tomar un gran n\'umero de valores, los m\'etodos 
+	utilizados con mayor frecuencia en la actualidad coinciden en tratarlo como una variable continua.
 
 	Una \gls{fdp} de una variable aleatoria continua describe la probabilidad relativa seg\'un la cual 
 	dicha variable aleatoria tomar\'a determinado valor \cite{Evans2011}.
@@ -181,8 +189,9 @@ los siguientes par\'ametros:
     	b_j(o_t) = \frac{1}{\sqrt{(2\pi)|\Sigma_j|}}e^{[(o_t-\mu_j)'\Sigma_j^{-1}(o_t-\mu_j)]}\label{eq:hmmGaussian}
 	\end{align}
 
-	En la pr\'actica, la mayor{\'\i}a de los reconocedores utiliza m\'as de una funci\'on Gaussiana, combinando
-	los valores mediante una t\'ecnica conocida como mezclas Gaussianas \cite{huang-handbook10}.
+	En la pr\'actica, la mayor{\'\i}a de los reconocedores utiliza m\'as de una funci\'on Gaussiana,
+	combinando los valores mediante una t\'ecnica conocida como mezclas 
+	\mbox{Gaussianas \cite{huang-handbook10}.}
 
 	Existen adem\'as otros m\'etodos para definir la probabilidad de observaci\'on, como la cuantizaci\'on
 	vectorial \cite{Burton1983} y las redes neuronales \cite{KristineApplying1995}.
@@ -225,20 +234,21 @@ El algoritmo decodificador intenta encontrar la secuencia de estados m\'as proba
 vectores de caracter{\'\i}sticas que recibe como entrada, en un \'unico \gls{hmm} que constituye su 
 espacio de b\'usqueda.
 
-Tomando como ejemplo el modelo de la urna y la pelota de la secci\'on \ref{sec:hmm}, el algoritmo decodificador
-busca la secuencia de urnas m\'as probable dada la secuencia de colores que se observ\'o.
+Tomando como ejemplo el modelo de la urna y la pelota de la secci\'on \ref{sec:hmm}, el 
+algoritmo decodificador busca la secuencia de urnas m\'as probable dada la secuencia de colores 
+que se observ\'o.
 
-Teniendo en cuenta que el modelo ac\'ustico est\'a constituido por varios modelos ocultos de Markov, se plantea
-la necesidad de definir un \'unico \gls{hmm} para el algoritmo decodificador. Suponiendo que el modelo ac\'ustico
-define un \gls{hmm} por fonema, esto puede lograrse mediante los siguientes pasos:
+Teniendo en cuenta que el modelo ac\'ustico est\'a constituido por varios modelos ocultos de Markov,
+se plantea la necesidad de definir un \'unico \gls{hmm} para el algoritmo decodificador. Suponiendo que 
+el modelo ac\'ustico define un \gls{hmm} por fonema, esto puede lograrse mediante los siguientes pasos:
 
 \begin{enumerate}
 	\item Se concatenan los modelos ocultos de Markov de los fonemas de manera a obtener un \gls{hmm} 
 	por cada palabra. 
 	La probabilidad de transici\'on entre fonemas est\'a dada por el diccionario fon\'etico.
-	\item Se concatenan los modelos ocultos de Markov de las palabras de manera a obtener un \'unico \gls{hmm} que
-	constituye el espacio de b\'usqueda. La probabilidad de transici\'on entre palabras est\'a dada por el modelo
-	de lenguaje.
+	\item Se concatenan los modelos ocultos de Markov de las palabras de manera a obtener un \'unico 
+	\gls{hmm} que constituye el espacio de b\'usqueda. La probabilidad de transici\'on entre palabras 
+	est\'a dada por el modelo de lenguaje.
 \end{enumerate}
 
 \begin{figure}[H] 
@@ -258,7 +268,7 @@ utilizado para la decodificaci\'on es el algoritmo de Viterbi.
 El algoritmo de Viterbi toma como entrada una secuencia de observaciones y un \'unico aut\'omata, 
 y encuentra el camino \'optimo a trav\'es del aut\'omata, esto es, la mejor secuencia de estados. 
 
-M\'as formalmente, se busca la mejor secuencia de estados $Q = (q_1,q_2,\ldots,q_T)$ 
+Formalmente, se busca la mejor secuencia de estados $Q = (q_1,q_2,\ldots,q_T)$ 
 dados una secuencia de observaciones $O = (o_1,o_2,\ldots,o_T)$ y un modelo oculto de 
 Markov, $\lambda$ \cite{Jurafsky}.
 
@@ -281,8 +291,8 @@ mediante la siguiente relaci\'on de recurrencia:
 	viterbi[i,t] = \displaystyle \max_i (viterbi[i,t-1]a_{i,j})b_j(o_t)
 \end{align}
 
-El pseudocódigo del algoritmo de Viterbi que se presenta a continuación fue traducido a partir de
-\cite{Rabiner89atutorial}.
+El pseudoc\'odigo del algoritmo de Viterbi que se presenta a continuaci\'on fue traducido a 
+partir de \cite{Rabiner89atutorial, Jurafsky}.
 
 \begin{algorithm}[H]
 \caption{Algoritmo de Viterbi} \label{viterbi}
@@ -296,7 +306,7 @@ El pseudocódigo del algoritmo de Viterbi que se presenta a continuación fue tr
 \ENDFOR
 \FOR{cada paso $t$ desde $0$ hasta $T - 1$}
 	\FOR{cada estado $s$ desde $0$ hasta $num\mbox{-}estados$}
-		\FOR{cada transici\'on $s$ desde s especificada por el $grafo\mbox{-}estados$}
+		\FOR{cada transici\'on $s'$ desde s especificada por el $grafo\mbox{-}estados$}
 		\STATE $nuevo\mbox{-}puntaje \leftarrow viterbi[s,t] * a[s,s'] * b_{s'}[o_t]$
 		\IF{$viterbi[s',t+1] = 0 \parallel nuevo\mbox{-}puntaje > viterbi[s',t+1]$}
 			\STATE $viterbi[s',t+1] \leftarrow nuevo\mbox{-}puntaje$

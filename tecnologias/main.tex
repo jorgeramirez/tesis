@@ -2,38 +2,38 @@
  \chapter{Tecnolog\'ias y Herramientas}
 \label{sec:tecnologias}
 
-En la actualidad existe un gran n\'umero de herramientas de software que pueden utilizarse para la implementaci\'on de un
-sistema de reconocimiento del habla. Si bien esta diversidad representa una ventaja, se requiere
-la selecci\'on de la tecnolog{\'\i}a adecuada. Esta selecci\'on conforma la primera tarea a llevar a
-cabo por las personas que deseen desarrollar sistemas que incluyen reconocimiento.
+En la actualidad existe un gran n\'umero de herramientas de software que pueden utilizarse para 
+la implementaci\'on de un sistema de reconocimiento del habla. Si bien esta diversidad representa 
+una ventaja, la selecci\'on de la tecnolog{\'\i}a adecuada supone un desaf{\'\i}o adicional. 
+Esta selecci\'on representa la primera tarea a llevar a
+cabo por las personas que deseen desarrollar sistemas que incluyan reconocimiento del habla.
 
-Este cap{\'\i}tulo presenta, categoriza y eval\'ua varias alternativas tecnol\'ogicas, relacionadas al reconocimiento del habla, 
-disponibles con el fin de facilitar la elecci\'on de la herramienta adecuada
-de acuerdo a las necesidades de cada caso. La siguiente clasificaci\'on y criterios que ser\'an presentados son
-una propuesta que forma parte de este trabajo de grado.
+Este cap{\'\i}tulo presenta, categoriza y eval\'ua varias alternativas tecnol\'ogicas disponibles, relacionadas al reconocimiento del habla, con el fin de facilitar la elecci\'on de la herramienta
+adecuada de acuerdo a las necesidades de cada caso. La siguiente clasificaci\'on y los criterios
+de evaluaci\'on que ser\'an presentados son una propuesta que forma parte de este trabajo de grado.
 
 Inicialmente, se clasifican las herramientas en las siguientes categor{\'\i}as:
 \begin{itemize}
-	\item Aplicaciones: herramientas software que permiten al usuario realizar una o
-	varias tareas \mbox{espec{\'\i}ficas \cite{GoodwillComputer}}.
+    \item Aplicaciones: herramientas software que permiten al usuario realizar una o
+    varias tareas \mbox{espec{\'\i}ficas \cite{GoodwillComputer}}.
     \item \gls{api}: interfaces entre una base de c\'odigo y
-	el programador \cite{DoucetteOnApi}. Esta abstracci\'on puede verse como una caja negra
-	(los detalles de la implementaci\'on se mantienen ocultos) que provee una determinada funcionalidad.
-	\item Librer{\'\i}as/Frameworks: con junto de m\'etodos o funciones a los que se puede invocar.
-	En el caso de un framework, incluye tambi\'en patrones de dise\~no
-	\mbox{predefinidos \cite{FowlerInversion}}.
+    el programador \cite{DoucetteOnApi}. Esta abstracci\'on puede verse como una caja negra
+    (los detalles de la implementaci\'on se mantienen ocultos) que provee una determinada funcionalidad.
+    \item Librer{\'\i}as/\foreign{Framework}s: con junto de m\'etodos o funciones a los que se puede invocar.
+    En el caso de un \foreign{framework}, incluye tambi\'en patrones de dise\~no
+    \mbox{predefinidos \cite{FowlerInversion}}.
 \end{itemize}
 
 Las categor{\'\i}as citadas anteriormente representan, diferentes enfoques para realizar el trabajo
 de reconocimiento del habla. A modo de discernir entre los mismos, se establecen
 los siguientes criterios generales de evaluaci\'on:
 \begin{itemize}
-	\item Conocimiento t\'ecnico necesario: nivel de conocimiento relativo al \'area necesario para la
-	utilizaci\'on de la herramienta. 
-	\item Productividad:  raz\'on entre las funcionalidades que se ofrecen, utilizando la herramienta, 
+    \item Conocimiento t\'ecnico necesario: nivel de conocimiento relativo al \'area necesario para la
+    utilizaci\'on de la herramienta. 
+    \item Productividad:  raz\'on entre las funcionalidades que se ofrecen, utilizando la herramienta, 
     y el tiempo y el costo monetario que implica la implementaci\'on.
-	\item Flexibilidad: facilidad de adaptaci\'on de la herramienta para la soluci\'on de diferentes
-	tipos de problemas.
+    \item Flexibilidad: facilidad de adaptaci\'on de la herramienta para la soluci\'on de diferentes
+    tipos de problemas.
 \end{itemize}
 
 La siguiente figura presenta de forma esquematizada el contenido del cap{\'\i}tulo, y puede tomarse como
@@ -61,13 +61,13 @@ herramientas presentadas.
 \footnotesize
 \begin{tabular}{|p{3.5cm}|>{\centering}p{3.5cm}|>{\centering}p{3.5cm}|>{\centering}p{3.5cm}|}
 \hline
-                               & Aplicaciones             &  \gls{api}s                            & Librer\'ias/Frameworks \tabularnewline
+                               & Aplicaciones             &  \gls{api}s                            & Librer\'ias/\foreign{Framework}s \tabularnewline
 \hline
 Conocimiento T\'ecnico         &     Bajo                    & Medio                            & Alto    \tabularnewline \hline
 Productividad                  &     Alto                    & Medio                            & Bajo    \tabularnewline \hline
 Flexibilidad                   &     Bajo                    & Medio                            & Alto    \tabularnewline \hline
 Alternativas Propietarias      & \begin{itemize} \setlength{\itemsep}{1pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt}\item Dragon Natural Speaking \end{itemize}  & \begin{itemize}  \setlength{\itemsep}{1pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \item Web Speech \gls{api} \item \gls{att} Speech \gls{api} \item Microsoft Speech \gls{api} \item iSpeech \gls{api} \item Dragon Mobile \end{itemize}  &  \tabularnewline \hline
-Alternativas de Código abierto & \begin{itemize}  \setlength{\itemsep}{1pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \item Simon \item Palaver \end{itemize}          &           & \begin{itemize} \setlength{\itemsep}{1pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \item Sphinx 4 \item PocketSphinx \item \gls{htk} \item Julius \item Kaldi \end{itemize} \tabularnewline
+Alternativas de C\'odigo abierto & \begin{itemize}  \setlength{\itemsep}{1pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \item Simon \item Palaver \end{itemize}          &           & \begin{itemize} \setlength{\itemsep}{1pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \item Sphinx 4 \item PocketSphinx \item \gls{htk} \item Julius \item Kaldi \end{itemize} \tabularnewline
 \hline
 \end{tabular}
 \caption{Resumen general de las herramientas}
@@ -129,7 +129,7 @@ Dependencia de Plataforma           & No  & No & Si, solo para \emph{Microsoft W
 \hline
                                       &  \gls{wami} & iSpeech \gls{api} & Dragon Mobile \\
 \hline
-Empresa o Instituci\'on responsable & Instituto Tecnológico de Massachusetts & \foreign{iSpeech}  & \foreign{Nuance Communications} \\ \hline
+Empresa o Instituci\'on responsable & Instituto Tecnol\'ogico de Massachusetts & \foreign{iSpeech}  & \foreign{Nuance Communications} \\ \hline
 Precio &  Gratuito  & Gratuito para aplicaciones no comerciales. De 0.02\$ a 0.0001\$ para otros usos & Gratuito para aplicaciones no comerciales. De 0.08\$ a 0.006\$ para otros usos. \\ \hline
 Soporte para m\'ultiples idiomas  & No, aunque depende del reconocedor utilizado & Si & Si \\ \hline
 Soporte Offline & No & No & No\\ \hline
@@ -141,7 +141,7 @@ Dependencia de Plataforma & No & No & No\\
 \end{table}
 
 
-\subsection{Librer\'ias/Frameworks}
+\subsection{Librer\'ias/\foreign{Framework}s}
 
 A continuaci\'on, las tablas~\ref{sec:resumen-libs} y~\ref{sec:resumen-libs-2} muestran una comparaci\'on entre las librer\'ias presentadas, respecto a los criterios espec\'ificos
 para \'esta categor\'ia
@@ -164,8 +164,8 @@ Modelos Ac\'usticos Aceptados & Modelo propio & Modelo propio &  Modelo propio \
 Uso de Memoria & No se recomienda para sistemas de poca memoria & Reducido en comparaci\'on a Sphinx 4 & Dependiente de la aplicaci\'on \\
 \hline
 \end{tabular}
-\caption[Resumen de los criterios espec\'ificos de las Librer\'ias/Frameworks.\protect\newline Primera parte.]
-{Resumen de los criterios espec\'ificos de las Librer\'ias/Frameworks. Primera parte.}
+\caption[Resumen de los criterios espec\'ificos de las Librer\'ias/\foreign{Framework}s.\protect\newline Primera parte.]
+{Resumen de los criterios espec\'ificos de las Librer\'ias/\foreign{Framework}s. Primera parte.}
 \label{sec:resumen-libs}
 \end{table}
 
@@ -176,16 +176,16 @@ Uso de Memoria & No se recomienda para sistemas de poca memoria & Reducido en co
 \hline
                                   &  Julius & Kaldi \\
 \hline
-Empresa o Instituci\'on Responsable &  \foreign{Interactive Speech Technology Consortium} & Agencia Tecnológica de República Checa \\ \hline
+Empresa o Instituci\'on Responsable &  \foreign{Interactive Speech Technology Consortium} & Agencia Tecnol\'ogica de Rep\'ublica Checa \\ \hline
 Precio & Gratuito & Gratuito \\ \hline
 Licencia & \gls{bsd} & Apache 2.0 \\ \hline
 Soporte para m\'ultiples idiomas & No &  No \\ \hline
 Dependencia de Plataforma & No & No \\ \hline
 Modelos de Lenguaje Aceptados & Basados en gram\'aticas y modelos en formato \gls{arpa} & Modelos en formato \gls{fst} \\ \hline
-Modelos Acústicos Aceptados & Modelo propio & Modelo propio \\ \hline
+Modelos Ac\'usticos Aceptados & Modelo propio & Modelo propio \\ \hline
 Uso de Memoria & Bajo & \\
 \hline
 \end{tabular}
-\caption[Resumen de los criterios espec\'ificos de las librer\'ias/frameworks.\protect\newline Segunda parte.]{Resumen de los criterios espec\'ificos de las librer\'ias/frameworks. Segunda parte.}
+\caption[Resumen de los criterios espec\'ificos de las librer\'ias/\foreign{framework}s.\protect\newline Segunda parte.]{Resumen de los criterios espec\'ificos de las librer\'ias/\foreign{framework}s. Segunda parte.}
 \label{sec:resumen-libs-2}
 \end{table}

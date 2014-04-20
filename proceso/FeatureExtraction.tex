@@ -2,14 +2,15 @@
 \section{Fase 1: Extracci\'on de caracter{\'\i}sticas}
 \label{sec:featureExtraction}
 
-En la primera fase, la entrada es la se\~nal de voz correspondiente al emisor la cual se divide en muestras
-de corta duraci\'on llamadas tramas. A trav\'es del procesamiento de la onda sonora, se obtienen vectores 
-de caracter{\'\i}sticas representativas para cada trama \cite{Jurafsky}.
+En la primera fase, la entrada es la se\~nal de voz correspondiente al emisor la cual se divide
+en muestras de corta duraci\'on llamadas tramas. A trav\'es del procesamiento de la onda sonora, 
+se obtienen vectores de caracter{\'\i}sticas representativas para cada \mbox{trama \cite{Jurafsky}.}
 
-El objetivo de esta fase es transformar las ondas sonoras a una representaci\'on adecuada para su utilizaci\'on
-en la siguiente fase. Se busca una representaci\'on que caracterice la voz con la mayor precisi\'on posible, de modo a
-facilitar su posterior identificaci\'on. Adem\'as, el costo de procesamiento para la transformaci\'on y el costo
-de almacenamiento de la representaci\'on resultante son factores a considerar.
+El objetivo de esta fase es transformar las ondas sonoras a una representaci\'on adecuada para 
+su utilizaci\'on en la siguiente fase. Se busca una representaci\'on que caracterice la voz con 
+la mayor precisi\'on posible, de modo a facilitar su posterior identificaci\'on. Adem\'as, 
+el costo de procesamiento para la transformaci\'on y el costo de almacenamiento de la 
+representaci\'on resultante son factores a considerar.
 
 En general, la mayor{\'\i}a de estas representaciones se basan en el an\'alisis del espectro
 de la onda, por lo cual reciben el nombre de caracter{\'\i}sticas espectrales. 
@@ -20,27 +21,32 @@ Estos conceptos se describen con m\'as detalle en esta secci\'on.
 La entrada para un reconocedor del habla, y en particular para la fase 1, es la misma que 
 la del o{\'\i}do humano: una serie de cambios en la presi\'on del aire \cite{YoungUniversity2007}. 
 Estos cambios se originan en el emisor, y son causados por el aire que es expulsado de los pulmones,
-pasa por el tracto vocal y salen por la boca. As{\'\i}, para el 
+pasa por el tracto vocal y sale por la boca. As{\'\i}, para el 
 proceso de s{\'\i}ntesis del habla en el ser humano, los pulmones son la fuente
 del sonido y el trato vocal es el filtro que genera los distintos tipos de \mbox{sonido \cite{BradburyLineal2000}}.
 
-Como mencionaba Semat ya en los a\~nos 50, existen dos aspectos del sonido: el f{\'\i}sico y el perceptual. De acuerdo al 
-aspecto considerado, var{\'\i}an los t\'erminos con los cuales se describe al sonido; as{\'\i}, un f{\'\i}sico describe un 
-sonido en t\'erminos de frecuencia, amplitud y n\'umero de sobretonos, mientras un m\'usico utiliza t\'erminos como tono, 
-volumen o \mbox{timbre \cite{SematPhysics1958}}.
+Como mencionaba Semat ya en los a\~nos 50, existen dos aspectos del sonido: el f{\'\i}sico y el 
+perceptual. De acuerdo al 
+aspecto considerado, var{\'\i}an los t\'erminos con los cuales se describe al sonido; as{\'\i}, un f{\'\i}
+sico describe un sonido en t\'erminos de frecuencia, amplitud y n\'umero de sobretonos, mientras un 
+m\'usico utiliza t\'erminos como tono, volumen o \mbox{timbre \cite{SematPhysics1958}}.
 
-Aunque no existe una correspondencia directa entre las car\'acter{\'\i}sticas f{\'\i}sicas y las perceptuales 
-\cite{SematPhysics1958}, existe una correlaci\'on en ciertos casos. As{\'\i}, para los sonidos con una frecuencia alta se 
-percibe un tono m\'as agudo, aunque esta relaci\'on no es lineal. Igualmente, a mayor amplitud de una onda sonora esta se 
+Aunque no existe una correspondencia directa entre las car\'acter{\'\i}sticas f{\'\i}sicas y las
+perceptuales \cite{SematPhysics1958}, existe una correlaci\'on en ciertos casos. As{\'\i}, para los
+sonidos con una frecuencia alta se percibe un tono m\'as agudo, aunque esta relaci\'on no es lineal. 
+Igualmente, a mayor amplitud de una onda sonora esta se 
 percibe con mayor \mbox{volumen \cite{YoungUniversity2007}}.
 
 \subsection{Espectro}
-El an\'alisis espectral est\'a basado en la conclusi\'on de Fourier que establece que una onda compleja puede ser 
-representada como la sumatoria de varias ondas simples a diferentes frecuencias. El espectro es la representaci\'on de las 
-distintas frecuencias que componen una onda, que puede visualizarse mediante una gr\'afica de amplitud en funci\'on de la 
-\mbox{frecuencia \cite{Jurafsky}}. A continuaci\'on en la figura~\ref{figure:formants} se puede observar un ejemplo
-de espectro codificado en \gls{lpc} \cite{KesarkarFeature2003} el cual facilita la identificaci\'on de los picos
-espectrales, el eje $X$ corresponde a la frecuencia y el eje $Y$ a la amplitud.
+El an\'alisis espectral est\'a basado en la conclusi\'on de Fourier que establece que una onda compleja
+puede ser representada como la sumatoria de varias ondas simples a diferentes frecuencias. El espectro es
+la representaci\'on de las distintas frecuencias que componen una onda, que puede visualizarse mediante 
+una gr\'afica de amplitud en funci\'on de la \mbox{frecuencia \cite{Jurafsky}}. 
+
+En la figura~\ref{figure:formants} se puede observar un ejemplo de espectro codificado
+en \gls{lpc} \cite{KesarkarFeature2003}, donde el eje $X$ corresponde a la frecuencia y el eje $Y$ a 
+la amplitud. Esta representaci\'on facilita la identificaci\'on de los picos espectrales de la 
+onda sonora.
 
 \begin{figure}[H]
 \centering
@@ -71,15 +77,17 @@ habla est\'an basadas en el \mbox{espectrograma \cite{Ellis08anintroduction}}.
 \end{figure}
 
 \subsection{Proceso de Extracci\'on de Caracter{\'\i}sticas}
-El proceso puede resumirse en los siguientes pasos \cite{Jurafsky}:
+El proceso de extracci\'on de caracter{\'\i}sticas se resume en los siguientes 
+pasos \cite{Jurafsky}:
 
 \begin{enumerate}
-\item Muestreo: consiste en medir la amplitud de la se\~nal en un momento dado; la frecuencia de muestreo es el 
-n\'umero de muestras que se toma por segundo. 
+\item Muestreo: consiste en medir la amplitud de la se\~nal en un momento dado; la frecuencia 
+de muestreo es el n\'umero de muestras que se toma por segundo. 
 
-De acuerdo a la f\'ormula de Nyquist, es necesario que la frecuencia de muestreo sea al menos el doble de la frecuencia 
-correspondiente a la onda que se desea medir. Por ejemplo, para las conversaciones telef\'onicas, cuyas frecuencias no 
-superan los 4000 Hz, una tasa de muestreo de 8000 Hz resulta suficiente.
+De acuerdo a la f\'ormula de Nyquist, es necesario que la frecuencia de muestreo sea al menos el 
+doble de la frecuencia correspondiente a la onda que se desea medir. Por ejemplo, para las 
+conversaciones telef\'onicas, cuyas frecuencias no superan los 4000 Hz, una tasa de muestreo 
+de 8000 Hz resulta suficiente.
 
 \item Cuantificaci\'on: consiste en representar el n\'umero real correspondiente a la amplitud 
 como un n\'umero entero, normalmente de 8 bits (con valores de -128 a 127) o 16 bits (con valores de -32768 a 32767) para cada muestra. 
@@ -100,6 +108,7 @@ y el emisor.
 \item Las caracter{\'\i}sticas capturan la din\'amica espectral, es decir, los cambios del espectro en el tiempo.
 \end{itemize}
 
+\vspace*{1\baselineskip}
 Algunos conjuntos de caracter{\'\i}sticas com\'unmente utilizados son:
 \begin{itemize}
 \item \gls{lpc}: representaci\'on del espectro basada en la idea de que una muestra 

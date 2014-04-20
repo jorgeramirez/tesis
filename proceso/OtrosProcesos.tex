@@ -12,6 +12,7 @@ La \gls{dtw} es una t\'ecnica t\'ipica del enfoque basado en comparaci\'on de
 patrones \cite{GaikwadAReview2010}. 
 Este m\'etodo permite encontrar una alineaci\'on \'optima entre dos secuencias que pueden variar en 
 tiempo y velocidad, bajo ciertas restricciones \cite{MullerInformation2007}.
+
 Las secuencias se distorsionan de manera no lineal con respecto a la dimensi\'on tiempo para determinar 
 una medida de similitud independiente a ciertas variaciones no lineales que ocurran sobre la 
 dimensi\'on tiempo \cite{AnusuyaSpeech2009}.
@@ -51,6 +52,7 @@ los principales problemas del reconocimiento del habla basado en \gls{dtw}, en p
 se cuenta con varias grabaciones de una misma palabra \cite{Abdulla2003}. 
 Algunas posibles soluciones a este problema son \cite{Abdulla2003}:
 
+\vspace*{1\baselineskip}
 \begin{itemize}
     \item Utilizar m\'as de una plantilla por palabra, lo cual resulta ineficiente con el aumento del
     n\'umero de grabaciones.
@@ -59,9 +61,9 @@ Algunas posibles soluciones a este problema son \cite{Abdulla2003}:
 \end{itemize}
 
 Esta dificultad, sumada a la capacidad de los \gls{hmm} de capturar las caracter{\'\i}sticas 
-estad{\'\i}sticas de las palabras y otras unidades fon\'eticas, hacen del enfoque basado en \gls{hmm}
-la opci\'on m\'as adecuada para el reconocimiento del habla de gran vocabulario independiente del 
-hablante \cite{Wong1998}.
+estad{\'\i}sticas de las palabras y otras unidades fon\'eticas, hacen del enfoque basado en modelos
+ocultos de Markov la opci\'on m\'as adecuada para el reconocimiento del habla de gran 
+vocabulario independiente del hablante \cite{Wong1998}.
 
 \gls{dtw} ha probado ser un m\'etodo eficiente para el reconocimiento de palabras pronunciadas 
 pausadamente \cite{MyersALevel1981} y ha sido adaptado para el reconocimiento de palabras enlazadas,
@@ -71,23 +73,27 @@ con cierto nivel de \mbox{\'exito \cite{MyersALevel1981, SakoeTwoLevel1979, Rabi
 \subsection{Redes Neuronales}
 \label{sec:otrosModelosANN}
 
-Como se mencion\'o anteriormente el concepto de \gls{rna} aplicado al reconocimiento
-del habla se volvi\'o a introcudir en los a\~nos 80, y viene desarroll\'andose como m\'etodo 
-alternativo desde entonces. Las \gls{rna} son capaces de resolver tareas de reconocimiento
-m\'as complicadas, pero no escalan tan bien como los HMM cuando se trata de grandes 
-vocabularios \cite{VimalaReview2012}.
+El concepto de \gls{rna} aplicado al reconocimiento del habla se volvi\'o a introducir en los a\~nos 80,
+y viene desarroll\'andose como m\'etodo alternativo desde entonces. 
+
+Las \gls{rna} son capaces de resolver tareas de reconocimiento del habla con independencia del hablante 
+y en ambientes ruidosos, si se cuenta con datos de entrenamiento y el vocabulario es reducido.
+Aunque en estos casos se han logrado incluso mejores resultados que con \gls{hmm},
+la precisión de los sistemas de reconocimiento del habla basados en \gls{rna} disminuye en comparación
+a los sistemas basados en \gls{hmm} cuando se trata de grandes vocabularios \cite{VimalaReview2012}.
 
 Existen dos enfoques b\'asicos para la clasificaci\'on del habla utilizando redes neuronales: 
-est\'atico y din\'amico. En la clasificaci\'on est\'atica la red ve toda la entrada de voz a la vez,
-y toma una sola decisi\'on. Por otro lado, en el enfoque din\'amico la red ve solo una peque\~na 
-ventana de la entrada, y esta ventana se desliza sobre la entrada mientras la red realiza una 
-serie de decisiones locales, que deben ser integradas a una decisi\'on global 
+el est\'atico y el din\'amico. En la clasificaci\'on est\'atica la red procesa toda la entrada de voz
+a la vez, y toma una sola decisi\'on. Por otro lado, en el enfoque din\'amico la red procesa 
+solo una peque\~na ventana de la entrada, y esta ventana se desliza sobre la entrada mientras 
+la red realiza una serie de decisiones locales, que deben ser integradas a una decisi\'on global 
 posteriormente \cite{TebelskisSpeech1995}.
 
-La clasificaci\'on de fonemas, el reconocimiento de palabras pueden llevarse a cabo con un alto
-grado de precisi\'on utilizando m\'etodos est\'aticos o din\'amicos. Aunque el enfoque din\'amico,
-aplicado al reconocimiento de palabras, se adapta mejor a la variabilidad de duraci\'on de una 
+La clasificaci\'on de fonemas y el reconocimiento de palabras pueden llevarse a cabo con un alto
+grado de precisi\'on utilizando m\'etodos est\'aticos o din\'amicos. Sin embargo, 
+el enfoque din\'amico se adapta mejor a la variabilidad de duraci\'on de una 
 palabra \cite{TebelskisSpeech1995}.
 
 Existen tambi\'en sistemas h\'ibridos RNA-HMM que utilizan las Redes Neuronales para el reconocimiento de
-fonemas y los Modelos Ocultos de Markov para el modelo de lenguaje \cite{VimalaReview2012}.
+fonemas y los Modelos Ocultos de Markov para el modelado del lenguaje que se desea 
+reconocer \cite{VimalaReview2012}.
