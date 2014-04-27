@@ -19,12 +19,12 @@ Inicialmente, se clasifican las herramientas en las siguientes categor{\'\i}as:
     \item \gls{api}: interfaces entre una base de c\'odigo y
     el programador \cite{DoucetteOnApi}. Esta abstracci\'on puede verse como una caja negra
     (los detalles de la implementaci\'on se mantienen ocultos) que provee una determinada funcionalidad.
-    \item Librer{\'\i}as/\foreign{Framework}s: con junto de m\'etodos o funciones a los que se puede invocar.
+    \item Librer{\'\i}as/\foreign{Frameworks}: con junto de m\'etodos o funciones a los que se puede invocar.
     En el caso de un \foreign{framework}, incluye tambi\'en patrones de dise\~no
     \mbox{predefinidos \cite{FowlerInversion}}.
 \end{itemize}
 
-Las categor{\'\i}as citadas anteriormente representan, diferentes enfoques para realizar el trabajo
+Las categor{\'\i}as citadas anteriormente representan diferentes enfoques para realizar el trabajo
 de reconocimiento del habla. A modo de discernir entre los mismos, se establecen
 los siguientes criterios generales de evaluaci\'on:
 \begin{itemize}
@@ -42,7 +42,7 @@ gu\'ia para la lectura de las secciones del mismo.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\linewidth]{./graphics/esquema-herramientas.png}
-\caption{Esquema que presenta el contenido del cap\'itulo}
+\caption{Esquema representativo de la clasificaci\'on de herramientas para el reconocimiento del habla.}
 \label{figure:esquema-herramientas}
 \end{figure}
 
@@ -61,12 +61,12 @@ herramientas presentadas.
 \footnotesize
 \begin{tabular}{|p{3.5cm}|>{\centering}p{3.5cm}|>{\centering}p{3.5cm}|>{\centering}p{3.5cm}|}
 \hline
-                               & Aplicaciones             &  \gls{api}s                            & Librer\'ias/\foreign{Framework}s \tabularnewline
+                               & Aplicaciones             &  \gls{api}s                            & Librer\'ias/\foreign{Frameworks} \tabularnewline
 \hline
 Conocimiento T\'ecnico         &     Bajo                    & Medio                            & Alto    \tabularnewline \hline
 Productividad                  &     Alto                    & Medio                            & Bajo    \tabularnewline \hline
 Flexibilidad                   &     Bajo                    & Medio                            & Alto    \tabularnewline \hline
-Alternativas Propietarias      & \begin{itemize} \setlength{\itemsep}{1pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt}\item Dragon Natural Speaking \end{itemize}  & \begin{itemize}  \setlength{\itemsep}{1pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \item Web Speech \gls{api} \item \gls{att} Speech \gls{api} \item Microsoft Speech \gls{api} \item iSpeech \gls{api} \item Dragon Mobile \end{itemize}  &  \tabularnewline \hline
+Alternativas  Propietarias      & \begin{itemize} \setlength{\itemsep}{1pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt}\item Dragon Natural Speaking \end{itemize}  & \begin{itemize}  \setlength{\itemsep}{1pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \item Web Speech \gls{api} \item \gls{att} Speech \gls{api} \item Microsoft Speech \gls{api} \item iSpeech \gls{api} \item Dragon Mobile \end{itemize}  &  \tabularnewline \hline
 Alternativas de C\'odigo abierto & \begin{itemize}  \setlength{\itemsep}{1pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \item Simon \item Palaver \end{itemize}          &           & \begin{itemize} \setlength{\itemsep}{1pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \item Sphinx 4 \item PocketSphinx \item \gls{htk} \item Julius \item Kaldi \end{itemize} \tabularnewline
 \hline
 \end{tabular}
@@ -89,7 +89,7 @@ para \'esta categor\'ia
 \hline
 Precio                                & Gratuito                                                     & Gratuito                                       & Desde 99\$  \\ \hline
 Soporte para m\'ultiples idiomas      & Si                                                           & Si                                             & Si \\ \hline
-Facilidad de configuraci\'on          & F\'acilmente configurable                                    & Reducida                                       & F\'acilmente configurable \\ \hline
+Facilidad de configuraci\'on          & F\'acil                                    & Reducida                                       & F\'acil \\ \hline
 Soporte para dispositivos m\'oviles   & Si                                                           & No                                             & Si, mediante otros productos \\
 \hline
 \end{tabular}
@@ -112,7 +112,7 @@ para \'esta categor\'ia
 \hline
 Empresa o Instituci\'on responsable & \foreign{Speech API Community Group}. Implementado actualmente por \foreign{Google}  &  \gls{att} Inc.  & Microsoft\\ \hline
 Precio                              & Gratuito, a trav\'es de Google Chrome  & Un mill\'on de llamadas a la \gls{api} por 99\$ anuales. 0.01\$ por llamada extra  & Gratuito\\ \hline
-Soporte para m\'ultiples idiomas    & Si  & No, 2 idiomas & Si\\ \hline
+Soporte para m\'ultiples idiomas    & Si  & 2 idiomas & Si\\ \hline
 Soporte Offline                     & No  & No  & Si \\ \hline
 Dependencia de Plataforma           & No  & No & Si, solo para \emph{Microsoft Windows} \\
 \hline
@@ -141,7 +141,7 @@ Dependencia de Plataforma & No & No & No\\
 \end{table}
 
 
-\subsection{Librer\'ias/\foreign{Framework}s}
+\subsection{Librer\'ias/\emph{Frameworks}}
 
 A continuaci\'on, las tablas~\ref{sec:resumen-libs} y~\ref{sec:resumen-libs-2} muestran una comparaci\'on entre las librer\'ias presentadas, respecto a los criterios espec\'ificos
 para \'esta categor\'ia
@@ -164,8 +164,8 @@ Modelos Ac\'usticos Aceptados & Modelo propio & Modelo propio &  Modelo propio \
 Uso de Memoria & No se recomienda para sistemas de poca memoria & Reducido en comparaci\'on a Sphinx 4 & Dependiente de la aplicaci\'on \\
 \hline
 \end{tabular}
-\caption[Resumen de los criterios espec\'ificos de las Librer\'ias/\foreign{Framework}s.\protect\newline Primera parte.]
-{Resumen de los criterios espec\'ificos de las Librer\'ias/\foreign{Framework}s. Primera parte.}
+\caption[Resumen de los criterios espec\'ificos de las Librer\'ias/\foreign{Frameworks}.\protect\newline Primera parte.]
+{Resumen de los criterios espec\'ificos de las Librer\'ias/\foreign{Frameworks}. Primera parte.}
 \label{sec:resumen-libs}
 \end{table}
 
