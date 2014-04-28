@@ -6,23 +6,23 @@ La interfaz de interacci\'on alternativa para la aplicaci\'on \emph{Tamtam Edit}
 de las tecnolog\'ias mencionadas anteriormente.
 
 
-Al ofrecer al usuario final un medio de interacci\'on humano-computadora diferente, \emph{TamTam Listens} debe
-ser intuitivo y f\'acil de usar. De modo a lograr esto, la soluci\'on a implementar no debe ofrecer al usuario
-la posibilidad de controlar el \foreign{mouse} o los componentes de la interfaz gr\'afica de \emph{TamTam Edit}
-utilizando la voz. Esto se debe a que controlar el \foreign{mouse} con la voz o, mejor dicho, hacer una
-correspondencia directa entre los comandos de voz y la interfaz gr\'afica puede resultar en un flujo de interacci\'on
-poco conveniente, ya que estar\'ia usando un flujo de interacci\'on bastante parecido al utilizado por la interfaces
-de escritorio tradicionales. Por lo tanto, \emph{TamTam Listens} debe ofrecer un nuevo flujo de interacci\'on basado
-en el habla. Esta importante lecci\'on se hizo clara durante la fase de dise\~no.
+Al ofrecer al usuario final un medio de interacci\'on humano-computadora diferente, \emph{TamTam Listens}
+debe ser intuitivo y f\'acil de usar. De modo a lograr esto, la soluci\'on a implementar no debe 
+ofrecer al usuario la posibilidad de controlar el \foreign{mouse} o los componentes de la interfaz 
+gr\'afica de \emph{TamTam Edit} utilizando la voz. 
 
-Para comprender la diferencia, se explica el siguiente ejemplo. 
+Una correspondencia directa entre los comandos de voz y la interfaz gr\'afica puede resultar en 
+un flujo de interacci\'on poco natural e inadecuado, motivado únicamente por la intención errónea 
+de imitar el flujo de interacci\'on de las interfaces de escritorio tradicionales. 
+La necesidad de ofrecer un flujo de interacción diferente y apropiado para una interfaz mediante voz
+como parte de \emph{TamTam Listens} se hizo clara durante la fase de dise\~no.
+
+Para comprender la diferencia, puede considerarse el siguiente ejemplo. 
 Crear una nota exige una secuencia de operaciones con el \foreign{mouse} al utilizarse la
 interfaz tradicional: hacer clic en el bot\'on de la herramienta correspondiente, hacer clic en la pista
-donde se desea crear la nota, arrastrar el mouse con el clic izquierdo presionado para definir la duraci\'on
-de la nota, etc.
-
-Al utilizarse una interfaz mediante voz del usuario, la misma operaci\'on puede realizarse pronunciando un
-comando como ``crear nota do''.
+donde se desea crear la nota, arrastrar el mouse con el clic izquierdo presionado para definir la 
+duraci\'on de la nota, etc. Al utilizarse una interfaz mediante voz del usuario, la misma operaci\'on
+puede realizarse pronunciando un comando como ``crear nota do''.
 
 
 La figura~\ref{figure:tamtam-listens-arq} muestra la arquitectura b\'asica de \emph{TamTam Listens}. Se pueden
@@ -35,19 +35,21 @@ observar los componentes que forman parte de la soluci\'on desarrollada.
 \label{figure:tamtam-listens-arq}
 \end{figure}
 
-Como sugiere la figura~\ref{figure:tamtam-listens-arq}, \emph{TamTam Listens} a\~nade soporte de reconocimiento
-del habla a \emph{TamTam Edit} utilizando la librer\'ia \emph{PocketSphinx}.A favor de una soluci\'on modular,
-el reconocimiento de comandos de voz de \emph{PocketSphinx} es expuesto como 
-como un  servicio del sistema, a trav\'es de llamadas a \emph{D-bus}\cite{Dbus2013}, el cual es
-un mecanismo para comunicaci\'on entre procesos de Linux\footnote{Linux es un sistema operativo cuyo \foreign{kernel} y paquetes
-    de software son desarrollados bajo el modelo de c\'odigo abierto\cite{LinuxGuideCert}}.
+Como sugiere la figura~\ref{figure:tamtam-listens-arq}, \emph{TamTam Listens} a\~nade soporte 
+de reconocimiento del habla a \emph{TamTam Edit} utilizando la librer\'ia \emph{PocketSphinx}.
+A favor de una soluci\'on modular, el reconocimiento de comandos de voz de \emph{PocketSphinx} 
+es expuesto como como un  servicio del sistema, a trav\'es de llamadas a \emph{D-Bus}\cite{Dbus2013},
+el cual es un mecanismo para comunicaci\'on entre procesos de Linux\footnote{Linux es un sistema operativo cuyo \foreign{kernel} y paquetes de software son desarrollados bajo el modelo de c\'odigo abierto\cite{LinuxGuideCert}}.
 
-\emph{TamTam Listens} consume como un servicio el reconocimiento del habla expuesto a trav\'es de \emph{D-Bus}. Al estar implementado de esta manera, el
-servicio de reconocimiento puede ser utilizado no solo por \emph{Tamtam Listens} sino por cualquier aplicaci\'on 
-de Linux, utilizando un protocolo de paso de mensajes. 
+\emph{TamTam Listens} consume como un servicio el reconocimiento del habla expuesto a trav\'es de 
+\emph{D-Bus}, utilizando un protocolo de paso de mensajes.
 
-Para hacer posible el reconocimiento del habla debe definirse el vocabulario que forma parte del dominio de 
-la aplicaci\'on, su pronunciaci\'on y el conjunto de oraciones (en este caso, comandos v\'alidos) soportados por la aplicaci\'on.
+La arquitectura propuesta, implementada como parte de \emph{TamTam Listens}, favorece la modularidad
+y facilita la reutilizaci\'on de la soluci\'on para otros proyectos de caracter{\'\i}sticas similares.
+
+Para hacer posible el reconocimiento del habla debe definirse el vocabulario que forma parte del 
+dominio de la aplicaci\'on, su pronunciaci\'on y el conjunto de oraciones (en este caso, comandos 
+v\'alidos) soportados por la aplicaci\'on.
 En otras palabras, \emph{Pocketsphinx} requiere un modelo ac\'ustico y un modelo de lenguaje para funcionar.
 
 \subsection{Modelo Ac\'ustico y Modelo de Lenguaje}
@@ -117,17 +119,29 @@ public <tamtam-listens> = <comando> | <pagina> | <pista-a>     | <pista-b>  |
              CREAR NUEVA MUSICA | EXPORTAR MUSICA | SALIR DE TAMTAM;
 <pagina>   = ( CREAR NUEVA | DUPLICAR | LIMPIAR ) PARTITURA | PARTITURA <orden>;
 <orden>    = ( ANTERIOR | SIGUIENTE );
-<loop>   COMODINASURA)+;
+<loop>   (COMODIN)+;
 \end{lstlisting}
 \caption{Fragmento de la gram\'atica utilizada en \emph{Tamtam Listens}.}
 \label{figure:fragmento-gram}
 \end{figure} 
 
-Los comandos de \emph{TamTam Listens} pueden clasificarse en: Generales (G), de Pista (P) y de Comp\'as (C). La clasificaci\'on
-se basa en la dependencia que existe entre comandos de la aplicaci\'on. Los comandos generales no dependen de ning\'un otro comando.
-Los comandos de Pista dependen de los comandos Generales y, a su vez, los comandos de comp\'as dependen de los comandos de Pista.
-A continuaci\'on se presentan los distintos comandos soportados, utilizando grafos para representarlos y as\'i facilitar
-su comprensi\'on. El nodo coloreado hace referencia a la \'ultima palabra de un comando v\'alido para la aplicaci\'on
+Los comandos de \emph{TamTam Listens} pueden clasificarse en:
+
+\begin{itemize}
+    \item Comandos Generales (G): independientes del contexto de la aplicaci\'on, es decir, no dependen
+    de la pista o el comp\'as seleccionados. Por ejemplo: ``Crear Nueva M\'usica''.
+    \item Comandos de Pista (P): dependientes de la pista seleccionada. Por ejemplo, al pronunciar 
+    ``Comp\'as Dos'', el comp\'as espec{\'\i}fico seleccionado depende de la pista 
+    previamente seleccionada.
+    \item Comandos de Comp\'as (C): dependientes de la pista y el comp\'as seleccionados. Por ejemplo, 
+    al pronunciar ``Crear Nota Do'', la ubicaci\'on espec{\'\i}fica de la nota creada depende de la
+    pista y el comp\'as seleccionados.
+\end{itemize}
+
+
+A continuaci\'on se presentan los distintos comandos soportados, utilizando grafos para representarlos y 
+as\'i facilitar su comprensi\'on. El nodo coloreado hace referencia a la \'ultima palabra de un comando 
+v\'alido para la aplicaci\'on
 
 \subsubsection{Comandos Generales}
 
@@ -194,9 +208,12 @@ Los comandos de las figuras~\ref{figure:cmd-partitura-1} y~\ref{figure:cmd-parti
 la partitura actual, como se explican a continuaci\'on:
 
 \begin{itemize}
-    \item \emph{crear nueva  partitura}:  permite crear una nueva partitura en blanco. Utilizaci\'on, ``crear nueva partitura''
-    \item \emph{limpiar  partitura}: permite limpiar el contenido de la partitura actual, es decir, borrar todas las notas. Utilizaci\'on, ``limpiar partitura''
-    \item \emph{duplicar partitura}: crea una nueva partitura con el mismo contenido que la partitura actual. Utilizaci\'on, ``duplicar partitura''.
+    \item \emph{crear nueva  partitura}:  permite crear una nueva partitura en blanco. Utilizaci\'on, 
+    ``crear nueva partitura''.
+    \item \emph{limpiar  partitura}: permite limpiar el contenido de la partitura actual, es decir, 
+    borrar todas las notas. Utilizaci\'on, ``limpiar partitura''.
+    \item \emph{duplicar partitura}: crea una nueva partitura con el mismo contenido que la partitura 
+    actual. Utilizaci\'on, ``duplicar partitura''.
 \end{itemize}
 
 \begin{figure}[H]

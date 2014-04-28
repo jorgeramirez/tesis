@@ -24,8 +24,8 @@ musical, que recibe comandos sonoros y emite tambi\'en un resultado sonoro, podr
 m\'as natural para el usuario. 
 
 La interfaz desarrollada se denomina \emph{TamTam Listens} y se basa en tecnolog\'ias de c\'odigo abierto.
-Toma como punto de partida la aplicaci\'on \emph{TamTam Edit} y para realizar el reconocimiento de comandos
-de voz utiliza los proyectos \emph{PocketSphinx} \cite{PocketSphinxHomePage} 
+Toma como punto de partida la aplicaci\'on \emph{TamTam Edit} y para realizar el reconocimiento 
+de comandos de voz utiliza los proyectos \emph{PocketSphinx} \cite{PocketSphinxHomePage} 
 y \emph{Voxforge} \cite{Voxforge}.  A continuaci\'on se presentan los proyectos
 utilizados como punto de partida para la soluci\'on implementada.
 
@@ -35,9 +35,9 @@ utilizados como punto de partida para la soluci\'on implementada.
 La m\'usica es a menudo descrita como la forma m\'as pura de representaci\'on matem\'atica, es m\'as,
 te\'oricos de la m\'usica han utilizado las matem\'aticas para resolver problemas musicales
 \cite{TheSoundOfNumbers}. Esto sirvi\'o de inspiraci\'on para la creaci\'on del compendio de 
-actividades\footnote{Una Actividad, es una aplicaci\'on en el entorno de escritorio \emph{Sugar}}
+actividades\footnote{Una Actividad, es una aplicaci\'on en el entorno de escritorio \emph{Sugar}.}
 conocido como \emph{TamTam} desarrollado para la computadora XO\footnote{La XO, es una computadora 
-port\'atil de bajo costo y consumo desarrollada por el proyecto \gls{olpc}},
+port\'atil de bajo costo y consumo desarrollada por el proyecto \gls{olpc}.},
 con los siguientes objetivos:
 
 \begin{itemize}
@@ -50,10 +50,11 @@ con los siguientes objetivos:
     \item Introducir los conceptos musicales y otros como: programaci\'on y audio.
 \end{itemize}
 
-\emph{TamTam Edit} es una aplicaci\'on, que forma parte del conjunto de actividades musicales \emph{TamTam},
-que proporciona una interfaz intuitiva para crear, modificar y organizar notas ubicadas en pistas virtuales.
-Adem\'as incluye una paleta de casi cien tipos de sonidos y modelos de construcci\'on musical que permite crear
-distintos tipos de variaciones en estilos musicales \cite{TamTamWiki}.
+\emph{TamTam Edit} es una aplicaci\'on, que forma parte del conjunto de actividades musicales 
+\emph{TamTam}, que proporciona una interfaz intuitiva para crear, modificar y organizar notas ubicadas 
+en pistas virtuales.
+Adem\'as incluye una paleta de casi cien tipos de sonidos y modelos de construcci\'on musical que permite 
+crear distintos tipos de variaciones en estilos musicales \cite{TamTamWiki}.
 
 
 Las secciones principales del programa se pueden observar en la figura~\ref{figure:ui-tamtam} 
@@ -65,16 +66,19 @@ Las secciones principales del programa se pueden observar en la figura~\ref{figu
 \label{figure:ui-tamtam}
 \end{figure}
 
-Como se puede apreciar en la figura~\ref{figure:ui-tamtam}, la interfaz se encuentra organizada en cinco pistas 
-y cada pista (1) tiene asociada un 
-instrumento (la quinta pista esta reservada para instrumento de tipo bater{\'\i}a). Cada pista se divide en 4 
+Como se puede apreciar en la figura~\ref{figure:ui-tamtam}, la interfaz se encuentra organizada en 
+cinco pistas y cada pista (1) tiene asociada un instrumento (la quinta pista esta reservada para
+instrumentos de tipo bater{\'\i}a). Cada pista se divide en 4 
 compases (del comp\'as uno al cuatro) y cada comp\'as (2) se divide en 12 tiempos (del uno al doce). 
-Las notas (3) se dibujan en los compases, como se puede ver, la longitud de la nota indica su duraci\'on y su 
-altura el tipo de nota. Adem\'as la aplicaci\'on esta organizada en partituras (4), que son como hojas de 
-cuaderno, y son \'utiles para componer m\'usicas largas.
+Las notas (3) se dibujan en los compases, como se puede ver, la longitud de la nota indica su 
+duraci\'on y su altura el tipo de nota. Adem\'as la aplicaci\'on esta organizada en partituras (4), que 
+son como hojas de cuaderno, y son \'utiles para componer m\'usicas largas.
 
-La interfaz de la figura~\ref{figure:ui-tamtam} ofrece una experiencia de interacci\'on humano-computadora 
-tradicional. 
+En general, la interacci\'on entre el usuario y \foreign{TamTam Edit} que se presenta en
+la figura~\ref{figure:ui-tamtam} se realiza de modo tradicional.
+El usuario utiliza el teclado y el rat\'on para interactuar con la aplicaci\'on a trav\'es de elementos
+gr\'aficos como botones y men\'us. 
+
 Este trabajo de grado busca incorporar un medio de interacci\'on alternativo al propuesto por \emph{TamTam Edit}. 
 A continuaci\'on se presentan los motivos que determinaron la elecci\'on de esta aplicaci\'on como punto de partida:
 
@@ -82,7 +86,8 @@ A continuaci\'on se presentan los motivos que determinaron la elecci\'on de esta
     \item Impacto social: \emph{TamTam Edit} es una aplicaci\'on que forma parte de la plataforma establecida
     por el proyecto \gls{olpc}, el cual busca potenciar el proceso educativo \cite{OLPC}. 
     Los ni\~nos con alg\'un tipo de discapacidad tienen a menudo problemas para utilizar una computadora mediante
-    dispositivos perif\'ericos tradicionales como el mouse o el teclado. 
+    dispositivos perif\'ericos tradicionales como el mouse o el teclado.
+
     En estos casos, la posibilidad de operar esta actividad mediante la voz ser{\'\i}a de gran beneficio 
     para los ni\~nos, mejorando la accesibilidad de la plataforma, y generando por tanto un impacto social
     positivo importante.
@@ -90,13 +95,14 @@ A continuaci\'on se presentan los motivos que determinaron la elecci\'on de esta
     ofrecer una mayor naturalidad con respecto al enfoque tradicional de interacci\'on, teniendo en cuenta
     que es el medio de interacci\'on entre las personas.
     \item No reinventar la rueda: como el objetivo es incorporar una interfaz basada en reconocimiento del
-    habla a una aplicaci\'on, se elige \emph{TamTam Edit} para no construir la aplicaci\'on desde cero, sino 
-    extender las capacidades de una ya existente.
-    \item C\'odigo abierto: el motivo anterior es posible gracias a que \emph{TamTam Edit} es un proyecto de 
-    c\'odigo abierto, lo cual brinda a los desarrolladores la libertad de extender las funcionalidades de la 
-    aplicaci\'on.
-    \item Lenguaje de programaci\'on: la actividad se encuentra implementada en el lenguaje de programaci\'on
-    Python. La librer{\'\i}a de reconocimiento del habla a ser utilizada proporociona \emph{bindings} 
+    habla a una aplicaci\'on, se elige \emph{TamTam Edit} para no construir la aplicaci\'on desde cero,
+    sino extender las capacidades de una ya existente.
+    \item C\'odigo abierto: el motivo anterior es posible gracias a que \emph{TamTam Edit} es un 
+    proyecto de c\'odigo abierto, lo cual brinda a los desarrolladores la libertad de extender las 
+    funcionalidades de la aplicaci\'on.
+    \item Lenguaje de programaci\'on: la actividad se encuentra implementada en el lenguaje de 
+    programaci\'on Python. La librer{\'\i}a de reconocimiento del habla a ser utilizada proporociona 
+    \emph{bindings} 
     \footnote{Un \emph{binding} es un componente \emph{software}
    que permite hacer uso de las funcionalidades prove{\'\i}das por una librer{\'\i}a, implementada
     en un determinado lenguaje de programaci\'on, utilizando un lenguaje de programaci\'on diferente. 
@@ -109,8 +115,8 @@ A continuaci\'on se presentan los motivos que determinaron la elecci\'on de esta
 \foreign{Voxforge} es un proyecto que busca recopilar grabaciones de voz de modo a crear 
 y ofrecer varios corpus de habla bajo una licencia que permita su libre utilizaci\'on. 
 
-A partir de estos corpus, es posible construir modelos ac\'usticos para su uso con motores de reconocimiento
-del habla de c\'odigo abierto, como \foreign{Pocketsphinx}.
+A partir de estos corpus, es posible construir modelos ac\'usticos para su uso con motores de 
+reconocimiento del habla de c\'odigo abierto, como \foreign{Pocketsphinx}.
 
 \foreign{Voxforge} cuenta con grabaciones en diferentes idiomas, entre ellos ingĺ\'es, franc\'es, 
 alem\'an y espa\~nol.
@@ -119,20 +125,20 @@ alem\'an y espa\~nol.
 \subsection{PocketSphinx}
 
 El cap\'itulo~\ref{sec:tecnologias} clasifica a las herramientas que permiten implementar soluciones
-basadas en reconocimiento del habla en tres categor\'ias: Aplicaciones, \gls{api}s y Librer\'ias. Dada la naturaleza
-de este trabajo, se opta por elegir una librer\'ia para implementar la interfaz alternativa a la ofrecida por
-\emph{TamTam Edit}.
+basadas en reconocimiento del habla en tres categor\'ias: Aplicaciones, \gls{api}s y Librer\'ias. 
+Dada la naturaleza de este trabajo, se opta por elegir una librer\'ia para implementar la interfaz
+alternativa a la ofrecida por \emph{TamTam Edit}.
 
-Para la implementaci\'on de la interfaz operable a trav\'es de la voz se elige la librer\'ia \emph{PocketSphinx}
-que, como se menciona en la secci\'on~\ref{sec:pocketsphinx}, es un motor de reconocimiento del habla 
-orientado a la optimizaci\'on del rendimiento y la portabilidad.
+Para la implementaci\'on de la interfaz operable a trav\'es de la voz se elige la librer\'ia 
+\emph{PocketSphinx} que, como se menciona en la secci\'on~\ref{sec:pocketsphinx}, es un motor de 
+reconocimiento del habla orientado a la optimizaci\'on del rendimiento y la portabilidad.
 
 Uno de los objetivos espec\'ificos de este trabajo es aplicar y contrastar en la pr\'actica
 los conocimientos te\'oricos adquiridos. Como indica la secci\'on~\ref{sec:librerias}, una librer\'ia es
 el tipo de herramienta que requiere un conocimiento t\'ecnico espec\'ifico del \'area, adem\'as de
 brindar una alta flexibilidad permitiendo al programador manipular los distintos componentes del
-proceso de reconocimiento del habla. Por lo tanto una librer\'ia es la herramienta m\'as adecuada
-para cumplir el objetivo mencionado anteriormente.
+proceso de reconocimiento del habla. Por este motivo, una librer\'ia se considera la herramienta 
+m\'as adecuada para cumplir el objetivo mencionado anteriormente.
 
 A continuaci\'on se presentan los motivos t\'ecnicos que determinaron la elecci\'on de esta librer\'ia:
 
@@ -143,13 +149,13 @@ A continuaci\'on se presentan los motivos t\'ecnicos que determinaron la elecci\
     de trabajo adoptada.
     \item \emph{PocketSphinx} ofrece soporte \emph{offline}, lo cual permite su utilizaci\'on en ambientes
     sin conexi\'on a internet, como ocurre frecuentemente con las \emph{XO}.
-    \item Existen \foreign{bindings} para el lenguaje de programaci\'on Python, lo cual hace muy sencilla la 
-    tarea de utilizar la librer\'ia desde el c\'odigo Python.
+    \item Existen \foreign{bindings} para el lenguaje de programaci\'on Python, lo cual hace muy 
+    sencilla la tarea de utilizar la librer\'ia desde el c\'odigo Python.
 \end{itemize}
 
-\foreign{PocketSphinx} implementa el proceso del reconocimiento del habla basado en el enfoque estad{\'\i}stico,
-el cual se present\'o en el cap{\'\i}tulo~\ref{sec:proceso}. La librer{\'\i}a incluye los diferentes algoritmos
-necesarios para las fases del proceso.
+\foreign{PocketSphinx} implementa el proceso del reconocimiento del habla basado en el enfoque 
+estad{\'\i}stico, el cual se present\'o en el cap{\'\i}tulo~\ref{sec:proceso}. La librer{\'\i}a incluye
+los diferentes algoritmos necesarios para las fases del proceso.
 
 \begin{figure}[H] 
 \centering
@@ -158,15 +164,15 @@ necesarios para las fases del proceso.
 \label{figure:proceso-pocketsphinx}
 \end{figure}
 
-Como conjunto de caracter{\'\i}sticas espectrales, \foreign{Pocketsphinx} utiliza los coeficientes espectrales
-en las frecuencias de mel (MFCC por sus siglas en ingl\'es).
+Como conjunto de caracter{\'\i}sticas espectrales, \foreign{Pocketsphinx} utiliza los coeficientes
+espectrales en las frecuencias de mel (MFCC por sus siglas en ingl\'es).
 
 En los \gls{hmm} del modelo ac\'ustico, utiliza mezclas Gaussianas para definir las probabilidades de 
 transici\'on entre estados. El diccionario fon\'etico debe ser definido por el desarrollador.
 
-Aunque \foreign{PocketSphinx} soporta modelos de lenguaje basados en n-gramas, para este trabajo se utiliza
-un modelo de lenguaje basado en gram\'atica. Esto se debe a la simpleza del lenguaje y a la falta de datos
-de entrenamiento para un modelo estad{\'\i}stico del mismo.
+Aunque \foreign{PocketSphinx} soporta modelos de lenguaje basados en n-gramas, para este trabajo 
+se utiliza un modelo de lenguaje basado en gram\'atica. Esto se debe a la simpleza del lenguaje y a la 
+falta de datos de entrenamiento para un modelo estad{\'\i}stico del mismo.
 
 Como decodificador se utiliza el algoritmo de Viterbi, haciendo uso de la t\'ecnica de b\'usqueda en haz
 para reducir el espacio de b\'usqueda.
