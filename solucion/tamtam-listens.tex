@@ -39,7 +39,8 @@ Como sugiere la figura~\ref{figure:tamtam-listens-arq}, \emph{TamTam Listens} a\
 de reconocimiento del habla a \emph{TamTam Edit} utilizando la librer\'ia \emph{PocketSphinx}.
 A favor de una soluci\'on modular, el reconocimiento de comandos de voz de \emph{PocketSphinx} 
 es expuesto como como un  servicio del sistema, a trav\'es de llamadas a \emph{D-Bus}\cite{Dbus2013},
-el cual es un mecanismo para comunicaci\'on entre procesos de Linux\footnote{Linux es un sistema operativo cuyo \foreign{kernel} y paquetes de software son desarrollados bajo el modelo de c\'odigo abierto\cite{LinuxGuideCert}}.
+el cual es un mecanismo para comunicaci\'on entre procesos de Linux\footnote{Linux es un sistema operativo
+cuyo \foreign{kernel} y paquetes de software son desarrollados bajo el modelo de c\'odigo abierto\cite{LinuxGuideCert}}.
 
 \emph{TamTam Listens} consume como un servicio el reconocimiento del habla expuesto a trav\'es de 
 \emph{D-Bus}, utilizando un protocolo de paso de mensajes.
