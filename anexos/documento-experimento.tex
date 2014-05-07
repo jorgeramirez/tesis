@@ -1,4 +1,6 @@
-\section{Descripci\'on del experimento}
+%!TEX root = ../tesis.tex
+
+\section{Descripci\'on del Estudio de Usabilidad}
 
 \subsubsection{Introducci\'on}
 
@@ -8,93 +10,118 @@ gr\'afica basada en una grilla de pistas y compases para la composici\'on musica
 \foreign{TamTam Listens} es un proyecto basado en TamTam Edit, que a\~nade una interfaz mediante de 
 voz del usuario a la aplicaci\'on.
 
-Como parte del trabajo de grado de los autores, se realizar\'a un experimento con usuarios a fin de evaluar los conceptos e hip\'otesis planteados. Las variables a ser medidas para su posterior an\'alisis.
+Como parte del trabajo de grado de los autores, se realizar\'a una prueba con usuarios a fin de evaluar los conceptos e hip\'otesis planteados. Las variables a ser medidas para su posterior an\'alisis.
 
 \subsubsection{Objetivos}
 
 \begin{itemize}
-\item Evaluar experimentalmente la aplicaci\'on desarrollada, teniendo en cuenta aspectos t\'ecnicos y funcionales.
+\item Evaluar la aplicaci\'on desarrollada, teniendo en cuenta aspectos t\'ecnicos y funcionales.
 \item Identificar problemas que se presentan al utilizar una interfaz mediante voz y, de ser posible, sugerir posibles soluciones.
 \item Proponer criterios que puedan utilizarse para la evaluaci\'on de interfaces mediante voz.
 \item Verificar y validar la utilidad de los criterios propuestos, de acuerdo a la informaci\'on y las conclusiones que pueden obtenerse mediante los mismos.
 \item Obtener conclusiones relacionadas a factores externos a la aplicaci\'on, como la memoria del usuario y el tiempo de entrenamiento previo.
 \end{itemize}
 
-\subsubsection{Variables a medir}
-{?`}Qu\'e se quiere medir?
-
-\begin{itemize}
-    \item Memoria del usuario: capacidad de retenci\'on de informaci\'on del sujeto del experimento. Podr\'ia ser importante al tratarse de una interfaz nueva para el mismo. 
-    \item Precisi\'on: relacionada al reconocimiento autom\'atico del habla. {?`}Qu\'e tan correctamente se reconocen los comandos del usuario?
-    \item Satisfacci\'on del usuario: relacionada a la opini\'on del usuario sobre su interacci\'on con la aplicaci\'on.
-    \begin{itemize}
-        \item Naturalidad de las palabras
-        \item Naturalidad de los comandos (secuencias de palabras).
-    \end{itemize}
-    \item Eficiencia: relacionado al grado de productividad que logra el usuario de la aplicaci\'on.
-    \item Error del usuario: {?`}Qu\'e tan seguido comete errores el usuario? {?`}Qu\'e tan f\'acil le es recuperarse?
-    \begin{itemize}
-        \item Complejidad de la gram\'atica
-    \end{itemize}
-\end{itemize}
-
 \subsubsection{Metodolog\'ia}
-Luego de un screencast introductorio, el sujeto del experimento llevar\'a a cabo:
+Al inicio de la sesión se tomará un test de memoria del usuario
+Luego de una serie de videos instructivos introductorios, el usuario llevar\'a a cabo:
 
 \begin{itemize}
-    \item 2 tareas con asistencia del manual de la aplicaci\'on y el experimentador.
+    \item 2 tareas con asistencia del manual de la aplicaci\'on y el responsable de la prueba.
     \item 1 tarea con asistencia del manual de aplicaci\'on \'unicamente.
     \item 1 tarea sin asistencia.
 \end{itemize}
-Las tareas ir\'an en orden incremental de dificultad y su desarrollo se grabar\'a para su posterior an\'alisis.
 
-\subsubsection{M\'etricas a utilizar}
-{?`}C\'omo se va a medir?
+Las tareas ir\'an en orden incremental de dificultad y su desarrollo se grabar\'a para su posterior 
+an\'alisis.
+
+Finalmente, el usuario completará una encuesta de modo a compartir su apreciación subjetiva de la sesión.
+
+\subsubsection{Ambiente de Pruebas}
+Las sesiones se realizarán en un Laboratorio de Inform\'atica de la Facultad Poĺit\'ecnica. Esto
+permitirá minimizar los efectos de la interferencia sonora y humana durante el
+desarrollo de las pruebas.
+
+\subsubsection{Usuarios}
+Las pruebas se realizarán con 12 usuarios, estudiantes de Ingenier{\'\i}a Inform\'atica
+de la Facultad Polit\'ecnica, Universidad Nacional de Asunci\'on. Ninguno de los usuarios 
+deberá contar con experiencia previa con la aplicación evaluada.
+
+\subsubsection{Variables a considerar: {?`}Qu\'e se quiere medir?}
 
 \begin{itemize}
-    \item Test de Memoria
-    \item Cuestionario al Sujeto :
+    \item Memoria del usuario: capacidad de retenci\'on de informaci\'on del sujeto de la prueba. 
+    Podr\'ia ser importante al tratarse de una interfaz nueva para el mismo. 
+    \item Precisi\'on: relacionada al sistema de reconocimiento autom\'atico del habla. 
+    {?`}Qu\'e tan correctamente se reconocen los comandos del usuario?
+    \item Eficiencia: relacionada al grado de productividad que logra el usuario al realizar tareas con
+    la aplicaci\'on.
+    \item Error del usuario: {?`}Qu\'e tan seguido comete errores el usuario? {?`}Qu\'e tan f\'acil le es recuperarse? {?`}Qu\'e factores podrían estar relacionados al error humano?
     \begin{itemize}
-        \item Las palabras son adecuadas/intuitivas 1-7
-        \item Los comandos son adecuados/intuitivos 1-7
-        \item La cantidad de comandos result\'o 1-7
-        \item El tiempo de entrenamiento result\'o 1-7
+        \item Complejidad de la gram\'atica.
+        \item Duración de la interacción.
     \end{itemize}
-    \item Cuestionario del Experimentador (se completar\'a luego de observar la grabaci\'on)
+    \item Satisfacci\'on del usuario: relacionada a la opini\'on del usuario sobre su interacci\'on con la aplicaci\'on.
     \begin{itemize}
-        \item $ \% \: de \: error \: de \: comandos = \frac{Cantidad \:de \:errores \:de \:reconocimiento}{Total \:de \:Comandos \:Pronunciados}$
-        \item Cantidad de errores por comandos mal formulados.
-        \item Cantidad de errores por dudas.
-        \item {?`}Se utiliz\'o la secuencia de comandos \'optima?
-    \end{itemize}
-    \item Grado de correctitud de la tarea
-    \begin{itemize}
-    \item Puede utilizarse la Distancia de Levenshtein como medida.
+        \item Naturalidad de las palabras.
+        \item Naturalidad de los comandos (secuencias de palabras).
+        \item Duración del entrenamiento.
+        \item Predisposición a utilizar interfaces por voz del usuario.
     \end{itemize}
 \end{itemize}
 
-\subsubsection{An\'alisis}
-{?`}C\'omo se obtienen las conclusiones?
+
+
+\subsubsection{M\'etricas a utilizar: {?`}C\'omo se va a medir?}
+
 \begin{itemize}
-    \item Memoria del Usuario
+    \item Test de Memoria de Rey.
+    \item Cuestionario del Responsable de la Prueba (se completar\'a luego de observar la grabaci\'on)
+    Se clasifica cada comando pronunciado, incluyendo una marca de tiempo:
     \begin{itemize}
-        \item Test de memoria
+        \item Comandos correctamente pronunciados y reconocidos.
+        \item Comandos correctamente pronunciados y no reconocidos.
+        \item Comandos incorrectamente pronunciados y reconocidos.
+        \item Comandos incorrectamente pronunciados y no reconocidos.
     \end{itemize}
-    \item Precisi\'on
+    En base a estos valores puede calcularse la tasa de error del sistema y del usuario.
+    \item Grado de correctitud de la tarea 4.
     \begin{itemize}
-        \item \% de error de comandos
+    \item $ \frac{Operaciones \:correctamente \:realizadas}{Total \:de \:Operaciones}$
+    \end{itemize}
+    \item Cuestionario al Sujeto :
+    \begin{itemize}
+        \item Las palabras son adecuadas/intuitivas 1-7.
+        \item Los comandos son adecuados/intuitivos 1-7.
+        \item El tiempo de entrenamiento result\'o 1-7.
+        \item Utilizaría una interfaz por voz del usuario cotidianamente 1-7.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{An\'alisis: {?`}C\'omo se obtienen las conclusiones?}
+\begin{itemize}
+    \item Memoria del Usuario:
+    \begin{itemize}
+        \item Test de memoria.
+    \end{itemize}
+    \item Precisi\'on:
+    \begin{itemize}
+        \item \% de error de comandos.
+    \end{itemize}
+    \item Eficiencia:
+    \begin{itemize}
+        \item Grado de correctitud de la tarea 4.
+    \end{itemize}
+    \item Error del Usuario:
+    \begin{itemize}
+        \item Conteo y Clasificaci\'on de Errores por Tarea.
     \end{itemize}
     \item Satisfacci\'on del Usuario:
     \begin{itemize}
         \item Cuestionario Sujeto: naturalidad palabras / comandos - tiempo de entrenamiento.   
     \end{itemize}
-    \item Eficiencia
-    \begin{itemize}
-        \item Grado de correctitud de la tarea
-    \end{itemize}
-    \item Error del Usuario
-    \begin{itemize}
-        \item Conteo y Clasificaci\'on de Errores por Tarea : complejidad de la gram\'atica.
-    \end{itemize}
-    \item Correlaci\'on memoria / resultados
+    \item Correlaci\'on entre variables estudiadas.
 \end{itemize}
+
+Para información más detallada acerca de la prueba de usabilidad, consultar el capítulo 
+\ref{sec:evaluacion}.
