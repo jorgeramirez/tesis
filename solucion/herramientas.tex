@@ -1,0 +1,50 @@
+\section{Tecnolog\'ia a Utilizar}
+\label{sec:tecnologia-utilizada}
+Para implementar el reconocimiento  de comandos de voz necesario para \foreign{TamTam Listens}, 
+se utilizan los proyectos de c\'odigo abierto \emph{Voxforge} \cite{Voxforge} y 
+\emph{PocketSphinx} \cite{PocketSphinxHomePage}. 
+
+\subsection{Voxforge}
+\label{sec:voxforge-solucion}
+
+\foreign{Voxforge} es un proyecto que busca recopilar grabaciones de voz de modo a crear 
+y ofrecer varios corpus de habla bajo una licencia que permita su libre utilizaci\'on. 
+
+A partir de estos corpus, es posible construir modelos ac\'usticos para su uso con motores de 
+reconocimiento del habla de c\'odigo abierto, como \foreign{Pocketsphinx}.
+
+\foreign{Voxforge} cuenta con grabaciones en diferentes idiomas, entre ellos ingĺ\'es, franc\'es, 
+alem\'an y espa\~nol.
+
+
+\subsection{PocketSphinx}
+\label{sec:pocketsphinx-solucion}
+
+El cap\'itulo~\ref{sec:tecnologias} clasifica a las herramientas que permiten implementar soluciones
+basadas en reconocimiento del habla en tres categor\'ias: Aplicaciones, \gls{api}s y Librer\'ias. 
+Dada la naturaleza de este trabajo, se opta por elegir una librer\'ia para implementar la interfaz
+alternativa a la ofrecida por \emph{TamTam Edit}.
+
+Para la implementaci\'on de la interfaz operable a trav\'es de la voz se elige la librer\'ia 
+\emph{PocketSphinx} que, como se menciona en la secci\'on~\ref{sec:pocketsphinx}, es un motor de 
+reconocimiento del habla orientado a la optimizaci\'on del rendimiento y la portabilidad.
+
+Uno de los objetivos espec\'ificos de este trabajo es aplicar y contrastar en la pr\'actica
+los conocimientos te\'oricos adquiridos. Como indica la secci\'on~\ref{sec:librerias}, una librer\'ia es
+el tipo de herramienta que requiere un conocimiento t\'ecnico espec\'ifico del \'area, adem\'as de
+brindar una alta flexibilidad permitiendo al programador manipular los distintos componentes del
+proceso de reconocimiento del habla. Por este motivo, una librer\'ia se considera la herramienta 
+m\'as adecuada para cumplir el objetivo mencionado anteriormente.
+
+A continuaci\'on se presentan los motivos t\'ecnicos que determinaron la elecci\'on de esta librer\'ia:
+
+\begin{itemize}
+    \item \emph{PocketSphinx} est\'a orientada a la optimizaci\'on del rendimiento, resultando adecuada 
+    para sistemas con recursos limitados, como la computadora \emph{XO}.
+    \item La librer\'ia es un proyecto de c\'odigo abierto, por lo tanto se cumple la metodolog\'ia 
+    de trabajo adoptada.
+    \item \emph{PocketSphinx} ofrece soporte \emph{offline}, lo cual permite su utilizaci\'on en ambientes
+    sin conexi\'on a internet, como ocurre frecuentemente con las \emph{XO}.
+    \item Existen \foreign{bindings} para el lenguaje de programaci\'on Python, lo cual hace muy 
+    sencilla la tarea de utilizar la librer\'ia desde el c\'odigo Python.
+\end{itemize}

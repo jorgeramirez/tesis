@@ -1,10 +1,119 @@
 %!TEX root = ../tesis.tex
-\section{Tamtam Listens}
-\label{sec:tamtam-listens}
-La interfaz de interacci\'on alternativa para la aplicaci\'on \emph{Tamtam Edit} se denomina  
-\emph{Tamtam Listens}. \emph{Tamtam Listens} es el resultado de la combinaci\'on
-de las tecnolog\'ias mencionadas anteriormente.
 
+\section{Aplicaci\'on Desarrollada}
+\label{sec:aplicacion-desarrollada}
+
+Como se expone en la secci\'on~\ref{sec:problema-especifico}, se propone el dise\~no
+de una interfaz para componer m\'usica utilizando la voz. Adem\'as, este trabajo 
+opta por la metodolog\'ia de trabajo de c\'odigo abierto, lo cual implica: 
+
+\begin{itemize}
+    \item Utilizar tecnolog\'ias de c\'odigo abierto para el desarrollo de la interfaz.
+    \item Establecer un proceso de desarrollo transparente y abierto.
+    \item Ofrecer la interfaz desarrollada, junto con su c\'odigo fuente, de manera libre 
+        y gratuita para la comunidad de c\'odigo abierto.
+\end{itemize}
+
+La metodolog\'ia adoptada para implementar la interfaz permite utilizar un proyecto
+existente como punto de partida, y as\'i dise\~nar e implementar una interfaz alternativa que permite
+controlar la aplicaci\'on por comandos de voz. Adem\'as,
+el hecho de incorporar una nueva interfaz, permite analizar
+una de las motivaciones de la secci\'on~\ref{sec:motivacion}: un programa de composici\'on
+musical, que recibe comandos sonoros y emite tambi\'en un resultado sonoro, podr\'ia ser
+m\'as natural para el usuario. 
+
+La interfaz desarrollada se denomina \emph{TamTam Listens} y se basa en tecnolog\'ias de c\'odigo 
+abierto, tomando como punto de partida la aplicaci\'on \emph{TamTam Edit} de la plataforma 
+educativa \foreign{Sugar}.
+
+\subsection{TamTam Edit}
+\label{sec:tamtam-edit}
+
+La m\'usica es a menudo descrita como la forma m\'as pura de representaci\'on matem\'atica, es m\'as,
+te\'oricos de la m\'usica han utilizado las matem\'aticas para resolver problemas musicales
+\cite{TheSoundOfNumbers}. Esta fue la inspiraci\'on para la creaci\'on del compendio de 
+actividades\footnote{Una Actividad, es una aplicaci\'on en el entorno de escritorio \emph{Sugar}.}
+conocido como \emph{TamTam} desarrollado para la computadora XO\footnote{La XO, es una computadora 
+port\'atil de bajo costo y consumo desarrollada por el proyecto \gls{olpc}.},
+con los siguientes objetivos:
+
+\begin{itemize}
+    \item Proveer a los ni\~nos un ambiente de informaci\'on cultural construyendo m\'usica y sonidos.
+    \item Brindar una experiencia sonora/musical divertida para usuarios sin conocimientos musicales.
+    \item Promover un camino hacia experiencias musicales m\'as sofisticadas.
+    \item Promover un instrumento musical con su propio ``sonido''.
+    \item Desarrollar un ambiente din\'amico y mutable que propone la simpleza y permite la complejidad.
+    \item Favorecer la creaci\'on de m\'usica grupalmente.
+    \item Introducir los conceptos musicales y otros como: programaci\'on y audio.
+\end{itemize}
+
+\emph{TamTam Edit} es una aplicaci\'on, parte del conjunto de actividades musicales 
+\emph{TamTam}, que proporciona una interfaz intuitiva para crear, modificar y organizar notas ubicadas 
+en pistas virtuales.
+Adem\'as incluye una paleta de casi cien tipos de sonidos y modelos de construcci\'on musical que permite 
+crear distintos tipos de variaciones en estilos musicales \cite{TamTamWiki}.
+
+
+Las secciones principales del programa se pueden observar en la figura~\ref{figure:ui-tamtam} 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{./graphics/ui-tamtam-edit.png}
+\caption{Interfaz de \emph{Tamtam Edit} y sus secciones principales}
+\label{figure:ui-tamtam}
+\end{figure}
+
+Como se puede apreciar en la figura~\ref{figure:ui-tamtam}, la interfaz se encuentra organizada en 
+cinco pistas y cada pista (1) tiene asociada un instrumento (la quinta pista esta reservada para
+instrumentos de tipo bater{\'\i}a). Cada pista se divide en 4 
+compases (del comp\'as uno al cuatro) y cada comp\'as (2) se divide en 12 tiempos (del uno al doce). 
+Las notas (3) se dibujan en los compases, como se puede ver, la longitud de la nota indica su 
+duraci\'on y su altura el tipo de nota. Adem\'as la aplicaci\'on esta organizada en partituras (4), que 
+son como hojas de cuaderno, y son \'utiles para componer m\'usicas largas.
+
+En general, la interacci\'on entre el usuario y \foreign{TamTam Edit} que se presenta en
+la figura~\ref{figure:ui-tamtam} se realiza de modo tradicional.
+El usuario utiliza el teclado y el rat\'on para interactuar con la aplicaci\'on a trav\'es de elementos
+gr\'aficos como botones y men\'us. 
+
+Este trabajo de grado busca incorporar un medio de interacci\'on alternativo al propuesto 
+por \emph{TamTam Edit}. A continuaci\'on se presentan los motivos que determinaron la elecci\'on 
+de esta aplicaci\'on como punto de partida:
+
+\begin{itemize}
+    \item Impacto social: \emph{TamTam Edit} es una aplicaci\'on que forma parte de la plataforma establecida
+    por el proyecto \gls{olpc}, el cual busca potenciar el proceso educativo \cite{OLPC}. 
+    Los ni\~nos con alg\'un tipo de discapacidad tienen a menudo problemas para utilizar una computadora mediante
+    dispositivos perif\'ericos tradicionales como el mouse o el teclado.
+
+    En estos casos, la posibilidad de operar esta actividad mediante la voz ser{\'\i}a de gran beneficio 
+    para los ni\~nos, mejorando la accesibilidad de la plataforma, y generando por tanto un impacto social
+    positivo importante.
+    \item Naturalidad de interacci\'on: utilizar la voz para interactuar con una aplicaci\'on podr{\'\i}a
+    ofrecer una mayor naturalidad con respecto al enfoque tradicional de interacci\'on, teniendo en cuenta
+    que es el medio de interacci\'on entre las personas.
+    \item No reinventar la rueda: como el objetivo es incorporar una interfaz basada en reconocimiento del
+    habla a una aplicaci\'on, se elige \emph{TamTam Edit} para no construir la aplicaci\'on desde cero,
+    sino extender las capacidades de una ya existente.
+    \item C\'odigo abierto: el motivo anterior es posible gracias a que \emph{TamTam Edit} es un 
+    proyecto de c\'odigo abierto, lo cual brinda a los desarrolladores la libertad de extender las 
+    funcionalidades de la aplicaci\'on.
+    \item Lenguaje de programaci\'on: la actividad se encuentra implementada en el lenguaje de 
+    programaci\'on Python. La librer{\'\i}a de reconocimiento del habla a ser utilizada proporociona 
+    \emph{bindings} 
+    \footnote{Un \emph{binding} es un componente \emph{software}
+   que permite hacer uso de las funcionalidades prove{\'\i}das por una librer{\'\i}a, implementada
+    en un determinado lenguaje de programaci\'on, utilizando un lenguaje de programaci\'on diferente. 
+    En este caso particular, \emph{Pocketsphinx} est\'a implementado en C y C++.} para 
+    este lenguaje, lo cual supone una ventaja importante para la implementaci\'on de la interfaz.
+\end{itemize}
+
+\subsection{Tamtam Listens}
+\label{sec:tamtam-listens}
+
+La interfaz de interacci\'on alternativa para la aplicaci\'on \emph{Tamtam Edit} se denomina  
+\emph{Tamtam Listens}. \emph{Tamtam Listens} permite al usuario componer m\'usica utilizando comandos
+de voz para acceder a las diferentes funcionalidades ofrecidas por \mbox{\emph{Tamtam Edit}.}
 
 Al ofrecer al usuario final un medio de interacci\'on humano-computadora diferente, \emph{TamTam Listens}
 debe ser intuitivo y f\'acil de usar. De modo a lograr esto, la soluci\'on a implementar no debe 
@@ -12,9 +121,9 @@ ofrecer al usuario la posibilidad de controlar el \foreign{mouse} o los componen
 gr\'afica de \emph{TamTam Edit} utilizando la voz. 
 
 Una correspondencia directa entre los comandos de voz y la interfaz gr\'afica puede resultar en 
-un flujo de interacci\'on poco natural e inadecuado, motivado únicamente por la intención errónea 
+un flujo de interacci\'on poco natural e inadecuado, motivado \'unicamente por la intenci\'on err\'onea 
 de imitar el flujo de interacci\'on de las interfaces de escritorio tradicionales. 
-La necesidad de ofrecer un flujo de interacción diferente y apropiado para una interfaz mediante voz
+La necesidad de ofrecer un flujo de interacci\'on diferente y apropiado para una interfaz mediante voz
 como parte de \emph{TamTam Listens} se hizo clara durante la fase de dise\~no.
 
 Para comprender la diferencia, puede considerarse el siguiente ejemplo. 
@@ -24,110 +133,74 @@ donde se desea crear la nota, arrastrar el mouse con el clic izquierdo presionad
 duraci\'on de la nota, etc. Al utilizarse una interfaz mediante voz del usuario, la misma operaci\'on
 puede realizarse pronunciando un comando como ``crear nota do''.
 
+\subsection{Ejemplo: Componiendo una escala simple}
+\label{sec:ejemplo-escala}
 
-La figura~\ref{figure:tamtam-listens-arq} muestra la arquitectura b\'asica de \emph{TamTam Listens}. Se 
-pueden observar los componentes que forman parte de la soluci\'on desarrollada.
+Como presentaci\'on del modelo de interacci\'on de la interfaz propuesta, se transcribe a 
+continuaci\'on un tutorial de uso incluido en el manual de uso de \emph{Tamtam Listens}. 
+Esto, de modo a ejemplificar una breve interacci\'on entre el usuario y la aplicaci\'on.
 
-\begin{figure}[H] 
-\centering
-\includegraphics[width=0.7\textwidth]{./graphics/tamtam-listens-arq.png}
-\caption{Arquitectura b\'asica de \emph{TamTam Listens}}
-\label{figure:tamtam-listens-arq}
-\end{figure}
+El tutorial sirve de gu{\'\i}a al usuario para realizar una sencilla composici\'on musical.
+Para componer una escala simple con \foreign{TamTam Listens}, pueden seguirse los siguientes pasos:
 
-Como sugiere la figura~\ref{figure:tamtam-listens-arq}, \emph{TamTam Listens} a\~nade soporte 
-de reconocimiento del habla a \emph{TamTam Edit} utilizando la librer\'ia \emph{PocketSphinx}.
-A favor de una soluci\'on modular, el reconocimiento de comandos de voz de \emph{PocketSphinx} 
-es expuesto como como un  servicio del sistema, a trav\'es de llamadas a \emph{D-Bus}\cite{Dbus2013},
-el cual es un mecanismo para comunicaci\'on entre procesos de Linux\footnote{Linux es un sistema operativo
-cuyo \foreign{kernel} y paquetes de software son desarrollados bajo el modelo de c\'odigo abierto\cite{LinuxGuideCert}}.
+\begin{enumerate}
+  \item Para empezar, debemos obtener una partitura en blanco. Lo conseguimos pronunciando el comando: 
+  ``Crear Nueva M\'usica''.
 
-\emph{TamTam Listens} consume como un servicio el reconocimiento del habla expuesto a trav\'es de 
-\emph{D-Bus}, utilizando un protocolo de paso de mensajes.
+  \item Seleccionamos los instrumentos que queremos utilizar, diciendo:
+    \begin{itemize}
+      \item ``Piano en Pista Uno''
+      \item ``Guitarra El\'ectrica en Pista Dos''
+      \item ``Teclado en Pista Tres''
+      \item ``Flauta en Pista Cuatro''
+    \end{itemize}
 
-La arquitectura propuesta, implementada como parte de \emph{TamTam Listens}, favorece la modularidad
-y facilita la reutilizaci\'on de la soluci\'on para otros proyectos de caracter{\'\i}sticas similares.
+  \item Antes de crear las notas, debemos ubicarnos en el punto donde queremos empezar.
+  Para ubicarnos en el tiempo uno, del comp\'as uno de la pista uno:
+  \begin{itemize}
+    \item ``Pista Uno''
+  \end{itemize}
+        Si quisi\'esemos empezar en el tiempo uno del comp\'as dos, bastar{\'\i}a con decir:
+  \begin{itemize}
+    \item ``Comp\'as Dos''
+  \end{itemize}
+        En caso de querer empezar en el tiempo siete, decimos:
+  \begin{itemize}
+    \item ``Tiempo Siete''
+  \end{itemize}
 
-Para hacer posible el reconocimiento del habla debe definirse el vocabulario que forma parte del 
-dominio de la aplicaci\'on, su pronunciaci\'on y el conjunto de oraciones (en este caso, comandos 
-v\'alidos) soportados por la aplicaci\'on.
-En otras palabras, \emph{Pocketsphinx} requiere un modelo ac\'ustico y un modelo de lenguaje para funcionar.
+  \item Ya seleccionado el punto inicial, estamos listos para crear las notas :
+  \begin{itemize}
+    \item ``Crear Nota Do''
+    \item ``Crear Nota Re''
+    \item ``Crear Nota Mi''
+    \item ``Crear Nota Fa''
+    \item ``Crear Nota Sol''
+    \item ``Crear Nota La''
+    \item ``Crear Nota Si''
+  \end{itemize}
 
-\subsection{Modelo Ac\'ustico y Modelo de Lenguaje}
 
-El modelo ac\'ustico utilizado tiene como base las grabaciones de \foreign{Voxforge} en idioma espa\~nol,
-y se encuentra disponible entre los recursos del proyecto \foreign{Pocketsphinx} para su utilizaci\'on
-con el motor de reconocimiento del habla.
+  \item Como no queremos trabajar de m\'as, duplicamos las pistas para escuchar los dem\'as instrumentos:
+  \begin{itemize}
+    \item ``Duplicar Pista Uno en Pista Dos''
+    \item ``Duplicar Pista Dos en Pista Tres''
+    \item ``Duplicar Pista Tres en Pista Cuatro''
+  \end{itemize}
 
-Una gram\'atica en formato JSGF \cite{JSGF2000} fue utilizada como modelo de lenguaje, lo cual permiti\'o
-definir los comandos soportados por la aplicaci\'on de una manera sencilla.
+  \item Bastante sencillo. Para escuchar nuestra m\'usica: ``Reproducir M\'usica''.
 
-\subsection{Diccionario Fon\'etico}
+\end{enumerate}
 
-El diccionario fon\'etico define la secuencia de fonemas de cada palabra del lenguaje.
-Este diccionario es utilizado por \emph{PocketSphinx} para asociar los fonemas reconocidos por
-el modelo ac\'ustico a palabras v\'alidas del dominio de la aplicaci\'on.
-En la figura~\ref{figure:fragmento-dic} se puede observar un fragmento del diccionario fon\'etico
-utilizado por \emph{TamTam Listens}.
 
-\lstset{
-  basicstyle=\scriptsize,        % the size of the fonts that are used for the code
-  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-  frame=single,                    % adds a frame around the code
-  language=Octave,                 % the language of the code
-  numbersep=5pt,                   % how far the line-numbers are from the code
-  showstringspaces=false,          % underline spaces within strings only
-  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  tabsize=2                       % sets default tabsize to 2 spaces
-}
+\subsection{Comandos V\'alidos de la Aplicaci\'on}
+\label{sec:comandos-validos}
 
-\begin{figure}[H]
-\begin{lstlisting}
-REPRODUCIR RR E P R O D U S I R
-PAUSAR P A U S A R
-PARAR  P A R A R
-GENERAR  J E N E R A R
-PARTITURA P A R T I T U R A
-SIGUIENTE S I G I E N T E
-ANTERIOR A N T E R I O R
-\end{lstlisting}
-\caption{Fragmento del diccionario fon\'etico utilizado en \emph{Tamtam Listens}.}
-\label{figure:fragmento-dic}
-\end{figure}
+Como puede apreciarse en el ejemplo anterior, la interacci\'on entre el usuario y la aplicaci\'on
+ocurre {\'\i}ntegramente a trav\'es de comandos de voz. Estos comandos son pronunciados por el usuario
+e interpretados por \emph{TamTam Listens}, haciendo posible de este modo la composici\'on musical. 
 
-Como se puede observar, el formato del diccionario es bastante simple. Primero se define la palabra y 
-a continuaci\'on los fonemas que la componen separados por espacios.
-Una vez definidas las palabras de la aplicaci\'on, lo siguiente es determinar si una secuencia de palabras es o no un 
-comando v\'alido.
-
-\subsection{Gram\'atica}
-
-La secuencia de comandos v\'alidos que soporta la aplicaci\'on se define en el modelo de lenguaje. 
-Para \'esto
-\emph{TamTam Listens} define una gram\'atica \gls{jsgf}. En la figura~\ref{figure:fragmento-gram} 
-puede observarse un fragmento de la gram\'atica utilizada por la aplicaci\'on.
-
-\begin{figure}[H]
-\begin{lstlisting}
-#JSGF V1.0;
-grammar tamtam;
-
-public <tamtam-listens> = <comando> | <pagina> | <pista-a>     | <pista-b>  | 
-                          <seleccionar-compas> | <crear-nota>  | <seleccionar-nota> | 
-                          <duplicar-nota>      | <borrar-nota> | <volumen> | <tempo> | 
-                          <configurar-nota>    | <loop>;
-
-<comando>  = REPRODUCIR MUSICA  | PAUSAR MUSICA   | PARAR MUSICA | GENERAR MUSICA | 
-             CREAR NUEVA MUSICA | EXPORTAR MUSICA | SALIR DE TAMTAM;
-<pagina>   = ( CREAR NUEVA | DUPLICAR | LIMPIAR ) PARTITURA | PARTITURA <orden>;
-<orden>    = ( ANTERIOR | SIGUIENTE );
-<loop>   (COMODIN)+;
-\end{lstlisting}
-\caption{Fragmento de la gram\'atica utilizada en \emph{Tamtam Listens}.}
-\label{figure:fragmento-gram}
-\end{figure} 
-
-Los comandos de \emph{TamTam Listens} pueden clasificarse en:
+Los comandos de voz que el usuario puede utilizar con \emph{TamTam Listens} se clasifican en:
 
 \begin{itemize}
     \item Comandos Generales (G): independientes del contexto de la aplicaci\'on, es decir, no dependen
@@ -371,97 +444,3 @@ nota inmediatamente despu\'es de haberla creado o una nota previamente seleccion
 \label{figure:cmd-note-tiempo}
 \end{minipage}
 \end{figure}
-
-\subsection{Palabras fuera del Vocabulario}
-\label{sec:oov}
-La pronunciaci\'on de palabras fuera del vocabulario ocurre frecuentemente en numerosas aplicaciones
-del reconocimiento del habla, y es una fuente conocida de errores en el reconocimiento \cite{Bazzi00Modeling}.
-
-De modo a minimizar la cantidad de errores como consecuencia de las palabras fuera del vocabulario,
-\foreign{TamTam Listens} integra a su gram\'atica un modelo de palabra gen\'erica. Este componente se
-define mediante el no terminal $<loop>$ de la figura \ref{figure:fragmento-gram}.
-
-Un modelo de palabra gen\'erica admite cualquier palabra que pueda pronunciarse, es decir, permite
-cualquier secuencia arbitraria de fonemas \cite{Bazzi00Modeling}. 
-En el caso de \foreign{TamTam Listens}, el no terminal $<loop>$ corresponde a una o m\'as repeticiones del
-terminal $COMODIN$.
-
-A su vez, el terminal $COMODIN$ est\'a asociado a cada uno de los fonemas en el diccionario fon\'etico de
-\foreign{TamTam Listens}, como se observa en la figura \ref{figure:fragmento-comodin}.
-
-\begin{figure}[H]
-\begin{lstlisting}
-COMODIN   A
-COMODIN(2)  B
-COMODIN(3)  C
-COMODIN(4)  CH
-COMODIN(5)  D
-\end{lstlisting}
-\caption{Definici\'on parcial de COMODIN en el diccionario de \emph{Tamtam Listens}.}
-\label{figure:fragmento-comodin}
-\end{figure}
-
-
-\subsection{Ejemplo: Componiendo una escala simple}
-Para finalizar este cap{\'\i}tulo, se transcribe a continuaci\'on un tutorial de uso incluido en el manual
-de uso de \foreign{TamTam Listens}. Esto, de modo a ejemplificar una breve interacci\'on entre el usuario
-y la aplicaci\'on.
-
-El tutorial sirve de gu{\'\i}a al usuario para realizar una sencilla composici\'on musical.
-Para componer una escala simple con \foreign{TamTam Listens}, pueden seguirse los siguientes pasos:
-
-\begin{enumerate}
-  \item Para empezar, debemos obtener una partitura en blanco. Lo conseguimos pronunciando el comando: 
-  ``Crear Nueva M\'usica''.
-
-  \item Seleccionamos los instrumentos que queremos utilizar, diciendo:
-    \begin{itemize}
-      \item ``Piano en Pista Uno''
-      \item ``Guitarra El\'ectrica en Pista Dos''
-      \item ``Teclado en Pista Tres''
-      \item ``Flauta en Pista Cuatro''
-    \end{itemize}
-
-  \item Antes de crear las notas, debemos ubicarnos en el punto donde queremos empezar.
-  Para ubicarnos en el tiempo uno, del comp\'as uno de la pista uno:
-  \begin{itemize}
-    \item ``Pista Uno''
-  \end{itemize}
-        Si quisi\'esemos empezar en el tiempo uno del comp\'as dos, bastar{\'\i}a con decir:
-  \begin{itemize}
-    \item ``Comp\'as Dos''
-  \end{itemize}
-        En caso de querer empezar en el tiempo siete, decimos:
-  \begin{itemize}
-    \item ``Tiempo Siete''
-  \end{itemize}
-
-  \item Ya seleccionado el punto inicial, estamos listos para crear las notas :
-  \begin{itemize}
-    \item ``Crear Nota Do''
-    \item ``Crear Nota Re''
-    \item ``Crear Nota Mi''
-    \item ``Crear Nota Fa''
-    \item ``Crear Nota Sol''
-    \item ``Crear Nota La''
-    \item ``Crear Nota Si''
-  \end{itemize}
-
-
-  \item Como no queremos trabajar de m\'as, duplicamos las pistas para escuchar los dem\'as instrumentos:
-  \begin{itemize}
-    \item ``Duplicar Pista Uno en Pista Dos''
-    \item ``Duplicar Pista Dos en Pista Tres''
-    \item ``Duplicar Pista Tres en Pista Cuatro''
-  \end{itemize}
-
-  \item Bastante sencillo. Para escuchar nuestra m\'usica: ``Reproducir M\'usica''.
-
-\end{enumerate}
-
-La uni\'on de los componentes presentados en este cap\'itulo hizo posible implementar el motor 
-de reconocimiento del habla como servicio de \emph{D-Bus} y as\'i ofrecer \emph{TamTam Listens} como una 
-interfaz alternativa a la propuesta por \emph{TamTam Edit}.
-
-En el siguiente cap\'itulo se presenta la evaluaci\'on de la interfaz implementada, teniendo en cuenta 
-aspectos t\'ecnicos y funcionales.
