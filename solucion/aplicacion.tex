@@ -10,8 +10,6 @@ opta por la metodolog\'ia de trabajo de c\'odigo abierto, lo cual implica:
 \begin{itemize}
     \item Utilizar tecnolog\'ias de c\'odigo abierto para el desarrollo de la interfaz.
     \item Establecer un proceso de desarrollo transparente y abierto.
-    \item Ofrecer la interfaz desarrollada, junto con su c\'odigo fuente, de manera libre 
-        y gratuita para la comunidad de c\'odigo abierto.
 \end{itemize}
 
 La metodolog\'ia adoptada para implementar la interfaz permite utilizar un proyecto
@@ -22,9 +20,8 @@ una de las motivaciones de la secci\'on~\ref{sec:motivacion}: un programa de com
 musical, que recibe comandos sonoros y emite tambi\'en un resultado sonoro, podr\'ia ser
 m\'as natural para el usuario. 
 
-La interfaz desarrollada se denomina \emph{TamTam Listens} y se basa en tecnolog\'ias de c\'odigo 
-abierto, tomando como punto de partida la aplicaci\'on \emph{TamTam Edit} de la plataforma 
-educativa \foreign{Sugar}.
+La interfaz desarrollada se denomina \emph{TamTam Listens} y toma como punto de partida la 
+aplicaci\'on \emph{TamTam Edit} de la plataforma educativa \foreign{Sugar}.
 
 \subsection{TamTam Edit}
 \label{sec:tamtam-edit}
@@ -128,8 +125,8 @@ como parte de \emph{TamTam Listens} se hizo clara durante la fase de dise\~no.
 
 Para comprender la diferencia, puede considerarse el siguiente ejemplo. 
 Crear una nota exige una secuencia de operaciones con el \foreign{mouse} al utilizarse la
-interfaz tradicional: hacer clic en el bot\'on de la herramienta correspondiente, hacer clic en la pista
-donde se desea crear la nota, arrastrar el mouse con el clic izquierdo presionado para definir la 
+interfaz tradicional: presionar el bot\'on de la herramienta correspondiente, seleccionar la pista
+donde se desea crear la nota, utilizar el \foreign{mouse} para definir la 
 duraci\'on de la nota, etc. Al utilizarse una interfaz mediante voz del usuario, la misma operaci\'on
 puede realizarse pronunciando un comando como ``crear nota do''.
 
@@ -188,7 +185,7 @@ Para componer una escala simple con \foreign{TamTam Listens}, pueden seguirse lo
     \item ``Duplicar Pista Tres en Pista Cuatro''
   \end{itemize}
 
-  \item Bastante sencillo. Para escuchar nuestra m\'usica: ``Reproducir M\'usica''.
+  \item Para escuchar nuestra m\'usica: ``Reproducir M\'usica''.
 
 \end{enumerate}
 
@@ -260,7 +257,8 @@ reproductor multimedia.
 \end{minipage}
 \end{figure}
 
-El comando de la figura~\ref{figure:cmd-salir} permite salir de \emph{TamTam Listens}, simplemente hay que decir ``salir de tamtam''. Por otro lado, los comandos de la figura~\ref{figure:cmd-vol}
+El comando de la figura~\ref{figure:cmd-salir} permite salir de \emph{TamTam Listens}, basta con decir
+``salir de tamtam''. Por otro lado, los comandos de la figura~\ref{figure:cmd-vol}
 y~\ref{figure:cmd-tempo} permiten controlar, respectivamente, el volumen y tempo general de la aplicaci\'on. Por ejemplo: ``aumentar volumen'', ``disminuir tempo''.
 
 \begin{figure}[H]
@@ -361,8 +359,9 @@ asignar el piano a la pista dos, basta con decir ``piano en pista dos''.
 \end{minipage}
 \end{figure}
 
-Generalmente las composiciones tienen cierta secuencia de notas que se repiten para varios instrumentos. El comando de la 
-figure~\ref{figure:cmd-dup-pista} permite duplicar el contenido, es decir las notas, de una pista en otra. Por ejemplo, 
+Generalmente las composiciones presentan cierta secuencia de notas que se repiten para varios 
+instrumentos. El comando de la figura \ref{figure:cmd-dup-pista} permite duplicar el contenido, 
+es decir las notas, de una pista en otra. Por ejemplo, 
 ``duplicar pista uno en pista dos'' permite duplicar las notas de la pista uno en la pista dos.
 
 \subsubsection{Comandos de Pista} 

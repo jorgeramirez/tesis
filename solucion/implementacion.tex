@@ -32,6 +32,31 @@ cuyo \foreign{kernel} y paquetes de software son desarrollados bajo el modelo de
 La arquitectura propuesta, implementada como parte de \emph{TamTam Listens}, favorece la modularidad
 y facilita la reutilizaci\'on de la soluci\'on para otros proyectos de caracter{\'\i}sticas similares.
 
+La figura \ref{figure:tamtam-listens-proceso} representa el proceso completo de interacci\'on entre el
+usuario y \emph{TamTam Listens}, el cual est\'a compuesto por los siguientes pasos:
+
+\begin{itemize}
+  \item Inicialmente, el usuario pronuncia un comando de voz que se registra mediante el micr\'ofono de
+  la computadora donde se ejecuta \emph{TamTam Listens}.
+  \item La entrada sonora es procesada por \emph{Pocketsphinx}, pasando por las etapas del proceso del
+  reconocimiento del habla descrito en el cap{\'\i}tulo \ref{sec:proceso}. El resultado es una cadena de
+  texto correspondiente al comando reconocido.
+  \item La salida de \emph{Pocketsphinx} es registrada por su proceso padre, un demonio que expone
+  una se\~nal \emph{D-Bus}.
+  El demonio \emph{D-Bus}, a su vez, env{\'\i}a el resultado a todos los procesos registrados 
+  a la se\~nal.
+  En este caso, el \'unico proceso que recibe el resultado es \emph{TamTam Listens}.
+  \item Al recibir el comando reconocido, \emph{TamTam Listens} ejecuta la acci\'on correspondiente de
+  acuerdo a un conjunto de reglas definidas por la aplicaci\'on.
+\end{itemize}
+
+\begin{figure}[H] 
+\centering
+\includegraphics[width=1.0\textwidth]{./graphics/tamtam-proceso.png}
+\caption{Arquitectura b\'asica de \emph{TamTam Listens}}
+\label{figure:tamtam-listens-proceso}
+\end{figure}
+
 \subsection{Proceso del Reconocimiento del Habla}
 \label{sec:proceso-solucion}
 
@@ -110,7 +135,7 @@ palabras es o no un comando v\'alido.
 \subsection{Modelo de Lenguaje}
 \label{sec:lenguaje-solucion}
 
-Una gram\'atica en formato JSGF \cite{JSGF2000} fue utilizada como modelo de lenguaje, lo cual permiti\'o
+Para el modelo de lenguaje se utiliza una gram\'atica en formato JSGF \cite{JSGF2000}, la cual permite
 definir los comandos soportados por la aplicaci\'on de una manera sencilla.
 En la figura~\ref{figure:fragmento-gram} puede observarse un fragmento de la gram\'atica utilizada por 
 la aplicaci\'on.
