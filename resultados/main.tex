@@ -167,12 +167,13 @@ Sujeto & $M$ & $A$ & $E_1$ & $E_2$  & $T_4$      & $E_3$ & $C$ & $U$ \\
 Finalmente, se presenta la tabla que resume (por usuario) la prueba de usabilidad realizada. 
 En la tabla~\ref{sec:tabla-resumen-prueba} se pueden observar todas las m\'etricas analizadas.
 Esta tabla representa la base del an\'alisis de correlaci\'on cuyos resultados se presentan
-en la siguiente secci\'on.
+en la siguiente secci\'on. En la tabla~\ref{sec:tabla-resumen-prueba} tambi\'en se incluyen: el
+promedio ($\bar{x}$), mediana ($\widetilde{x}$) y la desviaci\'on est\'andar ($\sigma$).
 
 \begin{table}[H]
 \centering
 \footnotesize
-\begin{tabular}{|p{1.4cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}|}
+\begin{tabular}{|p{1.4cm}|p{1.1cm}|p{1.1cm}|p{1.1cm}|p{1.1cm}|p{1.1cm}|p{1.1cm}|p{1.1cm}|p{1.1cm}|p{1.1cm}|}
 \hline
 Sujeto &  $M$  &   $A$  &   $E_1$ &  $E_2$  &  $T_{1+2}$  & $T_{3+4}$ & $E_3$ & $C$ & $U$ \\
 \hline 
@@ -189,7 +190,9 @@ Sujeto &  $M$  &   $A$  &   $E_1$ &  $E_2$  &  $T_{1+2}$  & $T_{3+4}$ & $E_3$ & 
 11 & 15 & 89,32 & 10,68 & 1,22  & 12,92 & 18      & 6  & 100  & 41 \\
 12 & 14 & 94,30 & 5,70  & 11,79 & 21,42 & 22,27 & 25 & 73,61  & 51 \\
 \hline 
-Promedio & 12,75 & 83,70 & 16,30 & 5,91 & 13,83  & 18,35  & 11,83 & 87,5  & 40.67 \\
+$\bar{x}$  & 12,75 & 83,70 & 16,30 & 5,91 & 13,83  & 18,35  & 11,83 & 87,5  & 40.67 \\
+$\widetilde{x}$   &  14  & 88,48  &  11,52  &  5,05  &  13,76  &  18,12 & 6,5  &  93,06  &  40,5 \\
+$\sigma$  & 2,09  &  12,28  & 12,28  &  3,84  &  4,69  & 6,99 &  9,01  &  15,11  &  3,82 \\
 \hline
 \end{tabular}
 \caption{Resumen de las variables de la prueba de usabilidad.}
@@ -253,6 +256,32 @@ siendo algunas positivas y otras negativas. A continuaci\'on se listan algunas c
     \item $E_3$ y $U$, 0,52 correlaci\'on positiva fuerte
 \end{itemize}
 
+Entre las correlaciones identificadas se observan algunas que podr\'ian resultar poco intuitivas. Por ejemplo, 
+la correlaci\'on positiva de la tasa de acierto del sistema ($A$) con la tasa de error humano ($E_2$) y 
+con la cantidad de errores por usuario ($E_3$). \'Esta correlaci\'on podr\'ia explicarse con lo que se pudo
+observar en las sesiones de prueba. En las mismas, se pudo observar que varios usuarios con tasa de aciertos elevada
+prefer{{\'\i}}an descubrir y aprender los comandos a trav\'es de la prueba y el error a leer 
+m\'as detalladamente el manual de la aplicaci\'on.
+
+As{{\'\i}} tambi\'en, la cantidad total de comandos que utiliz\'o el usuario ($U$) result\'o relacionada
+positivamente con ambas medidas del error humano ($E_2$ y $E_3$) y con el acierto del sistema ($A$). 
+En base a las observaciones, pudo notarse que los usuarios con tasa de aciertos elevada
+se ve{{\'\i}}an inclinados a intentar descubrir y utilizar nuevos comandos, incluso si estos no 
+eran estrictamente necesarios para la resoluci\'on de las tareas.
+
+Efectivamente, la memoria del usuario ($M$) result\'o relacionada negativamente con las medidas 
+de error humano ($E_2$ y $E_3$) y la duraci\'on de las tareas ($T_{1+2}$ y $T_{3+4}$), lo cual 
+puede considerarse como un indicador de la importancia de este factor para las interfaces basadas en
+reconocimiento de comandos de voz.
+
+Los resultados para algunas correlaciones son de esperarse, por tratarse de cuestiones
+previsibles, de cierta manera. Por ejemplo, se esperaba que los usuarios para 
+quienes la tasa de aciertos del sistema ($A$) fuese
+superior obtuviesen mejores resultados en las tareas, lo cual pudo verificarse mediante la 
+correlaci\'on entre la tasa de acierto del sistema ($A$) y la correctitud de la \'ultima tarea ($C$). Otra 
+relaci\'on previsible se da entre el error humano ($E_2$) y el tiempo que tom\'o terminar las tareas ($T_{1+2}$). 
+As{{\'\i}}, los usuarios que m\'as se equivocaron tardaron m\'as en finalizar las tareas.
+
 
 \section{An\'alisis del Error Humano}
 \label{sec:resultados-error-humano}
@@ -263,7 +292,7 @@ al tipo de aplicaci\'on desarrollada.
 \subsection{Tasa de Error Humano por Longitud del Comando}
 El primer caso considerado es la tasa error con respecto a la longitud del comando
 utilizado. En la tabla~\ref{sec:error-longitud} se pueden observar los valores obtenidos, las columnas
-representan las distintas longitudes de comandos disponibles en la aplicaci\'on
+representan las distintas longitudes de comandos disponibles en la aplicaci\'on.
 
 \begin{table}[H]
 \centering
@@ -291,6 +320,16 @@ representan las distintas longitudes de comandos disponibles en la aplicaci\'on
 \caption{Tasa de error humano por longitud del comando.}
 \label{sec:error-longitud}
 \end{table}
+
+La figura~\ref{sec:grafico-error-longitud} es una representaci\'on gr\'afica de la tabla~\ref{sec:error-longitud},
+se puede apreciar un incremento en la tasa de error para comandos con m\'as de cuatro palabras de longitud.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{./graphics/longitud-error.png}
+\caption{Tasa de error humano por longitud del comando.}
+\label{sec:grafico-error-longitud}
+\end{figure}
 
 \subsection[Tasa de Error Humano por Nivel Contextual del Comando]
 {Tasa de Error Humano por Nivel Contextual del \\ Comando}
